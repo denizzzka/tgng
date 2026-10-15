@@ -1,9 +1,10 @@
-/// MTProto encrypted transport wrapper (MTProto 2.0).
+/// MTProto encrypted transport layer (MTProto 2.0, AES-256-IGE).
 ///
-/// Sits above framing in the chain
-/// TCP -> SOCKS5 -> obfuscated2 -> framing -> encryption.
-/// `write` accepts one assembled plaintext MTProto message and produces a
-/// complete encrypted packet. `read` returns one decrypted plaintext message.
+/// Sits directly above framing: `write` receives a whole assembled frame
+/// (the payload of one MTProto packet) and turns it into the encrypted v2
+/// envelope; `read` accepts one encrypted packet and returns the decrypted
+/// payload. Framing stays below encryption in the stack, so this layer never
+/// sees length prefixes.
 module tgng.mtproto.encrypted_stream;
 
 import vibe.core.stream: ConnectionStream, IOMode, blocking;
@@ -12,138 +13,77 @@ import tgng.mtproto.crypto: aesIgeDecrypt, aesIgeEncrypt, randomBytes, sha256;
 
 import core.time: Duration;
 import std.bitmanip: littleEndianToNative, nativeToLittleEndian;
-import std.datetime: Clock;
 import std.exception: enforce;
 
 @safe:
 
-/// Error raised for malformed encrypted packets.
-class EncryptedStreamException : Exception
-{
-	this(string msg) @safe pure nothrow
-	{
-		super(msg);
-	}
-}
-
-/// Size of the auth key material (256 bits).
+/// Size of the two keys derived from the auth key.
 private enum AuthKeySize = 256;
-/// Length of `auth_key_id`, `msg_key`, `salt` and `session_id` fields.
-private enum AuthKeyIdSize = 8;
+/// Offset of the message key material inside the auth key (`88 + X`).
+private enum MsgKeyOffset = 88;
+/// Number of bytes of the SHA-256 digest used as the message key.
 private enum MsgKeySize = 16;
-private enum SaltSize = 8;
-private enum SessionIdSize = 8;
-
-/// AES block size.
+/// Size of the v2 fixed header written before the encrypted payload.
+private enum EnvelopeHeaderSize = 24;
+/// Size of the salt/session/msg_id/seq_no/length prefix inside the packet.
+private enum InnerHeaderSize = 32;
+/// Padding is random, so it never falls below 12 bytes.
+private enum MinPadding = 12;
+/// Block size of AES.
 private enum BlockSize = 16;
 
-/// Result of one AES-IGE key derivation for a message.
-private struct MessageKeys
-{
-	ubyte[32] aesKey;
-	ubyte[32] aesIv;
-}
-
-/// Derives the AES key and IV from `authKey` and `msgKey` (KDF2).
+/// Which side of the connection this stream encrypts for.
 ///
-/// `x` is 0 for client-to-server messages and 8 for server-to-client ones.
-private MessageKeys deriveKeys(const(ubyte)[AuthKeySize] authKey, const(ubyte)[] msgKey, uint x) @trusted
+/// The `X` selector in the message-key derivation differs per direction:
+/// zero for packets the client sends, eight for packets it receives.
+enum EncryptedDirection
 {
-	enforce(msgKey.length == MsgKeySize, new EncryptedStreamException("msg_key must be 16 bytes."));
-
-	ubyte[MsgKeySize + 36] buf;
-	buf[0 .. MsgKeySize] = msgKey[];
-	buf[MsgKeySize .. $] = authKey[88 + x .. 88 + x + 36];
-	auto sha = sha256(buf);
-
-	MessageKeys keys;
-	keys.aesKey[0 .. 8] = sha[0 .. 8];
-	keys.aesIv[0 .. 8] = sha[8 .. 16];
-
-	// sha256(auth_key[96+x .. 96+x+32] + msg_key + auth_key[128+x .. 128+x+32])
-	ubyte[32 + MsgKeySize + 32] buf2;
-	buf2[0 .. 32] = authKey[96 + x .. 96 + x + 32];
-	buf2[32 .. 32 + MsgKeySize] = msgKey[];
-	buf2[32 + MsgKeySize .. $] = authKey[128 + x .. 128 + x + 32];
-	auto sha2 = sha256(buf2);
-	keys.aesKey[8 .. 32] = sha2[0 .. 24];
-	keys.aesIv[8 .. 24] = sha2[24 .. 40];
-	return keys;
+	clientToServer,
+	serverToClient,
 }
 
-/// Computes `msg_key` for `toEncrypt` (from `salt` through the padding).
+/// Stream wrapper that applies the MTProto 2.0 encryption layer.
 ///
-/// `x` selects the auth key slice: 0 for client-to-server, 8 otherwise.
-private ubyte[MsgKeySize] computeMsgKey(const(ubyte)[AuthKeySize] authKey, const(ubyte)[] toEncrypt, uint x) @trusted
-{
-	enforce(toEncrypt.length >= 32, new EncryptedStreamException("Encrypted payload is too short."));
-	enforce(authKey.length >= 88 + x + 32, new EncryptedStreamException("Auth key is too short."));
-	auto buf = new ubyte[32 + toEncrypt.length];
-	buf[0 .. 32] = authKey[88 + x .. 88 + x + 32];
-	buf[32 .. $] = toEncrypt[];
-	auto digest = sha256(buf);
-	ubyte[MsgKeySize] msgKey;
-	msgKey[] = digest[8 .. 24];
-	return msgKey;
-}
-
-/// Chooses the smallest legal padded size of the encrypted part.
-///
-/// `dataSize` is the plaintext message length. The encrypted part holds
-/// salt + session_id + msg_id + seq_no + length + data + padding.
-private size_t calcPaddedSize(size_t dataSize)
-{
-	enum prefixSize = SaltSize + SessionIdSize + 8 + 4 + 4;
-	enum minPadding = 12;
-	auto encryptedSize = (prefixSize + dataSize + minPadding + 15) & ~cast(size_t) 15;
-
-	static immutable size_t[] basicSizes = [64, 128, 192, 256, 384, 512, 768, 1024, 1280];
-	foreach (size; basicSizes)
-		if (encryptedSize <= size)
-			return size;
-
-	return (encryptedSize - 1280 + 447) / 448 * 448 + 1280;
-}
-
-/// Stream wrapper that encrypts/decrypts MTProto messages.
+/// The wrapper expects whole frames: `write` takes one framed MTProto
+/// packet and `read` returns the payload of one encrypted packet.
 final class EncryptedStream: ConnectionStream
 {
 	private
 	{
 		ConnectionStream _inner;
 		ubyte[AuthKeySize] _authKey;
-		bool _server;
-		ubyte[AuthKeyIdSize] _authKeyId;
-		long _salt;
+		long _authKeyId;
 		long _sessionId;
-		ubyte[] _pending;
-		size_t _pendingOffset;
-		long _lastMsgId;
-		uint _seqNo;
+		ubyte[32] _sendKey;
+		ubyte[32] _sendIv;
+		ubyte[32] _recvKey;
+		ubyte[32] _recvIv;
+		ulong _sendCounter;
+		ulong _recvCounter;
 	}
 
-	/// Wraps `inner` with MTProto 2.0 encryption.
+	/// Wraps `inner` with the message keys derived from `authKey`.
 	///
-	/// `authKey` is the negotiated 256-byte key, `authKeyId` its identifier
-	/// (low 64 bits of `sha256(authKey)`), `server` selects the direction:
-	/// `false` for client-to-server, `true` for server-to-client.
-	this(ConnectionStream inner, const(ubyte)[] authKey, long authKeyId,
-		long salt, long sessionId, bool server = false)
+	/// `authKeyId` is the key identifier carried in every packet and
+	/// `sessionId` is the current session identifier.
+	this(ConnectionStream inner, const(ubyte)[] authKey, long authKeyId, long sessionId)
 	{
-		enforce(authKey.length == AuthKeySize, new EncryptedStreamException("Auth key must be 256 bytes."));
+		enforce(authKey.length == AuthKeySize, "Auth key must be 256 bytes.");
 		_inner = inner;
 		_authKey[] = authKey[];
-		_authKeyId[] = nativeToLittleEndian(authKeyId)[0 .. 8];
-		_salt = salt;
+		_authKeyId = authKeyId;
 		_sessionId = sessionId;
-		_server = server;
+
+		// The two halves are reversed for the opposite direction.
+		ubyte[AuthKeySize] reversed = void;
+		foreach (i; 0 .. AuthKeySize)
+			reversed[i] = authKey[AuthKeySize - 1 - i];
+
+		Kdf2(_sendKey, _sendIv, _authKey, 0);
+		Kdf2(_recvKey, _recvIv, reversed, 8);
+		_sendCounter = 0;
+		_recvCounter = 0;
 	}
-
-	/// Updates the salt sent with outgoing messages.
-	void setSalt(long salt) { _salt = salt; }
-
-	/// Updates the session identifier.
-	void setSessionId(long sessionId) { _sessionId = sessionId; }
 
 	@property bool connected() const { return _inner.connected; }
 
@@ -151,161 +91,223 @@ final class EncryptedStream: ConnectionStream
 
 	bool waitForData(Duration timeout = Duration.max) @blocking
 	{
-		if (_pendingOffset < _pending.length) return true;
 		return _inner.waitForData(timeout);
 	}
 
-	@property bool empty() @blocking
-	{
-		if (_pendingOffset < _pending.length) return false;
-		return !_readFrame();
-	}
+	@property bool empty() @blocking { return _inner.empty; }
 
-	@property ulong leastSize() @blocking
-	{
-		if (_pendingOffset < _pending.length) return _pending.length - _pendingOffset;
-		if (!_readFrame()) return 0;
-		return _pending.length - _pendingOffset;
-	}
+	@property ulong leastSize() @blocking { return _inner.leastSize; }
 
-	@property bool dataAvailableForRead()
-	{
-		return _pendingOffset < _pending.length || _inner.dataAvailableForRead;
-	}
+	@property bool dataAvailableForRead() { return _inner.dataAvailableForRead; }
 
-	const(ubyte)[] peek()
-	{
-		if (_pendingOffset < _pending.length)
-			return _pending[_pendingOffset .. $];
-		return null;
-	}
+	const(ubyte)[] peek() { return null; }
 
+	/// Reads one encrypted packet and returns its decrypted payload.
+	///
+	/// The payload is a single message: salt and the fixed header are
+	/// stripped, the padding is removed and the plaintext is written to
+	/// `dst`. When `dst` is too small, the excess is dropped.
 	size_t read(scope ubyte[] dst, IOMode mode) @blocking
 	{
-		size_t total;
-		while (total < dst.length)
-		{
-			if (_pendingOffset >= _pending.length && !_readFrame()) break;
-			auto n = dst.length - total;
-			auto avail = _pending.length - _pendingOffset;
-			if (n > avail) n = avail;
-			dst[total .. total + n] = _pending[_pendingOffset .. _pendingOffset + n];
-			_pendingOffset += n;
-			total += n;
-			if (mode == IOMode.once) break;
-		}
-		return total;
+		// Each call consumes exactly one encrypted frame, so the
+		// underlying stream must deliver whole packets.
+		auto packet = new ubyte[_inner.leastSize];
+		if (packet.length == 0)
+			return 0;
+		_inner.read(packet);
+
+		auto plain = _decryptPacket(packet);
+		auto n = dst.length < plain.length ? dst.length : plain.length;
+		dst[0 .. n] = plain[0 .. n];
+		return n;
 	}
 
-	/// Encrypts a body using transport-managed counters.
-	///
-	/// Prefer `writeMessage` when the `msg_id`/`seq_no` come from the RPC
-	/// layer; this overload exists to satisfy `ConnectionStream`.
+	/// Encrypts one MTProto frame and writes it to the underlying stream.
 	size_t write(scope const(ubyte)[] bytes, IOMode mode) @blocking
 	{
-		return writeMessage(_nextMsgId(), cast(int) _nextSeqNo(), bytes, mode);
-	}
-
-	/// Encrypts one plaintext message body with an explicit message id.
-	///
-	/// `msgId` and `seqNo` are supplied by the RPC layer (`RpcContext`); the
-	/// body is the serialised message without the transport header.
-	size_t writeMessage(long msgId, int seqNo, scope const(ubyte)[] body, IOMode mode) @blocking
-	{
 		enforce(mode == IOMode.all, "EncryptedStream supports only IOMode.all for writes.");
-		enforce(body.length > 0, "Cannot encrypt an empty MTProto message.");
+		enforce(bytes.length > 0, "Cannot encrypt an empty MTProto message.");
 
-		enum prefixSize = SaltSize + SessionIdSize + 8 + 4 + 4;
-		auto paddedSize = calcPaddedSize(body.length);
-		enforce(paddedSize >= prefixSize + body.length, new EncryptedStreamException("Padded size is smaller than the payload."));
-
-		auto plain = new ubyte[paddedSize];
-		size_t o;
-		plain[o .. o + 8] = nativeToLittleEndian(_salt)[0 .. 8];
-		o += 8;
-		plain[o .. o + 8] = nativeToLittleEndian(_sessionId)[0 .. 8];
-		o += 8;
-		plain[o .. o + 8] = nativeToLittleEndian(msgId)[0 .. 8];
-		o += 8;
-		plain[o .. o + 4] = nativeToLittleEndian(cast(uint) seqNo)[0 .. 4];
-		o += 4;
-		plain[o .. o + 4] = nativeToLittleEndian(cast(uint) body.length)[0 .. 4];
-		o += 4;
-		plain[o .. o + body.length] = body[];
-		o += body.length;
-		randomBytes(plain[o .. paddedSize]);
-
-		auto x = _server ? 8 : 0;
-		auto msgKey = computeMsgKey(_authKey, plain, x);
-		auto keys = deriveKeys(_authKey, msgKey, x);
-
-		auto out_ = new ubyte[AuthKeyIdSize + MsgKeySize + paddedSize];
-		out_[0 .. 8] = _authKeyId[];
-		out_[8 .. 8 + MsgKeySize] = msgKey[];
-		out_[AuthKeyIdSize + MsgKeySize .. $] = plain[];
-		aesIgeEncrypt(out_[AuthKeyIdSize + MsgKeySize .. $], keys.aesKey, keys.aesIv);
-
-		_inner.write(out_, IOMode.all);
-		return body.length;
+		auto packet = _encryptPacket(bytes);
+		_inner.write(packet, IOMode.all);
+		return bytes.length;
 	}
 
 	void flush() @blocking { _inner.flush(); }
 	void finalize() @blocking { _inner.finalize(); }
 
-	/// Reads and decrypts one packet into `_pending`.
-	private bool _readFrame() @blocking
+	/// Builds the complete encrypted packet for `payload`.
+	private ubyte[] _encryptPacket(scope const(ubyte)[] payload) @trusted
 	{
-		if (_inner.empty) return false;
+		// The salted plaintext starts with the salt and ends with the
+		// random padding; the salt is derived from the packet counter.
+		auto padding = _paddingLength(payload.length);
+		auto saltedLength = InnerHeaderSize + payload.length + padding;
+		auto total = EnvelopeHeaderSize + saltedLength;
 
-		// Header: auth_key_id + msg_key. The encrypted part follows as one
-		// physical packet delivered by the framing layer below.
-		ubyte[AuthKeyIdSize + MsgKeySize] header;
-		_inner.read(header[]);
+		auto packet = new ubyte[total];
+		_sendCounter++;
+		long salt = cast(long) _sendCounter;
 
-		enforce(_inner.leastSize > 0, new EncryptedStreamException("Encrypted part is missing."));
-		auto encrypted = new ubyte[_inner.leastSize];
-		_inner.read(encrypted[], IOMode.all);
-		enforce(encrypted.length % BlockSize == 0, new EncryptedStreamException("Encrypted part is not a multiple of 16."));
+		size_t o = 0;
+		packet[o .. o + 8] = nativeToLittleEndian(_authKeyId)[0 .. 8];
+		o += 8;
+		// The message key placeholder: filled after the plaintext exists.
+		o += MsgKeySize;
 
-		auto x = _server ? 8 : 0;
-		ubyte[MsgKeySize] msgKey;
-		msgKey[] = header[AuthKeyIdSize .. $];
-		auto keys = deriveKeys(_authKey, msgKey[], x);
-		aesIgeDecrypt(encrypted, keys.aesKey, keys.aesIv);
+		auto plain = packet[o .. o + saltedLength];
+		size_t p = 0;
+		plain[p .. p + 8] = nativeToLittleEndian(salt)[0 .. 8];
+		p += 8;
+		plain[p .. p + 8] = nativeToLittleEndian(_sessionId)[0 .. 8];
+		p += 8;
+		plain[p .. p + 8] = nativeToLittleEndian(_nextMessageId())[0 .. 8];
+		p += 8;
+		plain[p .. p + 4] = nativeToLittleEndian(0)[0 .. 4];
+		p += 4;
+		plain[p .. p + 4] = nativeToLittleEndian(cast(uint) payload.length)[0 .. 4];
+		p += 4;
+		plain[p .. p + payload.length] = payload[];
+		p += payload.length;
 
-		enum prefixSize = SaltSize + SessionIdSize + 8 + 4 + 4;
-		enforce(encrypted.length >= prefixSize, new EncryptedStreamException("Decrypted part is too short."));
-		auto expectedKey = computeMsgKey(_authKey, encrypted, x);
-		enforce(msgKey[] == expectedKey[], new EncryptedStreamException("msg_key mismatch."));
+		randomBytes(plain[p .. $]);
 
-		size_t o = SaltSize + SessionIdSize + 8 + 4;
-		auto dataLength = cast(uint) encrypted[o]
-			| (cast(uint) encrypted[o + 1] << 8)
-			| (cast(uint) encrypted[o + 2] << 16)
-			| (cast(uint) encrypted[o + 3] << 24);
-		o += 4;
-		enforce(o + dataLength <= encrypted.length, new EncryptedStreamException("Declared length exceeds the packet."));
-		_pending = encrypted[o .. o + dataLength].dup;
-		_pendingOffset = 0;
-		return true;
+		auto msgKey = _messageKey(plain, EncryptedDirection.clientToServer);
+		packet[8 .. 8 + MsgKeySize] = msgKey[];
+
+		auto aesKey = _aesKey(msgKey, false);
+		auto aesIv = _aesIv(msgKey, plain, false);
+		aesIgeEncrypt(plain, aesKey, aesIv);
+		return packet;
 	}
 
-	/// Client message identifier: Unix time in 2^-32 s, monotonic.
-	private long _nextMsgId()
+	/// Decrypts one packet and returns the MTProto payload it carries.
+	private ubyte[] _decryptPacket(scope const(ubyte)[] packet) @trusted
 	{
-		auto t = Clock.currTime.stdTime;
-		auto now = (cast(long) t / 1_000_000_000L) << 32
-			| cast(long) ((t % 1_000_000_000L) & 0xffff_ffffL);
-		if (_lastMsgId >= now)
-			now = _lastMsgId + 4;
-		_lastMsgId = now;
-		return now;
+		enforce(packet.length >= EnvelopeHeaderSize + InnerHeaderSize,
+			"Encrypted packet is too short.");
+
+		size_t o = 0;
+		auto authKeyId = _readI64(packet, o);
+		enforce(authKeyId == _authKeyId, "Encrypted packet has an unknown auth_key_id.");
+
+		auto msgKey = packet[o .. o + MsgKeySize].idup;
+		o += MsgKeySize;
+
+		enforce((packet.length - o) % BlockSize == 0,
+			"Encrypted payload is not block aligned.");
+		auto plain = packet[o .. $].dup;
+		auto aesKey = _aesKey(msgKey, true);
+		auto aesIv = _aesIv(msgKey, plain, true);
+		aesIgeDecrypt(plain, aesKey, aesIv);
+
+		// The received key must match, otherwise the packet is corrupt.
+		auto check = _messageKey(plain, EncryptedDirection.serverToClient);
+		enforce(check[] == msgKey[], "Encrypted packet has a wrong message key.");
+
+		size_t p = 8;
+		p += 8;
+		p += 8;
+		p += 4;
+		ubyte[4] bodyRaw;
+		bodyRaw[] = plain[p .. p + 4];
+		auto bodyLen = cast(size_t) littleEndianToNative!uint(bodyRaw);
+		p += 4;
+		enforce(p + bodyLen <= plain.length, "Encrypted packet body length is out of range.");
+		return plain[p .. p + bodyLen].dup;
 	}
 
-	/// Client sequence number: content messages always have the low bit set.
-	private uint _nextSeqNo()
+	/// Returns the random padding length that aligns the message.
+	private static size_t _paddingLength(size_t payloadLength) @trusted
 	{
-		_seqNo += 2;
-		return _seqNo;
+		auto unaligned = InnerHeaderSize + payloadLength;
+		auto padding = BlockSize - (unaligned % BlockSize);
+		if (padding < MinPadding)
+			padding += BlockSize;
+		// The padding is random, so its length is the only bound.
+		return padding;
 	}
+
+	/// Returns the next outgoing `msg_id`.
+	private long _nextMessageId() @trusted
+	{
+		import std.datetime.systime: Clock;
+		auto now = Clock.currTime().toUnixTime * 1_000_000_000L;
+		return (now & 0xffffffff_00000000L) | (++_sendCounter & 0xffffffffL);
+	}
+
+	/// Derives the message key from the salted plaintext.
+	private ubyte[MsgKeySize] _messageKey(scope const(ubyte)[] plain, EncryptedDirection direction) @trusted
+	{
+		auto x = direction == EncryptedDirection.clientToServer ? 0 : 8;
+		auto material = new ubyte[32 + plain.length];
+		material[0 .. 32] = _authKey[MsgKeyOffset + x .. MsgKeyOffset + x + 32];
+		material[32 .. $] = plain[];
+		auto digest = sha256(material);
+		ubyte[MsgKeySize] key = void;
+		key[] = digest[8 .. 8 + MsgKeySize];
+		return key;
+	}
+
+	/// Derives the AES-IGE key from the message key.
+	private ubyte[32] _aesKey(scope const(ubyte)[] msgKey, bool incoming) @trusted
+	{
+		ubyte[48] material = void;
+		material[0 .. 16] = msgKey[0 .. 16];
+		material[16 .. 48] = _authKey[(incoming ? 8 : 0) .. (incoming ? 8 : 0) + 32];
+		auto digest = sha256(material);
+		ubyte[32] key = void;
+		key[] = digest[];
+		return key;
+	}
+
+	/// Derives the AES-IGE IV from the message key.
+	private ubyte[32] _aesIv(scope const(ubyte)[] msgKey, scope const(ubyte)[] plain, bool incoming) @trusted
+	{
+		ubyte[48] material = void;
+		material[0 .. 32] = _authKey[(incoming ? 8 : 0) .. (incoming ? 8 : 0) + 32];
+		material[32 .. 48] = msgKey[0 .. 16];
+		auto digest = sha256(material);
+		ubyte[32] iv = void;
+		iv[] = digest[];
+		return iv;
+	}
+
+	/// Reads a little-endian `long` and advances the offset.
+	private static long _readI64(scope const(ubyte)[] data, ref size_t o) @trusted
+	{
+		enforce(data.length >= o + 8, "Truncated 64-bit field.");
+		ubyte[8] raw;
+		raw[] = data[o .. o + 8];
+		o += 8;
+		return littleEndianToNative!long(raw);
+	}
+}
+
+/// Derives the key and IV for one direction (`kdf2`).
+///
+/// `x` selects the half of the auth key to use: zero for the sending
+/// direction, eight for the receiving one.
+private void Kdf2(ref ubyte[32] key, ref ubyte[32] iv, scope const(ubyte)[256] authKey, int x) @trusted
+{
+	ubyte[36] material = void;
+	material[0 .. 32] = authKey[x .. x + 32];
+	material[32 .. 36] = [0, 0, 0, 0];
+
+	ubyte[68] buffer = void;
+	size_t o = 0;
+	auto a = sha256(material);
+	buffer[o .. o + 32] = a[];
+	o += 32;
+	material[0 .. 32] = a[];
+	material[32 .. 36] = [1, 0, 0, 0];
+	auto b = sha256(material);
+	buffer[o .. o + 32] = b[];
+	o += 32;
+	material[32 .. 36] = [2, 0, 0, 0];
+	auto c = sha256(material);
+	buffer[o .. o + 4] = c[0 .. 4];
+
+	iv[] = buffer[0 .. 32];
+	key[] = buffer[32 .. 64];
 }
