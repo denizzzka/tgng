@@ -30,6 +30,22 @@ void testRoundtrip(string host, ushort targetPort,
 	enforce(response[] == request[], "Echo server returned corrupted data.");
 }
 
+/// Checks that a SOCKS5 proxy accepts CONNECT and passes data through.
+void testProxyConnection(string host, ushort targetPort, string proxyHost, ushort proxyPort)
+{
+	TransportConfig config;
+	config.host = host;
+	config.port = targetPort;
+	config.connectTimeout = 10.seconds;
+	config.proxyHost = proxyHost;
+	config.proxyPort = proxyPort;
+
+	// Reaching the destination at all means the CONNECT request succeeded;
+	// the caller only needs a live stream, not an HTTP reply.
+	auto conn = connectTransport(config);
+	conn.close();
+}
+
 void main()
 {
 	// Listen on "::" so the address is reachable over both IPv4 and IPv6.
@@ -61,8 +77,14 @@ void main()
 	auto proxyHost = environment.get("SOCKS5_PROXY_HOST", null);
 	if (proxyHost.length > 0) {
 		auto proxyPort = environment.get("SOCKS5_PROXY_PORT", "1080").to!ushort;
+		// The proxy is given a public destination: a proxy such as Tor refuses
+		// to reach loopback addresses, so a local echo server cannot be used here.
+		auto proxyTarget = environment.get("SOCKS5_PROXY_TARGET", "example.com:80");
+		auto colon = proxyTarget.lastIndexOf(':');
+		enforce(colon > 0, "SOCKS5_PROXY_TARGET must be host:port.");
 		logInfo("Checking a connection through a SOCKS5 proxy");
-		testRoundtrip("127.0.0.1", echoPort, proxyHost, proxyPort);
+		testProxyConnection(proxyTarget[0 .. colon], proxyTarget[colon + 1 .. $].to!ushort,
+			proxyHost, proxyPort);
 	} else {
 		logInfo("SOCKS5_PROXY_HOST is not set - skipping the proxy check");
 	}

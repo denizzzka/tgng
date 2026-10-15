@@ -44,12 +44,15 @@ ConnectionStream connectTransport(in TransportConfig config)
 {
 	enforce(config.host.length > 0, "DC host must not be empty.");
 
-	auto tcp = connectTCP(config.host, config.port, null, 0, config.connectTimeout);
-	if (config.proxyHost.length == 0)
+	if (config.proxyHost.length == 0) {
+		auto tcp = connectTCP(config.host, config.port, null, 0, config.connectTimeout);
 		return asInterface!ConnectionStream(tcp);
+	}
 
 	enforce(config.proxyPort != 0, "SOCKS5 proxy port must not be zero.");
 	auto proxy = connectTCP(config.proxyHost, config.proxyPort, null, 0, config.connectTimeout);
+	// Close the proxy connection if the handshake fails, otherwise the socket leaks.
+	scope (failure) proxy.close();
 	return createSocks5Stream(proxy, config.host, config.port,
 		config.proxyUser, config.proxyPassword);
 }
