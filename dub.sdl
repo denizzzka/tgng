@@ -8,9 +8,14 @@ targetName "tgng"
 dependency "tgcapi" path="tgng-tgcapi"
 
 subPackage {
+	name "tgcapi"
+	description "Generated D bindings for the Telegram API client"
+	targetType "library"
+}
+
+subPackage {
 	name "tlgen"
 	description "TL scheme to D code generator"
 	targetType "executable"
 	targetName "tlgen"
-	sourcePaths "tgng-tlgen/source"
 }
