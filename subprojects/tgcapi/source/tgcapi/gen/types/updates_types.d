@@ -1,12 +1,12 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.updates_types;
+module tgcapi.gen.types.updates_types;
 
 /// TL sum type `updates.State`.
 abstract class updates_State
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: updates_state
 }
 
@@ -14,7 +14,7 @@ abstract class updates_State
 abstract class updates_Difference
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: updates_difference
     // constructor: updates_differenceEmpty
     // constructor: updates_differenceSlice
@@ -25,7 +25,7 @@ abstract class updates_Difference
 abstract class updates_ChannelDifference
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: updates_channelDifference
     // constructor: updates_channelDifferenceEmpty
     // constructor: updates_channelDifferenceTooLong

@@ -1,12 +1,12 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.wallet_types;
+module tgcapi.gen.types.wallet_types;
 
 /// TL sum type `wallet.UserAddresses`.
 abstract class wallet_UserAddresses
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: wallet_userAddresses
 }
 
@@ -14,7 +14,7 @@ abstract class wallet_UserAddresses
 abstract class wallet_Transactions
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: wallet_transactions
 }
 
@@ -22,7 +22,7 @@ abstract class wallet_Transactions
 abstract class wallet_SecretPhraseParts
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: wallet_secretPhraseParts
 }
 
@@ -30,7 +30,7 @@ abstract class wallet_SecretPhraseParts
 abstract class wallet_EncryptedSecretPhrasePart
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: wallet_encryptedSecretPhrasePart
 }
 
@@ -38,7 +38,7 @@ abstract class wallet_EncryptedSecretPhrasePart
 abstract class wallet_HolderDc
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: wallet_holderDc
 }
 
@@ -46,7 +46,7 @@ abstract class wallet_HolderDc
 abstract class wallet_ProofChallenge
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: wallet_proofChallenge
 }
 
@@ -54,7 +54,7 @@ abstract class wallet_ProofChallenge
 abstract class wallet_TonConnectChallenge
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: wallet_tonConnectChallenge
 }
 
@@ -62,7 +62,7 @@ abstract class wallet_TonConnectChallenge
 abstract class wallet_TonConnectPending
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: wallet_tonConnectPending
 }
 
@@ -70,7 +70,7 @@ abstract class wallet_TonConnectPending
 abstract class wallet_TonConnectSessions
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: wallet_tonConnectSessions
 }
 
@@ -78,7 +78,7 @@ abstract class wallet_TonConnectSessions
 abstract class wallet_ExistingBalance
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: wallet_existingBalance
 }
 
@@ -86,7 +86,7 @@ abstract class wallet_ExistingBalance
 abstract class wallet_NftAttribute
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: wallet_nftAttribute
 }
 
@@ -94,7 +94,7 @@ abstract class wallet_NftAttribute
 abstract class wallet_NftItem
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: wallet_nftItem
 }
 
@@ -102,7 +102,7 @@ abstract class wallet_NftItem
 abstract class wallet_NftItems
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: wallet_nftItems
 }
 

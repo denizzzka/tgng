@@ -1,12 +1,12 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.channels_types;
+module tgcapi.gen.types.channels_types;
 
 /// TL sum type `channels.ChannelParticipants`.
 abstract class channels_ChannelParticipants
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: channels_channelParticipants
     // constructor: channels_channelParticipantsNotModified
 }
@@ -15,7 +15,7 @@ abstract class channels_ChannelParticipants
 abstract class channels_ChannelParticipant
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: channels_channelParticipant
 }
 
@@ -23,7 +23,7 @@ abstract class channels_ChannelParticipant
 abstract class channels_AdminLogResults
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: channels_adminLogResults
 }
 
@@ -31,7 +31,7 @@ abstract class channels_AdminLogResults
 abstract class channels_SendAsPeers
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: channels_sendAsPeers
 }
 
@@ -39,7 +39,7 @@ abstract class channels_SendAsPeers
 abstract class channels_SponsoredMessageReportResult
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: channels_sponsoredMessageReportResultAdsHidden
     // constructor: channels_sponsoredMessageReportResultChooseOption
     // constructor: channels_sponsoredMessageReportResultReported

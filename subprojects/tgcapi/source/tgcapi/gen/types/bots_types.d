@@ -1,12 +1,12 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.bots_types;
+module tgcapi.gen.types.bots_types;
 
 /// TL sum type `bots.BotInfo`.
 abstract class bots_BotInfo
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: bots_botInfo
 }
 
@@ -14,7 +14,7 @@ abstract class bots_BotInfo
 abstract class bots_PopularAppBots
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: bots_popularAppBots
 }
 
@@ -22,7 +22,7 @@ abstract class bots_PopularAppBots
 abstract class bots_PreviewInfo
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: bots_previewInfo
 }
 
@@ -30,7 +30,7 @@ abstract class bots_PreviewInfo
 abstract class bots_ExportedBotToken
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: bots_exportedBotToken
 }
 
@@ -38,7 +38,7 @@ abstract class bots_ExportedBotToken
 abstract class bots_RequestedButton
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: bots_requestedButton
 }
 
@@ -46,7 +46,7 @@ abstract class bots_RequestedButton
 abstract class bots_AccessSettings
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: bots_accessSettings
 }
 

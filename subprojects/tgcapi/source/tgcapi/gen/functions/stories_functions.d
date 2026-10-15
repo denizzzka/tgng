@@ -1,6 +1,6 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.stories_functions;
+module tgcapi.gen.functions.stories_functions;
 
 /// TL function `stories.canSendStory`, id 0x30EB63F0.
 final class stories_canSendStory

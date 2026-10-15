@@ -1,12 +1,12 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.phone_types;
+module tgcapi.gen.types.phone_types;
 
 /// TL sum type `phone.PhoneCall`.
 abstract class phone_PhoneCall
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: phone_phoneCall
 }
 
@@ -14,7 +14,7 @@ abstract class phone_PhoneCall
 abstract class phone_GroupCall
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: phone_groupCall
 }
 
@@ -22,7 +22,7 @@ abstract class phone_GroupCall
 abstract class phone_GroupParticipants
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: phone_groupParticipants
 }
 
@@ -30,7 +30,7 @@ abstract class phone_GroupParticipants
 abstract class phone_JoinAsPeers
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: phone_joinAsPeers
 }
 
@@ -38,7 +38,7 @@ abstract class phone_JoinAsPeers
 abstract class phone_ExportedGroupCallInvite
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: phone_exportedGroupCallInvite
 }
 
@@ -46,7 +46,7 @@ abstract class phone_ExportedGroupCallInvite
 abstract class phone_GroupCallStreamChannels
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: phone_groupCallStreamChannels
 }
 
@@ -54,7 +54,7 @@ abstract class phone_GroupCallStreamChannels
 abstract class phone_GroupCallStreamRtmpUrl
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: phone_groupCallStreamRtmpUrl
 }
 
@@ -62,7 +62,7 @@ abstract class phone_GroupCallStreamRtmpUrl
 abstract class phone_GroupCallStars
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: phone_groupCallStars
 }
 

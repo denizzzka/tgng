@@ -1,12 +1,12 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.users_types;
+module tgcapi.gen.types.users_types;
 
 /// TL sum type `users.UserFull`.
 abstract class users_UserFull
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: users_userFull
 }
 
@@ -14,7 +14,7 @@ abstract class users_UserFull
 abstract class users_Users
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: users_users
     // constructor: users_usersSlice
 }
@@ -23,7 +23,7 @@ abstract class users_Users
 abstract class users_SavedMusic
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: users_savedMusic
     // constructor: users_savedMusicNotModified
 }

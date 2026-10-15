@@ -1,6 +1,6 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.wallet_functions;
+module tgcapi.gen.functions.wallet_functions;
 
 /// TL function `wallet.getState`, id 0xAB83B33A.
 final class wallet_getState

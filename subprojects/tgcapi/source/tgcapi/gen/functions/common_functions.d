@@ -1,6 +1,6 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.common_functions;
+module tgcapi.gen.functions.common_functions;
 
 /// TL function `invokeWithBusinessConnectionPrefix`, id 0xDD289F8E.
 final class invokeWithBusinessConnectionPrefix

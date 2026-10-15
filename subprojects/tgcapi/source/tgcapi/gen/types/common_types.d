@@ -1,12 +1,12 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.common_types;
+module tgcapi.gen.types.common_types;
 
 /// TL sum type `True`.
 abstract class True
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: true_
 }
 
@@ -14,7 +14,7 @@ abstract class True
 abstract class Error_
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: error
 }
 
@@ -22,7 +22,7 @@ abstract class Error_
 abstract class IpPort
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: ipPort
     // constructor: ipPortSecret
 }
@@ -31,7 +31,7 @@ abstract class IpPort
 abstract class AccessPointRule
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: accessPointRule
 }
 
@@ -39,7 +39,7 @@ abstract class AccessPointRule
 abstract class InputFileLocation
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputDocumentFileLocation
     // constructor: inputEncryptedFileLocation
     // constructor: inputFileLocation
@@ -58,7 +58,7 @@ abstract class InputFileLocation
 abstract class InputPeer
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputPeerChannel
     // constructor: inputPeerChannelFromMessage
     // constructor: inputPeerChat
@@ -72,7 +72,7 @@ abstract class InputPeer
 abstract class InputUser
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputUser
     // constructor: inputUserEmpty
     // constructor: inputUserFromMessage
@@ -83,7 +83,7 @@ abstract class InputUser
 abstract class InputContact
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputPhoneContact
 }
 
@@ -91,7 +91,7 @@ abstract class InputContact
 abstract class InputFile
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputFile
     // constructor: inputFileBig
     // constructor: inputFileStoryDocument
@@ -101,7 +101,7 @@ abstract class InputFile
 abstract class InputMedia
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputMediaContact
     // constructor: inputMediaDice
     // constructor: inputMediaDocument
@@ -128,7 +128,7 @@ abstract class InputMedia
 abstract class InputChatPhoto
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputChatPhoto
     // constructor: inputChatPhotoEmpty
     // constructor: inputChatUploadedPhoto
@@ -138,7 +138,7 @@ abstract class InputChatPhoto
 abstract class InputGeoPoint
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputGeoPoint
     // constructor: inputGeoPointEmpty
 }
@@ -147,7 +147,7 @@ abstract class InputGeoPoint
 abstract class InputPhoto
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputPhoto
     // constructor: inputPhotoEmpty
 }
@@ -156,7 +156,7 @@ abstract class InputPhoto
 abstract class Peer
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: peerChannel
     // constructor: peerChat
     // constructor: peerUser
@@ -166,7 +166,7 @@ abstract class Peer
 abstract class User
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: user
     // constructor: userEmpty
 }
@@ -175,7 +175,7 @@ abstract class User
 abstract class UserProfilePhoto
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: userProfilePhoto
     // constructor: userProfilePhotoEmpty
 }
@@ -184,7 +184,7 @@ abstract class UserProfilePhoto
 abstract class UserStatus
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: userStatusEmpty
     // constructor: userStatusLastMonth
     // constructor: userStatusLastWeek
@@ -197,7 +197,7 @@ abstract class UserStatus
 abstract class Chat
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: channel
     // constructor: channelForbidden
     // constructor: chat
@@ -211,7 +211,7 @@ abstract class Chat
 abstract class ChatFull
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: channelFull
     // constructor: chatFull
     // constructor: communityFull
@@ -221,7 +221,7 @@ abstract class ChatFull
 abstract class ChatParticipant
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: chatParticipant
     // constructor: chatParticipantAdmin
     // constructor: chatParticipantCreator
@@ -231,7 +231,7 @@ abstract class ChatParticipant
 abstract class ChatParticipants
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: chatParticipants
     // constructor: chatParticipantsForbidden
 }
@@ -240,7 +240,7 @@ abstract class ChatParticipants
 abstract class ChatPhoto
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: chatPhoto
     // constructor: chatPhotoEmpty
 }
@@ -249,7 +249,7 @@ abstract class ChatPhoto
 abstract class Message
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: message
     // constructor: messageEmpty
     // constructor: messageService
@@ -259,7 +259,7 @@ abstract class Message
 abstract class MessageMedia
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messageMediaContact
     // constructor: messageMediaDice
     // constructor: messageMediaDocument
@@ -285,7 +285,7 @@ abstract class MessageMedia
 abstract class MessageAction
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messageActionBoostApply
     // constructor: messageActionBotAllowed
     // constructor: messageActionChangeCommunity
@@ -363,7 +363,7 @@ abstract class MessageAction
 abstract class Dialog
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: dialog
     // constructor: dialogCommunity
     // constructor: dialogFolder
@@ -373,7 +373,7 @@ abstract class Dialog
 abstract class Photo
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: photo
     // constructor: photoEmpty
 }
@@ -382,7 +382,7 @@ abstract class Photo
 abstract class PhotoSize
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: photoCachedSize
     // constructor: photoPathSize
     // constructor: photoSize
@@ -395,7 +395,7 @@ abstract class PhotoSize
 abstract class GeoPoint
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: geoPoint
     // constructor: geoPointEmpty
 }
@@ -404,7 +404,7 @@ abstract class GeoPoint
 abstract class InputNotifyPeer
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputNotifyBroadcasts
     // constructor: inputNotifyChats
     // constructor: inputNotifyCommunity
@@ -417,7 +417,7 @@ abstract class InputNotifyPeer
 abstract class InputPeerNotifySettings
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputPeerNotifySettings
 }
 
@@ -425,7 +425,7 @@ abstract class InputPeerNotifySettings
 abstract class PeerNotifySettings
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: peerNotifySettings
 }
 
@@ -433,7 +433,7 @@ abstract class PeerNotifySettings
 abstract class PeerSettings
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: peerSettings
 }
 
@@ -441,7 +441,7 @@ abstract class PeerSettings
 abstract class WallPaper
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: wallPaper
     // constructor: wallPaperNoFile
 }
@@ -450,7 +450,7 @@ abstract class WallPaper
 abstract class ReportReason
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputReportReasonChildAbuse
     // constructor: inputReportReasonCopyright
     // constructor: inputReportReasonFake
@@ -467,7 +467,7 @@ abstract class ReportReason
 abstract class UserFull
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: userFull
 }
 
@@ -475,7 +475,7 @@ abstract class UserFull
 abstract class Contact
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: contact
 }
 
@@ -483,7 +483,7 @@ abstract class Contact
 abstract class ImportedContact
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: importedContact
 }
 
@@ -491,7 +491,7 @@ abstract class ImportedContact
 abstract class ContactStatus
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: contactStatus
 }
 
@@ -499,7 +499,7 @@ abstract class ContactStatus
 abstract class MessagesFilter
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputMessagesFilterChatPhotos
     // constructor: inputMessagesFilterContacts
     // constructor: inputMessagesFilterDocument
@@ -524,7 +524,7 @@ abstract class MessagesFilter
 abstract class Update
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: updateAiComposeTones
     // constructor: updateAttachMenuBots
     // constructor: updateAutoSaveSettings
@@ -701,7 +701,7 @@ abstract class Update
 abstract class Updates
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: updateShort
     // constructor: updateShortChatMessage
     // constructor: updateShortMessage
@@ -715,7 +715,7 @@ abstract class Updates
 abstract class DcOption
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: dcOption
 }
 
@@ -723,7 +723,7 @@ abstract class DcOption
 abstract class Config
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: config
 }
 
@@ -731,7 +731,7 @@ abstract class Config
 abstract class NearestDc
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: nearestDc
 }
 
@@ -739,7 +739,7 @@ abstract class NearestDc
 abstract class EncryptedChat
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: encryptedChat
     // constructor: encryptedChatDiscarded
     // constructor: encryptedChatEmpty
@@ -751,7 +751,7 @@ abstract class EncryptedChat
 abstract class InputEncryptedChat
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputEncryptedChat
 }
 
@@ -759,7 +759,7 @@ abstract class InputEncryptedChat
 abstract class EncryptedFile
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: encryptedFile
     // constructor: encryptedFileEmpty
 }
@@ -768,7 +768,7 @@ abstract class EncryptedFile
 abstract class InputEncryptedFile
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputEncryptedFile
     // constructor: inputEncryptedFileBigUploaded
     // constructor: inputEncryptedFileEmpty
@@ -779,7 +779,7 @@ abstract class InputEncryptedFile
 abstract class EncryptedMessage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: encryptedMessage
     // constructor: encryptedMessageService
 }
@@ -788,7 +788,7 @@ abstract class EncryptedMessage
 abstract class InputDocument
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputDocument
     // constructor: inputDocumentEmpty
 }
@@ -797,7 +797,7 @@ abstract class InputDocument
 abstract class Document
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: document
     // constructor: documentEmpty
 }
@@ -806,7 +806,7 @@ abstract class Document
 abstract class NotifyPeer
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: notifyBroadcasts
     // constructor: notifyChats
     // constructor: notifyCommunity
@@ -819,7 +819,7 @@ abstract class NotifyPeer
 abstract class SendMessageAction
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputSendMessageRichMessageDraftAction
     // constructor: sendMessageCancelAction
     // constructor: sendMessageChooseContactAction
@@ -848,7 +848,7 @@ abstract class SendMessageAction
 abstract class InputPrivacyKey
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputPrivacyKeyAbout
     // constructor: inputPrivacyKeyAddedByPhone
     // constructor: inputPrivacyKeyBirthday
@@ -869,7 +869,7 @@ abstract class InputPrivacyKey
 abstract class PrivacyKey
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: privacyKeyAbout
     // constructor: privacyKeyAddedByPhone
     // constructor: privacyKeyBirthday
@@ -890,7 +890,7 @@ abstract class PrivacyKey
 abstract class InputPrivacyRule
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputPrivacyValueAllowAll
     // constructor: inputPrivacyValueAllowBots
     // constructor: inputPrivacyValueAllowChatParticipants
@@ -909,7 +909,7 @@ abstract class InputPrivacyRule
 abstract class PrivacyRule
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: privacyValueAllowAll
     // constructor: privacyValueAllowBots
     // constructor: privacyValueAllowChatParticipants
@@ -928,7 +928,7 @@ abstract class PrivacyRule
 abstract class AccountDaysTTL
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: accountDaysTTL
 }
 
@@ -936,7 +936,7 @@ abstract class AccountDaysTTL
 abstract class DocumentAttribute
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: documentAttributeAnimated
     // constructor: documentAttributeAudio
     // constructor: documentAttributeCustomEmoji
@@ -951,7 +951,7 @@ abstract class DocumentAttribute
 abstract class StickerPack
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: stickerPack
 }
 
@@ -959,7 +959,7 @@ abstract class StickerPack
 abstract class WebPage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: webPage
     // constructor: webPageEmpty
     // constructor: webPageNotModified
@@ -970,7 +970,7 @@ abstract class WebPage
 abstract class Authorization
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: authorization
 }
 
@@ -978,7 +978,7 @@ abstract class Authorization
 abstract class ReceivedNotifyMessage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: receivedNotifyMessage
 }
 
@@ -986,7 +986,7 @@ abstract class ReceivedNotifyMessage
 abstract class ExportedChatInvite
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: chatInviteExported
     // constructor: chatInvitePublicJoinRequests
 }
@@ -995,7 +995,7 @@ abstract class ExportedChatInvite
 abstract class ChatInvite
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: chatInvite
     // constructor: chatInviteAlready
     // constructor: chatInvitePeek
@@ -1005,7 +1005,7 @@ abstract class ChatInvite
 abstract class InputStickerSet
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputStickerSetAnimatedEmoji
     // constructor: inputStickerSetAnimatedEmojiAnimations
     // constructor: inputStickerSetDice
@@ -1024,7 +1024,7 @@ abstract class InputStickerSet
 abstract class StickerSet
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: stickerSet
 }
 
@@ -1032,7 +1032,7 @@ abstract class StickerSet
 abstract class BotCommand
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: botCommand
 }
 
@@ -1040,7 +1040,7 @@ abstract class BotCommand
 abstract class BotInfo
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: botInfo
 }
 
@@ -1048,7 +1048,7 @@ abstract class BotInfo
 abstract class KeyboardButton
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: keyboardButton
 }
 
@@ -1056,7 +1056,7 @@ abstract class KeyboardButton
 abstract class KeyboardButtonRow
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: keyboardButtonRow
 }
 
@@ -1064,7 +1064,7 @@ abstract class KeyboardButtonRow
 abstract class ReplyMarkup
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: replyInlineMarkup
     // constructor: replyKeyboardForceReply
     // constructor: replyKeyboardHide
@@ -1075,7 +1075,7 @@ abstract class ReplyMarkup
 abstract class MessageEntity
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputMessageEntityMentionName
     // constructor: messageEntityBankCard
     // constructor: messageEntityBlockquote
@@ -1108,7 +1108,7 @@ abstract class MessageEntity
 abstract class InputChannel
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputChannel
     // constructor: inputChannelEmpty
     // constructor: inputChannelFromMessage
@@ -1118,7 +1118,7 @@ abstract class InputChannel
 abstract class MessageRange
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messageRange
 }
 
@@ -1126,7 +1126,7 @@ abstract class MessageRange
 abstract class ChannelMessagesFilter
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: channelMessagesFilter
     // constructor: channelMessagesFilterEmpty
 }
@@ -1135,7 +1135,7 @@ abstract class ChannelMessagesFilter
 abstract class ChannelParticipant
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: channelParticipant
     // constructor: channelParticipantAdmin
     // constructor: channelParticipantBanned
@@ -1148,7 +1148,7 @@ abstract class ChannelParticipant
 abstract class ChannelParticipantsFilter
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: channelParticipantsAdmins
     // constructor: channelParticipantsBanned
     // constructor: channelParticipantsBots
@@ -1163,7 +1163,7 @@ abstract class ChannelParticipantsFilter
 abstract class InputBotInlineMessage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputBotInlineMessageGame
     // constructor: inputBotInlineMessageMediaAuto
     // constructor: inputBotInlineMessageMediaContact
@@ -1179,7 +1179,7 @@ abstract class InputBotInlineMessage
 abstract class InputBotInlineResult
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputBotInlineResult
     // constructor: inputBotInlineResultDocument
     // constructor: inputBotInlineResultGame
@@ -1190,7 +1190,7 @@ abstract class InputBotInlineResult
 abstract class BotInlineMessage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: botInlineMessageMediaAuto
     // constructor: botInlineMessageMediaContact
     // constructor: botInlineMessageMediaGeo
@@ -1205,7 +1205,7 @@ abstract class BotInlineMessage
 abstract class BotInlineResult
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: botInlineMediaResult
     // constructor: botInlineResult
 }
@@ -1214,7 +1214,7 @@ abstract class BotInlineResult
 abstract class ExportedMessageLink
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: exportedMessageLink
 }
 
@@ -1222,7 +1222,7 @@ abstract class ExportedMessageLink
 abstract class MessageFwdHeader
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messageFwdHeader
 }
 
@@ -1230,7 +1230,7 @@ abstract class MessageFwdHeader
 abstract class InputBotInlineMessageID
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputBotInlineMessageID
     // constructor: inputBotInlineMessageID64
 }
@@ -1239,7 +1239,7 @@ abstract class InputBotInlineMessageID
 abstract class InlineBotSwitchPM
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inlineBotSwitchPM
 }
 
@@ -1247,7 +1247,7 @@ abstract class InlineBotSwitchPM
 abstract class TopPeer
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: topPeer
 }
 
@@ -1255,7 +1255,7 @@ abstract class TopPeer
 abstract class TopPeerCategory
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: topPeerCategoryBotsApp
     // constructor: topPeerCategoryBotsGuestChat
     // constructor: topPeerCategoryBotsInline
@@ -1272,7 +1272,7 @@ abstract class TopPeerCategory
 abstract class TopPeerCategoryPeers
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: topPeerCategoryPeers
 }
 
@@ -1280,7 +1280,7 @@ abstract class TopPeerCategoryPeers
 abstract class DraftMessage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: draftMessage
     // constructor: draftMessageEmpty
 }
@@ -1289,7 +1289,7 @@ abstract class DraftMessage
 abstract class StickerSetCovered
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: stickerSetCovered
     // constructor: stickerSetFullCovered
     // constructor: stickerSetMultiCovered
@@ -1300,7 +1300,7 @@ abstract class StickerSetCovered
 abstract class MaskCoords
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: maskCoords
 }
 
@@ -1308,7 +1308,7 @@ abstract class MaskCoords
 abstract class InputStickeredMedia
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputStickeredMediaDocument
     // constructor: inputStickeredMediaPhoto
 }
@@ -1317,7 +1317,7 @@ abstract class InputStickeredMedia
 abstract class Game
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: game
 }
 
@@ -1325,7 +1325,7 @@ abstract class Game
 abstract class InputGame
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputGameID
     // constructor: inputGameShortName
 }
@@ -1334,7 +1334,7 @@ abstract class InputGame
 abstract class HighScore
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: highScore
 }
 
@@ -1342,7 +1342,7 @@ abstract class HighScore
 abstract class RichText
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: textAnchor
     // constructor: textAutoEmail
     // constructor: textAutoPhone
@@ -1381,7 +1381,7 @@ abstract class RichText
 abstract class PageBlock
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputPageBlockMap
     // constructor: pageBlockAnchor
     // constructor: pageBlockAudio
@@ -1429,7 +1429,7 @@ abstract class PageBlock
 abstract class PhoneCallDiscardReason
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: phoneCallDiscardReasonBusy
     // constructor: phoneCallDiscardReasonDisconnect
     // constructor: phoneCallDiscardReasonHangup
@@ -1441,7 +1441,7 @@ abstract class PhoneCallDiscardReason
 abstract class DataJSON
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: dataJSON
 }
 
@@ -1449,7 +1449,7 @@ abstract class DataJSON
 abstract class LabeledPrice
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: labeledPrice
 }
 
@@ -1457,7 +1457,7 @@ abstract class LabeledPrice
 abstract class Invoice
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: invoice
 }
 
@@ -1465,7 +1465,7 @@ abstract class Invoice
 abstract class PaymentCharge
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: paymentCharge
 }
 
@@ -1473,7 +1473,7 @@ abstract class PaymentCharge
 abstract class PostAddress
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: postAddress
 }
 
@@ -1481,7 +1481,7 @@ abstract class PostAddress
 abstract class PaymentRequestedInfo
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: paymentRequestedInfo
 }
 
@@ -1489,7 +1489,7 @@ abstract class PaymentRequestedInfo
 abstract class PaymentSavedCredentials
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: paymentSavedCredentialsCard
 }
 
@@ -1497,7 +1497,7 @@ abstract class PaymentSavedCredentials
 abstract class WebDocument
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: webDocument
     // constructor: webDocumentNoProxy
 }
@@ -1506,7 +1506,7 @@ abstract class WebDocument
 abstract class InputWebDocument
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputWebDocument
 }
 
@@ -1514,7 +1514,7 @@ abstract class InputWebDocument
 abstract class InputWebFileLocation
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputWebFileAudioAlbumThumbLocation
     // constructor: inputWebFileGeoPointLocation
     // constructor: inputWebFileLocation
@@ -1524,7 +1524,7 @@ abstract class InputWebFileLocation
 abstract class InputPaymentCredentials
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputPaymentCredentials
     // constructor: inputPaymentCredentialsApplePay
     // constructor: inputPaymentCredentialsGooglePay
@@ -1535,7 +1535,7 @@ abstract class InputPaymentCredentials
 abstract class ShippingOption
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: shippingOption
 }
 
@@ -1543,7 +1543,7 @@ abstract class ShippingOption
 abstract class InputStickerSetItem
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputStickerSetItem
 }
 
@@ -1551,7 +1551,7 @@ abstract class InputStickerSetItem
 abstract class InputPhoneCall
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputPhoneCall
 }
 
@@ -1559,7 +1559,7 @@ abstract class InputPhoneCall
 abstract class PhoneCall
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: phoneCall
     // constructor: phoneCallAccepted
     // constructor: phoneCallDiscarded
@@ -1572,7 +1572,7 @@ abstract class PhoneCall
 abstract class PhoneConnection
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: phoneConnection
     // constructor: phoneConnectionWebrtc
 }
@@ -1581,7 +1581,7 @@ abstract class PhoneConnection
 abstract class PhoneCallProtocol
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: phoneCallProtocol
 }
 
@@ -1589,7 +1589,7 @@ abstract class PhoneCallProtocol
 abstract class CdnPublicKey
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: cdnPublicKey
 }
 
@@ -1597,7 +1597,7 @@ abstract class CdnPublicKey
 abstract class CdnConfig
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: cdnConfig
 }
 
@@ -1605,7 +1605,7 @@ abstract class CdnConfig
 abstract class LangPackString
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: langPackString
     // constructor: langPackStringDeleted
     // constructor: langPackStringPluralized
@@ -1615,7 +1615,7 @@ abstract class LangPackString
 abstract class LangPackDifference
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: langPackDifference
 }
 
@@ -1623,7 +1623,7 @@ abstract class LangPackDifference
 abstract class LangPackLanguage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: langPackLanguage
 }
 
@@ -1631,7 +1631,7 @@ abstract class LangPackLanguage
 abstract class ChannelAdminLogEventAction
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: channelAdminLogEventActionChangeAbout
     // constructor: channelAdminLogEventActionChangeAvailableReactions
     // constructor: channelAdminLogEventActionChangeEmojiStatus
@@ -1690,7 +1690,7 @@ abstract class ChannelAdminLogEventAction
 abstract class ChannelAdminLogEvent
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: channelAdminLogEvent
 }
 
@@ -1698,7 +1698,7 @@ abstract class ChannelAdminLogEvent
 abstract class ChannelAdminLogEventsFilter
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: channelAdminLogEventsFilter
 }
 
@@ -1706,7 +1706,7 @@ abstract class ChannelAdminLogEventsFilter
 abstract class PopularContact
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: popularContact
 }
 
@@ -1714,7 +1714,7 @@ abstract class PopularContact
 abstract class RecentMeUrl
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: recentMeUrlChat
     // constructor: recentMeUrlChatInvite
     // constructor: recentMeUrlStickerSet
@@ -1726,7 +1726,7 @@ abstract class RecentMeUrl
 abstract class InputSingleMedia
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputSingleMedia
 }
 
@@ -1734,7 +1734,7 @@ abstract class InputSingleMedia
 abstract class WebAuthorization
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: webAuthorization
 }
 
@@ -1742,7 +1742,7 @@ abstract class WebAuthorization
 abstract class InputMessage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputMessageCallbackQuery
     // constructor: inputMessageID
     // constructor: inputMessagePinned
@@ -1753,7 +1753,7 @@ abstract class InputMessage
 abstract class InputDialogPeer
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputDialogPeer
     // constructor: inputDialogPeerCommunity
     // constructor: inputDialogPeerFolder
@@ -1763,7 +1763,7 @@ abstract class InputDialogPeer
 abstract class DialogPeer
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: dialogPeer
     // constructor: dialogPeerCommunity
     // constructor: dialogPeerFolder
@@ -1773,7 +1773,7 @@ abstract class DialogPeer
 abstract class FileHash
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: fileHash
 }
 
@@ -1781,7 +1781,7 @@ abstract class FileHash
 abstract class InputClientProxy
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputClientProxy
 }
 
@@ -1789,7 +1789,7 @@ abstract class InputClientProxy
 abstract class InputSecureFile
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputSecureFile
     // constructor: inputSecureFileUploaded
 }
@@ -1798,7 +1798,7 @@ abstract class InputSecureFile
 abstract class SecureFile
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: secureFile
     // constructor: secureFileEmpty
 }
@@ -1807,7 +1807,7 @@ abstract class SecureFile
 abstract class SecureData
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: secureData
 }
 
@@ -1815,7 +1815,7 @@ abstract class SecureData
 abstract class SecurePlainData
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: securePlainEmail
     // constructor: securePlainPhone
 }
@@ -1824,7 +1824,7 @@ abstract class SecurePlainData
 abstract class SecureValueType
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: secureValueTypeAddress
     // constructor: secureValueTypeBankStatement
     // constructor: secureValueTypeDriverLicense
@@ -1844,7 +1844,7 @@ abstract class SecureValueType
 abstract class SecureValue
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: secureValue
 }
 
@@ -1852,7 +1852,7 @@ abstract class SecureValue
 abstract class InputSecureValue
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputSecureValue
 }
 
@@ -1860,7 +1860,7 @@ abstract class InputSecureValue
 abstract class SecureValueHash
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: secureValueHash
 }
 
@@ -1868,7 +1868,7 @@ abstract class SecureValueHash
 abstract class SecureValueError
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: secureValueError
     // constructor: secureValueErrorData
     // constructor: secureValueErrorFile
@@ -1884,7 +1884,7 @@ abstract class SecureValueError
 abstract class SecureCredentialsEncrypted
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: secureCredentialsEncrypted
 }
 
@@ -1892,7 +1892,7 @@ abstract class SecureCredentialsEncrypted
 abstract class SavedContact
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: savedPhoneContact
 }
 
@@ -1900,7 +1900,7 @@ abstract class SavedContact
 abstract class PasswordKdfAlgo
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: passwordKdfAlgoSHA256SHA256PBKDF2HMACSHA512iter100000SHA256ModPow
     // constructor: passwordKdfAlgoUnknown
 }
@@ -1909,7 +1909,7 @@ abstract class PasswordKdfAlgo
 abstract class SecurePasswordKdfAlgo
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: securePasswordKdfAlgoPBKDF2HMACSHA512iter100000
     // constructor: securePasswordKdfAlgoSHA512
     // constructor: securePasswordKdfAlgoUnknown
@@ -1919,7 +1919,7 @@ abstract class SecurePasswordKdfAlgo
 abstract class SecureSecretSettings
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: secureSecretSettings
 }
 
@@ -1927,7 +1927,7 @@ abstract class SecureSecretSettings
 abstract class InputCheckPasswordSRP
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputCheckPasswordEmpty
     // constructor: inputCheckPasswordSRP
 }
@@ -1936,7 +1936,7 @@ abstract class InputCheckPasswordSRP
 abstract class SecureRequiredType
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: secureRequiredType
     // constructor: secureRequiredTypeOneOf
 }
@@ -1945,7 +1945,7 @@ abstract class SecureRequiredType
 abstract class InputAppEvent
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputAppEvent
 }
 
@@ -1953,7 +1953,7 @@ abstract class InputAppEvent
 abstract class JSONObjectValue
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: jsonObjectValue
 }
 
@@ -1961,7 +1961,7 @@ abstract class JSONObjectValue
 abstract class JSONValue
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: jsonArray
     // constructor: jsonBool
     // constructor: jsonNull
@@ -1974,7 +1974,7 @@ abstract class JSONValue
 abstract class PageTableCell
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: pageTableCell
 }
 
@@ -1982,7 +1982,7 @@ abstract class PageTableCell
 abstract class PageTableRow
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: pageTableRow
 }
 
@@ -1990,7 +1990,7 @@ abstract class PageTableRow
 abstract class PageCaption
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: pageCaption
 }
 
@@ -1998,7 +1998,7 @@ abstract class PageCaption
 abstract class PageListItem
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: pageListItemBlocks
     // constructor: pageListItemText
 }
@@ -2007,7 +2007,7 @@ abstract class PageListItem
 abstract class PageListOrderedItem
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: pageListOrderedItemBlocks
     // constructor: pageListOrderedItemText
 }
@@ -2016,7 +2016,7 @@ abstract class PageListOrderedItem
 abstract class PageRelatedArticle
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: pageRelatedArticle
 }
 
@@ -2024,7 +2024,7 @@ abstract class PageRelatedArticle
 abstract class Page
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: page
 }
 
@@ -2032,7 +2032,7 @@ abstract class Page
 abstract class PollAnswer
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputPollAnswer
     // constructor: pollAnswer
 }
@@ -2041,7 +2041,7 @@ abstract class PollAnswer
 abstract class Poll
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: poll
 }
 
@@ -2049,7 +2049,7 @@ abstract class Poll
 abstract class PollAnswerVoters
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: pollAnswerVoters
 }
 
@@ -2057,7 +2057,7 @@ abstract class PollAnswerVoters
 abstract class PollResults
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: pollResults
 }
 
@@ -2065,7 +2065,7 @@ abstract class PollResults
 abstract class ChatOnlines
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: chatOnlines
 }
 
@@ -2073,7 +2073,7 @@ abstract class ChatOnlines
 abstract class StatsURL
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: statsURL
 }
 
@@ -2081,7 +2081,7 @@ abstract class StatsURL
 abstract class ChatAdminRights
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: chatAdminRights
 }
 
@@ -2089,7 +2089,7 @@ abstract class ChatAdminRights
 abstract class ChatBannedRights
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: chatBannedRights
 }
 
@@ -2097,7 +2097,7 @@ abstract class ChatBannedRights
 abstract class InputWallPaper
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputWallPaper
     // constructor: inputWallPaperNoFile
     // constructor: inputWallPaperSlug
@@ -2107,7 +2107,7 @@ abstract class InputWallPaper
 abstract class CodeSettings
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: codeSettings
 }
 
@@ -2115,7 +2115,7 @@ abstract class CodeSettings
 abstract class WallPaperSettings
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: wallPaperSettings
 }
 
@@ -2123,7 +2123,7 @@ abstract class WallPaperSettings
 abstract class AutoDownloadSettings
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: autoDownloadSettings
 }
 
@@ -2131,7 +2131,7 @@ abstract class AutoDownloadSettings
 abstract class EmojiKeyword
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: emojiKeyword
     // constructor: emojiKeywordDeleted
 }
@@ -2140,7 +2140,7 @@ abstract class EmojiKeyword
 abstract class EmojiKeywordsDifference
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: emojiKeywordsDifference
 }
 
@@ -2148,7 +2148,7 @@ abstract class EmojiKeywordsDifference
 abstract class EmojiURL
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: emojiURL
 }
 
@@ -2156,7 +2156,7 @@ abstract class EmojiURL
 abstract class EmojiLanguage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: emojiLanguage
 }
 
@@ -2164,7 +2164,7 @@ abstract class EmojiLanguage
 abstract class Folder
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: folder
 }
 
@@ -2172,7 +2172,7 @@ abstract class Folder
 abstract class InputFolderPeer
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputFolderPeer
 }
 
@@ -2180,7 +2180,7 @@ abstract class InputFolderPeer
 abstract class FolderPeer
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: folderPeer
 }
 
@@ -2188,7 +2188,7 @@ abstract class FolderPeer
 abstract class UrlAuthResult
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: urlAuthResultAccepted
     // constructor: urlAuthResultDefault
     // constructor: urlAuthResultRequest
@@ -2198,7 +2198,7 @@ abstract class UrlAuthResult
 abstract class ChannelLocation
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: channelLocation
     // constructor: channelLocationEmpty
 }
@@ -2207,7 +2207,7 @@ abstract class ChannelLocation
 abstract class PeerLocated
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: peerLocated
     // constructor: peerSelfLocated
 }
@@ -2216,7 +2216,7 @@ abstract class PeerLocated
 abstract class RestrictionReason
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: restrictionReason
 }
 
@@ -2224,7 +2224,7 @@ abstract class RestrictionReason
 abstract class InputTheme
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputTheme
     // constructor: inputThemeSlug
 }
@@ -2233,7 +2233,7 @@ abstract class InputTheme
 abstract class Theme
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: theme
 }
 
@@ -2241,7 +2241,7 @@ abstract class Theme
 abstract class BaseTheme
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: baseThemeArctic
     // constructor: baseThemeClassic
     // constructor: baseThemeDay
@@ -2253,7 +2253,7 @@ abstract class BaseTheme
 abstract class InputThemeSettings
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputThemeSettings
 }
 
@@ -2261,7 +2261,7 @@ abstract class InputThemeSettings
 abstract class ThemeSettings
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: themeSettings
 }
 
@@ -2269,7 +2269,7 @@ abstract class ThemeSettings
 abstract class WebPageAttribute
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: webPageAttributeAiComposeTone
     // constructor: webPageAttributeStarGiftAuction
     // constructor: webPageAttributeStarGiftCollection
@@ -2283,7 +2283,7 @@ abstract class WebPageAttribute
 abstract class BankCardOpenUrl
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: bankCardOpenUrl
 }
 
@@ -2291,7 +2291,7 @@ abstract class BankCardOpenUrl
 abstract class DialogFilter
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: dialogFilter
     // constructor: dialogFilterChatlist
     // constructor: dialogFilterDefault
@@ -2301,7 +2301,7 @@ abstract class DialogFilter
 abstract class DialogFilterSuggested
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: dialogFilterSuggested
 }
 
@@ -2309,7 +2309,7 @@ abstract class DialogFilterSuggested
 abstract class StatsDateRangeDays
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: statsDateRangeDays
 }
 
@@ -2317,7 +2317,7 @@ abstract class StatsDateRangeDays
 abstract class StatsAbsValueAndPrev
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: statsAbsValueAndPrev
 }
 
@@ -2325,7 +2325,7 @@ abstract class StatsAbsValueAndPrev
 abstract class StatsPercentValue
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: statsPercentValue
 }
 
@@ -2333,7 +2333,7 @@ abstract class StatsPercentValue
 abstract class StatsGraph
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: statsGraph
     // constructor: statsGraphAsync
     // constructor: statsGraphError
@@ -2343,7 +2343,7 @@ abstract class StatsGraph
 abstract class VideoSize
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: videoSize
     // constructor: videoSizeEmojiMarkup
     // constructor: videoSizeStickerMarkup
@@ -2353,7 +2353,7 @@ abstract class VideoSize
 abstract class StatsGroupTopPoster
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: statsGroupTopPoster
 }
 
@@ -2361,7 +2361,7 @@ abstract class StatsGroupTopPoster
 abstract class StatsGroupTopAdmin
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: statsGroupTopAdmin
 }
 
@@ -2369,7 +2369,7 @@ abstract class StatsGroupTopAdmin
 abstract class StatsGroupTopInviter
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: statsGroupTopInviter
 }
 
@@ -2377,7 +2377,7 @@ abstract class StatsGroupTopInviter
 abstract class GlobalPrivacySettings
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: globalPrivacySettings
 }
 
@@ -2385,7 +2385,7 @@ abstract class GlobalPrivacySettings
 abstract class MessageViews
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messageViews
 }
 
@@ -2393,7 +2393,7 @@ abstract class MessageViews
 abstract class MessageReplyHeader
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messageReplyHeader
     // constructor: messageReplyStoryHeader
 }
@@ -2402,7 +2402,7 @@ abstract class MessageReplyHeader
 abstract class MessageReplies
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messageReplies
 }
 
@@ -2410,7 +2410,7 @@ abstract class MessageReplies
 abstract class PeerBlocked
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: peerBlocked
 }
 
@@ -2418,7 +2418,7 @@ abstract class PeerBlocked
 abstract class GroupCall
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: groupCall
     // constructor: groupCallDiscarded
 }
@@ -2427,7 +2427,7 @@ abstract class GroupCall
 abstract class InputGroupCall
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputGroupCall
     // constructor: inputGroupCallInviteMessage
     // constructor: inputGroupCallSlug
@@ -2437,7 +2437,7 @@ abstract class InputGroupCall
 abstract class GroupCallParticipant
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: groupCallParticipant
 }
 
@@ -2445,7 +2445,7 @@ abstract class GroupCallParticipant
 abstract class InlineQueryPeerType
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inlineQueryPeerTypeBotPM
     // constructor: inlineQueryPeerTypeBroadcast
     // constructor: inlineQueryPeerTypeChat
@@ -2458,7 +2458,7 @@ abstract class InlineQueryPeerType
 abstract class ChatInviteImporter
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: chatInviteImporter
 }
 
@@ -2466,7 +2466,7 @@ abstract class ChatInviteImporter
 abstract class ChatAdminWithInvites
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: chatAdminWithInvites
 }
 
@@ -2474,7 +2474,7 @@ abstract class ChatAdminWithInvites
 abstract class GroupCallParticipantVideoSourceGroup
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: groupCallParticipantVideoSourceGroup
 }
 
@@ -2482,7 +2482,7 @@ abstract class GroupCallParticipantVideoSourceGroup
 abstract class GroupCallParticipantVideo
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: groupCallParticipantVideo
 }
 
@@ -2490,7 +2490,7 @@ abstract class GroupCallParticipantVideo
 abstract class BotCommandScope
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: botCommandScopeChatAdmins
     // constructor: botCommandScopeChats
     // constructor: botCommandScopeDefault
@@ -2504,7 +2504,7 @@ abstract class BotCommandScope
 abstract class ChatTheme
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: chatTheme
     // constructor: chatThemeUniqueGift
 }
@@ -2513,7 +2513,7 @@ abstract class ChatTheme
 abstract class SponsoredMessage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: sponsoredMessage
 }
 
@@ -2521,7 +2521,7 @@ abstract class SponsoredMessage
 abstract class SearchResultsCalendarPeriod
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: searchResultsCalendarPeriod
 }
 
@@ -2529,7 +2529,7 @@ abstract class SearchResultsCalendarPeriod
 abstract class SearchResultsPosition
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: searchResultPosition
 }
 
@@ -2537,7 +2537,7 @@ abstract class SearchResultsPosition
 abstract class ReactionCount
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: reactionCount
 }
 
@@ -2545,7 +2545,7 @@ abstract class ReactionCount
 abstract class MessageReactions
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messageReactions
 }
 
@@ -2553,7 +2553,7 @@ abstract class MessageReactions
 abstract class AvailableReaction
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: availableReaction
 }
 
@@ -2561,7 +2561,7 @@ abstract class AvailableReaction
 abstract class MessagePeerReaction
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messagePeerReaction
 }
 
@@ -2569,7 +2569,7 @@ abstract class MessagePeerReaction
 abstract class GroupCallStreamChannel
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: groupCallStreamChannel
 }
 
@@ -2577,7 +2577,7 @@ abstract class GroupCallStreamChannel
 abstract class AttachMenuBotIconColor
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: attachMenuBotIconColor
 }
 
@@ -2585,7 +2585,7 @@ abstract class AttachMenuBotIconColor
 abstract class AttachMenuBotIcon
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: attachMenuBotIcon
 }
 
@@ -2593,7 +2593,7 @@ abstract class AttachMenuBotIcon
 abstract class AttachMenuBot
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: attachMenuBot
 }
 
@@ -2601,7 +2601,7 @@ abstract class AttachMenuBot
 abstract class AttachMenuBots
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: attachMenuBots
     // constructor: attachMenuBotsNotModified
 }
@@ -2610,7 +2610,7 @@ abstract class AttachMenuBots
 abstract class AttachMenuBotsBot
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: attachMenuBotsBot
 }
 
@@ -2618,7 +2618,7 @@ abstract class AttachMenuBotsBot
 abstract class WebViewResult
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: webViewResultUrl
 }
 
@@ -2626,7 +2626,7 @@ abstract class WebViewResult
 abstract class WebViewMessageSent
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: webViewMessageSent
 }
 
@@ -2634,7 +2634,7 @@ abstract class WebViewMessageSent
 abstract class BotMenuButton
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: botMenuButton
     // constructor: botMenuButtonCommands
     // constructor: botMenuButtonDefault
@@ -2644,7 +2644,7 @@ abstract class BotMenuButton
 abstract class NotificationSound
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: notificationSoundDefault
     // constructor: notificationSoundLocal
     // constructor: notificationSoundNone
@@ -2655,7 +2655,7 @@ abstract class NotificationSound
 abstract class AttachMenuPeerType
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: attachMenuPeerTypeBotPM
     // constructor: attachMenuPeerTypeBroadcast
     // constructor: attachMenuPeerTypeChat
@@ -2667,7 +2667,7 @@ abstract class AttachMenuPeerType
 abstract class InputInvoice
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputInvoiceBusinessBotTransferStars
     // constructor: inputInvoiceChatInviteSubscription
     // constructor: inputInvoiceMessage
@@ -2689,7 +2689,7 @@ abstract class InputInvoice
 abstract class InputStorePaymentPurpose
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputStorePaymentAuthCode
     // constructor: inputStorePaymentGiftPremium
     // constructor: inputStorePaymentPremiumGiftCode
@@ -2704,7 +2704,7 @@ abstract class InputStorePaymentPurpose
 abstract class PaymentFormMethod
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: paymentFormMethod
 }
 
@@ -2712,7 +2712,7 @@ abstract class PaymentFormMethod
 abstract class EmojiStatus
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: emojiStatus
     // constructor: emojiStatusCollectible
     // constructor: emojiStatusEmpty
@@ -2723,7 +2723,7 @@ abstract class EmojiStatus
 abstract class Reaction
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: reactionCustomEmoji
     // constructor: reactionEmoji
     // constructor: reactionEmpty
@@ -2734,7 +2734,7 @@ abstract class Reaction
 abstract class ChatReactions
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: chatReactionsAll
     // constructor: chatReactionsNone
     // constructor: chatReactionsSome
@@ -2744,7 +2744,7 @@ abstract class ChatReactions
 abstract class EmailVerifyPurpose
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: emailVerifyPurposeLoginChange
     // constructor: emailVerifyPurposeLoginSetup
     // constructor: emailVerifyPurposePassport
@@ -2754,7 +2754,7 @@ abstract class EmailVerifyPurpose
 abstract class EmailVerification
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: emailVerificationApple
     // constructor: emailVerificationCode
     // constructor: emailVerificationGoogle
@@ -2764,7 +2764,7 @@ abstract class EmailVerification
 abstract class PremiumSubscriptionOption
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: premiumSubscriptionOption
 }
 
@@ -2772,7 +2772,7 @@ abstract class PremiumSubscriptionOption
 abstract class SendAsPeer
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: sendAsPeer
 }
 
@@ -2780,7 +2780,7 @@ abstract class SendAsPeer
 abstract class MessageExtendedMedia
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messageExtendedMedia
     // constructor: messageExtendedMediaPreview
 }
@@ -2789,7 +2789,7 @@ abstract class MessageExtendedMedia
 abstract class StickerKeyword
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: stickerKeyword
 }
 
@@ -2797,7 +2797,7 @@ abstract class StickerKeyword
 abstract class Username
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: username
 }
 
@@ -2805,7 +2805,7 @@ abstract class Username
 abstract class ForumTopic
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: forumTopic
     // constructor: forumTopicDeleted
 }
@@ -2814,7 +2814,7 @@ abstract class ForumTopic
 abstract class DefaultHistoryTTL
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: defaultHistoryTTL
 }
 
@@ -2822,7 +2822,7 @@ abstract class DefaultHistoryTTL
 abstract class ExportedContactToken
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: exportedContactToken
 }
 
@@ -2830,7 +2830,7 @@ abstract class ExportedContactToken
 abstract class RequestPeerType
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: requestPeerTypeBroadcast
     // constructor: requestPeerTypeChat
     // constructor: requestPeerTypeCreateBot
@@ -2841,7 +2841,7 @@ abstract class RequestPeerType
 abstract class EmojiList
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: emojiList
     // constructor: emojiListNotModified
 }
@@ -2850,7 +2850,7 @@ abstract class EmojiList
 abstract class EmojiGroup
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: emojiGroup
     // constructor: emojiGroupGreeting
     // constructor: emojiGroupPremium
@@ -2860,7 +2860,7 @@ abstract class EmojiGroup
 abstract class TextWithEntities
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: textWithEntities
 }
 
@@ -2868,7 +2868,7 @@ abstract class TextWithEntities
 abstract class AutoSaveSettings
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: autoSaveSettings
 }
 
@@ -2876,7 +2876,7 @@ abstract class AutoSaveSettings
 abstract class AutoSaveException
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: autoSaveException
 }
 
@@ -2884,7 +2884,7 @@ abstract class AutoSaveException
 abstract class InputBotApp
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputBotAppID
     // constructor: inputBotAppShortName
 }
@@ -2893,7 +2893,7 @@ abstract class InputBotApp
 abstract class BotApp
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: botApp
     // constructor: botAppNotModified
 }
@@ -2902,7 +2902,7 @@ abstract class BotApp
 abstract class InlineBotWebView
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inlineBotWebView
 }
 
@@ -2910,7 +2910,7 @@ abstract class InlineBotWebView
 abstract class ReadParticipantDate
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: readParticipantDate
 }
 
@@ -2918,7 +2918,7 @@ abstract class ReadParticipantDate
 abstract class InputChatlist
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputChatlistDialogFilter
 }
 
@@ -2926,7 +2926,7 @@ abstract class InputChatlist
 abstract class ExportedChatlistInvite
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: exportedChatlistInvite
 }
 
@@ -2934,7 +2934,7 @@ abstract class ExportedChatlistInvite
 abstract class MessagePeerVote
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messagePeerVote
     // constructor: messagePeerVoteInputOption
     // constructor: messagePeerVoteMultiple
@@ -2944,7 +2944,7 @@ abstract class MessagePeerVote
 abstract class StoryViews
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: storyViews
 }
 
@@ -2952,7 +2952,7 @@ abstract class StoryViews
 abstract class StoryItem
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: storyItem
     // constructor: storyItemDeleted
     // constructor: storyItemSkipped
@@ -2962,7 +2962,7 @@ abstract class StoryItem
 abstract class StoryView
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: storyView
     // constructor: storyViewPublicForward
     // constructor: storyViewPublicRepost
@@ -2972,7 +2972,7 @@ abstract class StoryView
 abstract class InputReplyTo
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputReplyToEphemeralMessage
     // constructor: inputReplyToMessage
     // constructor: inputReplyToMonoForum
@@ -2983,7 +2983,7 @@ abstract class InputReplyTo
 abstract class ExportedStoryLink
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: exportedStoryLink
 }
 
@@ -2991,7 +2991,7 @@ abstract class ExportedStoryLink
 abstract class StoriesStealthMode
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: storiesStealthMode
 }
 
@@ -2999,7 +2999,7 @@ abstract class StoriesStealthMode
 abstract class MediaAreaCoordinates
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: mediaAreaCoordinates
 }
 
@@ -3007,7 +3007,7 @@ abstract class MediaAreaCoordinates
 abstract class MediaArea
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputMediaAreaChannelPost
     // constructor: inputMediaAreaVenue
     // constructor: mediaAreaChannelPost
@@ -3023,7 +3023,7 @@ abstract class MediaArea
 abstract class PeerStories
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: peerStories
 }
 
@@ -3031,7 +3031,7 @@ abstract class PeerStories
 abstract class PremiumGiftCodeOption
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: premiumGiftCodeOption
 }
 
@@ -3039,7 +3039,7 @@ abstract class PremiumGiftCodeOption
 abstract class PrepaidGiveaway
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: prepaidGiveaway
     // constructor: prepaidStarsGiveaway
 }
@@ -3048,7 +3048,7 @@ abstract class PrepaidGiveaway
 abstract class Boost
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: boost
 }
 
@@ -3056,7 +3056,7 @@ abstract class Boost
 abstract class MyBoost
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: myBoost
 }
 
@@ -3064,7 +3064,7 @@ abstract class MyBoost
 abstract class StoryFwdHeader
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: storyFwdHeader
 }
 
@@ -3072,7 +3072,7 @@ abstract class StoryFwdHeader
 abstract class PostInteractionCounters
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: postInteractionCountersMessage
     // constructor: postInteractionCountersStory
 }
@@ -3081,7 +3081,7 @@ abstract class PostInteractionCounters
 abstract class PublicForward
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: publicForwardMessage
     // constructor: publicForwardStory
 }
@@ -3090,7 +3090,7 @@ abstract class PublicForward
 abstract class PeerColor
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputPeerColorCollectible
     // constructor: peerColor
     // constructor: peerColorCollectible
@@ -3100,7 +3100,7 @@ abstract class PeerColor
 abstract class StoryReaction
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: storyReaction
     // constructor: storyReactionPublicForward
     // constructor: storyReactionPublicRepost
@@ -3110,7 +3110,7 @@ abstract class StoryReaction
 abstract class SavedDialog
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: monoForumDialog
     // constructor: savedDialog
 }
@@ -3119,7 +3119,7 @@ abstract class SavedDialog
 abstract class SavedReactionTag
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: savedReactionTag
 }
 
@@ -3127,7 +3127,7 @@ abstract class SavedReactionTag
 abstract class OutboxReadDate
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: outboxReadDate
 }
 
@@ -3135,7 +3135,7 @@ abstract class OutboxReadDate
 abstract class SmsJob
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: smsJob
 }
 
@@ -3143,7 +3143,7 @@ abstract class SmsJob
 abstract class BusinessWeeklyOpen
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: businessWeeklyOpen
 }
 
@@ -3151,7 +3151,7 @@ abstract class BusinessWeeklyOpen
 abstract class BusinessWorkHours
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: businessWorkHours
 }
 
@@ -3159,7 +3159,7 @@ abstract class BusinessWorkHours
 abstract class BusinessLocation
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: businessLocation
 }
 
@@ -3167,7 +3167,7 @@ abstract class BusinessLocation
 abstract class InputBusinessRecipients
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputBusinessRecipients
 }
 
@@ -3175,7 +3175,7 @@ abstract class InputBusinessRecipients
 abstract class BusinessRecipients
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: businessRecipients
 }
 
@@ -3183,7 +3183,7 @@ abstract class BusinessRecipients
 abstract class BusinessAwayMessageSchedule
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: businessAwayMessageScheduleAlways
     // constructor: businessAwayMessageScheduleCustom
     // constructor: businessAwayMessageScheduleOutsideWorkHours
@@ -3193,7 +3193,7 @@ abstract class BusinessAwayMessageSchedule
 abstract class InputBusinessGreetingMessage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputBusinessGreetingMessage
 }
 
@@ -3201,7 +3201,7 @@ abstract class InputBusinessGreetingMessage
 abstract class BusinessGreetingMessage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: businessGreetingMessage
 }
 
@@ -3209,7 +3209,7 @@ abstract class BusinessGreetingMessage
 abstract class InputBusinessAwayMessage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputBusinessAwayMessage
 }
 
@@ -3217,7 +3217,7 @@ abstract class InputBusinessAwayMessage
 abstract class BusinessAwayMessage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: businessAwayMessage
 }
 
@@ -3225,7 +3225,7 @@ abstract class BusinessAwayMessage
 abstract class Timezone
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: timezone
 }
 
@@ -3233,7 +3233,7 @@ abstract class Timezone
 abstract class QuickReply
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: quickReply
 }
 
@@ -3241,7 +3241,7 @@ abstract class QuickReply
 abstract class InputQuickReplyShortcut
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputQuickReplyShortcut
     // constructor: inputQuickReplyShortcutId
 }
@@ -3250,7 +3250,7 @@ abstract class InputQuickReplyShortcut
 abstract class ConnectedBot
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: connectedBot
 }
 
@@ -3258,7 +3258,7 @@ abstract class ConnectedBot
 abstract class Birthday
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: birthday
 }
 
@@ -3266,7 +3266,7 @@ abstract class Birthday
 abstract class BotBusinessConnection
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: botBusinessConnection
 }
 
@@ -3274,7 +3274,7 @@ abstract class BotBusinessConnection
 abstract class InputBusinessIntro
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputBusinessIntro
 }
 
@@ -3282,7 +3282,7 @@ abstract class InputBusinessIntro
 abstract class BusinessIntro
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: businessIntro
 }
 
@@ -3290,7 +3290,7 @@ abstract class BusinessIntro
 abstract class InputCollectible
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputCollectiblePhone
     // constructor: inputCollectibleUsername
 }
@@ -3299,7 +3299,7 @@ abstract class InputCollectible
 abstract class InputBusinessBotRecipients
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputBusinessBotRecipients
 }
 
@@ -3307,7 +3307,7 @@ abstract class InputBusinessBotRecipients
 abstract class BusinessBotRecipients
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: businessBotRecipients
 }
 
@@ -3315,7 +3315,7 @@ abstract class BusinessBotRecipients
 abstract class ContactBirthday
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: contactBirthday
 }
 
@@ -3323,7 +3323,7 @@ abstract class ContactBirthday
 abstract class MissingInvitee
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: missingInvitee
 }
 
@@ -3331,7 +3331,7 @@ abstract class MissingInvitee
 abstract class InputBusinessChatLink
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputBusinessChatLink
 }
 
@@ -3339,7 +3339,7 @@ abstract class InputBusinessChatLink
 abstract class BusinessChatLink
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: businessChatLink
 }
 
@@ -3347,7 +3347,7 @@ abstract class BusinessChatLink
 abstract class RequestedPeer
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: requestedPeerChannel
     // constructor: requestedPeerChat
     // constructor: requestedPeerUser
@@ -3357,7 +3357,7 @@ abstract class RequestedPeer
 abstract class SponsoredMessageReportOption
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: sponsoredMessageReportOption
 }
 
@@ -3365,7 +3365,7 @@ abstract class SponsoredMessageReportOption
 abstract class ReactionNotificationsFrom
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: reactionNotificationsFromAll
     // constructor: reactionNotificationsFromContacts
 }
@@ -3374,7 +3374,7 @@ abstract class ReactionNotificationsFrom
 abstract class ReactionsNotifySettings
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: reactionsNotifySettings
 }
 
@@ -3382,7 +3382,7 @@ abstract class ReactionsNotifySettings
 abstract class AvailableEffect
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: availableEffect
 }
 
@@ -3390,7 +3390,7 @@ abstract class AvailableEffect
 abstract class FactCheck
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: factCheck
 }
 
@@ -3398,7 +3398,7 @@ abstract class FactCheck
 abstract class StarsTransactionPeer
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starsTransactionPeer
     // constructor: starsTransactionPeerAPI
     // constructor: starsTransactionPeerAds
@@ -3413,7 +3413,7 @@ abstract class StarsTransactionPeer
 abstract class StarsTopupOption
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starsTopupOption
 }
 
@@ -3421,7 +3421,7 @@ abstract class StarsTopupOption
 abstract class StarsTransaction
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starsTransaction
 }
 
@@ -3429,7 +3429,7 @@ abstract class StarsTransaction
 abstract class FoundStory
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: foundStory
 }
 
@@ -3437,7 +3437,7 @@ abstract class FoundStory
 abstract class GeoPointAddress
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: geoPointAddress
 }
 
@@ -3445,7 +3445,7 @@ abstract class GeoPointAddress
 abstract class StarsRevenueStatus
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starsRevenueStatus
 }
 
@@ -3453,7 +3453,7 @@ abstract class StarsRevenueStatus
 abstract class InputStarsTransaction
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputStarsTransaction
 }
 
@@ -3461,7 +3461,7 @@ abstract class InputStarsTransaction
 abstract class StarsGiftOption
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starsGiftOption
 }
 
@@ -3469,7 +3469,7 @@ abstract class StarsGiftOption
 abstract class BotPreviewMedia
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: botPreviewMedia
 }
 
@@ -3477,7 +3477,7 @@ abstract class BotPreviewMedia
 abstract class StarsSubscriptionPricing
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starsSubscriptionPricing
 }
 
@@ -3485,7 +3485,7 @@ abstract class StarsSubscriptionPricing
 abstract class StarsSubscription
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starsSubscription
 }
 
@@ -3493,7 +3493,7 @@ abstract class StarsSubscription
 abstract class MessageReactor
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messageReactor
 }
 
@@ -3501,7 +3501,7 @@ abstract class MessageReactor
 abstract class StarsGiveawayOption
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starsGiveawayOption
 }
 
@@ -3509,7 +3509,7 @@ abstract class StarsGiveawayOption
 abstract class StarsGiveawayWinnersOption
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starsGiveawayWinnersOption
 }
 
@@ -3517,7 +3517,7 @@ abstract class StarsGiveawayWinnersOption
 abstract class StarGift
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starGift
     // constructor: starGiftUnique
 }
@@ -3526,7 +3526,7 @@ abstract class StarGift
 abstract class MessageReportOption
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messageReportOption
 }
 
@@ -3534,7 +3534,7 @@ abstract class MessageReportOption
 abstract class ReportResult
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: reportResultAddComment
     // constructor: reportResultChooseOption
     // constructor: reportResultReported
@@ -3544,7 +3544,7 @@ abstract class ReportResult
 abstract class BotAppSettings
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: botAppSettings
 }
 
@@ -3552,7 +3552,7 @@ abstract class BotAppSettings
 abstract class StarRefProgram
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starRefProgram
 }
 
@@ -3560,7 +3560,7 @@ abstract class StarRefProgram
 abstract class ConnectedBotStarRef
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: connectedBotStarRef
 }
 
@@ -3568,7 +3568,7 @@ abstract class ConnectedBotStarRef
 abstract class StarsAmount
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starsAmount
     // constructor: starsTonAmount
 }
@@ -3577,7 +3577,7 @@ abstract class StarsAmount
 abstract class BotVerifierSettings
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: botVerifierSettings
 }
 
@@ -3585,7 +3585,7 @@ abstract class BotVerifierSettings
 abstract class BotVerification
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: botVerification
 }
 
@@ -3593,7 +3593,7 @@ abstract class BotVerification
 abstract class StarGiftAttribute
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starGiftAttributeBackdrop
     // constructor: starGiftAttributeModel
     // constructor: starGiftAttributeOriginalDetails
@@ -3604,7 +3604,7 @@ abstract class StarGiftAttribute
 abstract class SavedStarGift
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: savedStarGift
 }
 
@@ -3612,7 +3612,7 @@ abstract class SavedStarGift
 abstract class InputSavedStarGift
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputSavedStarGiftChat
     // constructor: inputSavedStarGiftSlug
     // constructor: inputSavedStarGiftUser
@@ -3622,7 +3622,7 @@ abstract class InputSavedStarGift
 abstract class PaidReactionPrivacy
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: paidReactionPrivacyAnonymous
     // constructor: paidReactionPrivacyDefault
     // constructor: paidReactionPrivacyPeer
@@ -3632,7 +3632,7 @@ abstract class PaidReactionPrivacy
 abstract class RequirementToContact
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: requirementToContactEmpty
     // constructor: requirementToContactPaidMessages
     // constructor: requirementToContactPremium
@@ -3642,7 +3642,7 @@ abstract class RequirementToContact
 abstract class BusinessBotRights
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: businessBotRights
 }
 
@@ -3650,7 +3650,7 @@ abstract class BusinessBotRights
 abstract class DisallowedGiftsSettings
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: disallowedGiftsSettings
 }
 
@@ -3658,7 +3658,7 @@ abstract class DisallowedGiftsSettings
 abstract class SponsoredPeer
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: sponsoredPeer
 }
 
@@ -3666,7 +3666,7 @@ abstract class SponsoredPeer
 abstract class StarGiftAttributeId
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starGiftAttributeIdBackdrop
     // constructor: starGiftAttributeIdModel
     // constructor: starGiftAttributeIdPattern
@@ -3676,7 +3676,7 @@ abstract class StarGiftAttributeId
 abstract class StarGiftAttributeCounter
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starGiftAttributeCounter
 }
 
@@ -3684,7 +3684,7 @@ abstract class StarGiftAttributeCounter
 abstract class PendingSuggestion
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: pendingSuggestion
 }
 
@@ -3692,7 +3692,7 @@ abstract class PendingSuggestion
 abstract class TodoItem
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: todoItem
 }
 
@@ -3700,7 +3700,7 @@ abstract class TodoItem
 abstract class TodoList
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: todoList
 }
 
@@ -3708,7 +3708,7 @@ abstract class TodoList
 abstract class TodoCompletion
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: todoCompletion
 }
 
@@ -3716,7 +3716,7 @@ abstract class TodoCompletion
 abstract class SuggestedPost
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: suggestedPost
 }
 
@@ -3724,7 +3724,7 @@ abstract class SuggestedPost
 abstract class StarsRating
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starsRating
 }
 
@@ -3732,7 +3732,7 @@ abstract class StarsRating
 abstract class StarGiftCollection
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starGiftCollection
 }
 
@@ -3740,7 +3740,7 @@ abstract class StarGiftCollection
 abstract class StoryAlbum
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: storyAlbum
 }
 
@@ -3748,7 +3748,7 @@ abstract class StoryAlbum
 abstract class SearchPostsFlood
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: searchPostsFlood
 }
 
@@ -3756,7 +3756,7 @@ abstract class SearchPostsFlood
 abstract class ProfileTab
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: profileTabFiles
     // constructor: profileTabGifs
     // constructor: profileTabGifts
@@ -3771,7 +3771,7 @@ abstract class ProfileTab
 abstract class InputChatTheme
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputChatTheme
     // constructor: inputChatThemeEmpty
     // constructor: inputChatThemeUniqueGift
@@ -3781,7 +3781,7 @@ abstract class InputChatTheme
 abstract class StarGiftUpgradePrice
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starGiftUpgradePrice
 }
 
@@ -3789,7 +3789,7 @@ abstract class StarGiftUpgradePrice
 abstract class GroupCallMessage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: groupCallMessage
 }
 
@@ -3797,7 +3797,7 @@ abstract class GroupCallMessage
 abstract class GroupCallDonor
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: groupCallDonor
 }
 
@@ -3805,7 +3805,7 @@ abstract class GroupCallDonor
 abstract class RecentStory
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: recentStory
 }
 
@@ -3813,7 +3813,7 @@ abstract class RecentStory
 abstract class AuctionBidLevel
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: auctionBidLevel
 }
 
@@ -3821,7 +3821,7 @@ abstract class AuctionBidLevel
 abstract class StarGiftAuctionState
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starGiftAuctionState
     // constructor: starGiftAuctionStateFinished
     // constructor: starGiftAuctionStateNotModified
@@ -3831,7 +3831,7 @@ abstract class StarGiftAuctionState
 abstract class StarGiftAuctionUserState
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starGiftAuctionUserState
 }
 
@@ -3839,7 +3839,7 @@ abstract class StarGiftAuctionUserState
 abstract class StarGiftAuctionAcquiredGift
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starGiftAuctionAcquiredGift
 }
 
@@ -3847,7 +3847,7 @@ abstract class StarGiftAuctionAcquiredGift
 abstract class StarGiftActiveAuctionState
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starGiftActiveAuctionState
 }
 
@@ -3855,7 +3855,7 @@ abstract class StarGiftActiveAuctionState
 abstract class InputStarGiftAuction
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputStarGiftAuction
     // constructor: inputStarGiftAuctionSlug
 }
@@ -3864,7 +3864,7 @@ abstract class InputStarGiftAuction
 abstract class Passkey
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: passkey
 }
 
@@ -3872,7 +3872,7 @@ abstract class Passkey
 abstract class InputPasskeyResponse
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputPasskeyResponseLogin
     // constructor: inputPasskeyResponseRegister
 }
@@ -3881,7 +3881,7 @@ abstract class InputPasskeyResponse
 abstract class InputPasskeyCredential
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputPasskeyCredentialPublicKey
 }
 
@@ -3889,7 +3889,7 @@ abstract class InputPasskeyCredential
 abstract class StarGiftBackground
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starGiftBackground
 }
 
@@ -3897,7 +3897,7 @@ abstract class StarGiftBackground
 abstract class StarGiftAuctionRound
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starGiftAuctionRound
     // constructor: starGiftAuctionRoundExtendable
 }
@@ -3906,7 +3906,7 @@ abstract class StarGiftAuctionRound
 abstract class StarGiftAttributeRarity
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: starGiftAttributeRarity
     // constructor: starGiftAttributeRarityEpic
     // constructor: starGiftAttributeRarityLegendary
@@ -3918,7 +3918,7 @@ abstract class StarGiftAttributeRarity
 abstract class KeyboardButtonStyle
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: keyboardButtonStyle
 }
 
@@ -3926,7 +3926,7 @@ abstract class KeyboardButtonStyle
 abstract class InputMessageReadMetric
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputMessageReadMetric
 }
 
@@ -3934,7 +3934,7 @@ abstract class InputMessageReadMetric
 abstract class InputAiComposeTone
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputAiComposeToneDefault
     // constructor: inputAiComposeToneID
     // constructor: inputAiComposeToneSingleUse
@@ -3945,7 +3945,7 @@ abstract class InputAiComposeTone
 abstract class AiComposeTone
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: aiComposeTone
     // constructor: aiComposeToneDefault
 }
@@ -3954,7 +3954,7 @@ abstract class AiComposeTone
 abstract class AiComposeToneExample
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: aiComposeToneExample
 }
 
@@ -3962,7 +3962,7 @@ abstract class AiComposeToneExample
 abstract class JoinChatBotResult
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: joinChatBotResultApproved
     // constructor: joinChatBotResultDeclined
     // constructor: joinChatBotResultQueued
@@ -3973,7 +3973,7 @@ abstract class JoinChatBotResult
 abstract class WebDomainException
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: webDomainException
 }
 
@@ -3981,7 +3981,7 @@ abstract class WebDomainException
 abstract class InputRichFile
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputRichFileDocument
     // constructor: inputRichFilePhoto
 }
@@ -3990,7 +3990,7 @@ abstract class InputRichFile
 abstract class InputRichMessage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputRichMessage
     // constructor: inputRichMessageHTML
     // constructor: inputRichMessageMarkdown
@@ -4000,7 +4000,7 @@ abstract class InputRichMessage
 abstract class RichMessage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: richMessage
 }
 
@@ -4008,7 +4008,7 @@ abstract class RichMessage
 abstract class CommunityPeer
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: communityPeer
 }
 
@@ -4016,7 +4016,7 @@ abstract class CommunityPeer
 abstract class CommunityPeerRequest
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: communityPeerRequest
 }
 
@@ -4024,7 +4024,7 @@ abstract class CommunityPeerRequest
 abstract class EphemeralMessage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: ephemeralMessage
 }
 
@@ -4032,7 +4032,7 @@ abstract class EphemeralMessage
 abstract class ButtonType
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: buttonTypeDefault
     // constructor: buttonTypeRequestGeoLocation
     // constructor: buttonTypeRequestPeer
@@ -4046,7 +4046,7 @@ abstract class ButtonType
 abstract class InlineButtonType
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inlineButtonTypeBuy
     // constructor: inlineButtonTypeCallback
     // constructor: inlineButtonTypeCopy
@@ -4065,7 +4065,7 @@ abstract class InlineButtonType
 abstract class KeyboardInlineButton
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: keyboardInlineButton
 }
 
@@ -4073,7 +4073,7 @@ abstract class KeyboardInlineButton
 abstract class KeyboardInlineButtonRow
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: keyboardInlineButtonRow
 }
 
@@ -4081,7 +4081,7 @@ abstract class KeyboardInlineButtonRow
 abstract class RichButtonStyle
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: richButtonStyle
 }
 
@@ -4089,7 +4089,7 @@ abstract class RichButtonStyle
 abstract class PageButton
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: pageButton
 }
 
@@ -4097,7 +4097,7 @@ abstract class PageButton
 abstract class CurrencyRate
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: currencyRate
 }
 
@@ -4105,7 +4105,7 @@ abstract class CurrencyRate
 abstract class OnrampMethodAvailability
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: onrampMethodAvailability
 }
 
@@ -4113,7 +4113,7 @@ abstract class OnrampMethodAvailability
 abstract class OnrampProviderInfo
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: onrampProviderInfo
 }
 
@@ -4121,7 +4121,7 @@ abstract class OnrampProviderInfo
 abstract class OnrampAvailability
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: onrampAvailability
 }
 
@@ -4129,7 +4129,7 @@ abstract class OnrampAvailability
 abstract class OnrampLimits
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: onrampLimits
 }
 
@@ -4137,7 +4137,7 @@ abstract class OnrampLimits
 abstract class OnrampQuote
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: onrampQuote
 }
 
@@ -4145,7 +4145,7 @@ abstract class OnrampQuote
 abstract class OnrampSession
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: onrampSession
 }
 
@@ -4153,7 +4153,7 @@ abstract class OnrampSession
 abstract class WalletState
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: walletState
     // constructor: walletStateEmpty
 }
@@ -4162,7 +4162,7 @@ abstract class WalletState
 abstract class WalletUserAddress
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: walletUserAddress
 }
 
@@ -4170,7 +4170,7 @@ abstract class WalletUserAddress
 abstract class WalletTransactionPeer
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: walletTransactionPeerAddress
     // constructor: walletTransactionPeerOnramp
     // constructor: walletTransactionPeerUnsupported
@@ -4181,7 +4181,7 @@ abstract class WalletTransactionPeer
 abstract class WalletTransaction
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: walletTransaction
 }
 
@@ -4189,7 +4189,7 @@ abstract class WalletTransaction
 abstract class WalletOwnershipProof
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: walletOwnershipProof
 }
 
@@ -4197,7 +4197,7 @@ abstract class WalletOwnershipProof
 abstract class InputWalletReplacement
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: inputWalletImported
     // constructor: inputWalletNew
 }
@@ -4206,7 +4206,7 @@ abstract class InputWalletReplacement
 abstract class TonConnectManifest
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: tonConnectManifest
 }
 
@@ -4214,7 +4214,7 @@ abstract class TonConnectManifest
 abstract class TonConnectSession
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: tonConnectSession
 }
 
@@ -4222,7 +4222,7 @@ abstract class TonConnectSession
 abstract class TonConnectNextEventId
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: tonConnectNextEventId
 }
 
@@ -4230,7 +4230,7 @@ abstract class TonConnectNextEventId
 abstract class TonConnectRequest
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: tonConnectRequest
 }
 
@@ -4243,7 +4243,7 @@ final class true_ : True
 }
 
 /// TL constructor `boolFalse`, id 0xBC799737.
-final class boolFalse : Object
+final class boolFalse
 {
     enum uint tlId = 0xBC799737;
 
@@ -4251,7 +4251,7 @@ final class boolFalse : Object
 }
 
 /// TL constructor `boolTrue`, id 0x997275B5.
-final class boolTrue : Object
+final class boolTrue
 {
     enum uint tlId = 0x997275B5;
 

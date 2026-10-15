@@ -1,6 +1,6 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.aicompose_functions;
+module tgcapi.gen.functions.aicompose_functions;
 
 /// TL function `aicompose.createTone`, id 0x4AA83913.
 final class aicompose_createTone

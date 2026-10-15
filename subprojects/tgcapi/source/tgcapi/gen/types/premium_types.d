@@ -1,12 +1,12 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.premium_types;
+module tgcapi.gen.types.premium_types;
 
 /// TL sum type `premium.BoostsList`.
 abstract class premium_BoostsList
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: premium_boostsList
 }
 
@@ -14,7 +14,7 @@ abstract class premium_BoostsList
 abstract class premium_MyBoosts
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: premium_myBoosts
 }
 
@@ -22,7 +22,7 @@ abstract class premium_MyBoosts
 abstract class premium_BoostsStatus
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: premium_boostsStatus
 }
 

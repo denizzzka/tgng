@@ -1,12 +1,12 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.help_types;
+module tgcapi.gen.types.help_types;
 
 /// TL sum type `help.ConfigSimple`.
 abstract class help_ConfigSimple
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: help_configSimple
 }
 
@@ -14,7 +14,7 @@ abstract class help_ConfigSimple
 abstract class help_AppUpdate
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: help_appUpdate
     // constructor: help_noAppUpdate
 }
@@ -23,7 +23,7 @@ abstract class help_AppUpdate
 abstract class help_InviteText
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: help_inviteText
 }
 
@@ -31,7 +31,7 @@ abstract class help_InviteText
 abstract class help_Support
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: help_support
 }
 
@@ -39,7 +39,7 @@ abstract class help_Support
 abstract class help_TermsOfService
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: help_termsOfService
 }
 
@@ -47,7 +47,7 @@ abstract class help_TermsOfService
 abstract class help_RecentMeUrls
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: help_recentMeUrls
 }
 
@@ -55,7 +55,7 @@ abstract class help_RecentMeUrls
 abstract class help_TermsOfServiceUpdate
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: help_termsOfServiceUpdate
     // constructor: help_termsOfServiceUpdateEmpty
 }
@@ -64,7 +64,7 @@ abstract class help_TermsOfServiceUpdate
 abstract class help_DeepLinkInfo
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: help_deepLinkInfo
     // constructor: help_deepLinkInfoEmpty
 }
@@ -73,7 +73,7 @@ abstract class help_DeepLinkInfo
 abstract class help_PassportConfig
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: help_passportConfig
     // constructor: help_passportConfigNotModified
 }
@@ -82,7 +82,7 @@ abstract class help_PassportConfig
 abstract class help_SupportName
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: help_supportName
 }
 
@@ -90,7 +90,7 @@ abstract class help_SupportName
 abstract class help_UserInfo
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: help_userInfo
     // constructor: help_userInfoEmpty
 }
@@ -99,7 +99,7 @@ abstract class help_UserInfo
 abstract class help_PromoData
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: help_promoData
     // constructor: help_promoDataEmpty
 }
@@ -108,7 +108,7 @@ abstract class help_PromoData
 abstract class help_CountryCode
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: help_countryCode
 }
 
@@ -116,7 +116,7 @@ abstract class help_CountryCode
 abstract class help_Country
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: help_country
 }
 
@@ -124,7 +124,7 @@ abstract class help_Country
 abstract class help_CountriesList
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: help_countriesList
     // constructor: help_countriesListNotModified
 }
@@ -133,7 +133,7 @@ abstract class help_CountriesList
 abstract class help_PremiumPromo
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: help_premiumPromo
 }
 
@@ -141,7 +141,7 @@ abstract class help_PremiumPromo
 abstract class help_AppConfig
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: help_appConfig
     // constructor: help_appConfigNotModified
 }
@@ -150,7 +150,7 @@ abstract class help_AppConfig
 abstract class help_PeerColorSet
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: help_peerColorProfileSet
     // constructor: help_peerColorSet
 }
@@ -159,7 +159,7 @@ abstract class help_PeerColorSet
 abstract class help_PeerColorOption
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: help_peerColorOption
 }
 
@@ -167,7 +167,7 @@ abstract class help_PeerColorOption
 abstract class help_PeerColors
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: help_peerColors
     // constructor: help_peerColorsNotModified
 }
@@ -176,7 +176,7 @@ abstract class help_PeerColors
 abstract class help_TimezonesList
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: help_timezonesList
     // constructor: help_timezonesListNotModified
 }

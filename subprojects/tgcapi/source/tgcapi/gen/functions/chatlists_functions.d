@@ -1,6 +1,6 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.chatlists_functions;
+module tgcapi.gen.functions.chatlists_functions;
 
 /// TL function `chatlists.exportChatlistInvite`, id 0x8472478E.
 final class chatlists_exportChatlistInvite

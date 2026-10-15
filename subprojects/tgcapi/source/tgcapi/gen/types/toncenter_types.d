@@ -1,12 +1,12 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.toncenter_types;
+module tgcapi.gen.types.toncenter_types;
 
 /// TL sum type `toncenter.ApiResponse`.
 abstract class toncenter_ApiResponse
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: toncenter_apiResponse
 }
 
@@ -14,7 +14,7 @@ abstract class toncenter_ApiResponse
 abstract class toncenter_StreamingUrl
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: toncenter_streamingUrl
 }
 

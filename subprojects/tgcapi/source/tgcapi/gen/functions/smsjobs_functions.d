@@ -1,6 +1,6 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.smsjobs_functions;
+module tgcapi.gen.functions.smsjobs_functions;
 
 /// TL function `smsjobs.isEligibleToJoin`, id 0x0EDC39D0.
 final class smsjobs_isEligibleToJoin

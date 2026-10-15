@@ -1,6 +1,6 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.payments_functions;
+module tgcapi.gen.functions.payments_functions;
 
 /// TL function `payments.getPaymentForm`, id 0x37148DBB.
 final class payments_getPaymentForm

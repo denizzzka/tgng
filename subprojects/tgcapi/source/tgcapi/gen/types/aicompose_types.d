@@ -1,12 +1,12 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.aicompose_types;
+module tgcapi.gen.types.aicompose_types;
 
 /// TL sum type `aicompose.Tones`.
 abstract class aicompose_Tones
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: aicompose_tones
     // constructor: aicompose_tonesNotModified
 }

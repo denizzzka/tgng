@@ -1,12 +1,12 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.upload_types;
+module tgcapi.gen.types.upload_types;
 
 /// TL sum type `upload.File`.
 abstract class upload_File
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: upload_file
     // constructor: upload_fileCdnRedirect
 }
@@ -15,7 +15,7 @@ abstract class upload_File
 abstract class upload_WebFile
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: upload_webFile
 }
 
@@ -23,7 +23,7 @@ abstract class upload_WebFile
 abstract class upload_CdnFile
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: upload_cdnFile
     // constructor: upload_cdnFileReuploadNeeded
 }

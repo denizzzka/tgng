@@ -1,12 +1,12 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.chatlists_types;
+module tgcapi.gen.types.chatlists_types;
 
 /// TL sum type `chatlists.ExportedChatlistInvite`.
 abstract class chatlists_ExportedChatlistInvite
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: chatlists_exportedChatlistInvite
 }
 
@@ -14,7 +14,7 @@ abstract class chatlists_ExportedChatlistInvite
 abstract class chatlists_ExportedInvites
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: chatlists_exportedInvites
 }
 
@@ -22,7 +22,7 @@ abstract class chatlists_ExportedInvites
 abstract class chatlists_ChatlistInvite
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: chatlists_chatlistInvite
     // constructor: chatlists_chatlistInviteAlready
 }
@@ -31,7 +31,7 @@ abstract class chatlists_ChatlistInvite
 abstract class chatlists_ChatlistUpdates
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: chatlists_chatlistUpdates
 }
 

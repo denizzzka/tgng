@@ -1,6 +1,6 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.channels_functions;
+module tgcapi.gen.functions.channels_functions;
 
 /// TL function `channels.readHistory`, id 0xCC104937.
 final class channels_readHistory

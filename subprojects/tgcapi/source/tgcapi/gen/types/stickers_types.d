@@ -1,12 +1,12 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.stickers_types;
+module tgcapi.gen.types.stickers_types;
 
 /// TL sum type `stickers.SuggestedShortName`.
 abstract class stickers_SuggestedShortName
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: stickers_suggestedShortName
 }
 

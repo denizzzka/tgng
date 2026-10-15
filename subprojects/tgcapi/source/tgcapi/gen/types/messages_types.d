@@ -1,12 +1,12 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.messages_types;
+module tgcapi.gen.types.messages_types;
 
 /// TL sum type `messages.Dialogs`.
 abstract class messages_Dialogs
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_dialogs
     // constructor: messages_dialogsNotModified
     // constructor: messages_dialogsSlice
@@ -16,7 +16,7 @@ abstract class messages_Dialogs
 abstract class messages_Messages
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_channelMessages
     // constructor: messages_messages
     // constructor: messages_messagesNotModified
@@ -27,7 +27,7 @@ abstract class messages_Messages
 abstract class messages_Chats
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_chats
     // constructor: messages_chatsSlice
 }
@@ -36,7 +36,7 @@ abstract class messages_Chats
 abstract class messages_ChatFull
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_chatFull
 }
 
@@ -44,7 +44,7 @@ abstract class messages_ChatFull
 abstract class messages_AffectedHistory
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_affectedHistory
 }
 
@@ -52,7 +52,7 @@ abstract class messages_AffectedHistory
 abstract class messages_DhConfig
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_dhConfig
     // constructor: messages_dhConfigNotModified
 }
@@ -61,7 +61,7 @@ abstract class messages_DhConfig
 abstract class messages_SentEncryptedMessage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_sentEncryptedFile
     // constructor: messages_sentEncryptedMessage
 }
@@ -70,7 +70,7 @@ abstract class messages_SentEncryptedMessage
 abstract class messages_Stickers
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_stickers
     // constructor: messages_stickersNotModified
 }
@@ -79,7 +79,7 @@ abstract class messages_Stickers
 abstract class messages_AllStickers
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_allStickers
     // constructor: messages_allStickersNotModified
 }
@@ -88,7 +88,7 @@ abstract class messages_AllStickers
 abstract class messages_AffectedMessages
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_affectedMessages
 }
 
@@ -96,7 +96,7 @@ abstract class messages_AffectedMessages
 abstract class messages_StickerSet
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_stickerSet
     // constructor: messages_stickerSetNotModified
 }
@@ -105,7 +105,7 @@ abstract class messages_StickerSet
 abstract class messages_SavedGifs
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_savedGifs
     // constructor: messages_savedGifsNotModified
 }
@@ -114,7 +114,7 @@ abstract class messages_SavedGifs
 abstract class messages_BotResults
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_botResults
 }
 
@@ -122,7 +122,7 @@ abstract class messages_BotResults
 abstract class messages_BotCallbackAnswer
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_botCallbackAnswer
 }
 
@@ -130,7 +130,7 @@ abstract class messages_BotCallbackAnswer
 abstract class messages_MessageEditData
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_messageEditData
 }
 
@@ -138,7 +138,7 @@ abstract class messages_MessageEditData
 abstract class messages_PeerDialogs
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_peerDialogs
 }
 
@@ -146,7 +146,7 @@ abstract class messages_PeerDialogs
 abstract class messages_FeaturedStickers
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_featuredStickers
     // constructor: messages_featuredStickersNotModified
 }
@@ -155,7 +155,7 @@ abstract class messages_FeaturedStickers
 abstract class messages_RecentStickers
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_recentStickers
     // constructor: messages_recentStickersNotModified
 }
@@ -164,7 +164,7 @@ abstract class messages_RecentStickers
 abstract class messages_ArchivedStickers
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_archivedStickers
 }
 
@@ -172,7 +172,7 @@ abstract class messages_ArchivedStickers
 abstract class messages_StickerSetInstallResult
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_stickerSetInstallResultArchive
     // constructor: messages_stickerSetInstallResultSuccess
 }
@@ -181,7 +181,7 @@ abstract class messages_StickerSetInstallResult
 abstract class messages_HighScores
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_highScores
 }
 
@@ -189,7 +189,7 @@ abstract class messages_HighScores
 abstract class messages_FavedStickers
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_favedStickers
     // constructor: messages_favedStickersNotModified
 }
@@ -198,7 +198,7 @@ abstract class messages_FavedStickers
 abstract class messages_FoundStickerSets
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_foundStickerSets
     // constructor: messages_foundStickerSetsNotModified
 }
@@ -207,7 +207,7 @@ abstract class messages_FoundStickerSets
 abstract class messages_SearchCounter
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_searchCounter
 }
 
@@ -215,7 +215,7 @@ abstract class messages_SearchCounter
 abstract class messages_InactiveChats
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_inactiveChats
 }
 
@@ -223,7 +223,7 @@ abstract class messages_InactiveChats
 abstract class messages_VotesList
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_votesList
 }
 
@@ -231,7 +231,7 @@ abstract class messages_VotesList
 abstract class messages_MessageViews
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_messageViews
 }
 
@@ -239,7 +239,7 @@ abstract class messages_MessageViews
 abstract class messages_DiscussionMessage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_discussionMessage
 }
 
@@ -247,7 +247,7 @@ abstract class messages_DiscussionMessage
 abstract class messages_HistoryImport
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_historyImport
 }
 
@@ -255,7 +255,7 @@ abstract class messages_HistoryImport
 abstract class messages_HistoryImportParsed
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_historyImportParsed
 }
 
@@ -263,7 +263,7 @@ abstract class messages_HistoryImportParsed
 abstract class messages_AffectedFoundMessages
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_affectedFoundMessages
 }
 
@@ -271,7 +271,7 @@ abstract class messages_AffectedFoundMessages
 abstract class messages_ExportedChatInvites
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_exportedChatInvites
 }
 
@@ -279,7 +279,7 @@ abstract class messages_ExportedChatInvites
 abstract class messages_ExportedChatInvite
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_exportedChatInvite
     // constructor: messages_exportedChatInviteReplaced
 }
@@ -288,7 +288,7 @@ abstract class messages_ExportedChatInvite
 abstract class messages_ChatInviteImporters
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_chatInviteImporters
 }
 
@@ -296,7 +296,7 @@ abstract class messages_ChatInviteImporters
 abstract class messages_ChatAdminsWithInvites
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_chatAdminsWithInvites
 }
 
@@ -304,7 +304,7 @@ abstract class messages_ChatAdminsWithInvites
 abstract class messages_CheckedHistoryImportPeer
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_checkedHistoryImportPeer
 }
 
@@ -312,7 +312,7 @@ abstract class messages_CheckedHistoryImportPeer
 abstract class messages_SponsoredMessages
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_sponsoredMessages
     // constructor: messages_sponsoredMessagesEmpty
 }
@@ -321,7 +321,7 @@ abstract class messages_SponsoredMessages
 abstract class messages_SearchResultsCalendar
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_searchResultsCalendar
 }
 
@@ -329,7 +329,7 @@ abstract class messages_SearchResultsCalendar
 abstract class messages_SearchResultsPositions
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_searchResultsPositions
 }
 
@@ -337,7 +337,7 @@ abstract class messages_SearchResultsPositions
 abstract class messages_PeerSettings
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_peerSettings
 }
 
@@ -345,7 +345,7 @@ abstract class messages_PeerSettings
 abstract class messages_MessageReactionsList
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_messageReactionsList
 }
 
@@ -353,7 +353,7 @@ abstract class messages_MessageReactionsList
 abstract class messages_AvailableReactions
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_availableReactions
     // constructor: messages_availableReactionsNotModified
 }
@@ -362,7 +362,7 @@ abstract class messages_AvailableReactions
 abstract class messages_TranscribedAudio
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_transcribedAudio
 }
 
@@ -370,7 +370,7 @@ abstract class messages_TranscribedAudio
 abstract class messages_Reactions
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_reactions
     // constructor: messages_reactionsNotModified
 }
@@ -379,7 +379,7 @@ abstract class messages_Reactions
 abstract class messages_ForumTopics
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_forumTopics
 }
 
@@ -387,7 +387,7 @@ abstract class messages_ForumTopics
 abstract class messages_EmojiGroups
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_emojiGroups
     // constructor: messages_emojiGroupsNotModified
 }
@@ -396,7 +396,7 @@ abstract class messages_EmojiGroups
 abstract class messages_TranslatedText
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_translateResult
 }
 
@@ -404,7 +404,7 @@ abstract class messages_TranslatedText
 abstract class messages_BotApp
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_botApp
 }
 
@@ -412,7 +412,7 @@ abstract class messages_BotApp
 abstract class messages_WebPage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_webPage
 }
 
@@ -420,7 +420,7 @@ abstract class messages_WebPage
 abstract class messages_SavedDialogs
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_savedDialogs
     // constructor: messages_savedDialogsNotModified
     // constructor: messages_savedDialogsSlice
@@ -430,7 +430,7 @@ abstract class messages_SavedDialogs
 abstract class messages_SavedReactionTags
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_savedReactionTags
     // constructor: messages_savedReactionTagsNotModified
 }
@@ -439,7 +439,7 @@ abstract class messages_SavedReactionTags
 abstract class messages_QuickReplies
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_quickReplies
     // constructor: messages_quickRepliesNotModified
 }
@@ -448,7 +448,7 @@ abstract class messages_QuickReplies
 abstract class messages_DialogFilters
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_dialogFilters
 }
 
@@ -456,7 +456,7 @@ abstract class messages_DialogFilters
 abstract class messages_MyStickers
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_myStickers
 }
 
@@ -464,7 +464,7 @@ abstract class messages_MyStickers
 abstract class messages_InvitedUsers
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_invitedUsers
 }
 
@@ -472,7 +472,7 @@ abstract class messages_InvitedUsers
 abstract class messages_AvailableEffects
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_availableEffects
     // constructor: messages_availableEffectsNotModified
 }
@@ -481,7 +481,7 @@ abstract class messages_AvailableEffects
 abstract class messages_BotPreparedInlineMessage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_botPreparedInlineMessage
 }
 
@@ -489,7 +489,7 @@ abstract class messages_BotPreparedInlineMessage
 abstract class messages_PreparedInlineMessage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_preparedInlineMessage
 }
 
@@ -497,7 +497,7 @@ abstract class messages_PreparedInlineMessage
 abstract class messages_FoundStickers
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_foundStickers
     // constructor: messages_foundStickersNotModified
 }
@@ -506,7 +506,7 @@ abstract class messages_FoundStickers
 abstract class messages_WebPagePreview
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_webPagePreview
 }
 
@@ -514,7 +514,7 @@ abstract class messages_WebPagePreview
 abstract class messages_EmojiGameOutcome
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_emojiGameOutcome
 }
 
@@ -522,7 +522,7 @@ abstract class messages_EmojiGameOutcome
 abstract class messages_EmojiGameInfo
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_emojiGameDiceInfo
     // constructor: messages_emojiGameUnavailable
 }
@@ -531,7 +531,7 @@ abstract class messages_EmojiGameInfo
 abstract class messages_ComposedMessageWithAI
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_composedMessageWithAI
 }
 
@@ -539,7 +539,7 @@ abstract class messages_ComposedMessageWithAI
 abstract class messages_ChatInviteJoinResult
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_chatInviteJoinResultOk
     // constructor: messages_chatInviteJoinResultWebView
 }
@@ -548,7 +548,7 @@ abstract class messages_ChatInviteJoinResult
 abstract class messages_TranslatedRichMessage
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_translatedRichMessage
 }
 
@@ -556,7 +556,7 @@ abstract class messages_TranslatedRichMessage
 abstract class messages_ComposedRichMessageWithAI
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: messages_composedRichMessageWithAI
 }
 

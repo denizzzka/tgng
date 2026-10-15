@@ -1,6 +1,6 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.updates_functions;
+module tgcapi.gen.functions.updates_functions;
 
 /// TL function `updates.getState`, id 0xEDD4882A.
 final class updates_getState

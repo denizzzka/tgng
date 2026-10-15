@@ -1,6 +1,6 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.contacts_functions;
+module tgcapi.gen.functions.contacts_functions;
 
 /// TL function `contacts.getContactIDs`, id 0x7ADC669D.
 final class contacts_getContactIDs

@@ -1,12 +1,12 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.communities_types;
+module tgcapi.gen.types.communities_types;
 
 /// TL sum type `communities.PeerLinkRequests`.
 abstract class communities_PeerLinkRequests
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: communities_peerLinkRequests
 }
 
@@ -14,7 +14,7 @@ abstract class communities_PeerLinkRequests
 abstract class communities_ParticipantJoinedChats
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: communities_participantJoinedChats
 }
 

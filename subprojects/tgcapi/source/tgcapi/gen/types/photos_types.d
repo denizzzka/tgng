@@ -1,12 +1,12 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.photos_types;
+module tgcapi.gen.types.photos_types;
 
 /// TL sum type `photos.Photos`.
 abstract class photos_Photos
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: photos_photos
     // constructor: photos_photosSlice
 }
@@ -15,7 +15,7 @@ abstract class photos_Photos
 abstract class photos_Photo
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: photos_photo
 }
 

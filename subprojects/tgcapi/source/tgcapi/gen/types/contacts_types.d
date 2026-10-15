@@ -1,12 +1,12 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.contacts_types;
+module tgcapi.gen.types.contacts_types;
 
 /// TL sum type `contacts.Contacts`.
 abstract class contacts_Contacts
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: contacts_contacts
     // constructor: contacts_contactsNotModified
 }
@@ -15,7 +15,7 @@ abstract class contacts_Contacts
 abstract class contacts_ImportedContacts
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: contacts_importedContacts
 }
 
@@ -23,7 +23,7 @@ abstract class contacts_ImportedContacts
 abstract class contacts_Blocked
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: contacts_blocked
     // constructor: contacts_blockedSlice
 }
@@ -32,7 +32,7 @@ abstract class contacts_Blocked
 abstract class contacts_Found
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: contacts_found
 }
 
@@ -40,7 +40,7 @@ abstract class contacts_Found
 abstract class contacts_ResolvedPeer
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: contacts_resolvedPeer
 }
 
@@ -48,7 +48,7 @@ abstract class contacts_ResolvedPeer
 abstract class contacts_TopPeers
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: contacts_topPeers
     // constructor: contacts_topPeersDisabled
     // constructor: contacts_topPeersNotModified
@@ -58,7 +58,7 @@ abstract class contacts_TopPeers
 abstract class contacts_ContactBirthdays
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: contacts_contactBirthdays
 }
 
@@ -66,7 +66,7 @@ abstract class contacts_ContactBirthdays
 abstract class contacts_SponsoredPeers
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: contacts_sponsoredPeers
     // constructor: contacts_sponsoredPeersEmpty
 }

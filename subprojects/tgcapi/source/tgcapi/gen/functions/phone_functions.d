@@ -1,6 +1,6 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.phone_functions;
+module tgcapi.gen.functions.phone_functions;
 
 /// TL function `phone.getCallConfig`, id 0x55451FA9.
 final class phone_getCallConfig

@@ -1,6 +1,6 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.stats_functions;
+module tgcapi.gen.functions.stats_functions;
 
 /// TL function `stats.getBroadcastStats`, id 0xAB42441A.
 final class stats_getBroadcastStats

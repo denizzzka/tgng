@@ -1,12 +1,12 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.payments_types;
+module tgcapi.gen.types.payments_types;
 
 /// TL sum type `payments.PaymentForm`.
 abstract class payments_PaymentForm
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_paymentForm
     // constructor: payments_paymentFormStarGift
     // constructor: payments_paymentFormStars
@@ -16,7 +16,7 @@ abstract class payments_PaymentForm
 abstract class payments_ValidatedRequestedInfo
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_validatedRequestedInfo
 }
 
@@ -24,7 +24,7 @@ abstract class payments_ValidatedRequestedInfo
 abstract class payments_PaymentResult
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_paymentResult
     // constructor: payments_paymentVerificationNeeded
 }
@@ -33,7 +33,7 @@ abstract class payments_PaymentResult
 abstract class payments_PaymentReceipt
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_paymentReceipt
     // constructor: payments_paymentReceiptStars
 }
@@ -42,7 +42,7 @@ abstract class payments_PaymentReceipt
 abstract class payments_SavedInfo
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_savedInfo
 }
 
@@ -50,7 +50,7 @@ abstract class payments_SavedInfo
 abstract class payments_BankCardData
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_bankCardData
 }
 
@@ -58,7 +58,7 @@ abstract class payments_BankCardData
 abstract class payments_ExportedInvoice
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_exportedInvoice
 }
 
@@ -66,7 +66,7 @@ abstract class payments_ExportedInvoice
 abstract class payments_CheckedGiftCode
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_checkedGiftCode
 }
 
@@ -74,7 +74,7 @@ abstract class payments_CheckedGiftCode
 abstract class payments_GiveawayInfo
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_giveawayInfo
     // constructor: payments_giveawayInfoResults
 }
@@ -83,7 +83,7 @@ abstract class payments_GiveawayInfo
 abstract class payments_StarsStatus
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_starsStatus
 }
 
@@ -91,7 +91,7 @@ abstract class payments_StarsStatus
 abstract class payments_StarsRevenueStats
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_starsRevenueStats
 }
 
@@ -99,7 +99,7 @@ abstract class payments_StarsRevenueStats
 abstract class payments_StarsRevenueWithdrawalUrl
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_starsRevenueWithdrawalUrl
 }
 
@@ -107,7 +107,7 @@ abstract class payments_StarsRevenueWithdrawalUrl
 abstract class payments_StarsRevenueAdsAccountUrl
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_starsRevenueAdsAccountUrl
 }
 
@@ -115,7 +115,7 @@ abstract class payments_StarsRevenueAdsAccountUrl
 abstract class payments_StarGifts
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_starGifts
     // constructor: payments_starGiftsNotModified
 }
@@ -124,7 +124,7 @@ abstract class payments_StarGifts
 abstract class payments_ConnectedStarRefBots
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_connectedStarRefBots
 }
 
@@ -132,7 +132,7 @@ abstract class payments_ConnectedStarRefBots
 abstract class payments_SuggestedStarRefBots
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_suggestedStarRefBots
 }
 
@@ -140,7 +140,7 @@ abstract class payments_SuggestedStarRefBots
 abstract class payments_StarGiftUpgradePreview
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_starGiftUpgradePreview
 }
 
@@ -148,7 +148,7 @@ abstract class payments_StarGiftUpgradePreview
 abstract class payments_UniqueStarGift
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_uniqueStarGift
 }
 
@@ -156,7 +156,7 @@ abstract class payments_UniqueStarGift
 abstract class payments_SavedStarGifts
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_savedStarGifts
 }
 
@@ -164,7 +164,7 @@ abstract class payments_SavedStarGifts
 abstract class payments_StarGiftWithdrawalUrl
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_starGiftWithdrawalUrl
 }
 
@@ -172,7 +172,7 @@ abstract class payments_StarGiftWithdrawalUrl
 abstract class payments_ResaleStarGifts
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_resaleStarGifts
 }
 
@@ -180,7 +180,7 @@ abstract class payments_ResaleStarGifts
 abstract class payments_StarGiftCollections
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_starGiftCollections
     // constructor: payments_starGiftCollectionsNotModified
 }
@@ -189,7 +189,7 @@ abstract class payments_StarGiftCollections
 abstract class payments_UniqueStarGiftValueInfo
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_uniqueStarGiftValueInfo
 }
 
@@ -197,7 +197,7 @@ abstract class payments_UniqueStarGiftValueInfo
 abstract class payments_CheckCanSendGiftResult
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_checkCanSendGiftResultFail
     // constructor: payments_checkCanSendGiftResultOk
 }
@@ -206,7 +206,7 @@ abstract class payments_CheckCanSendGiftResult
 abstract class payments_StarGiftAuctionState
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_starGiftAuctionState
 }
 
@@ -214,7 +214,7 @@ abstract class payments_StarGiftAuctionState
 abstract class payments_StarGiftAuctionAcquiredGifts
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_starGiftAuctionAcquiredGifts
 }
 
@@ -222,7 +222,7 @@ abstract class payments_StarGiftAuctionAcquiredGifts
 abstract class payments_StarGiftActiveAuctions
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_starGiftActiveAuctions
     // constructor: payments_starGiftActiveAuctionsNotModified
 }
@@ -231,7 +231,7 @@ abstract class payments_StarGiftActiveAuctions
 abstract class payments_StarGiftUpgradeAttributes
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_starGiftUpgradeAttributes
 }
 
@@ -239,7 +239,7 @@ abstract class payments_StarGiftUpgradeAttributes
 abstract class payments_CurrencyRates
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: payments_currencyRates
 }
 

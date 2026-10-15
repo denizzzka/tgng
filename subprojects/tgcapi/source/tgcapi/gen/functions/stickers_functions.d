@@ -1,6 +1,6 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.stickers_functions;
+module tgcapi.gen.functions.stickers_functions;
 
 /// TL function `stickers.createStickerSet`, id 0x9021AB67.
 final class stickers_createStickerSet

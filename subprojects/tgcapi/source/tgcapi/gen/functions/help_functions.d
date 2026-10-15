@@ -1,6 +1,6 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.help_functions;
+module tgcapi.gen.functions.help_functions;
 
 /// TL function `help.getConfig`, id 0xC4F9186B.
 final class help_getConfig

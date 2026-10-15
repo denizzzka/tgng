@@ -1,6 +1,6 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.auth_functions;
+module tgcapi.gen.functions.auth_functions;
 
 /// TL function `auth.sendCode`, id 0xA677244F.
 final class auth_sendCode

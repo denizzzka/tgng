@@ -1,6 +1,6 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.ephemeral_functions;
+module tgcapi.gen.functions.ephemeral_functions;
 
 /// TL function `ephemeral.sendMessage`, id 0xBA8D5F35.
 final class ephemeral_sendMessage

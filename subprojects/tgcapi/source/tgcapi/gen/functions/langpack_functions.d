@@ -1,6 +1,6 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.langpack_functions;
+module tgcapi.gen.functions.langpack_functions;
 
 /// TL function `langpack.getLangPack`, id 0xF2F2330A.
 final class langpack_getLangPack

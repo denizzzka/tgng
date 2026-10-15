@@ -1,12 +1,12 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.stats_types;
+module tgcapi.gen.types.stats_types;
 
 /// TL sum type `stats.BroadcastStats`.
 abstract class stats_BroadcastStats
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: stats_broadcastStats
 }
 
@@ -14,7 +14,7 @@ abstract class stats_BroadcastStats
 abstract class stats_MegagroupStats
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: stats_megagroupStats
 }
 
@@ -22,7 +22,7 @@ abstract class stats_MegagroupStats
 abstract class stats_MessageStats
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: stats_messageStats
 }
 
@@ -30,7 +30,7 @@ abstract class stats_MessageStats
 abstract class stats_StoryStats
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: stats_storyStats
 }
 
@@ -38,7 +38,7 @@ abstract class stats_StoryStats
 abstract class stats_PublicForwards
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: stats_publicForwards
 }
 
@@ -46,7 +46,7 @@ abstract class stats_PublicForwards
 abstract class stats_PollStats
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: stats_pollStats
 }
 

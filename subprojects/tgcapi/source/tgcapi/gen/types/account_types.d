@@ -1,12 +1,12 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.account_types;
+module tgcapi.gen.types.account_types;
 
 /// TL sum type `account.PrivacyRules`.
 abstract class account_PrivacyRules
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_privacyRules
 }
 
@@ -14,7 +14,7 @@ abstract class account_PrivacyRules
 abstract class account_Authorizations
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_authorizations
 }
 
@@ -22,7 +22,7 @@ abstract class account_Authorizations
 abstract class account_Password
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_password
 }
 
@@ -30,7 +30,7 @@ abstract class account_Password
 abstract class account_PasswordSettings
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_passwordSettings
 }
 
@@ -38,7 +38,7 @@ abstract class account_PasswordSettings
 abstract class account_PasswordInputSettings
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_passwordInputSettings
 }
 
@@ -46,7 +46,7 @@ abstract class account_PasswordInputSettings
 abstract class account_TmpPassword
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_tmpPassword
 }
 
@@ -54,7 +54,7 @@ abstract class account_TmpPassword
 abstract class account_WebAuthorizations
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_webAuthorizations
 }
 
@@ -62,7 +62,7 @@ abstract class account_WebAuthorizations
 abstract class account_AuthorizationForm
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_authorizationForm
 }
 
@@ -70,7 +70,7 @@ abstract class account_AuthorizationForm
 abstract class account_SentEmailCode
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_sentEmailCode
 }
 
@@ -78,7 +78,7 @@ abstract class account_SentEmailCode
 abstract class account_Takeout
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_takeout
 }
 
@@ -86,7 +86,7 @@ abstract class account_Takeout
 abstract class account_WallPapers
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_wallPapers
     // constructor: account_wallPapersNotModified
 }
@@ -95,7 +95,7 @@ abstract class account_WallPapers
 abstract class account_AutoDownloadSettings
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_autoDownloadSettings
 }
 
@@ -103,7 +103,7 @@ abstract class account_AutoDownloadSettings
 abstract class account_Themes
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_themes
     // constructor: account_themesNotModified
 }
@@ -112,7 +112,7 @@ abstract class account_Themes
 abstract class account_ContentSettings
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_contentSettings
 }
 
@@ -120,7 +120,7 @@ abstract class account_ContentSettings
 abstract class account_ResetPasswordResult
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_resetPasswordFailedWait
     // constructor: account_resetPasswordOk
     // constructor: account_resetPasswordRequestedWait
@@ -130,7 +130,7 @@ abstract class account_ResetPasswordResult
 abstract class account_ChatThemes
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_chatThemes
     // constructor: account_chatThemesNotModified
 }
@@ -139,7 +139,7 @@ abstract class account_ChatThemes
 abstract class account_SavedRingtones
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_savedRingtones
     // constructor: account_savedRingtonesNotModified
 }
@@ -148,7 +148,7 @@ abstract class account_SavedRingtones
 abstract class account_SavedRingtone
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_savedRingtone
     // constructor: account_savedRingtoneConverted
 }
@@ -157,7 +157,7 @@ abstract class account_SavedRingtone
 abstract class account_EmojiStatuses
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_emojiStatuses
     // constructor: account_emojiStatusesNotModified
 }
@@ -166,7 +166,7 @@ abstract class account_EmojiStatuses
 abstract class account_EmailVerified
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_emailVerified
     // constructor: account_emailVerifiedLogin
 }
@@ -175,7 +175,7 @@ abstract class account_EmailVerified
 abstract class account_AutoSaveSettings
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_autoSaveSettings
 }
 
@@ -183,7 +183,7 @@ abstract class account_AutoSaveSettings
 abstract class account_ConnectedBots
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_connectedBots
 }
 
@@ -191,7 +191,7 @@ abstract class account_ConnectedBots
 abstract class account_BusinessChatLinks
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_businessChatLinks
 }
 
@@ -199,7 +199,7 @@ abstract class account_BusinessChatLinks
 abstract class account_ResolvedBusinessChatLinks
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_resolvedBusinessChatLinks
 }
 
@@ -207,7 +207,7 @@ abstract class account_ResolvedBusinessChatLinks
 abstract class account_PaidMessagesRevenue
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_paidMessagesRevenue
 }
 
@@ -215,7 +215,7 @@ abstract class account_PaidMessagesRevenue
 abstract class account_SavedMusicIds
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_savedMusicIds
     // constructor: account_savedMusicIdsNotModified
 }
@@ -224,7 +224,7 @@ abstract class account_SavedMusicIds
 abstract class account_Passkeys
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_passkeys
 }
 
@@ -232,7 +232,7 @@ abstract class account_Passkeys
 abstract class account_PasskeyRegistrationOptions
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_passkeyRegistrationOptions
 }
 
@@ -240,7 +240,7 @@ abstract class account_PasskeyRegistrationOptions
 abstract class account_WebBrowserSettings
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: account_webBrowserSettings
     // constructor: account_webBrowserSettingsNotModified
 }

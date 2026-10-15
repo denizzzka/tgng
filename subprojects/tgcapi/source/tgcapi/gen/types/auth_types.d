@@ -1,12 +1,12 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.auth_types;
+module tgcapi.gen.types.auth_types;
 
 /// TL sum type `auth.SentCode`.
 abstract class auth_SentCode
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: auth_sentCode
     // constructor: auth_sentCodePaymentRequired
     // constructor: auth_sentCodeSuccess
@@ -16,7 +16,7 @@ abstract class auth_SentCode
 abstract class auth_Authorization
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: auth_authorization
     // constructor: auth_authorizationSignUpRequired
 }
@@ -25,7 +25,7 @@ abstract class auth_Authorization
 abstract class auth_ExportedAuthorization
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: auth_exportedAuthorization
 }
 
@@ -33,7 +33,7 @@ abstract class auth_ExportedAuthorization
 abstract class auth_PasswordRecovery
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: auth_passwordRecovery
 }
 
@@ -41,7 +41,7 @@ abstract class auth_PasswordRecovery
 abstract class auth_CodeType
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: auth_codeTypeCall
     // constructor: auth_codeTypeFlashCall
     // constructor: auth_codeTypeFragmentSms
@@ -53,7 +53,7 @@ abstract class auth_CodeType
 abstract class auth_SentCodeType
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: auth_sentCodeTypeApp
     // constructor: auth_sentCodeTypeCall
     // constructor: auth_sentCodeTypeEmailCode
@@ -71,7 +71,7 @@ abstract class auth_SentCodeType
 abstract class auth_LoginToken
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: auth_loginToken
     // constructor: auth_loginTokenMigrateTo
     // constructor: auth_loginTokenSuccess
@@ -81,7 +81,7 @@ abstract class auth_LoginToken
 abstract class auth_LoggedOut
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: auth_loggedOut
 }
 
@@ -89,7 +89,7 @@ abstract class auth_LoggedOut
 abstract class auth_PasskeyLoginOptions
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: auth_passkeyLoginOptions
 }
 
@@ -97,7 +97,7 @@ abstract class auth_PasskeyLoginOptions
 abstract class auth_FirebasePnvIntent
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: auth_firebasePnvIntent
 }
 

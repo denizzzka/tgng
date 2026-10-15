@@ -1,6 +1,6 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.users_functions;
+module tgcapi.gen.functions.users_functions;
 
 /// TL function `users.getUsers`, id 0x0D91A548.
 final class users_getUsers

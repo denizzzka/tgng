@@ -1,12 +1,12 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.stories_types;
+module tgcapi.gen.types.stories_types;
 
 /// TL sum type `stories.AllStories`.
 abstract class stories_AllStories
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: stories_allStories
     // constructor: stories_allStoriesNotModified
 }
@@ -15,7 +15,7 @@ abstract class stories_AllStories
 abstract class stories_Stories
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: stories_stories
 }
 
@@ -23,7 +23,7 @@ abstract class stories_Stories
 abstract class stories_StoryViewsList
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: stories_storyViewsList
 }
 
@@ -31,7 +31,7 @@ abstract class stories_StoryViewsList
 abstract class stories_StoryViews
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: stories_storyViews
 }
 
@@ -39,7 +39,7 @@ abstract class stories_StoryViews
 abstract class stories_PeerStories
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: stories_peerStories
 }
 
@@ -47,7 +47,7 @@ abstract class stories_PeerStories
 abstract class stories_StoryReactionsList
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: stories_storyReactionsList
 }
 
@@ -55,7 +55,7 @@ abstract class stories_StoryReactionsList
 abstract class stories_FoundStories
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: stories_foundStories
 }
 
@@ -63,7 +63,7 @@ abstract class stories_FoundStories
 abstract class stories_CanSendStoryCount
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: stories_canSendStoryCount
 }
 
@@ -71,7 +71,7 @@ abstract class stories_CanSendStoryCount
 abstract class stories_Albums
 {
     /// The id of the concrete constructor.
-    abstract uint tlId() const nothrow;
+    abstract uint tlIdValue() const nothrow;
     // constructor: stories_albums
     // constructor: stories_albumsNotModified
 }

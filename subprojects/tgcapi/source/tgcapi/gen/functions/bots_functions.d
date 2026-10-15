@@ -1,6 +1,6 @@
 /// Generated from the TL scheme. Do not edit.
 /// Input: telegram_api.tl, mtproto_api.tl
-module tgcapi.gen.bots_functions;
+module tgcapi.gen.functions.bots_functions;
 
 /// TL function `bots.sendCustomRequest`, id 0xAA2769ED.
 final class bots_sendCustomRequest
