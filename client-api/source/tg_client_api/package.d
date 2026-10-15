@@ -1,10 +1,5 @@
-/**
- * Generated D bindings for the Telegram API.
- *
- * This module is the public entry point of the `tg_client_api` sub-package. The actual
- * Telegram types and methods are generated from the official API description
- * (TL scheme / Bot API documentation) and re-exported here.
- */
+/// Generated from the TL scheme. Do not edit.
+/// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api;
 
 public import tg_client_api.functions.account_functions;
