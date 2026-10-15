@@ -4,8 +4,8 @@
  * Usage:
  *     dub run :tlgen
  *
- * The command reads the schemes from `subprojects/tgcapi/scheme` and writes the
- * generated D modules into `subprojects/tgcapi/source/tgcapi/gen`, overwriting
+ * The command reads the schemes from `tgng-tgcapi/scheme` and writes the
+ * generated D modules into `tgng-tgcapi/source/tgcapi/gen`, overwriting
  * them in place.
  */
 module app;
@@ -20,8 +20,8 @@ import tlgen.emitter : EmittedFile, EmitOptions, emit;
 import tlgen.model : TlScheme, parseScheme;
 
 /// Default paths, relative to the repository root.
-private enum defaultSchemeDir = "subprojects/tgcapi/scheme";
-private enum defaultOutputDir = "subprojects/tgcapi/source/tgcapi/gen";
+private enum defaultSchemeDir = "tgng-tgcapi/scheme";
+private enum defaultOutputDir = "tgng-tgcapi/source/tgcapi/gen";
 private enum packageName = "tgcapi.gen";
 
 void main(string[] args)

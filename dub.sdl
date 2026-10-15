@@ -5,12 +5,12 @@ license "proprietary"
 targetType "executable"
 targetName "tgng"
 
-dependency "tgcapi" path="subprojects/tgcapi"
+dependency "tgcapi" path="tgng-tgcapi"
 
 subPackage {
 	name "tlgen"
 	description "TL scheme to D code generator"
 	targetType "executable"
 	targetName "tlgen"
-	sourcePaths "subprojects/tlgen/source"
+	sourcePaths "tgng-tlgen/source"
 }
