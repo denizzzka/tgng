@@ -1,7 +1,7 @@
-/// Кадрирование MTProto поверх потока: abridged и intermediate.
+/// MTProto framing over a stream: abridged and intermediate.
 ///
-/// Обёртка реализует `ConnectionStream`, поэтому встраивается в цепочку
-/// TCP → SOCKS5 → obfuscated2 → шифрование → framing без изменений выше.
+/// The wrapper implements `ConnectionStream`, so it fits into the chain
+/// TCP -> SOCKS5 -> obfuscated2 -> encryption -> framing unchanged above.
 module tgng.mtproto.framing;
 
 import vibe.core.stream: ConnectionStream, IOMode, blocking;
@@ -12,34 +12,34 @@ import std.exception: enforce;
 
 @safe:
 
-/// Формат кадрирования.
+/// Framing format.
 enum FramingKind
 {
-	/// Длина — 1 байт в 4-байтовых словах; `0x7f` — escape на 3 байта.
+	/// Length is 1 byte in 4-byte words; `0x7f` escapes to 3 bytes.
 	abridged,
-	/// Длина — 4 байта little-endian, включает префикс.
+	/// Length is 4 bytes little-endian, includes the prefix.
 	intermediate,
-	/// Длина — 4 байта little-endian, включает префикс и seqno.
+	/// Length is 4 bytes little-endian, includes the prefix and seqno.
 	full,
 }
 
-/// Обёртка над потоком, добавляющая MTProto-кадрирование.
+/// Stream wrapper that adds MTProto framing.
 ///
-/// Все пакеты нижележащего потока — это отдельные MTProto-сообщения.
-/// `read` возвращает данные одного пакета; `write` отправляет пакет.
+/// Every packet of the underlying stream is a separate MTProto message.
+/// `read` returns the data of one packet; `write` sends a packet.
 final class FramedStream: ConnectionStream
 {
 	private
 	{
 		ConnectionStream _inner;
 		FramingKind _kind;
-		// Буфер недопрочитанного пакета: один физический пакет
-		// может разойтись на несколько вызовов read.
+		// Buffer of a partially read packet: one physical packet may
+		// arrive split across several read calls.
 		ubyte[] _pending;
 		size_t _pendingOffset;
 	}
 
-	/// Оборачивает `inner` выбранным форматом кадрирования.
+	/// Wraps `inner` with the chosen framing format.
 	this(ConnectionStream inner, FramingKind kind)
 	{
 		_inner = inner;
@@ -102,7 +102,7 @@ final class FramedStream: ConnectionStream
 
 	size_t write(scope const(ubyte)[] bytes, IOMode mode) @blocking
 	{
-		// MTProto отправляет сообщения целиком; `IOMode.once` не имеет смысла.
+		// MTProto sends messages whole; `IOMode.once` makes no sense.
 		enforce(mode == IOMode.all, "FramedStream supports only IOMode.all for writes.");
 		enforce(bytes.length > 0, "Cannot frame an empty MTProto message.");
 
@@ -115,8 +115,8 @@ final class FramedStream: ConnectionStream
 	void flush() @blocking { _inner.flush(); }
 	void finalize() @blocking { _inner.finalize(); }
 
-	/// Читает одно физическое сообщение в `_pending`.
-	/// Возвращает `false`, если нижележащий поток закрылся до начала пакета.
+	/// Reads one physical message into `_pending`.
+	/// Returns `false` when the underlying stream closed before the packet.
 	private bool _readFrame() @blocking
 	{
 		if (_inner.empty) return false;
@@ -128,7 +128,7 @@ final class FramedStream: ConnectionStream
 		return true;
 	}
 
-	/// Читает префикс длины и возвращает длину полезной нагрузки.
+	/// Reads the length prefix and returns the payload length.
 	private size_t _decodeLength() @blocking @trusted
 	{
 		final switch (_kind) {
@@ -136,7 +136,7 @@ final class FramedStream: ConnectionStream
 				ubyte[1] first;
 				_inner.read(first[]);
 				if (first[0] < 0x7f) return cast(size_t)first[0] * 4;
-				// Escape: 3 байта длины в словах, little-endian.
+				// Escape: 3 bytes of length in words, little-endian.
 				ubyte[4] ext;
 				_inner.read(ext[0 .. 3]);
 				ext[3] = 0;
@@ -146,11 +146,11 @@ final class FramedStream: ConnectionStream
 				ubyte[4] raw;
 				_inner.read(raw[]);
 				auto v = littleEndianToNative!uint(raw);
-				// Длина включает сам префикс (и seqno для full).
+				// The length includes the prefix itself (and seqno for full).
 				auto overhead = (_kind == FramingKind.full) ? 8 : 4;
 				enforce(v >= overhead, "Malformed MTProto frame length.");
 				if (_kind == FramingKind.full) {
-					// Пропускаем seqno: он не относится к полезной нагрузке.
+					// Skip seqno: it is not part of the payload.
 					ubyte[4] seq;
 					_inner.read(seq[]);
 				}
@@ -158,7 +158,7 @@ final class FramedStream: ConnectionStream
 		}
 	}
 
-	/// Кодирует длину полезной нагрузки в префикс.
+	/// Encodes the payload length into a prefix.
 	private ubyte[] _encodeLength(size_t len)
 	{
 		final switch (_kind) {
@@ -177,13 +177,13 @@ final class FramedStream: ConnectionStream
 	}
 }
 
-/// Оборачивает поток abridged-кадрированием.
+/// Wraps a stream with abridged framing.
 FramedStream frameAbridged(ConnectionStream inner)
 {
 	return new FramedStream(inner, FramingKind.abridged);
 }
 
-/// Оборачивает поток intermediate-кадрированием.
+/// Wraps a stream with intermediate framing.
 FramedStream frameIntermediate(ConnectionStream inner)
 {
 	return new FramedStream(inner, FramingKind.intermediate);

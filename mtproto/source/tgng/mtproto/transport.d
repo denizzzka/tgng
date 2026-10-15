@@ -1,9 +1,9 @@
-/// Транспорт MTProto: TCP-соединение, опционально через SOCKS5.
+/// MTProto transport: TCP connection, optionally through SOCKS5.
 ///
-/// Транспорт не знает про шифрование и обфускацию — он отдаёт и
-/// принимает уже готовые MTProto-пакеты (кадрирование выполняет
-/// вызывающий). Позже поверх этого потока будут надеты обёртки
-/// `ObfuscatedStream` и `EncryptedStream`.
+/// The transport knows nothing about encryption and obfuscation: it hands
+/// over and accepts ready-made MTProto packets (framing is done by the
+/// caller). Later `ObfuscatedStream` and `EncryptedStream` will wrap this
+/// stream.
 module tgng.mtproto.transport;
 
 import vibe.core.net: connectTCP;
@@ -16,30 +16,30 @@ import std.exception: enforce;
 
 @safe:
 
-/// Настройки подключения к DC.
+/// DC connection settings.
 struct TransportConfig
 {
-	/// Имя хоста или IP-адрес DC.
+	/// DC host name or IP address.
 	string host;
-	/// Порт DC (обычно 443 или 80).
+	/// DC port (usually 443 or 80).
 	ushort port = 443;
-	/// Таймаут установления соединения.
+	/// Connection establishment timeout.
 	Duration connectTimeout = 10.seconds;
 
-	/// Адрес SOCKS5-прокси (пусто — подключаться напрямую).
+	/// SOCKS5 proxy address (empty means connect directly).
 	string proxyHost;
-	/// Порт SOCKS5-прокси.
+	/// SOCKS5 proxy port.
 	ushort proxyPort;
-	/// Имя пользователя SOCKS5 (необязательно).
+	/// SOCKS5 user name (optional).
 	string proxyUser;
-	/// Пароль SOCKS5 (необязательно).
+	/// SOCKS5 password (optional).
 	string proxyPassword;
 }
 
-/// Открывает соединение с DC согласно конфигу.
+/// Opens a connection to the DC according to the config.
 ///
-/// Если задан `proxyHost`, соединение устанавливается через SOCKS5
-/// (сначала TCP до прокси, затем туннель до DC).
+/// When `proxyHost` is set, the connection is established through SOCKS5
+/// (first TCP to the proxy, then a tunnel to the DC).
 ConnectionStream connectTransport(in TransportConfig config)
 {
 	enforce(config.host.length > 0, "DC host must not be empty.");

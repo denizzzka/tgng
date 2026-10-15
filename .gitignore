@@ -20,3 +20,5 @@ dub.selections.json
 /libtgng.a
 *.a
 /mtproto/tests/transport_tests
+/mtproto/mtproto-test-library
+/mtproto/tgng-mtproto-test-library

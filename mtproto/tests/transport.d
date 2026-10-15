@@ -8,7 +8,7 @@ import tgng.mtproto.transport: TransportConfig, connectTransport;
 import vibe.core.log: logInfo;
 import vibe.core.net: listenTCP, resolveHost;
 
-/// Проверяет полный цикл: локальный эхо-сервер -> connectTransport -> обмен.
+/// Checks the full cycle: local echo server -> connectTransport -> exchange.
 void testRoundtrip(string host, ushort targetPort,
 	string proxyHost = null, ushort proxyPort = 0)
 {
@@ -27,12 +27,12 @@ void testRoundtrip(string host, ushort targetPort,
 	conn.write(request[]);
 	conn.read(response[]);
 
-	enforce(response[] == request[], "Эхо-сервер вернул искажённые данные.");
+	enforce(response[] == request[], "Echo server returned corrupted data.");
 }
 
 void main()
 {
-	// Слушаем на "::", чтобы адрес был доступен и по IPv4, и по IPv6.
+	// Listen on "::" so the address is reachable over both IPv4 and IPv6.
 	auto echoServer = listenTCP(0, (conn) @safe nothrow {
 		try {
 			while (!conn.empty) {
@@ -46,10 +46,10 @@ void main()
 
 	auto echoPort = echoServer.bindAddress.port;
 
-	logInfo("Проверка прямого соединения (без прокси)");
+	logInfo("Checking a direct connection (no proxy)");
 	testRoundtrip("127.0.0.1", echoPort);
 
-	logInfo("Проверка соединения с несуществующим хостом");
+	logInfo("Checking a connection to a nonexistent host");
 	{
 		TransportConfig bad;
 		bad.host = "nonexistent.invalid";
@@ -61,11 +61,11 @@ void main()
 	auto proxyHost = environment.get("SOCKS5_PROXY_HOST", null);
 	if (proxyHost.length > 0) {
 		auto proxyPort = environment.get("SOCKS5_PROXY_PORT", "1080").to!ushort;
-		logInfo("Проверка соединения через SOCKS5-прокси");
+		logInfo("Checking a connection through a SOCKS5 proxy");
 		testRoundtrip("127.0.0.1", echoPort, proxyHost, proxyPort);
 	} else {
-		logInfo("SOCKS5_PROXY_HOST не задан — проверка прокси пропущена");
+		logInfo("SOCKS5_PROXY_HOST is not set - skipping the proxy check");
 	}
 
-	logInfo("Тест транспорта завершён успешно.");
+	logInfo("Transport test finished successfully.");
 }

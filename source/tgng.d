@@ -1,7 +1,7 @@
 module tgng;
 
-/// Корневой модуль библиотеки tgng.
+/// Root module of the tgng library.
 ///
-/// Пакет объединяет генератор TL-схем (`tlgen`), сгенерированные
-/// клиентские привязки (`client-api`) и транспортные субпакеты
-/// (начиная с `mtproto`).
+/// The package combines the TL scheme generator (`tlgen`), the generated
+/// client bindings (`client-api`) and the transport subpackages
+/// (starting with `mtproto`).
