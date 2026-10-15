@@ -16,6 +16,7 @@ import deimos.openssl.hmac: HMAC_CTX_free, HMAC_CTX_new, HMAC_Final,
 import deimos.openssl.rand: RAND_bytes;
 import deimos.openssl.sha: SHA256_CTX, SHA256_Final, SHA256_Init, SHA256_Update;
 
+import std.conv: hexString, to;
 import std.exception: enforce;
 
 /// Raised when an OpenSSL primitive reports failure.
@@ -30,6 +31,12 @@ class CryptoException : Exception
 private void check(int rc, string what) @safe
 {
 	enforce(rc == 1, new CryptoException(what ~ " failed"));
+}
+
+// AES_set_*_key return 0 on success, unlike most OpenSSL functions.
+private void checkZero(int rc, string what) @safe
+{
+	enforce(rc == 0, new CryptoException(what ~ " failed"));
 }
 
 /// Encrypts `data` in place with AES-256 in IGE mode.
@@ -52,10 +59,11 @@ private void aesIge(ubyte[] data, const(ubyte)[32] key, ref ubyte[32] iv, int en
 	enforce(data.length % 16 == 0, new CryptoException("IGE data length must be a multiple of 16"));
 
 	AES_KEY aesKey = void;
+	// AES_set_*_key return 0 on success, unlike most OpenSSL functions.
 	if (enc)
-		check(AES_set_encrypt_key(&key[0], 256, &aesKey), "AES_set_encrypt_key");
+		checkZero(AES_set_encrypt_key(&key[0], 256, &aesKey), "AES_set_encrypt_key");
 	else
-		check(AES_set_decrypt_key(&key[0], 256, &aesKey), "AES_set_decrypt_key");
+		checkZero(AES_set_decrypt_key(&key[0], 256, &aesKey), "AES_set_decrypt_key");
 
 	if (data.length != 0)
 		AES_ige_encrypt(&data[0], &data[0], data.length, &aesKey, &iv[0], enc);
@@ -179,4 +187,103 @@ ubyte[] modPow(const(ubyte)[] base, const(ubyte)[] exp, const(ubyte)[] mod) @tru
 	auto result = new ubyte[mod.length];
 	BN_bn2bin(r, result.ptr + (result.length - outLen));
 	return result;
+}
+
+@safe unittest // AES-256-IGE round-trips
+{
+	import std.algorithm: map;
+	import std.array: array;
+	import std.range: iota;
+
+	const(ubyte)[32] key = iota(32).map!(i => cast(ubyte) i).array;
+	ubyte[32] iv = iota(32).map!(i => cast(ubyte) (i + 7)).array;
+	auto plain = iota(64).map!(i => cast(ubyte) (i + 1)).array;
+	immutable expected = plain.idup;
+
+	auto ivCopy = iv;
+	aesIgeEncrypt(plain, key, ivCopy);
+	enforce(plain != expected, "IGE encryption left the plaintext unchanged");
+
+	auto ivBack = iv;
+	aesIgeDecrypt(plain, key, ivBack);
+	enforce(plain == expected, "IGE decryption did not restore the plaintext");
+	enforce(ivBack == iv, "IGE consumed the IV");
+}
+
+@safe unittest // IGE rejects non-block-aligned lengths
+{
+	const(ubyte)[32] key = 0;
+	ubyte[32] iv = 0;
+	auto data = new ubyte[15];
+
+	bool thrown;
+	try
+		aesIgeEncrypt(data, key, iv);
+	catch (CryptoException)
+		thrown = true;
+	enforce(thrown, "IGE accepted a non-multiple-of-16 length");
+}
+
+@safe unittest // SHA-256 known vectors
+{
+	enforce(sha256(null) == cast(ubyte[32]) hexString!"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+		"SHA-256 of the empty string");
+	enforce(sha256(cast(const(ubyte)[]) "abc") == cast(ubyte[32]) hexString!"ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+		"SHA-256 of \"abc\"");
+}
+
+@safe unittest // HMAC-SHA256 known vectors (RFC 4231)
+{
+	{
+		auto key = cast(const(ubyte)[]) "\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b";
+		auto mac = hmacSha256(key, cast(const(ubyte)[]) "Hi There");
+		enforce(mac == cast(ubyte[32]) hexString!"b0344c61d8db38535ca8afceaf0bf12b881dc200c9833da726e9376c2e32cff7",
+			"HMAC-SHA256 RFC 4231 case 1");
+	}
+	{
+		auto mac = hmacSha256(cast(const(ubyte)[]) "Jefe", cast(const(ubyte)[]) "what do ya want for nothing?");
+		enforce(mac == cast(ubyte[32]) hexString!"5bdcc146bf60754e6a042426089575c75a003f089d2739839dec58b964ec3843",
+			"HMAC-SHA256 RFC 4231 case 2");
+	}
+}
+
+@safe unittest // AES-CTR keystream is continuous across buffers
+{
+	const(ubyte)[32] key = 0;
+	const(ubyte)[16] iv = 0;
+	ubyte[16] plain = 0;
+
+	AesCtr split;
+	split.init(key, iv);
+	scope(exit) split.destroy();
+	split.apply(plain[0 .. 7]);
+	split.apply(plain[7 .. $]);
+
+	AesCtr whole;
+	whole.init(key, iv);
+	scope(exit) whole.destroy();
+	ubyte[16] expected = 0;
+	whole.apply(expected);
+
+	enforce(plain == expected, "split CTR differs from a single call");
+	enforce(plain[0] != 0, "CTR with a zero IV produced a zero keystream");
+}
+
+@safe unittest // randomBytes returns distinct non-zero output
+{
+	import std.algorithm: any;
+
+	auto a = randomBytes(32);
+	auto b = randomBytes(32);
+	enforce(a != b, "two random draws collided");
+	enforce(a.any!(x => x != 0), "randomBytes returned all zeroes");
+}
+
+@safe unittest // modPow matches a known vector
+{
+	// 4^13 mod 497 = 445, from Wikipedia's modular exponentiation example.
+	// 497 does not fit in one byte, so it is encoded big-endian.
+	auto result = modPow([cast(ubyte) 4], [cast(ubyte) 13], [cast(ubyte) 0x01, cast(ubyte) 0xF1]);
+	enforce(result.length == 2 && result[0] == 0x01 && result[1] == 0xBD,
+		"modPow(4, 13, 497) != 445");
 }
