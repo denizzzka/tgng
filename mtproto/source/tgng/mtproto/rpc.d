@@ -279,6 +279,89 @@ private uint readU32(const(ubyte)[] data, ref size_t o) @trusted
 	return v;
 }
 
+unittest
+{
+	import std.bitmanip: nativeToLittleEndian;
+
+	static ubyte[] le32(uint v) @trusted
+	{
+		return nativeToLittleEndian(v)[].dup;
+	}
+
+	static ubyte[] le64(long v) @trusted
+	{
+		return nativeToLittleEndian(v)[].dup;
+	}
+
+	// parseMessage: a data message carries the body length explicitly.
+	ubyte[] body = [1, 2, 3, 4];
+	auto raw = le64(0x0102030405060708L) ~ le64(0x1122334455667788L)
+		~ le32(7) ~ le32(cast(uint) body.length) ~ body;
+	auto msg = parseMessage(raw);
+	assert(msg.authKeyId == 0x0102030405060708L);
+	assert(msg.messageId == 0x1122334455667788L);
+	assert(msg.seqNo == 7);
+	assert(msg.body == body);
+
+	// A service message (high bit of msg_id) has no length prefix: the rest
+	// of the payload is the body.
+	ubyte[] tail = [9, 8];
+	auto service = le64(0) ~ le64(0x0000000180000000L) ~ le32(1) ~ tail;
+	assert(parseMessage(service).body == tail);
+
+	// Truncated and length-mismatched payloads are rejected.
+	import std.exception: assertThrown;
+	assertThrown!RpcException(parseMessage(new ubyte[19]));
+	ubyte[] one = [1];
+	assertThrown!RpcException(parseMessage(le64(0) ~ le64(5) ~ le32(0) ~ le32(2) ~ one));
+
+	// parseRpcResult: constructor plus req_msg_id plus the result body.
+	RpcResponse response;
+	assert(!parseRpcResult(le32(0xdeadbeef), response));
+
+	auto reply = le32(RpcResultId) ~ le64(0x42) ~ le32(0xcafebabe);
+	assert(parseRpcResult(reply, response));
+	assert(response.requestMessageId == 0x42);
+	assert(response.result == le32(0xcafebabe));
+
+	// parseRpcError: rpc_error carries a code and a TL string.
+	int code;
+	string text;
+	assert(!parseRpcError(le32(0xcafebabe), code, text));
+
+	// "FLOOD_WAIT" plus the NUL terminator, padded to a 4-byte boundary.
+	auto message = cast(const(ubyte)[]) "FLOOD_WAIT\0";
+	auto padding = (4 - message.length % 4) % 4;
+	auto error = le32(RpcErrorId) ~ le32(420)
+		~ le32(cast(uint) (message.length + padding)) ~ message ~ new ubyte[padding];
+	assert(parseRpcError(error, code, text));
+	assert(code == 420);
+	assert(text == "FLOOD_WAIT\0");
+
+	// RpcDispatcher matches results by req_msg_id and drops them once taken.
+	auto dispatcher = new RpcDispatcher();
+	dispatcher.registerRequest(0x42);
+	assert(dispatcher.outstanding == 1);
+	assert(dispatcher.takeResponse(response));
+	assert(dispatcher.outstanding == 0);
+	assert(!dispatcher.takeResponse(response));
+
+	// nextMessageId never goes backwards and stays aligned to 4.
+	RpcContext context;
+	context.authKeyId = 1;
+	auto first = context.nextMessageId();
+	auto second = context.nextMessageId();
+	assert(second > first);
+	assert((second - first) % 4 == 0);
+	assert((first & 3) == 0);
+
+	// nextSeqNo yields even values and advances by two.
+	RpcContext seq;
+	assert(seq.nextSeqNo() == 0);
+	assert(seq.nextSeqNo() == 2);
+	assert(seq.nextSeqNo() == 4);
+}
+
 /// Reads a TL string (length prefix, bytes, padding) and advances the offset.
 private string readString(const(ubyte)[] data, ref size_t o) @trusted
 {
@@ -287,7 +370,7 @@ private string readString(const(ubyte)[] data, ref size_t o) @trusted
 		| (cast(size_t) data[o + 2] << 16) | (cast(size_t) data[o + 3] << 24);
 	o += 4;
 
-	// The length byte includes the trailing NUL and the padding.
+	// A length of 254 or more switches to a 3-byte length prefix.
 	if (len >= 254) {
 		enforce!RpcException(data.length >= o + 3, "Truncated long string length");
 		len = cast(size_t) data[o] | (cast(size_t) data[o + 1] << 8) | (cast(size_t) data[o + 2] << 16);
@@ -295,10 +378,9 @@ private string readString(const(ubyte)[] data, ref size_t o) @trusted
 	}
 
 	enforce!RpcException(data.length >= o + len, "Truncated string body");
-	auto s = cast(string) data[o .. o + len].idup;
+	// The stored length covers the payload plus its NUL and padding.
+	enforce!RpcException(len >= 1, "Empty TL string");
+	auto s = cast(string) data[o .. o + len - 1].idup;
 	o += len;
-
-	// Skip the padding to a 4-byte boundary.
-	o = (o + 3) & ~cast(size_t) 3;
 	return s;
 }
