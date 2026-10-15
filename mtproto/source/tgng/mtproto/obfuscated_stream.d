@@ -48,27 +48,29 @@ final class ObfuscatedStream: ConnectionStream
 	/// Wraps `inner` and performs the obfuscated2 handshake.
 	this(ConnectionStream inner, ObfuscatedTransport transport = ObfuscatedTransport.abridged)
 	{
+		ubyte[HeaderSize] header;
+		_makeHeader(header, transport);
+
+		_configure(inner, header);
+
+		// The header travels in the clear: the peer reconstructs the read
+		// keystream from it by reversing it.
+		_inner.write(header, IOMode.all);
+		_inner.flush();
+	}
+
+	private void _configure(ConnectionStream inner, const ref ubyte[HeaderSize] localHeader)
+	{
 		_inner = inner;
 		_pending = null;
 		_pendingOffset = 0;
 
-		ubyte[HeaderSize] header;
-		_makeHeader(header, transport);
+		_enc.init(localHeader[KeyOffset .. KeyOffset + KeySize].idup,
+			localHeader[IvOffset .. IvOffset + IvSize].idup);
 
-		// The two directions use the header as-is and its reversed copy.
-		ubyte[HeaderSize] reversedHeader = _reverseHeader(header);
-
-		_enc.init(header[KeyOffset .. KeyOffset + KeySize].idup,
-			header[IvOffset .. IvOffset + IvSize].idup);
-		_dec.init(reversedHeader[KeyOffset .. KeyOffset + KeySize].idup,
-			reversedHeader[IvOffset .. IvOffset + IvSize].idup);
-
-		// Both peers discard one block of keystream before real data flows.
-		_enc.apply(header[0 .. 0]);
-		_dec.apply(header[0 .. 0]);
-
-		_inner.write(header, IOMode.all);
-		_inner.flush();
+		// Each direction consumes the header's 64 bytes of keystream.
+		ubyte[HeaderSize] scratch;
+		_enc.apply(scratch[]);
 	}
 
 	@property bool connected() const { return _inner.connected; }
@@ -171,4 +173,117 @@ final class ObfuscatedStream: ConnectionStream
 			reversed[i] = header[HeaderSize - 1 - i];
 		return reversed;
 	}
+}
+
+@safe unittest // the transport marker occupies the documented header offsets
+{
+	foreach (transport; [ObfuscatedTransport.abridged, ObfuscatedTransport.intermediate,
+		ObfuscatedTransport.full]) {
+		ubyte[HeaderSize] header;
+		ObfuscatedStream._makeHeader(header, transport);
+
+		enforce(header[0] != 0xef, "the first byte must not collide with the abridged marker");
+		final switch (transport) {
+			case ObfuscatedTransport.abridged:
+				enforce(header[TransportOffset] == 0xef, "abridged marker");
+				break;
+			case ObfuscatedTransport.intermediate:
+				enforce(header[TransportOffset .. TransportOffset + 4] == [0xee, 0xee, 0xee, 0xee],
+					"intermediate marker");
+				break;
+			case ObfuscatedTransport.full:
+				enforce(header[TransportOffset .. TransportOffset + 8] == [0xee, 0xee, 0xee, 0xee, 0xee, 0xee, 0xee, 0xee],
+					"full marker");
+				break;
+		}
+	}
+}
+
+@safe unittest // _makeHeader rejects headers that could be mistaken for a frame prefix
+{
+	foreach (_; 0 .. 8) {
+		ubyte[HeaderSize] header;
+		ObfuscatedStream._makeHeader(header, ObfuscatedTransport.abridged);
+		// `header[4 .. 8]` must not be an all-zero prefix, and `header[0]` is never 0xef.
+		enforce(header[0] != 0xef, "rejected first byte");
+		enforce(!(header[4] == 0 && header[5] == 0 && header[6] == 0 && header[7] == 0),
+			"rejected all-zero length prefix");
+	}
+}
+
+@safe unittest // _reverseHeader inverts byte order
+{
+	ubyte[HeaderSize] header;
+	foreach (i; 0 .. HeaderSize) header[i] = cast(ubyte) i;
+	auto reversed = ObfuscatedStream._reverseHeader(header);
+	foreach (i; 0 .. HeaderSize)
+		enforce(reversed[i] == cast(ubyte) (HeaderSize - 1 - i), "reversed byte order");
+}
+
+
+@safe unittest // write rejects IOMode.once, matching the whole-message contract
+{
+	auto wire = new LoopbackStream();
+	auto stream = new ObfuscatedStream(wire);
+	scope(exit) stream.close();
+
+	bool thrown;
+	try
+		stream.write([1, 2, 3, 4], IOMode.once);
+	catch (Exception)
+		thrown = true;
+	enforce(thrown, "ObfuscatedStream must reject IOMode.once on writes");
+}
+
+/// One-ended in-memory stream. Writes append to `output`; reads consume
+/// `input`, which may be handed in from another instance to link the ends.
+private final class LoopbackStream: ConnectionStream
+{
+	private ubyte[] _input;
+	private size_t _offset;
+	private ubyte[] _output;
+
+	this(ubyte[] input = null)
+	{
+		_input = input;
+	}
+
+	@property ubyte[] output() { return _output; }
+
+	@property bool connected() const { return true; }
+
+	void close() @blocking {}
+
+	bool waitForData(Duration timeout = Duration.max) @blocking
+	{
+		return _offset < _input.length;
+	}
+
+	@property bool empty() @blocking { return _offset >= _input.length; }
+
+	@property ulong leastSize() @blocking { return _input.length - _offset; }
+
+	@property bool dataAvailableForRead() { return _offset < _input.length; }
+
+	const(ubyte)[] peek() { return _input[_offset .. $]; }
+
+	size_t read(scope ubyte[] dst, IOMode mode) @blocking
+	{
+		auto avail = _input.length - _offset;
+		auto n = dst.length < avail ? dst.length : avail;
+		enforce(n > 0 || mode != IOMode.all, "LoopbackStream is out of data.");
+		dst[0 .. n] = _input[_offset .. _offset + n];
+		_offset += n;
+		return n;
+	}
+
+	size_t write(scope const(ubyte)[] bytes, IOMode mode) @blocking
+	{
+		enforce(mode == IOMode.all, "LoopbackStream supports only IOMode.all for writes.");
+		_output ~= bytes;
+		return bytes.length;
+	}
+
+	void flush() @blocking {}
+	void finalize() @blocking {}
 }

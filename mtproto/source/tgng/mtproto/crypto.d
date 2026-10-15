@@ -22,21 +22,21 @@ import std.exception: enforce;
 /// Raised when an OpenSSL primitive reports failure.
 class CryptoException : Exception
 {
-	this(string msg) @safe pure nothrow
+	this(string msg, string file = __FILE__, size_t line = __LINE__) @safe pure nothrow
 	{
-		super(msg);
+		super(msg, file, line);
 	}
 }
 
 private void check(int rc, string what) @safe
 {
-	enforce(rc == 1, new CryptoException(what ~ " failed"));
+	enforce!CryptoException(rc == 1, what ~ " failed");
 }
 
 // AES_set_*_key return 0 on success, unlike most OpenSSL functions.
 private void checkZero(int rc, string what) @safe
 {
-	enforce(rc == 0, new CryptoException(what ~ " failed"));
+	enforce!CryptoException(rc == 0, what ~ " failed");
 }
 
 /// Encrypts `data` in place with AES-256 in IGE mode.
@@ -56,7 +56,7 @@ void aesIgeDecrypt(ubyte[] data, const(ubyte)[32] key, ubyte[32] iv) @trusted
 
 private void aesIge(ubyte[] data, const(ubyte)[32] key, ref ubyte[32] iv, int enc) @trusted
 {
-	enforce(data.length % 16 == 0, new CryptoException("IGE data length must be a multiple of 16"));
+	enforce!CryptoException(data.length % 16 == 0, "IGE data length must be a multiple of 16");
 
 	AES_KEY aesKey = void;
 	// AES_set_*_key return 0 on success, unlike most OpenSSL functions.
@@ -86,7 +86,7 @@ ubyte[32] sha256(const(ubyte)[] data) @trusted
 ubyte[32] hmacSha256(const(ubyte)[] key, const(ubyte)[] data) @trusted
 {
 	auto ctx = HMAC_CTX_new();
-	enforce(ctx !is null, new CryptoException("HMAC_CTX_new failed"));
+	enforce!CryptoException(ctx !is null, "HMAC_CTX_new failed");
 	scope(exit) HMAC_CTX_free(ctx);
 
 	check(HMAC_Init_ex(ctx, key.ptr, cast(int) key.length, EVP_sha256(), null), "HMAC_Init_ex");
@@ -96,7 +96,7 @@ ubyte[32] hmacSha256(const(ubyte)[] key, const(ubyte)[] data) @trusted
 	ubyte[32] mac = void;
 	uint len = 32;
 	check(HMAC_Final(ctx, &mac[0], &len), "HMAC_Final");
-	enforce(len == 32, new CryptoException("HMAC_Final returned unexpected length"));
+	enforce!CryptoException(len == 32, "HMAC_Final returned unexpected length");
 	return mac;
 }
 
@@ -111,9 +111,9 @@ struct AesCtr
 	/// Initialises the stream; `key` must be 32 bytes and `iv` 16 bytes.
 	void init(const(ubyte)[] key, const(ubyte)[] iv) @trusted
 	{
-		enforce(key.length == 32 && iv.length == 16, new CryptoException("AES-CTR key/iv length mismatch"));
+		enforce!CryptoException(key.length == 32 && iv.length == 16, "AES-CTR key/iv length mismatch");
 		_ctx = EVP_CIPHER_CTX_new();
-		enforce(_ctx !is null, new CryptoException("EVP_CIPHER_CTX_new failed"));
+		enforce!CryptoException(_ctx !is null, "EVP_CIPHER_CTX_new failed");
 		check(EVP_EncryptInit_ex(_ctx, EVP_aes_256_ctr(), null, &key[0], &iv[0]), "EVP_EncryptInit_ex");
 	}
 
@@ -125,7 +125,7 @@ struct AesCtr
 
 		int outLen = 0;
 		check(EVP_EncryptUpdate(_ctx, &data[0], &outLen, &data[0], cast(int) data.length), "EVP_EncryptUpdate");
-		enforce(outLen == data.length, new CryptoException("AES-CTR length mismatch"));
+		enforce!CryptoException(outLen == data.length, "AES-CTR length mismatch");
 	}
 
 	/// Releases the OpenSSL context.
@@ -162,23 +162,23 @@ ubyte[] randomBytes(size_t size) @safe
 ubyte[] modPow(const(ubyte)[] base, const(ubyte)[] exp, const(ubyte)[] mod) @trusted
 {
 	auto ctx = BN_CTX_new();
-	enforce(ctx !is null, new CryptoException("BN_CTX_new failed"));
+	enforce!CryptoException(ctx !is null, "BN_CTX_new failed");
 	scope(exit) BN_CTX_free(ctx);
 
 	BIGNUM* b = BN_bin2bn(base.ptr, cast(int) base.length, null);
-	enforce(b !is null, new CryptoException("BN_bin2bn failed"));
+	enforce!CryptoException(b !is null, "BN_bin2bn failed");
 	scope(exit) BN_free(b);
 
 	BIGNUM* e = BN_bin2bn(exp.ptr, cast(int) exp.length, null);
-	enforce(e !is null, new CryptoException("BN_bin2bn failed"));
+	enforce!CryptoException(e !is null, "BN_bin2bn failed");
 	scope(exit) BN_free(e);
 
 	BIGNUM* m = BN_bin2bn(mod.ptr, cast(int) mod.length, null);
-	enforce(m !is null, new CryptoException("BN_bin2bn failed"));
+	enforce!CryptoException(m !is null, "BN_bin2bn failed");
 	scope(exit) BN_free(m);
 
 	BIGNUM* r = BN_new();
-	enforce(r !is null, new CryptoException("BN_new failed"));
+	enforce!CryptoException(r !is null, "BN_new failed");
 	scope(exit) BN_free(r);
 
 	check(BN_mod_exp(r, b, e, m, ctx), "BN_mod_exp");

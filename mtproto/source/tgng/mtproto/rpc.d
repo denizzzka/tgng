@@ -21,6 +21,8 @@ enum uint NewSessionCreatedId = 0x9ec20908;
 enum uint BadServerSaltId = 0xedab447b;
 /// ID of the `bad_msg_notification` constructor from `mtproto_api.tl`.
 enum uint BadMsgNotificationId = 0xa7eff811;
+/// ID of the `future_salts` constructor from `mtproto_api.tl`.
+enum uint FutureSaltsId = 0xae500895;
 
 /// Content-related message flag: this bit is set in `seq_no` for messages
 /// that carry RPC queries rather than service traffic.
@@ -130,9 +132,9 @@ struct RpcResponse
 /// Raised for malformed or unexpected transport payloads.
 class RpcException : Exception
 {
-	this(string msg) @safe pure nothrow
+	this(string msg, string file = __FILE__, size_t line = __LINE__) @safe pure nothrow
 	{
-		super(msg);
+		super(msg, file, line);
 	}
 }
 
@@ -143,7 +145,7 @@ class RpcException : Exception
 /// happens a layer below.
 MtpMessage parseMessage(const(ubyte)[] payload) @trusted
 {
-	enforce(payload.length >= 20, new RpcException("MTProto message is too short"));
+	enforce!RpcException(payload.length >= 20, "MTProto message is too short");
 
 	size_t o;
 	MtpMessage msg;
@@ -151,16 +153,16 @@ MtpMessage parseMessage(const(ubyte)[] payload) @trusted
 	msg.messageId = readI64(payload, o);
 	msg.seqNo = cast(int) readI32(payload, o);
 
-	enforce(payload.length >= o, new RpcException("Truncated MTProto message header"));
+	enforce!RpcException(payload.length >= o, "Truncated MTProto message header");
 	// Service messages declare their body length explicitly; for data
 	// messages the remaining bytes are the body.
 	if (msg.messageId & 0x80000000L) {
 		// Container/ack style messages carry no body length here.
 		msg.body = payload[o .. $].dup;
 	} else {
-		enforce(payload.length >= o + 4, new RpcException("MTProto message has no body length"));
+		enforce!RpcException(payload.length >= o + 4, "MTProto message has no body length");
 		auto bodyLen = cast(size_t) readU32(payload, o);
-		enforce(bodyLen == payload.length - o, new RpcException("MTProto body length mismatch"));
+		enforce!RpcException(bodyLen == payload.length - o, "MTProto body length mismatch");
 		msg.body = payload[o .. o + bodyLen].dup;
 	}
 	return msg;
@@ -172,14 +174,14 @@ MtpMessage parseMessage(const(ubyte)[] payload) @trusted
 /// a service message the caller has to handle itself.
 bool parseRpcResult(const(ubyte)[] body, out RpcResponse response) @trusted
 {
-	enforce(body.length >= 4, new RpcException("MTProto body is too short"));
+	enforce!RpcException(body.length >= 4, "MTProto body is too short");
 
 	size_t o;
 	auto constructor = readU32(body, o);
 	if (constructor != RpcResultId)
 		return false;
 
-	enforce(body.length >= o + 8, new RpcException("rpc_result has no req_msg_id"));
+	enforce!RpcException(body.length >= o + 8, "rpc_result has no req_msg_id");
 	response.requestMessageId = readI64(body, o);
 
 	// The result is a serialized object: a constructor id followed by its
@@ -193,7 +195,7 @@ bool parseRpcResult(const(ubyte)[] body, out RpcResponse response) @trusted
 /// Returns `false` when the reply is not an error.
 bool parseRpcError(const(ubyte)[] result, out int errorCode, out string errorMessage) @trusted
 {
-	enforce(result.length >= 4, new RpcException("RPC result is too short"));
+	enforce!RpcException(result.length >= 4, "RPC result is too short");
 
 	size_t o;
 	if (readU32(result, o) != RpcErrorId)
@@ -252,7 +254,7 @@ final class RpcDispatcher
 /// Reads a little-endian `long` and advances the offset.
 private long readI64(const(ubyte)[] data, ref size_t o) @trusted
 {
-	enforce(data.length >= o + 8, new RpcException("Truncated 64-bit field"));
+	enforce!RpcException(data.length >= o + 8, "Truncated 64-bit field");
 	ubyte[8] raw;
 	raw[] = data[o .. o + 8];
 	auto v = littleEndianToNative!long(raw);
@@ -269,7 +271,7 @@ private int readI32(const(ubyte)[] data, ref size_t o) @trusted
 /// Reads a little-endian `uint` and advances the offset.
 private uint readU32(const(ubyte)[] data, ref size_t o) @trusted
 {
-	enforce(data.length >= o + 4, new RpcException("Truncated 32-bit field"));
+	enforce!RpcException(data.length >= o + 4, "Truncated 32-bit field");
 	ubyte[4] raw;
 	raw[] = data[o .. o + 4];
 	auto v = littleEndianToNative!uint(raw);
@@ -280,19 +282,19 @@ private uint readU32(const(ubyte)[] data, ref size_t o) @trusted
 /// Reads a TL string (length prefix, bytes, padding) and advances the offset.
 private string readString(const(ubyte)[] data, ref size_t o) @trusted
 {
-	enforce(data.length >= o + 4, new RpcException("Truncated string length"));
+	enforce!RpcException(data.length >= o + 4, "Truncated string length");
 	auto len = cast(size_t) data[o] | (cast(size_t) data[o + 1] << 8)
 		| (cast(size_t) data[o + 2] << 16) | (cast(size_t) data[o + 3] << 24);
 	o += 4;
 
 	// The length byte includes the trailing NUL and the padding.
 	if (len >= 254) {
-		enforce(data.length >= o + 3, new RpcException("Truncated long string length"));
+		enforce!RpcException(data.length >= o + 3, "Truncated long string length");
 		len = cast(size_t) data[o] | (cast(size_t) data[o + 1] << 8) | (cast(size_t) data[o + 2] << 16);
 		o += 3;
 	}
 
-	enforce(data.length >= o + len, new RpcException("Truncated string body"));
+	enforce!RpcException(data.length >= o + len, "Truncated string body");
 	auto s = cast(string) data[o .. o + len].idup;
 	o += len;
 
