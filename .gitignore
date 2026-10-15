@@ -3,6 +3,8 @@ docs.json
 __dummy.html
 docs/
 /tgng
+/tgng_tlgen
+/tlgen
 *.a
 *.lib
 *.so
