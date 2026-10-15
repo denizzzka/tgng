@@ -1,0 +1,7 @@
+name "tlgen"
+description "TL scheme to D code generator"
+authors "Denis Feklushkin"
+license "proprietary"
+targetType "executable"
+targetName "tlgen"
+sourcePaths "source"

@@ -10,3 +10,11 @@ targetName "tgng"
 		targetType "library"
 		sourcePaths "subprojects/tgcapi/source"
 	}
+
+	subPackage {
+		name "tlgen"
+		description "TL scheme to D code generator"
+		targetType "executable"
+		targetName "tlgen"
+		sourcePaths "subprojects/tlgen/source"
+	}
