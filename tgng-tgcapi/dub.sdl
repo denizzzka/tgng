@@ -1,5 +1,0 @@
-name "tgcapi"
-description "Generated D bindings for the Telegram API client"
-authors "Denis Feklushkin"
-license "proprietary"
-targetType "sourceLibrary"

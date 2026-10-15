@@ -11,7 +11,6 @@ docs/
 *.so.*
 *.dylib
 *.dll
-tgng-test-*
 *.exe
 *.pdb
 *.o

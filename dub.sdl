@@ -6,11 +6,11 @@ targetType "executable"
 targetName "tgng"
 
 subPackage {
-	name "tgcapi"
-	path "tgng-tgcapi"
+	name "client-api"
+	path "client-api"
 }
 
 subPackage {
 	name "tlgen"
-	path "tgng-tlgen"
+	path "tlgen"
 }
