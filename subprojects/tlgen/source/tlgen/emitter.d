@@ -76,7 +76,8 @@ private EmittedFile emitNamespace(string ns, const TlCombinator[] combinators,
     auto buffer = appender!string;
     buffer ~= "/// Generated from the TL scheme. Do not edit.\n";
     buffer ~= format("/// %s\n", options.sourceNote);
-    buffer ~= format("module %s.%s.\n\n", options.packageName, moduleName);
+    buffer ~= format("module %s.%s;\n\n", options.packageName, moduleName);
+    buffer ~= format("import %s;\n\n", options.packageName);
 
     auto types = selected.filter!(c => !c.isFunction).array;
     if (!isFunctions && types.length > 0)
@@ -101,7 +102,7 @@ private string emitSumTypes(const TlCombinator[] combinators, EmitOptions option
 
     auto buffer = appender!string;
     foreach (result; results) {
-        auto base = result.replace(".", "_");
+        auto base = dIdent(result);
         auto members = combinators.filter!(c => c.result == result)
             .map!(c => dIdent(c.name))
             .array.sort().uniq().array;
@@ -148,11 +149,15 @@ private string emitField(TlArg arg, TlCombinator c)
     return format("    %s %s;\n", dType(arg), dIdent(arg.name));
 }
 
+/// The placeholder used for the type parameter of a `!X` query in an
+/// `invoke*` combinator. Callers fill the real request type in themselves.
+private enum genericQueryType = "TlObject";
+
 private string baseClass(string result)
 {
-    if (result.length == 0 || result.startsWith("Vector") || isPrimitive(result))
+    if (result.length == 0 || isVector(result) || isPrimitive(result))
         return "Object";
-    return result.replace(".", "_");
+    return dIdent(result);
 }
 
 /// Maps a TL type to the D type used in generated fields.
@@ -161,13 +166,29 @@ private string dType(TlArg arg)
     auto base = arg.baseType();
     if (arg.isTrueFlag())
         return "bool";
-    if (base.startsWith("Vector<") && base.endsWith(">"))
-        return "Vector!(" ~ dTypeName(base[7 .. $ - 1]) ~ ")";
+    if (isVector(base))
+        return "Vector!(" ~ dTypeName(vectorElement(base)) ~ ")";
     return dTypeName(base);
+}
+
+/// TL writes vectors either as `Vector<T>` or, in the older mtproto syntax,
+/// as `vector<T>`.
+private bool isVector(string tlType)
+{
+    return (tlType.startsWith("Vector<") || tlType.startsWith("vector<"))
+        && tlType.endsWith(">");
+}
+
+/// The `T` of a `Vector<T>` / `vector<T>` type.
+private string vectorElement(string tlType)
+{
+    return tlType[7 .. $ - 1];
 }
 
 private string dTypeName(string tlType)
 {
+    if (tlType.length > 0 && tlType[0] == '!')
+        return genericQueryType;
     switch (tlType) {
         case "int": return "int";
         case "long": return "long";
@@ -178,7 +199,7 @@ private string dTypeName(string tlType)
         case "bytes": return "ubyte[]";
         case "Bool": return "bool";
         case "true": return "bool";
-        default: return tlType.replace(".", "_");
+        default: return dIdent(tlType);
     }
 }
 

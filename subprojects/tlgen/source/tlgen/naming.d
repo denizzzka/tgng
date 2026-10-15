@@ -26,6 +26,12 @@ private immutable string[] keywords = [
     "wchar", "while", "with", "__FILE__", "__LINE__", "__gshared", "__traits",
 ];
 
+/// Names that are legal D identifiers but collide with symbols `object.d`
+/// already defines, so they cannot be used to declare a class.
+private immutable string[] reservedClasses = [
+    "Error", "Exception", "Object", "Throwable", "TypeInfo",
+];
+
 /// Escapes one TL identifier into a legal D identifier, keeping snake_case.
 string dIdent(string tlName)
 {
@@ -36,6 +42,10 @@ string dIdent(string tlName)
         result = "_" ~ result;
     foreach (keyword; keywords) {
         if (result == keyword)
+            return result ~ "_";
+    }
+    foreach (reserved; reservedClasses) {
+        if (result == reserved)
             return result ~ "_";
     }
     return result;
