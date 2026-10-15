@@ -5,12 +5,5 @@ license "proprietary"
 targetType "executable"
 targetName "tgng"
 
-subPackage {
-	name "client-api"
-	path "client-api"
-}
-
-subPackage {
-	name "tlgen"
-	path "tlgen"
-}
+subPackage "client-api"
+subPackage "tlgen"
