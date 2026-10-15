@@ -1,0 +1,12 @@
+name "tgng"
+description "Telegram API for clients and bots"
+authors "Denis Feklushkin"
+license "proprietary"
+targetType "executable"
+targetName "tgng"
+	subPackage {
+		name "tgcapi"
+		description "Generated D bindings for the Telegram API client"
+		targetType "library"
+		sourcePaths "subprojects/tgcapi/source"
+	}

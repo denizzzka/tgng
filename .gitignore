@@ -1,0 +1,17 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/tgng
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+*.dll
+tgng-test-*
+*.exe
+*.pdb
+*.o
+*.obj
+*.lst
