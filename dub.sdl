@@ -5,6 +5,7 @@ license "proprietary"
 targetType "executable"
 targetName "tgng"
 dependency "tgng:client-api" version="*"
+dependency "vibe-stream:socks" path="/home/denizzz/Dev/vibe-stream-socks"
 
 subPackage "client-api"
 subPackage "tlgen"
