@@ -3,10 +3,10 @@
  */
 module tlgen.model;
 
-import std.algorithm : canFind, endsWith, filter, map, startsWith;
-import std.array : array, split;
-import std.conv : to;
-import std.string : indexOf, strip, stripRight;
+import std.algorithm: canFind, endsWith, filter, map, startsWith;
+import std.array: array, split;
+import std.conv: to;
+import std.string: indexOf, strip, stripRight;
 
 /// One argument of a combinator, e.g. `peer:InputPeer` or `flags.0?peer`.
 struct TlArg

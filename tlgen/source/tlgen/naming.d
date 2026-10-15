@@ -7,7 +7,7 @@
  */
 module tlgen.naming;
 
-import std.string : replace;
+import std.string: replace;
 
 /// Reserved D words that would otherwise collide with generated members.
 private immutable string[] keywords = [

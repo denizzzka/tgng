@@ -7,13 +7,13 @@
  */
 module tlgen.emitter;
 
-import std.algorithm : canFind, filter, map, sort, uniq;
-import std.array : appender, array, join;
-import std.conv : to;
-import std.string : format, indexOf, replace, startsWith;
+import std.algorithm: canFind, filter, map, sort, uniq;
+import std.array: appender, array, join;
+import std.conv: to;
+import std.string: format, indexOf, replace, startsWith;
 
-import tlgen.model : TlArg, TlCombinator, TlScheme;
-import tlgen.naming : dIdent;
+import tlgen.model: TlArg, TlCombinator, TlScheme;
+import tlgen.naming: dIdent;
 
 /// Everything that the emitter needs from the outside.
 struct EmitOptions

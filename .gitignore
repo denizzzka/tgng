@@ -19,3 +19,4 @@ docs/
 dub.selections.json
 /libtgng.a
 *.a
+/mtproto/tests/transport_tests

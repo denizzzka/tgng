@@ -10,14 +10,14 @@
  */
 module app;
 
-import std.file : exists, mkdirRecurse, readText, write;
-import std.path : buildPath, dirName;
-import std.stdio : stderr, writeln;
-import std.string : join, split;
+import std.file: exists, mkdirRecurse, readText, write;
+import std.path: buildPath, dirName;
+import std.stdio: stderr, writeln;
+import std.string: join, split;
 
-import tlgen.crc : crc32;
-import tlgen.emitter : EmittedFile, EmitOptions, emit;
-import tlgen.model : TlScheme, parseScheme;
+import tlgen.crc: crc32;
+import tlgen.emitter: EmittedFile, EmitOptions, emit;
+import tlgen.model: TlScheme, parseScheme;
 
 /// Default paths, relative to the repository root.
 private enum defaultSchemeDir = "client-api/scheme";

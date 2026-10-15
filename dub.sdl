@@ -7,3 +7,4 @@ dependency "tgng:client-api" version="*"
 
 subPackage "client-api"
 subPackage "tlgen"
+subPackage "mtproto"

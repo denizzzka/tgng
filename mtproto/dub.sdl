@@ -1,0 +1,8 @@
+name "mtproto"
+description "MTProto transport for the Telegram client API"
+authors "Denis Feklushkin"
+license "proprietary"
+targetType "library"
+dependency "vibe-core" version=">=2.8.1 <3.0.0-0"
+dependency "vibe-stream" path="/home/denizzz/Dev/vibe-stream"
+dependency "socks" path="/home/denizzz/Dev/vibe-stream-socks/socks"
