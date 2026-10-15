@@ -9,7 +9,8 @@ import deimos.openssl.aes: AES_DECRYPT, AES_ENCRYPT, AES_KEY, AES_ige_encrypt,
 	AES_set_decrypt_key, AES_set_encrypt_key;
 import deimos.openssl.bn: BIGNUM, BN_CTX, BN_CTX_free, BN_CTX_new, BN_bin2bn,
 	BN_bn2bin, BN_free, BN_mod_exp, BN_new, BN_num_bytes;
-import deimos.openssl.evp: EVP_sha256;
+import deimos.openssl.evp: EVP_CIPHER_CTX, EVP_CIPHER_CTX_free, EVP_CIPHER_CTX_new,
+	EVP_EncryptInit_ex, EVP_EncryptUpdate, EVP_aes_256_ctr, EVP_sha256;
 import deimos.openssl.hmac: HMAC_CTX_free, HMAC_CTX_new, HMAC_Final,
 	HMAC_Init_ex, HMAC_Update;
 import deimos.openssl.rand: RAND_bytes;
@@ -89,6 +90,45 @@ ubyte[32] hmacSha256(const(ubyte)[] key, const(ubyte)[] data) @trusted
 	check(HMAC_Final(ctx, &mac[0], &len), "HMAC_Final");
 	enforce(len == 32, new CryptoException("HMAC_Final returned unexpected length"));
 	return mac;
+}
+
+/// Stateful AES-256-CTR keystream that can be consumed across many buffers.
+///
+/// `obfuscated2` needs exactly this: one continuous CTR stream split over the
+/// 64-byte header, the inner transport bytes and everything after them.
+struct AesCtr
+{
+	private EVP_CIPHER_CTX* _ctx;
+
+	/// Initialises the stream; `key` must be 32 bytes and `iv` 16 bytes.
+	void init(const(ubyte)[] key, const(ubyte)[] iv) @trusted
+	{
+		enforce(key.length == 32 && iv.length == 16, new CryptoException("AES-CTR key/iv length mismatch"));
+		_ctx = EVP_CIPHER_CTX_new();
+		enforce(_ctx !is null, new CryptoException("EVP_CIPHER_CTX_new failed"));
+		check(EVP_EncryptInit_ex(_ctx, EVP_aes_256_ctr(), null, &key[0], &iv[0]), "EVP_EncryptInit_ex");
+	}
+
+	/// Applies the keystream to `data` in place.
+	void apply(ubyte[] data) @trusted
+	{
+		if (data.length == 0 || _ctx is null)
+			return;
+
+		int outLen = 0;
+		check(EVP_EncryptUpdate(_ctx, &data[0], &outLen, &data[0], cast(int) data.length), "EVP_EncryptUpdate");
+		enforce(outLen == data.length, new CryptoException("AES-CTR length mismatch"));
+	}
+
+	/// Releases the OpenSSL context.
+	void destroy() @trusted
+	{
+		if (_ctx !is null)
+		{
+			EVP_CIPHER_CTX_free(_ctx);
+			_ctx = null;
+		}
+	}
 }
 
 /// Fills `buf` with cryptographically secure random bytes.
