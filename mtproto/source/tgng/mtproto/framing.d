@@ -188,3 +188,186 @@ FramedStream frameIntermediate(ConnectionStream inner)
 {
 	return new FramedStream(inner, FramingKind.intermediate);
 }
+
+@safe unittest // abridged round-trip, short and escaped lengths
+{
+	foreach (payload; [new ubyte[4], new ubyte[252], new ubyte[256], new ubyte[1020]]) {
+		auto sink = new BufferStream();
+		frameAbridged(sink).write(payload, IOMode.all);
+
+		auto wire = sink.output;
+		if (payload.length / 4 < 0x7f)
+			enforce(wire.length == payload.length + 1, "abridged short prefix is one byte");
+		else
+			enforce(wire.length == payload.length + 4, "abridged escaped prefix is four bytes");
+
+		auto source = new BufferStream(sink.output);
+		ubyte[] got = new ubyte[payload.length];
+		enforce(frameAbridged(source).read(got, IOMode.all) == payload.length, "abridged read length");
+		enforce(got == payload, "abridged payload round-trip");
+	}
+}
+
+@safe unittest // abridged escape encodes the word count little-endian
+{
+	auto sink = new BufferStream();
+	frameAbridged(sink).write(new ubyte[0x7f * 4], IOMode.all);
+
+	enforce(sink.output[0] == 0x7f, "escape marker");
+	enforce(sink.output[1] == 0x7f && sink.output[2] == 0 && sink.output[3] == 0,
+		"escaped length is little-endian word count");
+}
+
+@safe unittest // intermediate round-trip
+{
+	foreach (payload; [new ubyte[4], new ubyte[16], new ubyte[1024]]) {
+		auto sink = new BufferStream();
+		frameIntermediate(sink).write(payload, IOMode.all);
+
+		auto wire = sink.output;
+		enforce(wire.length == payload.length + 4, "intermediate prefix is four bytes");
+		auto declared = littleEndianToNative!uint(wire[0 .. 4]);
+		enforce(declared == payload.length + 4, "intermediate length includes the prefix");
+
+		auto source = new BufferStream(wire);
+		ubyte[] got = new ubyte[payload.length];
+		enforce(frameIntermediate(source).read(got, IOMode.all) == payload.length, "intermediate read length");
+		enforce(got == payload, "intermediate payload round-trip");
+	}
+}
+
+@safe unittest // a frame split across inner reads is reassembled
+{
+	auto sink = new BufferStream();
+	auto payload = new ubyte[64];
+	foreach (i; 0 .. payload.length) payload[i] = cast(ubyte) i;
+	frameIntermediate(sink).write(payload, IOMode.all);
+
+	// Drip the bytes one at a time, so no inner read ever sees a whole frame.
+	auto source = new BufferStream(sink.output, 1);
+	auto framed = frameIntermediate(source);
+	ubyte[] got = new ubyte[payload.length];
+	enforce(framed.read(got, IOMode.all) == payload.length, "split frame read length");
+	enforce(got == payload, "split frame payload");
+}
+
+@safe unittest // one read call returns at most one frame
+{
+	auto sink = new BufferStream();
+	frameIntermediate(sink).write(new ubyte[8], IOMode.all);
+	frameIntermediate(sink).write(new ubyte[12], IOMode.all);
+
+	auto source = new BufferStream(sink.output);
+	auto framed = frameIntermediate(source);
+	ubyte[] got = new ubyte[64];
+	auto n = framed.read(got, IOMode.once);
+	enforce(n == 8, "IOMode.once stops at the frame boundary");
+	enforce(framed.leastSize == 12, "the second frame is buffered");
+}
+
+@safe unittest // empty and leastSize agree with the buffered frame
+{
+	auto sink = new BufferStream();
+	frameAbridged(sink).write(new ubyte[16], IOMode.all);
+
+	auto source = new BufferStream(sink.output);
+	auto framed = frameAbridged(source);
+	enforce(!framed.empty, "a buffered frame is not empty");
+	enforce(framed.leastSize == 16, "leastSize reports the payload");
+	enforce(framed.peek.length == 16, "peek exposes the payload without consuming it");
+}
+
+@safe unittest // a closed inner stream yields empty
+{
+	auto source = new BufferStream();
+	enforce(frameAbridged(source).empty, "no frame means empty");
+}
+
+@safe unittest // abridged rejects a payload that is not a multiple of four
+{
+	auto sink = new BufferStream();
+	bool thrown;
+	try
+		frameAbridged(sink).write(new ubyte[6], IOMode.all);
+	catch (Exception)
+		thrown = true;
+	enforce(thrown, "abridged must reject a non-word-aligned payload");
+}
+
+@safe unittest // intermediate rejects a length below the prefix overhead
+{
+	auto source = new BufferStream([cast(ubyte) 0x02, 0, 0, 0]);
+	bool thrown;
+	try
+		frameIntermediate(source).leastSize;
+	catch (Exception)
+		thrown = true;
+	enforce(thrown, "intermediate must reject a length below the prefix");
+}
+
+/// In-memory `ConnectionStream` used by the framing tests.
+/// Reads from `input`, writes are appended to `output`; `chunk` limits
+/// how many bytes a single read may return, emulating a split packet.
+private final class BufferStream: ConnectionStream
+{
+	private ubyte[] _input;
+	private size_t _offset;
+	private ubyte[] _output;
+	private size_t _chunk;
+
+	this(ubyte[] input = null, size_t chunk = size_t.max)
+	{
+		_input = input;
+		_chunk = chunk;
+	}
+
+	@property ubyte[] output() { return _output; }
+
+	@property bool connected() const { return true; }
+
+	void close() @blocking {}
+
+	bool waitForData(Duration timeout = Duration.max) @blocking
+	{
+		return _offset < _input.length;
+	}
+
+	@property bool empty() @blocking { return _offset >= _input.length; }
+
+	@property ulong leastSize() @blocking { return _input.length - _offset; }
+
+	@property bool dataAvailableForRead() { return _offset < _input.length; }
+
+	const(ubyte)[] peek() { return _input[_offset .. $]; }
+
+	size_t read(scope ubyte[] dst, IOMode mode) @blocking
+	{
+		// Mimics a real blocking stream: `IOMode.all` keeps pulling past
+		// `chunk` until `dst` is full, so callers never see a short read.
+		size_t total;
+		while (total < dst.length) {
+			auto avail = _input.length - _offset;
+			if (avail == 0) break;
+			auto n = dst.length - total;
+			if (n > avail) n = avail;
+			if (n > _chunk) n = _chunk;
+			dst[total .. total + n] = _input[_offset .. _offset + n];
+			_offset += n;
+			total += n;
+			if (mode == IOMode.once) break;
+		}
+		if (mode == IOMode.all)
+			enforce(total == dst.length, "BufferStream is out of data.");
+		return total;
+	}
+
+	size_t write(scope const(ubyte)[] bytes, IOMode mode) @blocking
+	{
+		enforce(mode == IOMode.all, "BufferStream supports only IOMode.all for writes.");
+		_output ~= bytes;
+		return bytes.length;
+	}
+
+	void flush() @blocking {}
+	void finalize() @blocking {}
+}
