@@ -2,8 +2,12 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.functions.photos_functions;
 
+import tg_client_api.functions.tl_function;
+import tg_client_api.types.common_types;
+import tg_client_api.types.vector;
+
 /// TL function `photos.updateProfilePhoto`, id 0x09E82039.
-final class photos_updateProfilePhoto
+final class photos_updateProfilePhoto : TlFunction
 {
     enum uint tlId = 0x09E82039;
 
@@ -16,7 +20,7 @@ final class photos_updateProfilePhoto
 }
 
 /// TL function `photos.uploadProfilePhoto`, id 0x0388A3B5.
-final class photos_uploadProfilePhoto
+final class photos_uploadProfilePhoto : TlFunction
 {
     enum uint tlId = 0x0388A3B5;
 
@@ -32,7 +36,7 @@ final class photos_uploadProfilePhoto
 }
 
 /// TL function `photos.deletePhotos`, id 0x87CF7F2F.
-final class photos_deletePhotos
+final class photos_deletePhotos : TlFunction
 {
     enum uint tlId = 0x87CF7F2F;
 
@@ -42,7 +46,7 @@ final class photos_deletePhotos
 }
 
 /// TL function `photos.getUserPhotos`, id 0x91CD32A8.
-final class photos_getUserPhotos
+final class photos_getUserPhotos : TlFunction
 {
     enum uint tlId = 0x91CD32A8;
 
@@ -55,7 +59,7 @@ final class photos_getUserPhotos
 }
 
 /// TL function `photos.uploadContactProfilePhoto`, id 0xE14C4A71.
-final class photos_uploadContactProfilePhoto
+final class photos_uploadContactProfilePhoto : TlFunction
 {
     enum uint tlId = 0xE14C4A71;
 

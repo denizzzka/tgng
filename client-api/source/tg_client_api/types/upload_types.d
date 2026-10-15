@@ -2,6 +2,10 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.types.upload_types;
 
+import tg_client_api.types.common_types;
+import tg_client_api.types.storage_types;
+import tg_client_api.types.vector;
+
 /// TL sum type `upload.File`.
 abstract class upload_File
 {

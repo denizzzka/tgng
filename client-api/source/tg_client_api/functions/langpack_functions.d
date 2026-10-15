@@ -2,8 +2,11 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.functions.langpack_functions;
 
+import tg_client_api.functions.tl_function;
+import tg_client_api.types.vector;
+
 /// TL function `langpack.getLangPack`, id 0xF2F2330A.
-final class langpack_getLangPack
+final class langpack_getLangPack : TlFunction
 {
     enum uint tlId = 0xF2F2330A;
 
@@ -14,7 +17,7 @@ final class langpack_getLangPack
 }
 
 /// TL function `langpack.getStrings`, id 0xEFEA3803.
-final class langpack_getStrings
+final class langpack_getStrings : TlFunction
 {
     enum uint tlId = 0xEFEA3803;
 
@@ -26,7 +29,7 @@ final class langpack_getStrings
 }
 
 /// TL function `langpack.getDifference`, id 0xCD984AA5.
-final class langpack_getDifference
+final class langpack_getDifference : TlFunction
 {
     enum uint tlId = 0xCD984AA5;
 
@@ -38,7 +41,7 @@ final class langpack_getDifference
 }
 
 /// TL function `langpack.getLanguages`, id 0x42C6978F.
-final class langpack_getLanguages
+final class langpack_getLanguages : TlFunction
 {
     enum uint tlId = 0x42C6978F;
 
@@ -48,7 +51,7 @@ final class langpack_getLanguages
 }
 
 /// TL function `langpack.getLanguage`, id 0x6A596502.
-final class langpack_getLanguage
+final class langpack_getLanguage : TlFunction
 {
     enum uint tlId = 0x6A596502;
 

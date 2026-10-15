@@ -2,6 +2,9 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.types.contacts_types;
 
+import tg_client_api.types.common_types;
+import tg_client_api.types.vector;
+
 /// TL sum type `contacts.Contacts`.
 abstract class contacts_Contacts
 {

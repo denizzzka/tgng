@@ -2,6 +2,8 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.types.toncenter_types;
 
+import tg_client_api.types.common_types;
+
 /// TL sum type `toncenter.ApiResponse`.
 abstract class toncenter_ApiResponse
 {

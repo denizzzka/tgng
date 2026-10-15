@@ -2,8 +2,10 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.functions.toncenter_functions;
 
+import tg_client_api.functions.tl_function;
+
 /// TL function `toncenter.performApiRequest`, id 0x8D7BDD61.
-final class toncenter_performApiRequest
+final class toncenter_performApiRequest : TlFunction
 {
     enum uint tlId = 0x8D7BDD61;
 
@@ -17,7 +19,7 @@ final class toncenter_performApiRequest
 }
 
 /// TL function `toncenter.getStreamingUrl`, id 0xCDAF63C7.
-final class toncenter_getStreamingUrl
+final class toncenter_getStreamingUrl : TlFunction
 {
     enum uint tlId = 0xCDAF63C7;
 

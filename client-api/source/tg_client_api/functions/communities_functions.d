@@ -2,8 +2,11 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.functions.communities_functions;
 
+import tg_client_api.functions.tl_function;
+import tg_client_api.types.common_types;
+
 /// TL function `communities.create`, id 0xA63859EC.
-final class communities_create
+final class communities_create : TlFunction
 {
     enum uint tlId = 0xA63859EC;
 
@@ -17,7 +20,7 @@ final class communities_create
 }
 
 /// TL function `communities.togglePeerLink`, id 0x736DCFEA.
-final class communities_togglePeerLink
+final class communities_togglePeerLink : TlFunction
 {
     enum uint tlId = 0x736DCFEA;
 
@@ -32,7 +35,7 @@ final class communities_togglePeerLink
 }
 
 /// TL function `communities.getJoinedCommunities`, id 0xA663E830.
-final class communities_getJoinedCommunities
+final class communities_getJoinedCommunities : TlFunction
 {
     enum uint tlId = 0xA663E830;
 
@@ -40,7 +43,7 @@ final class communities_getJoinedCommunities
 }
 
 /// TL function `communities.toggleCommunityCollapsedInDialogs`, id 0xD766E3EA.
-final class communities_toggleCommunityCollapsedInDialogs
+final class communities_toggleCommunityCollapsedInDialogs : TlFunction
 {
     enum uint tlId = 0xD766E3EA;
 
@@ -52,7 +55,7 @@ final class communities_toggleCommunityCollapsedInDialogs
 }
 
 /// TL function `communities.getPeerLinkRequests`, id 0x93773344.
-final class communities_getPeerLinkRequests
+final class communities_getPeerLinkRequests : TlFunction
 {
     enum uint tlId = 0x93773344;
 
@@ -64,7 +67,7 @@ final class communities_getPeerLinkRequests
 }
 
 /// TL function `communities.togglePeerLinkRequestApproval`, id 0x8C8219A8.
-final class communities_togglePeerLinkRequestApproval
+final class communities_togglePeerLinkRequestApproval : TlFunction
 {
     enum uint tlId = 0x8C8219A8;
 
@@ -77,7 +80,7 @@ final class communities_togglePeerLinkRequestApproval
 }
 
 /// TL function `communities.toggleAllPeerLinkRequestApproval`, id 0xBFE3DD3D.
-final class communities_toggleAllPeerLinkRequestApproval
+final class communities_toggleAllPeerLinkRequestApproval : TlFunction
 {
     enum uint tlId = 0xBFE3DD3D;
 
@@ -89,7 +92,7 @@ final class communities_toggleAllPeerLinkRequestApproval
 }
 
 /// TL function `communities.toggleParticipantBanned`, id 0x9967AD0F.
-final class communities_toggleParticipantBanned
+final class communities_toggleParticipantBanned : TlFunction
 {
     enum uint tlId = 0x9967AD0F;
 
@@ -102,7 +105,7 @@ final class communities_toggleParticipantBanned
 }
 
 /// TL function `communities.getParticipantJoinedChats`, id 0xF87EABAB.
-final class communities_getParticipantJoinedChats
+final class communities_getParticipantJoinedChats : TlFunction
 {
     enum uint tlId = 0xF87EABAB;
 

@@ -2,6 +2,10 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.types.messages_types;
 
+import tg_client_api.types.common_types;
+import tg_client_api.types.updates_types;
+import tg_client_api.types.vector;
+
 /// TL sum type `messages.Dialogs`.
 abstract class messages_Dialogs
 {

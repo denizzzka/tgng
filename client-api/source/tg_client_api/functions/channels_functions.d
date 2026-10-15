@@ -2,8 +2,12 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.functions.channels_functions;
 
+import tg_client_api.functions.tl_function;
+import tg_client_api.types.common_types;
+import tg_client_api.types.vector;
+
 /// TL function `channels.readHistory`, id 0xCC104937.
-final class channels_readHistory
+final class channels_readHistory : TlFunction
 {
     enum uint tlId = 0xCC104937;
 
@@ -14,7 +18,7 @@ final class channels_readHistory
 }
 
 /// TL function `channels.deleteMessages`, id 0x84C1FD4E.
-final class channels_deleteMessages
+final class channels_deleteMessages : TlFunction
 {
     enum uint tlId = 0x84C1FD4E;
 
@@ -25,7 +29,7 @@ final class channels_deleteMessages
 }
 
 /// TL function `channels.reportSpam`, id 0xF44A8315.
-final class channels_reportSpam
+final class channels_reportSpam : TlFunction
 {
     enum uint tlId = 0xF44A8315;
 
@@ -37,7 +41,7 @@ final class channels_reportSpam
 }
 
 /// TL function `channels.getMessages`, id 0xAD8C9A23.
-final class channels_getMessages
+final class channels_getMessages : TlFunction
 {
     enum uint tlId = 0xAD8C9A23;
 
@@ -48,7 +52,7 @@ final class channels_getMessages
 }
 
 /// TL function `channels.getParticipants`, id 0x77CED9D0.
-final class channels_getParticipants
+final class channels_getParticipants : TlFunction
 {
     enum uint tlId = 0x77CED9D0;
 
@@ -62,7 +66,7 @@ final class channels_getParticipants
 }
 
 /// TL function `channels.getParticipant`, id 0xA0AB6CC6.
-final class channels_getParticipant
+final class channels_getParticipant : TlFunction
 {
     enum uint tlId = 0xA0AB6CC6;
 
@@ -73,7 +77,7 @@ final class channels_getParticipant
 }
 
 /// TL function `channels.getChannels`, id 0x0A7F6BBB.
-final class channels_getChannels
+final class channels_getChannels : TlFunction
 {
     enum uint tlId = 0x0A7F6BBB;
 
@@ -83,7 +87,7 @@ final class channels_getChannels
 }
 
 /// TL function `channels.getFullChannel`, id 0x08736A09.
-final class channels_getFullChannel
+final class channels_getFullChannel : TlFunction
 {
     enum uint tlId = 0x08736A09;
 
@@ -93,7 +97,7 @@ final class channels_getFullChannel
 }
 
 /// TL function `channels.createChannel`, id 0x91006707.
-final class channels_createChannel
+final class channels_createChannel : TlFunction
 {
     enum uint tlId = 0x91006707;
 
@@ -112,7 +116,7 @@ final class channels_createChannel
 }
 
 /// TL function `channels.editAdmin`, id 0x9A98AD68.
-final class channels_editAdmin
+final class channels_editAdmin : TlFunction
 {
     enum uint tlId = 0x9A98AD68;
 
@@ -126,7 +130,7 @@ final class channels_editAdmin
 }
 
 /// TL function `channels.editTitle`, id 0x566DECD0.
-final class channels_editTitle
+final class channels_editTitle : TlFunction
 {
     enum uint tlId = 0x566DECD0;
 
@@ -137,7 +141,7 @@ final class channels_editTitle
 }
 
 /// TL function `channels.editPhoto`, id 0xF12E57C9.
-final class channels_editPhoto
+final class channels_editPhoto : TlFunction
 {
     enum uint tlId = 0xF12E57C9;
 
@@ -148,7 +152,7 @@ final class channels_editPhoto
 }
 
 /// TL function `channels.checkUsername`, id 0x10E6BD2C.
-final class channels_checkUsername
+final class channels_checkUsername : TlFunction
 {
     enum uint tlId = 0x10E6BD2C;
 
@@ -159,7 +163,7 @@ final class channels_checkUsername
 }
 
 /// TL function `channels.updateUsername`, id 0x3514B3DE.
-final class channels_updateUsername
+final class channels_updateUsername : TlFunction
 {
     enum uint tlId = 0x3514B3DE;
 
@@ -170,7 +174,7 @@ final class channels_updateUsername
 }
 
 /// TL function `channels.joinChannel`, id 0x7F6A1E22.
-final class channels_joinChannel
+final class channels_joinChannel : TlFunction
 {
     enum uint tlId = 0x7F6A1E22;
 
@@ -180,7 +184,7 @@ final class channels_joinChannel
 }
 
 /// TL function `channels.leaveChannel`, id 0xF836AA95.
-final class channels_leaveChannel
+final class channels_leaveChannel : TlFunction
 {
     enum uint tlId = 0xF836AA95;
 
@@ -190,7 +194,7 @@ final class channels_leaveChannel
 }
 
 /// TL function `channels.inviteToChannel`, id 0xC9E33D54.
-final class channels_inviteToChannel
+final class channels_inviteToChannel : TlFunction
 {
     enum uint tlId = 0xC9E33D54;
 
@@ -201,7 +205,7 @@ final class channels_inviteToChannel
 }
 
 /// TL function `channels.deleteChannel`, id 0xC0111FE3.
-final class channels_deleteChannel
+final class channels_deleteChannel : TlFunction
 {
     enum uint tlId = 0xC0111FE3;
 
@@ -211,7 +215,7 @@ final class channels_deleteChannel
 }
 
 /// TL function `channels.exportMessageLink`, id 0xE63FADEB.
-final class channels_exportMessageLink
+final class channels_exportMessageLink : TlFunction
 {
     enum uint tlId = 0xE63FADEB;
 
@@ -225,7 +229,7 @@ final class channels_exportMessageLink
 }
 
 /// TL function `channels.toggleSignatures`, id 0x418D549C.
-final class channels_toggleSignatures
+final class channels_toggleSignatures : TlFunction
 {
     enum uint tlId = 0x418D549C;
 
@@ -238,7 +242,7 @@ final class channels_toggleSignatures
 }
 
 /// TL function `channels.getAdminedPublicChannels`, id 0xF8B036AF.
-final class channels_getAdminedPublicChannels
+final class channels_getAdminedPublicChannels : TlFunction
 {
     enum uint tlId = 0xF8B036AF;
 
@@ -252,7 +256,7 @@ final class channels_getAdminedPublicChannels
 }
 
 /// TL function `channels.editBanned`, id 0x96E6CD81.
-final class channels_editBanned
+final class channels_editBanned : TlFunction
 {
     enum uint tlId = 0x96E6CD81;
 
@@ -264,7 +268,7 @@ final class channels_editBanned
 }
 
 /// TL function `channels.getAdminLog`, id 0x33DDF480.
-final class channels_getAdminLog
+final class channels_getAdminLog : TlFunction
 {
     enum uint tlId = 0x33DDF480;
 
@@ -281,7 +285,7 @@ final class channels_getAdminLog
 }
 
 /// TL function `channels.setStickers`, id 0xEA8CA4F9.
-final class channels_setStickers
+final class channels_setStickers : TlFunction
 {
     enum uint tlId = 0xEA8CA4F9;
 
@@ -292,7 +296,7 @@ final class channels_setStickers
 }
 
 /// TL function `channels.readMessageContents`, id 0xEAB5DC38.
-final class channels_readMessageContents
+final class channels_readMessageContents : TlFunction
 {
     enum uint tlId = 0xEAB5DC38;
 
@@ -303,7 +307,7 @@ final class channels_readMessageContents
 }
 
 /// TL function `channels.deleteHistory`, id 0x9BAA9647.
-final class channels_deleteHistory
+final class channels_deleteHistory : TlFunction
 {
     enum uint tlId = 0x9BAA9647;
 
@@ -316,7 +320,7 @@ final class channels_deleteHistory
 }
 
 /// TL function `channels.togglePreHistoryHidden`, id 0xEABBB94C.
-final class channels_togglePreHistoryHidden
+final class channels_togglePreHistoryHidden : TlFunction
 {
     enum uint tlId = 0xEABBB94C;
 
@@ -327,7 +331,7 @@ final class channels_togglePreHistoryHidden
 }
 
 /// TL function `channels.getLeftChannels`, id 0x8341ECC0.
-final class channels_getLeftChannels
+final class channels_getLeftChannels : TlFunction
 {
     enum uint tlId = 0x8341ECC0;
 
@@ -337,7 +341,7 @@ final class channels_getLeftChannels
 }
 
 /// TL function `channels.getGroupsForDiscussion`, id 0xF5DAD378.
-final class channels_getGroupsForDiscussion
+final class channels_getGroupsForDiscussion : TlFunction
 {
     enum uint tlId = 0xF5DAD378;
 
@@ -345,7 +349,7 @@ final class channels_getGroupsForDiscussion
 }
 
 /// TL function `channels.setDiscussionGroup`, id 0x40582BB2.
-final class channels_setDiscussionGroup
+final class channels_setDiscussionGroup : TlFunction
 {
     enum uint tlId = 0x40582BB2;
 
@@ -356,7 +360,7 @@ final class channels_setDiscussionGroup
 }
 
 /// TL function `channels.editLocation`, id 0x58E63F6D.
-final class channels_editLocation
+final class channels_editLocation : TlFunction
 {
     enum uint tlId = 0x58E63F6D;
 
@@ -368,7 +372,7 @@ final class channels_editLocation
 }
 
 /// TL function `channels.toggleSlowMode`, id 0xEDD49EF0.
-final class channels_toggleSlowMode
+final class channels_toggleSlowMode : TlFunction
 {
     enum uint tlId = 0xEDD49EF0;
 
@@ -379,7 +383,7 @@ final class channels_toggleSlowMode
 }
 
 /// TL function `channels.getInactiveChannels`, id 0x11E831EE.
-final class channels_getInactiveChannels
+final class channels_getInactiveChannels : TlFunction
 {
     enum uint tlId = 0x11E831EE;
 
@@ -387,7 +391,7 @@ final class channels_getInactiveChannels
 }
 
 /// TL function `channels.convertToGigagroup`, id 0x0B290C69.
-final class channels_convertToGigagroup
+final class channels_convertToGigagroup : TlFunction
 {
     enum uint tlId = 0x0B290C69;
 
@@ -397,7 +401,7 @@ final class channels_convertToGigagroup
 }
 
 /// TL function `channels.getSendAs`, id 0xE785A43F.
-final class channels_getSendAs
+final class channels_getSendAs : TlFunction
 {
     enum uint tlId = 0xE785A43F;
 
@@ -410,7 +414,7 @@ final class channels_getSendAs
 }
 
 /// TL function `channels.deleteParticipantHistory`, id 0x367544DB.
-final class channels_deleteParticipantHistory
+final class channels_deleteParticipantHistory : TlFunction
 {
     enum uint tlId = 0x367544DB;
 
@@ -421,7 +425,7 @@ final class channels_deleteParticipantHistory
 }
 
 /// TL function `channels.toggleJoinToSend`, id 0xE4CB9580.
-final class channels_toggleJoinToSend
+final class channels_toggleJoinToSend : TlFunction
 {
     enum uint tlId = 0xE4CB9580;
 
@@ -432,7 +436,7 @@ final class channels_toggleJoinToSend
 }
 
 /// TL function `channels.toggleJoinRequest`, id 0x0ECC2618.
-final class channels_toggleJoinRequest
+final class channels_toggleJoinRequest : TlFunction
 {
     enum uint tlId = 0x0ECC2618;
 
@@ -446,7 +450,7 @@ final class channels_toggleJoinRequest
 }
 
 /// TL function `channels.reorderUsernames`, id 0xB45CED1D.
-final class channels_reorderUsernames
+final class channels_reorderUsernames : TlFunction
 {
     enum uint tlId = 0xB45CED1D;
 
@@ -457,7 +461,7 @@ final class channels_reorderUsernames
 }
 
 /// TL function `channels.toggleUsername`, id 0x50F24105.
-final class channels_toggleUsername
+final class channels_toggleUsername : TlFunction
 {
     enum uint tlId = 0x50F24105;
 
@@ -469,7 +473,7 @@ final class channels_toggleUsername
 }
 
 /// TL function `channels.deactivateAllUsernames`, id 0x0A245DD3.
-final class channels_deactivateAllUsernames
+final class channels_deactivateAllUsernames : TlFunction
 {
     enum uint tlId = 0x0A245DD3;
 
@@ -479,7 +483,7 @@ final class channels_deactivateAllUsernames
 }
 
 /// TL function `channels.toggleForum`, id 0x3FF75734.
-final class channels_toggleForum
+final class channels_toggleForum : TlFunction
 {
     enum uint tlId = 0x3FF75734;
 
@@ -491,7 +495,7 @@ final class channels_toggleForum
 }
 
 /// TL function `channels.toggleAntiSpam`, id 0x68F3E4EB.
-final class channels_toggleAntiSpam
+final class channels_toggleAntiSpam : TlFunction
 {
     enum uint tlId = 0x68F3E4EB;
 
@@ -502,7 +506,7 @@ final class channels_toggleAntiSpam
 }
 
 /// TL function `channels.reportAntiSpamFalsePositive`, id 0xA850A693.
-final class channels_reportAntiSpamFalsePositive
+final class channels_reportAntiSpamFalsePositive : TlFunction
 {
     enum uint tlId = 0xA850A693;
 
@@ -513,7 +517,7 @@ final class channels_reportAntiSpamFalsePositive
 }
 
 /// TL function `channels.toggleParticipantsHidden`, id 0x6A6E7854.
-final class channels_toggleParticipantsHidden
+final class channels_toggleParticipantsHidden : TlFunction
 {
     enum uint tlId = 0x6A6E7854;
 
@@ -524,7 +528,7 @@ final class channels_toggleParticipantsHidden
 }
 
 /// TL function `channels.updateColor`, id 0xD8AA3671.
-final class channels_updateColor
+final class channels_updateColor : TlFunction
 {
     enum uint tlId = 0xD8AA3671;
 
@@ -538,7 +542,7 @@ final class channels_updateColor
 }
 
 /// TL function `channels.toggleViewForumAsMessages`, id 0x9738BB15.
-final class channels_toggleViewForumAsMessages
+final class channels_toggleViewForumAsMessages : TlFunction
 {
     enum uint tlId = 0x9738BB15;
 
@@ -549,7 +553,7 @@ final class channels_toggleViewForumAsMessages
 }
 
 /// TL function `channels.getChannelRecommendations`, id 0x25A71742.
-final class channels_getChannelRecommendations
+final class channels_getChannelRecommendations : TlFunction
 {
     enum uint tlId = 0x25A71742;
 
@@ -560,7 +564,7 @@ final class channels_getChannelRecommendations
 }
 
 /// TL function `channels.updateEmojiStatus`, id 0xF0D3E6A8.
-final class channels_updateEmojiStatus
+final class channels_updateEmojiStatus : TlFunction
 {
     enum uint tlId = 0xF0D3E6A8;
 
@@ -571,7 +575,7 @@ final class channels_updateEmojiStatus
 }
 
 /// TL function `channels.setBoostsToUnblockRestrictions`, id 0xAD399CEE.
-final class channels_setBoostsToUnblockRestrictions
+final class channels_setBoostsToUnblockRestrictions : TlFunction
 {
     enum uint tlId = 0xAD399CEE;
 
@@ -582,7 +586,7 @@ final class channels_setBoostsToUnblockRestrictions
 }
 
 /// TL function `channels.setEmojiStickers`, id 0x3CD930B7.
-final class channels_setEmojiStickers
+final class channels_setEmojiStickers : TlFunction
 {
     enum uint tlId = 0x3CD930B7;
 
@@ -593,7 +597,7 @@ final class channels_setEmojiStickers
 }
 
 /// TL function `channels.restrictSponsoredMessages`, id 0x9AE91519.
-final class channels_restrictSponsoredMessages
+final class channels_restrictSponsoredMessages : TlFunction
 {
     enum uint tlId = 0x9AE91519;
 
@@ -604,7 +608,7 @@ final class channels_restrictSponsoredMessages
 }
 
 /// TL function `channels.searchPosts`, id 0xF2C4F24D.
-final class channels_searchPosts
+final class channels_searchPosts : TlFunction
 {
     enum uint tlId = 0xF2C4F24D;
 
@@ -621,7 +625,7 @@ final class channels_searchPosts
 }
 
 /// TL function `channels.updatePaidMessagesPrice`, id 0x4B12327B.
-final class channels_updatePaidMessagesPrice
+final class channels_updatePaidMessagesPrice : TlFunction
 {
     enum uint tlId = 0x4B12327B;
 
@@ -634,7 +638,7 @@ final class channels_updatePaidMessagesPrice
 }
 
 /// TL function `channels.toggleAutotranslation`, id 0x167FC0A1.
-final class channels_toggleAutotranslation
+final class channels_toggleAutotranslation : TlFunction
 {
     enum uint tlId = 0x167FC0A1;
 
@@ -645,7 +649,7 @@ final class channels_toggleAutotranslation
 }
 
 /// TL function `channels.getMessageAuthor`, id 0xECE2A0E6.
-final class channels_getMessageAuthor
+final class channels_getMessageAuthor : TlFunction
 {
     enum uint tlId = 0xECE2A0E6;
 
@@ -656,7 +660,7 @@ final class channels_getMessageAuthor
 }
 
 /// TL function `channels.checkSearchPostsFlood`, id 0x22567115.
-final class channels_checkSearchPostsFlood
+final class channels_checkSearchPostsFlood : TlFunction
 {
     enum uint tlId = 0x22567115;
 
@@ -667,7 +671,7 @@ final class channels_checkSearchPostsFlood
 }
 
 /// TL function `channels.setMainProfileTab`, id 0x3583FCB1.
-final class channels_setMainProfileTab
+final class channels_setMainProfileTab : TlFunction
 {
     enum uint tlId = 0x3583FCB1;
 

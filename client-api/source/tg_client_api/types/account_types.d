@@ -2,6 +2,10 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.types.account_types;
 
+import tg_client_api.types.auth_types;
+import tg_client_api.types.common_types;
+import tg_client_api.types.vector;
+
 /// TL sum type `account.PrivacyRules`.
 abstract class account_PrivacyRules
 {

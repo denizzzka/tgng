@@ -2,8 +2,11 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.functions.aicompose_functions;
 
+import tg_client_api.functions.tl_function;
+import tg_client_api.types.common_types;
+
 /// TL function `aicompose.createTone`, id 0x4AA83913.
-final class aicompose_createTone
+final class aicompose_createTone : TlFunction
 {
     enum uint tlId = 0x4AA83913;
 
@@ -17,7 +20,7 @@ final class aicompose_createTone
 }
 
 /// TL function `aicompose.updateTone`, id 0x903BCF59.
-final class aicompose_updateTone
+final class aicompose_updateTone : TlFunction
 {
     enum uint tlId = 0x903BCF59;
 
@@ -32,7 +35,7 @@ final class aicompose_updateTone
 }
 
 /// TL function `aicompose.saveTone`, id 0x1782CBB1.
-final class aicompose_saveTone
+final class aicompose_saveTone : TlFunction
 {
     enum uint tlId = 0x1782CBB1;
 
@@ -43,7 +46,7 @@ final class aicompose_saveTone
 }
 
 /// TL function `aicompose.deleteTone`, id 0xDD39316A.
-final class aicompose_deleteTone
+final class aicompose_deleteTone : TlFunction
 {
     enum uint tlId = 0xDD39316A;
 
@@ -53,7 +56,7 @@ final class aicompose_deleteTone
 }
 
 /// TL function `aicompose.getTone`, id 0xB2E8BA03.
-final class aicompose_getTone
+final class aicompose_getTone : TlFunction
 {
     enum uint tlId = 0xB2E8BA03;
 
@@ -63,7 +66,7 @@ final class aicompose_getTone
 }
 
 /// TL function `aicompose.getTones`, id 0xABD59201.
-final class aicompose_getTones
+final class aicompose_getTones : TlFunction
 {
     enum uint tlId = 0xABD59201;
 
@@ -73,7 +76,7 @@ final class aicompose_getTones
 }
 
 /// TL function `aicompose.getToneExample`, id 0xD1B4AB14.
-final class aicompose_getToneExample
+final class aicompose_getToneExample : TlFunction
 {
     enum uint tlId = 0xD1B4AB14;
 

@@ -2,8 +2,13 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.functions.account_functions;
 
+import tg_client_api.functions.tl_function;
+import tg_client_api.types.account_types;
+import tg_client_api.types.common_types;
+import tg_client_api.types.vector;
+
 /// TL function `account.registerDevice`, id 0xEC86017A.
-final class account_registerDevice
+final class account_registerDevice : TlFunction
 {
     enum uint tlId = 0xEC86017A;
 
@@ -19,7 +24,7 @@ final class account_registerDevice
 }
 
 /// TL function `account.unregisterDevice`, id 0x6A0D3206.
-final class account_unregisterDevice
+final class account_unregisterDevice : TlFunction
 {
     enum uint tlId = 0x6A0D3206;
 
@@ -31,7 +36,7 @@ final class account_unregisterDevice
 }
 
 /// TL function `account.updateNotifySettings`, id 0x84BE5B93.
-final class account_updateNotifySettings
+final class account_updateNotifySettings : TlFunction
 {
     enum uint tlId = 0x84BE5B93;
 
@@ -42,7 +47,7 @@ final class account_updateNotifySettings
 }
 
 /// TL function `account.getNotifySettings`, id 0x12B3AD31.
-final class account_getNotifySettings
+final class account_getNotifySettings : TlFunction
 {
     enum uint tlId = 0x12B3AD31;
 
@@ -52,7 +57,7 @@ final class account_getNotifySettings
 }
 
 /// TL function `account.resetNotifySettings`, id 0xDB7E1747.
-final class account_resetNotifySettings
+final class account_resetNotifySettings : TlFunction
 {
     enum uint tlId = 0xDB7E1747;
 
@@ -60,7 +65,7 @@ final class account_resetNotifySettings
 }
 
 /// TL function `account.updateProfile`, id 0x78515775.
-final class account_updateProfile
+final class account_updateProfile : TlFunction
 {
     enum uint tlId = 0x78515775;
 
@@ -73,7 +78,7 @@ final class account_updateProfile
 }
 
 /// TL function `account.updateStatus`, id 0x6628562C.
-final class account_updateStatus
+final class account_updateStatus : TlFunction
 {
     enum uint tlId = 0x6628562C;
 
@@ -83,7 +88,7 @@ final class account_updateStatus
 }
 
 /// TL function `account.getWallPapers`, id 0x07967D36.
-final class account_getWallPapers
+final class account_getWallPapers : TlFunction
 {
     enum uint tlId = 0x07967D36;
 
@@ -93,7 +98,7 @@ final class account_getWallPapers
 }
 
 /// TL function `account.reportPeer`, id 0xC5BA3D86.
-final class account_reportPeer
+final class account_reportPeer : TlFunction
 {
     enum uint tlId = 0xC5BA3D86;
 
@@ -105,7 +110,7 @@ final class account_reportPeer
 }
 
 /// TL function `account.checkUsername`, id 0x2714D86C.
-final class account_checkUsername
+final class account_checkUsername : TlFunction
 {
     enum uint tlId = 0x2714D86C;
 
@@ -115,7 +120,7 @@ final class account_checkUsername
 }
 
 /// TL function `account.updateUsername`, id 0x3E0BDD7C.
-final class account_updateUsername
+final class account_updateUsername : TlFunction
 {
     enum uint tlId = 0x3E0BDD7C;
 
@@ -125,7 +130,7 @@ final class account_updateUsername
 }
 
 /// TL function `account.getPrivacy`, id 0xDADBC950.
-final class account_getPrivacy
+final class account_getPrivacy : TlFunction
 {
     enum uint tlId = 0xDADBC950;
 
@@ -135,7 +140,7 @@ final class account_getPrivacy
 }
 
 /// TL function `account.setPrivacy`, id 0xC9F81CE8.
-final class account_setPrivacy
+final class account_setPrivacy : TlFunction
 {
     enum uint tlId = 0xC9F81CE8;
 
@@ -146,7 +151,7 @@ final class account_setPrivacy
 }
 
 /// TL function `account.deleteAccount`, id 0xA2C0CF74.
-final class account_deleteAccount
+final class account_deleteAccount : TlFunction
 {
     enum uint tlId = 0xA2C0CF74;
 
@@ -158,7 +163,7 @@ final class account_deleteAccount
 }
 
 /// TL function `account.getAccountTTL`, id 0x08FC711D.
-final class account_getAccountTTL
+final class account_getAccountTTL : TlFunction
 {
     enum uint tlId = 0x08FC711D;
 
@@ -166,7 +171,7 @@ final class account_getAccountTTL
 }
 
 /// TL function `account.setAccountTTL`, id 0x2442485E.
-final class account_setAccountTTL
+final class account_setAccountTTL : TlFunction
 {
     enum uint tlId = 0x2442485E;
 
@@ -176,7 +181,7 @@ final class account_setAccountTTL
 }
 
 /// TL function `account.sendChangePhoneCode`, id 0x82574AE5.
-final class account_sendChangePhoneCode
+final class account_sendChangePhoneCode : TlFunction
 {
     enum uint tlId = 0x82574AE5;
 
@@ -187,7 +192,7 @@ final class account_sendChangePhoneCode
 }
 
 /// TL function `account.changePhone`, id 0x70C32EDB.
-final class account_changePhone
+final class account_changePhone : TlFunction
 {
     enum uint tlId = 0x70C32EDB;
 
@@ -199,7 +204,7 @@ final class account_changePhone
 }
 
 /// TL function `account.updateDeviceLocked`, id 0x38DF3532.
-final class account_updateDeviceLocked
+final class account_updateDeviceLocked : TlFunction
 {
     enum uint tlId = 0x38DF3532;
 
@@ -209,7 +214,7 @@ final class account_updateDeviceLocked
 }
 
 /// TL function `account.getAuthorizations`, id 0xE320C158.
-final class account_getAuthorizations
+final class account_getAuthorizations : TlFunction
 {
     enum uint tlId = 0xE320C158;
 
@@ -217,7 +222,7 @@ final class account_getAuthorizations
 }
 
 /// TL function `account.resetAuthorization`, id 0xDF77F3BC.
-final class account_resetAuthorization
+final class account_resetAuthorization : TlFunction
 {
     enum uint tlId = 0xDF77F3BC;
 
@@ -227,7 +232,7 @@ final class account_resetAuthorization
 }
 
 /// TL function `account.getPassword`, id 0x548A30F5.
-final class account_getPassword
+final class account_getPassword : TlFunction
 {
     enum uint tlId = 0x548A30F5;
 
@@ -235,7 +240,7 @@ final class account_getPassword
 }
 
 /// TL function `account.getPasswordSettings`, id 0x9CD4EAF9.
-final class account_getPasswordSettings
+final class account_getPasswordSettings : TlFunction
 {
     enum uint tlId = 0x9CD4EAF9;
 
@@ -245,7 +250,7 @@ final class account_getPasswordSettings
 }
 
 /// TL function `account.updatePasswordSettings`, id 0xA59B102F.
-final class account_updatePasswordSettings
+final class account_updatePasswordSettings : TlFunction
 {
     enum uint tlId = 0xA59B102F;
 
@@ -256,7 +261,7 @@ final class account_updatePasswordSettings
 }
 
 /// TL function `account.sendConfirmPhoneCode`, id 0x1B3FAA88.
-final class account_sendConfirmPhoneCode
+final class account_sendConfirmPhoneCode : TlFunction
 {
     enum uint tlId = 0x1B3FAA88;
 
@@ -267,7 +272,7 @@ final class account_sendConfirmPhoneCode
 }
 
 /// TL function `account.confirmPhone`, id 0x5F2178C3.
-final class account_confirmPhone
+final class account_confirmPhone : TlFunction
 {
     enum uint tlId = 0x5F2178C3;
 
@@ -278,7 +283,7 @@ final class account_confirmPhone
 }
 
 /// TL function `account.getTmpPassword`, id 0x449E0B51.
-final class account_getTmpPassword
+final class account_getTmpPassword : TlFunction
 {
     enum uint tlId = 0x449E0B51;
 
@@ -289,7 +294,7 @@ final class account_getTmpPassword
 }
 
 /// TL function `account.getWebAuthorizations`, id 0x182E6D6F.
-final class account_getWebAuthorizations
+final class account_getWebAuthorizations : TlFunction
 {
     enum uint tlId = 0x182E6D6F;
 
@@ -297,7 +302,7 @@ final class account_getWebAuthorizations
 }
 
 /// TL function `account.resetWebAuthorization`, id 0x2D01B9EF.
-final class account_resetWebAuthorization
+final class account_resetWebAuthorization : TlFunction
 {
     enum uint tlId = 0x2D01B9EF;
 
@@ -307,7 +312,7 @@ final class account_resetWebAuthorization
 }
 
 /// TL function `account.resetWebAuthorizations`, id 0x682D2594.
-final class account_resetWebAuthorizations
+final class account_resetWebAuthorizations : TlFunction
 {
     enum uint tlId = 0x682D2594;
 
@@ -315,7 +320,7 @@ final class account_resetWebAuthorizations
 }
 
 /// TL function `account.getAllSecureValues`, id 0xB288BC7D.
-final class account_getAllSecureValues
+final class account_getAllSecureValues : TlFunction
 {
     enum uint tlId = 0xB288BC7D;
 
@@ -323,7 +328,7 @@ final class account_getAllSecureValues
 }
 
 /// TL function `account.getSecureValue`, id 0x73665BC2.
-final class account_getSecureValue
+final class account_getSecureValue : TlFunction
 {
     enum uint tlId = 0x73665BC2;
 
@@ -333,7 +338,7 @@ final class account_getSecureValue
 }
 
 /// TL function `account.saveSecureValue`, id 0x899FE31D.
-final class account_saveSecureValue
+final class account_saveSecureValue : TlFunction
 {
     enum uint tlId = 0x899FE31D;
 
@@ -344,7 +349,7 @@ final class account_saveSecureValue
 }
 
 /// TL function `account.deleteSecureValue`, id 0xB880BC4B.
-final class account_deleteSecureValue
+final class account_deleteSecureValue : TlFunction
 {
     enum uint tlId = 0xB880BC4B;
 
@@ -354,7 +359,7 @@ final class account_deleteSecureValue
 }
 
 /// TL function `account.getAuthorizationForm`, id 0xA929597A.
-final class account_getAuthorizationForm
+final class account_getAuthorizationForm : TlFunction
 {
     enum uint tlId = 0xA929597A;
 
@@ -366,7 +371,7 @@ final class account_getAuthorizationForm
 }
 
 /// TL function `account.acceptAuthorization`, id 0xF3ED4C73.
-final class account_acceptAuthorization
+final class account_acceptAuthorization : TlFunction
 {
     enum uint tlId = 0xF3ED4C73;
 
@@ -380,7 +385,7 @@ final class account_acceptAuthorization
 }
 
 /// TL function `account.sendVerifyPhoneCode`, id 0xA5A356F9.
-final class account_sendVerifyPhoneCode
+final class account_sendVerifyPhoneCode : TlFunction
 {
     enum uint tlId = 0xA5A356F9;
 
@@ -391,7 +396,7 @@ final class account_sendVerifyPhoneCode
 }
 
 /// TL function `account.verifyPhone`, id 0x4DD3A7F6.
-final class account_verifyPhone
+final class account_verifyPhone : TlFunction
 {
     enum uint tlId = 0x4DD3A7F6;
 
@@ -403,7 +408,7 @@ final class account_verifyPhone
 }
 
 /// TL function `account.sendVerifyEmailCode`, id 0x98E037BB.
-final class account_sendVerifyEmailCode
+final class account_sendVerifyEmailCode : TlFunction
 {
     enum uint tlId = 0x98E037BB;
 
@@ -414,7 +419,7 @@ final class account_sendVerifyEmailCode
 }
 
 /// TL function `account.verifyEmail`, id 0x032DA4CF.
-final class account_verifyEmail
+final class account_verifyEmail : TlFunction
 {
     enum uint tlId = 0x032DA4CF;
 
@@ -425,7 +430,7 @@ final class account_verifyEmail
 }
 
 /// TL function `account.initTakeoutSession`, id 0x8EF3EAB0.
-final class account_initTakeoutSession
+final class account_initTakeoutSession : TlFunction
 {
     enum uint tlId = 0x8EF3EAB0;
 
@@ -442,7 +447,7 @@ final class account_initTakeoutSession
 }
 
 /// TL function `account.finishTakeoutSession`, id 0x1D2652EE.
-final class account_finishTakeoutSession
+final class account_finishTakeoutSession : TlFunction
 {
     enum uint tlId = 0x1D2652EE;
 
@@ -453,7 +458,7 @@ final class account_finishTakeoutSession
 }
 
 /// TL function `account.confirmPasswordEmail`, id 0x8FDF1920.
-final class account_confirmPasswordEmail
+final class account_confirmPasswordEmail : TlFunction
 {
     enum uint tlId = 0x8FDF1920;
 
@@ -463,7 +468,7 @@ final class account_confirmPasswordEmail
 }
 
 /// TL function `account.resendPasswordEmail`, id 0x7A7F2A15.
-final class account_resendPasswordEmail
+final class account_resendPasswordEmail : TlFunction
 {
     enum uint tlId = 0x7A7F2A15;
 
@@ -471,7 +476,7 @@ final class account_resendPasswordEmail
 }
 
 /// TL function `account.cancelPasswordEmail`, id 0xC1CBD5B6.
-final class account_cancelPasswordEmail
+final class account_cancelPasswordEmail : TlFunction
 {
     enum uint tlId = 0xC1CBD5B6;
 
@@ -479,7 +484,7 @@ final class account_cancelPasswordEmail
 }
 
 /// TL function `account.getContactSignUpNotification`, id 0x9F07C728.
-final class account_getContactSignUpNotification
+final class account_getContactSignUpNotification : TlFunction
 {
     enum uint tlId = 0x9F07C728;
 
@@ -487,7 +492,7 @@ final class account_getContactSignUpNotification
 }
 
 /// TL function `account.setContactSignUpNotification`, id 0xCFF43F61.
-final class account_setContactSignUpNotification
+final class account_setContactSignUpNotification : TlFunction
 {
     enum uint tlId = 0xCFF43F61;
 
@@ -497,7 +502,7 @@ final class account_setContactSignUpNotification
 }
 
 /// TL function `account.getNotifyExceptions`, id 0x53577479.
-final class account_getNotifyExceptions
+final class account_getNotifyExceptions : TlFunction
 {
     enum uint tlId = 0x53577479;
 
@@ -510,7 +515,7 @@ final class account_getNotifyExceptions
 }
 
 /// TL function `account.getWallPaper`, id 0xFC8DDBEA.
-final class account_getWallPaper
+final class account_getWallPaper : TlFunction
 {
     enum uint tlId = 0xFC8DDBEA;
 
@@ -520,7 +525,7 @@ final class account_getWallPaper
 }
 
 /// TL function `account.uploadWallPaper`, id 0xE39A8F03.
-final class account_uploadWallPaper
+final class account_uploadWallPaper : TlFunction
 {
     enum uint tlId = 0xE39A8F03;
 
@@ -534,7 +539,7 @@ final class account_uploadWallPaper
 }
 
 /// TL function `account.saveWallPaper`, id 0x6C5A5B37.
-final class account_saveWallPaper
+final class account_saveWallPaper : TlFunction
 {
     enum uint tlId = 0x6C5A5B37;
 
@@ -546,7 +551,7 @@ final class account_saveWallPaper
 }
 
 /// TL function `account.installWallPaper`, id 0xFEED5769.
-final class account_installWallPaper
+final class account_installWallPaper : TlFunction
 {
     enum uint tlId = 0xFEED5769;
 
@@ -557,7 +562,7 @@ final class account_installWallPaper
 }
 
 /// TL function `account.resetWallPapers`, id 0xBB3B9804.
-final class account_resetWallPapers
+final class account_resetWallPapers : TlFunction
 {
     enum uint tlId = 0xBB3B9804;
 
@@ -565,7 +570,7 @@ final class account_resetWallPapers
 }
 
 /// TL function `account.getAutoDownloadSettings`, id 0x56DA0B3F.
-final class account_getAutoDownloadSettings
+final class account_getAutoDownloadSettings : TlFunction
 {
     enum uint tlId = 0x56DA0B3F;
 
@@ -573,7 +578,7 @@ final class account_getAutoDownloadSettings
 }
 
 /// TL function `account.saveAutoDownloadSettings`, id 0x76F36233.
-final class account_saveAutoDownloadSettings
+final class account_saveAutoDownloadSettings : TlFunction
 {
     enum uint tlId = 0x76F36233;
 
@@ -586,7 +591,7 @@ final class account_saveAutoDownloadSettings
 }
 
 /// TL function `account.uploadTheme`, id 0x1C3DB333.
-final class account_uploadTheme
+final class account_uploadTheme : TlFunction
 {
     enum uint tlId = 0x1C3DB333;
 
@@ -600,7 +605,7 @@ final class account_uploadTheme
 }
 
 /// TL function `account.createTheme`, id 0x652E4400.
-final class account_createTheme
+final class account_createTheme : TlFunction
 {
     enum uint tlId = 0x652E4400;
 
@@ -614,7 +619,7 @@ final class account_createTheme
 }
 
 /// TL function `account.updateTheme`, id 0x2BF40CCC.
-final class account_updateTheme
+final class account_updateTheme : TlFunction
 {
     enum uint tlId = 0x2BF40CCC;
 
@@ -630,7 +635,7 @@ final class account_updateTheme
 }
 
 /// TL function `account.saveTheme`, id 0xF257106C.
-final class account_saveTheme
+final class account_saveTheme : TlFunction
 {
     enum uint tlId = 0xF257106C;
 
@@ -641,7 +646,7 @@ final class account_saveTheme
 }
 
 /// TL function `account.installTheme`, id 0xC727BB3B.
-final class account_installTheme
+final class account_installTheme : TlFunction
 {
     enum uint tlId = 0xC727BB3B;
 
@@ -655,7 +660,7 @@ final class account_installTheme
 }
 
 /// TL function `account.getTheme`, id 0x3A5869EC.
-final class account_getTheme
+final class account_getTheme : TlFunction
 {
     enum uint tlId = 0x3A5869EC;
 
@@ -666,7 +671,7 @@ final class account_getTheme
 }
 
 /// TL function `account.getThemes`, id 0x7206E458.
-final class account_getThemes
+final class account_getThemes : TlFunction
 {
     enum uint tlId = 0x7206E458;
 
@@ -677,7 +682,7 @@ final class account_getThemes
 }
 
 /// TL function `account.setContentSettings`, id 0xB574B16B.
-final class account_setContentSettings
+final class account_setContentSettings : TlFunction
 {
     enum uint tlId = 0xB574B16B;
 
@@ -688,7 +693,7 @@ final class account_setContentSettings
 }
 
 /// TL function `account.getContentSettings`, id 0x8B9B4DAE.
-final class account_getContentSettings
+final class account_getContentSettings : TlFunction
 {
     enum uint tlId = 0x8B9B4DAE;
 
@@ -696,7 +701,7 @@ final class account_getContentSettings
 }
 
 /// TL function `account.getMultiWallPapers`, id 0x65AD71DC.
-final class account_getMultiWallPapers
+final class account_getMultiWallPapers : TlFunction
 {
     enum uint tlId = 0x65AD71DC;
 
@@ -706,7 +711,7 @@ final class account_getMultiWallPapers
 }
 
 /// TL function `account.getGlobalPrivacySettings`, id 0xEB2B4CF6.
-final class account_getGlobalPrivacySettings
+final class account_getGlobalPrivacySettings : TlFunction
 {
     enum uint tlId = 0xEB2B4CF6;
 
@@ -714,7 +719,7 @@ final class account_getGlobalPrivacySettings
 }
 
 /// TL function `account.setGlobalPrivacySettings`, id 0x1EDAAAC2.
-final class account_setGlobalPrivacySettings
+final class account_setGlobalPrivacySettings : TlFunction
 {
     enum uint tlId = 0x1EDAAAC2;
 
@@ -724,7 +729,7 @@ final class account_setGlobalPrivacySettings
 }
 
 /// TL function `account.reportProfilePhoto`, id 0xFA8CC6F5.
-final class account_reportProfilePhoto
+final class account_reportProfilePhoto : TlFunction
 {
     enum uint tlId = 0xFA8CC6F5;
 
@@ -737,7 +742,7 @@ final class account_reportProfilePhoto
 }
 
 /// TL function `account.resetPassword`, id 0x9308CE1B.
-final class account_resetPassword
+final class account_resetPassword : TlFunction
 {
     enum uint tlId = 0x9308CE1B;
 
@@ -745,7 +750,7 @@ final class account_resetPassword
 }
 
 /// TL function `account.declinePasswordReset`, id 0x4C9409F6.
-final class account_declinePasswordReset
+final class account_declinePasswordReset : TlFunction
 {
     enum uint tlId = 0x4C9409F6;
 
@@ -753,7 +758,7 @@ final class account_declinePasswordReset
 }
 
 /// TL function `account.getChatThemes`, id 0xD638DE89.
-final class account_getChatThemes
+final class account_getChatThemes : TlFunction
 {
     enum uint tlId = 0xD638DE89;
 
@@ -763,7 +768,7 @@ final class account_getChatThemes
 }
 
 /// TL function `account.setAuthorizationTTL`, id 0xBF899AA0.
-final class account_setAuthorizationTTL
+final class account_setAuthorizationTTL : TlFunction
 {
     enum uint tlId = 0xBF899AA0;
 
@@ -773,7 +778,7 @@ final class account_setAuthorizationTTL
 }
 
 /// TL function `account.changeAuthorizationSettings`, id 0x40F48462.
-final class account_changeAuthorizationSettings
+final class account_changeAuthorizationSettings : TlFunction
 {
     enum uint tlId = 0x40F48462;
 
@@ -787,7 +792,7 @@ final class account_changeAuthorizationSettings
 }
 
 /// TL function `account.getSavedRingtones`, id 0xE1902288.
-final class account_getSavedRingtones
+final class account_getSavedRingtones : TlFunction
 {
     enum uint tlId = 0xE1902288;
 
@@ -797,7 +802,7 @@ final class account_getSavedRingtones
 }
 
 /// TL function `account.saveRingtone`, id 0x3DEA5B03.
-final class account_saveRingtone
+final class account_saveRingtone : TlFunction
 {
     enum uint tlId = 0x3DEA5B03;
 
@@ -808,7 +813,7 @@ final class account_saveRingtone
 }
 
 /// TL function `account.uploadRingtone`, id 0x831A83A2.
-final class account_uploadRingtone
+final class account_uploadRingtone : TlFunction
 {
     enum uint tlId = 0x831A83A2;
 
@@ -820,7 +825,7 @@ final class account_uploadRingtone
 }
 
 /// TL function `account.updateEmojiStatus`, id 0xFBD3DE6B.
-final class account_updateEmojiStatus
+final class account_updateEmojiStatus : TlFunction
 {
     enum uint tlId = 0xFBD3DE6B;
 
@@ -830,7 +835,7 @@ final class account_updateEmojiStatus
 }
 
 /// TL function `account.getDefaultEmojiStatuses`, id 0xD6753386.
-final class account_getDefaultEmojiStatuses
+final class account_getDefaultEmojiStatuses : TlFunction
 {
     enum uint tlId = 0xD6753386;
 
@@ -840,7 +845,7 @@ final class account_getDefaultEmojiStatuses
 }
 
 /// TL function `account.getRecentEmojiStatuses`, id 0x0F578105.
-final class account_getRecentEmojiStatuses
+final class account_getRecentEmojiStatuses : TlFunction
 {
     enum uint tlId = 0x0F578105;
 
@@ -850,7 +855,7 @@ final class account_getRecentEmojiStatuses
 }
 
 /// TL function `account.clearRecentEmojiStatuses`, id 0x18201AAE.
-final class account_clearRecentEmojiStatuses
+final class account_clearRecentEmojiStatuses : TlFunction
 {
     enum uint tlId = 0x18201AAE;
 
@@ -858,7 +863,7 @@ final class account_clearRecentEmojiStatuses
 }
 
 /// TL function `account.reorderUsernames`, id 0xEF500EAB.
-final class account_reorderUsernames
+final class account_reorderUsernames : TlFunction
 {
     enum uint tlId = 0xEF500EAB;
 
@@ -868,7 +873,7 @@ final class account_reorderUsernames
 }
 
 /// TL function `account.toggleUsername`, id 0x58D6B376.
-final class account_toggleUsername
+final class account_toggleUsername : TlFunction
 {
     enum uint tlId = 0x58D6B376;
 
@@ -879,7 +884,7 @@ final class account_toggleUsername
 }
 
 /// TL function `account.getDefaultProfilePhotoEmojis`, id 0xE2750328.
-final class account_getDefaultProfilePhotoEmojis
+final class account_getDefaultProfilePhotoEmojis : TlFunction
 {
     enum uint tlId = 0xE2750328;
 
@@ -889,7 +894,7 @@ final class account_getDefaultProfilePhotoEmojis
 }
 
 /// TL function `account.getDefaultGroupPhotoEmojis`, id 0x915860AE.
-final class account_getDefaultGroupPhotoEmojis
+final class account_getDefaultGroupPhotoEmojis : TlFunction
 {
     enum uint tlId = 0x915860AE;
 
@@ -899,7 +904,7 @@ final class account_getDefaultGroupPhotoEmojis
 }
 
 /// TL function `account.getAutoSaveSettings`, id 0xADCBBCDA.
-final class account_getAutoSaveSettings
+final class account_getAutoSaveSettings : TlFunction
 {
     enum uint tlId = 0xADCBBCDA;
 
@@ -907,7 +912,7 @@ final class account_getAutoSaveSettings
 }
 
 /// TL function `account.saveAutoSaveSettings`, id 0xD69B8361.
-final class account_saveAutoSaveSettings
+final class account_saveAutoSaveSettings : TlFunction
 {
     enum uint tlId = 0xD69B8361;
 
@@ -922,7 +927,7 @@ final class account_saveAutoSaveSettings
 }
 
 /// TL function `account.deleteAutoSaveExceptions`, id 0x53BC0020.
-final class account_deleteAutoSaveExceptions
+final class account_deleteAutoSaveExceptions : TlFunction
 {
     enum uint tlId = 0x53BC0020;
 
@@ -930,7 +935,7 @@ final class account_deleteAutoSaveExceptions
 }
 
 /// TL function `account.invalidateSignInCodes`, id 0xCA8AE8BA.
-final class account_invalidateSignInCodes
+final class account_invalidateSignInCodes : TlFunction
 {
     enum uint tlId = 0xCA8AE8BA;
 
@@ -940,7 +945,7 @@ final class account_invalidateSignInCodes
 }
 
 /// TL function `account.updateColor`, id 0x684D214E.
-final class account_updateColor
+final class account_updateColor : TlFunction
 {
     enum uint tlId = 0x684D214E;
 
@@ -952,7 +957,7 @@ final class account_updateColor
 }
 
 /// TL function `account.getDefaultBackgroundEmojis`, id 0xA60AB9CE.
-final class account_getDefaultBackgroundEmojis
+final class account_getDefaultBackgroundEmojis : TlFunction
 {
     enum uint tlId = 0xA60AB9CE;
 
@@ -962,7 +967,7 @@ final class account_getDefaultBackgroundEmojis
 }
 
 /// TL function `account.getChannelDefaultEmojiStatuses`, id 0x7727A7D5.
-final class account_getChannelDefaultEmojiStatuses
+final class account_getChannelDefaultEmojiStatuses : TlFunction
 {
     enum uint tlId = 0x7727A7D5;
 
@@ -972,7 +977,7 @@ final class account_getChannelDefaultEmojiStatuses
 }
 
 /// TL function `account.getChannelRestrictedStatusEmojis`, id 0x35A9E0D5.
-final class account_getChannelRestrictedStatusEmojis
+final class account_getChannelRestrictedStatusEmojis : TlFunction
 {
     enum uint tlId = 0x35A9E0D5;
 
@@ -982,7 +987,7 @@ final class account_getChannelRestrictedStatusEmojis
 }
 
 /// TL function `account.updateBusinessWorkHours`, id 0x4B00E066.
-final class account_updateBusinessWorkHours
+final class account_updateBusinessWorkHours : TlFunction
 {
     enum uint tlId = 0x4B00E066;
 
@@ -993,7 +998,7 @@ final class account_updateBusinessWorkHours
 }
 
 /// TL function `account.updateBusinessLocation`, id 0x9E6B131A.
-final class account_updateBusinessLocation
+final class account_updateBusinessLocation : TlFunction
 {
     enum uint tlId = 0x9E6B131A;
 
@@ -1005,7 +1010,7 @@ final class account_updateBusinessLocation
 }
 
 /// TL function `account.updateBusinessGreetingMessage`, id 0x66CDAFC4.
-final class account_updateBusinessGreetingMessage
+final class account_updateBusinessGreetingMessage : TlFunction
 {
     enum uint tlId = 0x66CDAFC4;
 
@@ -1016,7 +1021,7 @@ final class account_updateBusinessGreetingMessage
 }
 
 /// TL function `account.updateBusinessAwayMessage`, id 0xA26A7FA5.
-final class account_updateBusinessAwayMessage
+final class account_updateBusinessAwayMessage : TlFunction
 {
     enum uint tlId = 0xA26A7FA5;
 
@@ -1027,7 +1032,7 @@ final class account_updateBusinessAwayMessage
 }
 
 /// TL function `account.updateConnectedBot`, id 0x66A08C7E.
-final class account_updateConnectedBot
+final class account_updateConnectedBot : TlFunction
 {
     enum uint tlId = 0x66A08C7E;
 
@@ -1041,7 +1046,7 @@ final class account_updateConnectedBot
 }
 
 /// TL function `account.getConnectedBots`, id 0x4EA4C80F.
-final class account_getConnectedBots
+final class account_getConnectedBots : TlFunction
 {
     enum uint tlId = 0x4EA4C80F;
 
@@ -1049,7 +1054,7 @@ final class account_getConnectedBots
 }
 
 /// TL function `account.getBotBusinessConnection`, id 0x76A86270.
-final class account_getBotBusinessConnection
+final class account_getBotBusinessConnection : TlFunction
 {
     enum uint tlId = 0x76A86270;
 
@@ -1059,7 +1064,7 @@ final class account_getBotBusinessConnection
 }
 
 /// TL function `account.updateBusinessIntro`, id 0xA614D034.
-final class account_updateBusinessIntro
+final class account_updateBusinessIntro : TlFunction
 {
     enum uint tlId = 0xA614D034;
 
@@ -1070,7 +1075,7 @@ final class account_updateBusinessIntro
 }
 
 /// TL function `account.toggleConnectedBotPaused`, id 0x646E1097.
-final class account_toggleConnectedBotPaused
+final class account_toggleConnectedBotPaused : TlFunction
 {
     enum uint tlId = 0x646E1097;
 
@@ -1081,7 +1086,7 @@ final class account_toggleConnectedBotPaused
 }
 
 /// TL function `account.disablePeerConnectedBot`, id 0x5E437ED9.
-final class account_disablePeerConnectedBot
+final class account_disablePeerConnectedBot : TlFunction
 {
     enum uint tlId = 0x5E437ED9;
 
@@ -1091,7 +1096,7 @@ final class account_disablePeerConnectedBot
 }
 
 /// TL function `account.updateBirthday`, id 0xCC6E0C11.
-final class account_updateBirthday
+final class account_updateBirthday : TlFunction
 {
     enum uint tlId = 0xCC6E0C11;
 
@@ -1102,7 +1107,7 @@ final class account_updateBirthday
 }
 
 /// TL function `account.createBusinessChatLink`, id 0x8851E68E.
-final class account_createBusinessChatLink
+final class account_createBusinessChatLink : TlFunction
 {
     enum uint tlId = 0x8851E68E;
 
@@ -1112,7 +1117,7 @@ final class account_createBusinessChatLink
 }
 
 /// TL function `account.editBusinessChatLink`, id 0x8C3410AF.
-final class account_editBusinessChatLink
+final class account_editBusinessChatLink : TlFunction
 {
     enum uint tlId = 0x8C3410AF;
 
@@ -1123,7 +1128,7 @@ final class account_editBusinessChatLink
 }
 
 /// TL function `account.deleteBusinessChatLink`, id 0x60073674.
-final class account_deleteBusinessChatLink
+final class account_deleteBusinessChatLink : TlFunction
 {
     enum uint tlId = 0x60073674;
 
@@ -1133,7 +1138,7 @@ final class account_deleteBusinessChatLink
 }
 
 /// TL function `account.getBusinessChatLinks`, id 0x6F70DDE1.
-final class account_getBusinessChatLinks
+final class account_getBusinessChatLinks : TlFunction
 {
     enum uint tlId = 0x6F70DDE1;
 
@@ -1141,7 +1146,7 @@ final class account_getBusinessChatLinks
 }
 
 /// TL function `account.resolveBusinessChatLink`, id 0x5492E5EE.
-final class account_resolveBusinessChatLink
+final class account_resolveBusinessChatLink : TlFunction
 {
     enum uint tlId = 0x5492E5EE;
 
@@ -1151,7 +1156,7 @@ final class account_resolveBusinessChatLink
 }
 
 /// TL function `account.updatePersonalChannel`, id 0xD94305E0.
-final class account_updatePersonalChannel
+final class account_updatePersonalChannel : TlFunction
 {
     enum uint tlId = 0xD94305E0;
 
@@ -1161,7 +1166,7 @@ final class account_updatePersonalChannel
 }
 
 /// TL function `account.toggleSponsoredMessages`, id 0xB9D9A38D.
-final class account_toggleSponsoredMessages
+final class account_toggleSponsoredMessages : TlFunction
 {
     enum uint tlId = 0xB9D9A38D;
 
@@ -1171,7 +1176,7 @@ final class account_toggleSponsoredMessages
 }
 
 /// TL function `account.getReactionsNotifySettings`, id 0x06DD654C.
-final class account_getReactionsNotifySettings
+final class account_getReactionsNotifySettings : TlFunction
 {
     enum uint tlId = 0x06DD654C;
 
@@ -1179,7 +1184,7 @@ final class account_getReactionsNotifySettings
 }
 
 /// TL function `account.setReactionsNotifySettings`, id 0x316CE548.
-final class account_setReactionsNotifySettings
+final class account_setReactionsNotifySettings : TlFunction
 {
     enum uint tlId = 0x316CE548;
 
@@ -1189,7 +1194,7 @@ final class account_setReactionsNotifySettings
 }
 
 /// TL function `account.getCollectibleEmojiStatuses`, id 0x2E7B4543.
-final class account_getCollectibleEmojiStatuses
+final class account_getCollectibleEmojiStatuses : TlFunction
 {
     enum uint tlId = 0x2E7B4543;
 
@@ -1199,7 +1204,7 @@ final class account_getCollectibleEmojiStatuses
 }
 
 /// TL function `account.getPaidMessagesRevenue`, id 0x19BA4A67.
-final class account_getPaidMessagesRevenue
+final class account_getPaidMessagesRevenue : TlFunction
 {
     enum uint tlId = 0x19BA4A67;
 
@@ -1211,7 +1216,7 @@ final class account_getPaidMessagesRevenue
 }
 
 /// TL function `account.toggleNoPaidMessagesException`, id 0xFE2EDA76.
-final class account_toggleNoPaidMessagesException
+final class account_toggleNoPaidMessagesException : TlFunction
 {
     enum uint tlId = 0xFE2EDA76;
 
@@ -1225,7 +1230,7 @@ final class account_toggleNoPaidMessagesException
 }
 
 /// TL function `account.setMainProfileTab`, id 0x5DEE78B0.
-final class account_setMainProfileTab
+final class account_setMainProfileTab : TlFunction
 {
     enum uint tlId = 0x5DEE78B0;
 
@@ -1235,7 +1240,7 @@ final class account_setMainProfileTab
 }
 
 /// TL function `account.saveMusic`, id 0xB26732A9.
-final class account_saveMusic
+final class account_saveMusic : TlFunction
 {
     enum uint tlId = 0xB26732A9;
 
@@ -1248,7 +1253,7 @@ final class account_saveMusic
 }
 
 /// TL function `account.getSavedMusicIds`, id 0xE09D5FAF.
-final class account_getSavedMusicIds
+final class account_getSavedMusicIds : TlFunction
 {
     enum uint tlId = 0xE09D5FAF;
 
@@ -1258,7 +1263,7 @@ final class account_getSavedMusicIds
 }
 
 /// TL function `account.getUniqueGiftChatThemes`, id 0xE42CE9C9.
-final class account_getUniqueGiftChatThemes
+final class account_getUniqueGiftChatThemes : TlFunction
 {
     enum uint tlId = 0xE42CE9C9;
 
@@ -1270,7 +1275,7 @@ final class account_getUniqueGiftChatThemes
 }
 
 /// TL function `account.initPasskeyRegistration`, id 0x429547E8.
-final class account_initPasskeyRegistration
+final class account_initPasskeyRegistration : TlFunction
 {
     enum uint tlId = 0x429547E8;
 
@@ -1278,7 +1283,7 @@ final class account_initPasskeyRegistration
 }
 
 /// TL function `account.registerPasskey`, id 0x55B41FD6.
-final class account_registerPasskey
+final class account_registerPasskey : TlFunction
 {
     enum uint tlId = 0x55B41FD6;
 
@@ -1288,7 +1293,7 @@ final class account_registerPasskey
 }
 
 /// TL function `account.getPasskeys`, id 0xEA1F0C52.
-final class account_getPasskeys
+final class account_getPasskeys : TlFunction
 {
     enum uint tlId = 0xEA1F0C52;
 
@@ -1296,7 +1301,7 @@ final class account_getPasskeys
 }
 
 /// TL function `account.deletePasskey`, id 0xF5B5563F.
-final class account_deletePasskey
+final class account_deletePasskey : TlFunction
 {
     enum uint tlId = 0xF5B5563F;
 
@@ -1306,7 +1311,7 @@ final class account_deletePasskey
 }
 
 /// TL function `account.confirmBotConnection`, id 0x67ED1F68.
-final class account_confirmBotConnection
+final class account_confirmBotConnection : TlFunction
 {
     enum uint tlId = 0x67ED1F68;
 
@@ -1316,7 +1321,7 @@ final class account_confirmBotConnection
 }
 
 /// TL function `account.getWebBrowserSettings`, id 0x56655768.
-final class account_getWebBrowserSettings
+final class account_getWebBrowserSettings : TlFunction
 {
     enum uint tlId = 0x56655768;
 
@@ -1326,7 +1331,7 @@ final class account_getWebBrowserSettings
 }
 
 /// TL function `account.updateWebBrowserSettings`, id 0x9ADF82FE.
-final class account_updateWebBrowserSettings
+final class account_updateWebBrowserSettings : TlFunction
 {
     enum uint tlId = 0x9ADF82FE;
 
@@ -1338,7 +1343,7 @@ final class account_updateWebBrowserSettings
 }
 
 /// TL function `account.toggleWebBrowserSettingsException`, id 0x60ED4229.
-final class account_toggleWebBrowserSettingsException
+final class account_toggleWebBrowserSettingsException : TlFunction
 {
     enum uint tlId = 0x60ED4229;
 
@@ -1351,7 +1356,7 @@ final class account_toggleWebBrowserSettingsException
 }
 
 /// TL function `account.deleteWebBrowserSettingsExceptions`, id 0x86A0765D.
-final class account_deleteWebBrowserSettingsExceptions
+final class account_deleteWebBrowserSettingsExceptions : TlFunction
 {
     enum uint tlId = 0x86A0765D;
 

@@ -2,8 +2,12 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.functions.messages_functions;
 
+import tg_client_api.functions.tl_function;
+import tg_client_api.types.common_types;
+import tg_client_api.types.vector;
+
 /// TL function `messages.getMessages`, id 0x63C66506.
-final class messages_getMessages
+final class messages_getMessages : TlFunction
 {
     enum uint tlId = 0x63C66506;
 
@@ -13,7 +17,7 @@ final class messages_getMessages
 }
 
 /// TL function `messages.getDialogs`, id 0xA0F4CB4F.
-final class messages_getDialogs
+final class messages_getDialogs : TlFunction
 {
     enum uint tlId = 0xA0F4CB4F;
 
@@ -30,7 +34,7 @@ final class messages_getDialogs
 }
 
 /// TL function `messages.getHistory`, id 0x4423E6C5.
-final class messages_getHistory
+final class messages_getHistory : TlFunction
 {
     enum uint tlId = 0x4423E6C5;
 
@@ -47,7 +51,7 @@ final class messages_getHistory
 }
 
 /// TL function `messages.search`, id 0x29EE847A.
-final class messages_search
+final class messages_search : TlFunction
 {
     enum uint tlId = 0x29EE847A;
 
@@ -72,7 +76,7 @@ final class messages_search
 }
 
 /// TL function `messages.readHistory`, id 0x0E306D3A.
-final class messages_readHistory
+final class messages_readHistory : TlFunction
 {
     enum uint tlId = 0x0E306D3A;
 
@@ -83,7 +87,7 @@ final class messages_readHistory
 }
 
 /// TL function `messages.deleteHistory`, id 0xB08F922A.
-final class messages_deleteHistory
+final class messages_deleteHistory : TlFunction
 {
     enum uint tlId = 0xB08F922A;
 
@@ -99,7 +103,7 @@ final class messages_deleteHistory
 }
 
 /// TL function `messages.deleteMessages`, id 0xE58E95D2.
-final class messages_deleteMessages
+final class messages_deleteMessages : TlFunction
 {
     enum uint tlId = 0xE58E95D2;
 
@@ -111,7 +115,7 @@ final class messages_deleteMessages
 }
 
 /// TL function `messages.receivedMessages`, id 0x05A954C0.
-final class messages_receivedMessages
+final class messages_receivedMessages : TlFunction
 {
     enum uint tlId = 0x05A954C0;
 
@@ -121,7 +125,7 @@ final class messages_receivedMessages
 }
 
 /// TL function `messages.setTyping`, id 0x58943EE2.
-final class messages_setTyping
+final class messages_setTyping : TlFunction
 {
     enum uint tlId = 0x58943EE2;
 
@@ -134,7 +138,7 @@ final class messages_setTyping
 }
 
 /// TL function `messages.sendMessage`, id 0xFEF48F62.
-final class messages_sendMessage
+final class messages_sendMessage : TlFunction
 {
     enum uint tlId = 0xFEF48F62;
 
@@ -166,7 +170,7 @@ final class messages_sendMessage
 }
 
 /// TL function `messages.sendMedia`, id 0x0330E77F.
-final class messages_sendMedia
+final class messages_sendMedia : TlFunction
 {
     enum uint tlId = 0x0330E77F;
 
@@ -197,7 +201,7 @@ final class messages_sendMedia
 }
 
 /// TL function `messages.forwardMessages`, id 0x13704A7C.
-final class messages_forwardMessages
+final class messages_forwardMessages : TlFunction
 {
     enum uint tlId = 0x13704A7C;
 
@@ -229,7 +233,7 @@ final class messages_forwardMessages
 }
 
 /// TL function `messages.reportSpam`, id 0xCF1592DB.
-final class messages_reportSpam
+final class messages_reportSpam : TlFunction
 {
     enum uint tlId = 0xCF1592DB;
 
@@ -239,7 +243,7 @@ final class messages_reportSpam
 }
 
 /// TL function `messages.getPeerSettings`, id 0xEFD9A6A2.
-final class messages_getPeerSettings
+final class messages_getPeerSettings : TlFunction
 {
     enum uint tlId = 0xEFD9A6A2;
 
@@ -249,7 +253,7 @@ final class messages_getPeerSettings
 }
 
 /// TL function `messages.report`, id 0xFC78AF9B.
-final class messages_report
+final class messages_report : TlFunction
 {
     enum uint tlId = 0xFC78AF9B;
 
@@ -262,7 +266,7 @@ final class messages_report
 }
 
 /// TL function `messages.getChats`, id 0x49E9528F.
-final class messages_getChats
+final class messages_getChats : TlFunction
 {
     enum uint tlId = 0x49E9528F;
 
@@ -272,7 +276,7 @@ final class messages_getChats
 }
 
 /// TL function `messages.getFullChat`, id 0xAEB00B34.
-final class messages_getFullChat
+final class messages_getFullChat : TlFunction
 {
     enum uint tlId = 0xAEB00B34;
 
@@ -282,7 +286,7 @@ final class messages_getFullChat
 }
 
 /// TL function `messages.editChatTitle`, id 0x73783FFD.
-final class messages_editChatTitle
+final class messages_editChatTitle : TlFunction
 {
     enum uint tlId = 0x73783FFD;
 
@@ -293,7 +297,7 @@ final class messages_editChatTitle
 }
 
 /// TL function `messages.editChatPhoto`, id 0x35DDD674.
-final class messages_editChatPhoto
+final class messages_editChatPhoto : TlFunction
 {
     enum uint tlId = 0x35DDD674;
 
@@ -304,7 +308,7 @@ final class messages_editChatPhoto
 }
 
 /// TL function `messages.addChatUser`, id 0xCBC6D107.
-final class messages_addChatUser
+final class messages_addChatUser : TlFunction
 {
     enum uint tlId = 0xCBC6D107;
 
@@ -316,7 +320,7 @@ final class messages_addChatUser
 }
 
 /// TL function `messages.deleteChatUser`, id 0xA2185CAB.
-final class messages_deleteChatUser
+final class messages_deleteChatUser : TlFunction
 {
     enum uint tlId = 0xA2185CAB;
 
@@ -329,7 +333,7 @@ final class messages_deleteChatUser
 }
 
 /// TL function `messages.createChat`, id 0x92CEDDD4.
-final class messages_createChat
+final class messages_createChat : TlFunction
 {
     enum uint tlId = 0x92CEDDD4;
 
@@ -342,7 +346,7 @@ final class messages_createChat
 }
 
 /// TL function `messages.getDhConfig`, id 0x26CF8950.
-final class messages_getDhConfig
+final class messages_getDhConfig : TlFunction
 {
     enum uint tlId = 0x26CF8950;
 
@@ -353,7 +357,7 @@ final class messages_getDhConfig
 }
 
 /// TL function `messages.requestEncryption`, id 0xF64DAF43.
-final class messages_requestEncryption
+final class messages_requestEncryption : TlFunction
 {
     enum uint tlId = 0xF64DAF43;
 
@@ -365,7 +369,7 @@ final class messages_requestEncryption
 }
 
 /// TL function `messages.acceptEncryption`, id 0x3DBC0415.
-final class messages_acceptEncryption
+final class messages_acceptEncryption : TlFunction
 {
     enum uint tlId = 0x3DBC0415;
 
@@ -377,7 +381,7 @@ final class messages_acceptEncryption
 }
 
 /// TL function `messages.discardEncryption`, id 0xF393AEA0.
-final class messages_discardEncryption
+final class messages_discardEncryption : TlFunction
 {
     enum uint tlId = 0xF393AEA0;
 
@@ -389,7 +393,7 @@ final class messages_discardEncryption
 }
 
 /// TL function `messages.setEncryptedTyping`, id 0x791451ED.
-final class messages_setEncryptedTyping
+final class messages_setEncryptedTyping : TlFunction
 {
     enum uint tlId = 0x791451ED;
 
@@ -400,7 +404,7 @@ final class messages_setEncryptedTyping
 }
 
 /// TL function `messages.readEncryptedHistory`, id 0x7F4B690A.
-final class messages_readEncryptedHistory
+final class messages_readEncryptedHistory : TlFunction
 {
     enum uint tlId = 0x7F4B690A;
 
@@ -411,7 +415,7 @@ final class messages_readEncryptedHistory
 }
 
 /// TL function `messages.sendEncrypted`, id 0x44FA7A15.
-final class messages_sendEncrypted
+final class messages_sendEncrypted : TlFunction
 {
     enum uint tlId = 0x44FA7A15;
 
@@ -425,7 +429,7 @@ final class messages_sendEncrypted
 }
 
 /// TL function `messages.sendEncryptedFile`, id 0x5559481D.
-final class messages_sendEncryptedFile
+final class messages_sendEncryptedFile : TlFunction
 {
     enum uint tlId = 0x5559481D;
 
@@ -440,7 +444,7 @@ final class messages_sendEncryptedFile
 }
 
 /// TL function `messages.sendEncryptedService`, id 0x32D439A4.
-final class messages_sendEncryptedService
+final class messages_sendEncryptedService : TlFunction
 {
     enum uint tlId = 0x32D439A4;
 
@@ -452,7 +456,7 @@ final class messages_sendEncryptedService
 }
 
 /// TL function `messages.receivedQueue`, id 0x55A5BB66.
-final class messages_receivedQueue
+final class messages_receivedQueue : TlFunction
 {
     enum uint tlId = 0x55A5BB66;
 
@@ -462,7 +466,7 @@ final class messages_receivedQueue
 }
 
 /// TL function `messages.reportEncryptedSpam`, id 0x4B0C8C0F.
-final class messages_reportEncryptedSpam
+final class messages_reportEncryptedSpam : TlFunction
 {
     enum uint tlId = 0x4B0C8C0F;
 
@@ -472,7 +476,7 @@ final class messages_reportEncryptedSpam
 }
 
 /// TL function `messages.readMessageContents`, id 0x36A73F77.
-final class messages_readMessageContents
+final class messages_readMessageContents : TlFunction
 {
     enum uint tlId = 0x36A73F77;
 
@@ -482,7 +486,7 @@ final class messages_readMessageContents
 }
 
 /// TL function `messages.getStickers`, id 0xD5A5D3A1.
-final class messages_getStickers
+final class messages_getStickers : TlFunction
 {
     enum uint tlId = 0xD5A5D3A1;
 
@@ -493,7 +497,7 @@ final class messages_getStickers
 }
 
 /// TL function `messages.getAllStickers`, id 0xB8A0A1A8.
-final class messages_getAllStickers
+final class messages_getAllStickers : TlFunction
 {
     enum uint tlId = 0xB8A0A1A8;
 
@@ -503,7 +507,7 @@ final class messages_getAllStickers
 }
 
 /// TL function `messages.getWebPagePreview`, id 0x570D6F6F.
-final class messages_getWebPagePreview
+final class messages_getWebPagePreview : TlFunction
 {
     enum uint tlId = 0x570D6F6F;
 
@@ -515,7 +519,7 @@ final class messages_getWebPagePreview
 }
 
 /// TL function `messages.exportChatInvite`, id 0xA455DE90.
-final class messages_exportChatInvite
+final class messages_exportChatInvite : TlFunction
 {
     enum uint tlId = 0xA455DE90;
 
@@ -532,7 +536,7 @@ final class messages_exportChatInvite
 }
 
 /// TL function `messages.checkChatInvite`, id 0x3EADB1BB.
-final class messages_checkChatInvite
+final class messages_checkChatInvite : TlFunction
 {
     enum uint tlId = 0x3EADB1BB;
 
@@ -542,7 +546,7 @@ final class messages_checkChatInvite
 }
 
 /// TL function `messages.importChatInvite`, id 0xDE91436E.
-final class messages_importChatInvite
+final class messages_importChatInvite : TlFunction
 {
     enum uint tlId = 0xDE91436E;
 
@@ -552,7 +556,7 @@ final class messages_importChatInvite
 }
 
 /// TL function `messages.getStickerSet`, id 0xC8A0EC74.
-final class messages_getStickerSet
+final class messages_getStickerSet : TlFunction
 {
     enum uint tlId = 0xC8A0EC74;
 
@@ -563,7 +567,7 @@ final class messages_getStickerSet
 }
 
 /// TL function `messages.installStickerSet`, id 0xC78FE460.
-final class messages_installStickerSet
+final class messages_installStickerSet : TlFunction
 {
     enum uint tlId = 0xC78FE460;
 
@@ -574,7 +578,7 @@ final class messages_installStickerSet
 }
 
 /// TL function `messages.uninstallStickerSet`, id 0xF96E55DE.
-final class messages_uninstallStickerSet
+final class messages_uninstallStickerSet : TlFunction
 {
     enum uint tlId = 0xF96E55DE;
 
@@ -584,7 +588,7 @@ final class messages_uninstallStickerSet
 }
 
 /// TL function `messages.startBot`, id 0xE6DF7378.
-final class messages_startBot
+final class messages_startBot : TlFunction
 {
     enum uint tlId = 0xE6DF7378;
 
@@ -597,7 +601,7 @@ final class messages_startBot
 }
 
 /// TL function `messages.getMessagesViews`, id 0x5784D3E1.
-final class messages_getMessagesViews
+final class messages_getMessagesViews : TlFunction
 {
     enum uint tlId = 0x5784D3E1;
 
@@ -609,7 +613,7 @@ final class messages_getMessagesViews
 }
 
 /// TL function `messages.editChatAdmin`, id 0xA85BD1C2.
-final class messages_editChatAdmin
+final class messages_editChatAdmin : TlFunction
 {
     enum uint tlId = 0xA85BD1C2;
 
@@ -621,7 +625,7 @@ final class messages_editChatAdmin
 }
 
 /// TL function `messages.migrateChat`, id 0xA2875319.
-final class messages_migrateChat
+final class messages_migrateChat : TlFunction
 {
     enum uint tlId = 0xA2875319;
 
@@ -631,7 +635,7 @@ final class messages_migrateChat
 }
 
 /// TL function `messages.searchGlobal`, id 0x6126A43C.
-final class messages_searchGlobal
+final class messages_searchGlobal : TlFunction
 {
     enum uint tlId = 0x6126A43C;
 
@@ -654,7 +658,7 @@ final class messages_searchGlobal
 }
 
 /// TL function `messages.reorderStickerSets`, id 0x78337739.
-final class messages_reorderStickerSets
+final class messages_reorderStickerSets : TlFunction
 {
     enum uint tlId = 0x78337739;
 
@@ -667,7 +671,7 @@ final class messages_reorderStickerSets
 }
 
 /// TL function `messages.getDocumentByHash`, id 0xB1F2061F.
-final class messages_getDocumentByHash
+final class messages_getDocumentByHash : TlFunction
 {
     enum uint tlId = 0xB1F2061F;
 
@@ -679,7 +683,7 @@ final class messages_getDocumentByHash
 }
 
 /// TL function `messages.getSavedGifs`, id 0x5CF09635.
-final class messages_getSavedGifs
+final class messages_getSavedGifs : TlFunction
 {
     enum uint tlId = 0x5CF09635;
 
@@ -689,7 +693,7 @@ final class messages_getSavedGifs
 }
 
 /// TL function `messages.saveGif`, id 0x327A30CB.
-final class messages_saveGif
+final class messages_saveGif : TlFunction
 {
     enum uint tlId = 0x327A30CB;
 
@@ -700,7 +704,7 @@ final class messages_saveGif
 }
 
 /// TL function `messages.getInlineBotResults`, id 0x514E999D.
-final class messages_getInlineBotResults
+final class messages_getInlineBotResults : TlFunction
 {
     enum uint tlId = 0x514E999D;
 
@@ -715,7 +719,7 @@ final class messages_getInlineBotResults
 }
 
 /// TL function `messages.setInlineBotResults`, id 0xBB12A419.
-final class messages_setInlineBotResults
+final class messages_setInlineBotResults : TlFunction
 {
     enum uint tlId = 0xBB12A419;
 
@@ -733,7 +737,7 @@ final class messages_setInlineBotResults
 }
 
 /// TL function `messages.sendInlineBotResult`, id 0xC0CF7646.
-final class messages_sendInlineBotResult
+final class messages_sendInlineBotResult : TlFunction
 {
     enum uint tlId = 0xC0CF7646;
 
@@ -756,7 +760,7 @@ final class messages_sendInlineBotResult
 }
 
 /// TL function `messages.getMessageEditData`, id 0xFDA68D36.
-final class messages_getMessageEditData
+final class messages_getMessageEditData : TlFunction
 {
     enum uint tlId = 0xFDA68D36;
 
@@ -767,7 +771,7 @@ final class messages_getMessageEditData
 }
 
 /// TL function `messages.editMessage`, id 0xB106E66C.
-final class messages_editMessage
+final class messages_editMessage : TlFunction
 {
     enum uint tlId = 0xB106E66C;
 
@@ -789,7 +793,7 @@ final class messages_editMessage
 }
 
 /// TL function `messages.editInlineBotMessage`, id 0xA423BB51.
-final class messages_editInlineBotMessage
+final class messages_editInlineBotMessage : TlFunction
 {
     enum uint tlId = 0xA423BB51;
 
@@ -807,7 +811,7 @@ final class messages_editInlineBotMessage
 }
 
 /// TL function `messages.getBotCallbackAnswer`, id 0x9342CA07.
-final class messages_getBotCallbackAnswer
+final class messages_getBotCallbackAnswer : TlFunction
 {
     enum uint tlId = 0x9342CA07;
 
@@ -822,7 +826,7 @@ final class messages_getBotCallbackAnswer
 }
 
 /// TL function `messages.setBotCallbackAnswer`, id 0xD58F130A.
-final class messages_setBotCallbackAnswer
+final class messages_setBotCallbackAnswer : TlFunction
 {
     enum uint tlId = 0xD58F130A;
 
@@ -837,7 +841,7 @@ final class messages_setBotCallbackAnswer
 }
 
 /// TL function `messages.getPeerDialogs`, id 0xE470BCFD.
-final class messages_getPeerDialogs
+final class messages_getPeerDialogs : TlFunction
 {
     enum uint tlId = 0xE470BCFD;
 
@@ -847,7 +851,7 @@ final class messages_getPeerDialogs
 }
 
 /// TL function `messages.saveDraft`, id 0xAD0FA15C.
-final class messages_saveDraft
+final class messages_saveDraft : TlFunction
 {
     enum uint tlId = 0xAD0FA15C;
 
@@ -867,7 +871,7 @@ final class messages_saveDraft
 }
 
 /// TL function `messages.getAllDrafts`, id 0x6A3F8D65.
-final class messages_getAllDrafts
+final class messages_getAllDrafts : TlFunction
 {
     enum uint tlId = 0x6A3F8D65;
 
@@ -875,7 +879,7 @@ final class messages_getAllDrafts
 }
 
 /// TL function `messages.getFeaturedStickers`, id 0x64780B14.
-final class messages_getFeaturedStickers
+final class messages_getFeaturedStickers : TlFunction
 {
     enum uint tlId = 0x64780B14;
 
@@ -885,7 +889,7 @@ final class messages_getFeaturedStickers
 }
 
 /// TL function `messages.readFeaturedStickers`, id 0x5B118126.
-final class messages_readFeaturedStickers
+final class messages_readFeaturedStickers : TlFunction
 {
     enum uint tlId = 0x5B118126;
 
@@ -895,7 +899,7 @@ final class messages_readFeaturedStickers
 }
 
 /// TL function `messages.getRecentStickers`, id 0x9DA9403B.
-final class messages_getRecentStickers
+final class messages_getRecentStickers : TlFunction
 {
     enum uint tlId = 0x9DA9403B;
 
@@ -907,7 +911,7 @@ final class messages_getRecentStickers
 }
 
 /// TL function `messages.saveRecentSticker`, id 0x392718F8.
-final class messages_saveRecentSticker
+final class messages_saveRecentSticker : TlFunction
 {
     enum uint tlId = 0x392718F8;
 
@@ -920,7 +924,7 @@ final class messages_saveRecentSticker
 }
 
 /// TL function `messages.clearRecentStickers`, id 0x8999602D.
-final class messages_clearRecentStickers
+final class messages_clearRecentStickers : TlFunction
 {
     enum uint tlId = 0x8999602D;
 
@@ -931,7 +935,7 @@ final class messages_clearRecentStickers
 }
 
 /// TL function `messages.getArchivedStickers`, id 0x57F17692.
-final class messages_getArchivedStickers
+final class messages_getArchivedStickers : TlFunction
 {
     enum uint tlId = 0x57F17692;
 
@@ -945,7 +949,7 @@ final class messages_getArchivedStickers
 }
 
 /// TL function `messages.getMaskStickers`, id 0x640F82B8.
-final class messages_getMaskStickers
+final class messages_getMaskStickers : TlFunction
 {
     enum uint tlId = 0x640F82B8;
 
@@ -955,7 +959,7 @@ final class messages_getMaskStickers
 }
 
 /// TL function `messages.getAttachedStickers`, id 0xCC5B67CC.
-final class messages_getAttachedStickers
+final class messages_getAttachedStickers : TlFunction
 {
     enum uint tlId = 0xCC5B67CC;
 
@@ -965,7 +969,7 @@ final class messages_getAttachedStickers
 }
 
 /// TL function `messages.setGameScore`, id 0x8EF8ECC0.
-final class messages_setGameScore
+final class messages_setGameScore : TlFunction
 {
     enum uint tlId = 0x8EF8ECC0;
 
@@ -981,7 +985,7 @@ final class messages_setGameScore
 }
 
 /// TL function `messages.setInlineGameScore`, id 0x15AD9F64.
-final class messages_setInlineGameScore
+final class messages_setInlineGameScore : TlFunction
 {
     enum uint tlId = 0x15AD9F64;
 
@@ -996,7 +1000,7 @@ final class messages_setInlineGameScore
 }
 
 /// TL function `messages.getGameHighScores`, id 0xE822649D.
-final class messages_getGameHighScores
+final class messages_getGameHighScores : TlFunction
 {
     enum uint tlId = 0xE822649D;
 
@@ -1008,7 +1012,7 @@ final class messages_getGameHighScores
 }
 
 /// TL function `messages.getInlineGameHighScores`, id 0x0F635E1B.
-final class messages_getInlineGameHighScores
+final class messages_getInlineGameHighScores : TlFunction
 {
     enum uint tlId = 0x0F635E1B;
 
@@ -1019,7 +1023,7 @@ final class messages_getInlineGameHighScores
 }
 
 /// TL function `messages.getCommonChats`, id 0xE40CA104.
-final class messages_getCommonChats
+final class messages_getCommonChats : TlFunction
 {
     enum uint tlId = 0xE40CA104;
 
@@ -1031,7 +1035,7 @@ final class messages_getCommonChats
 }
 
 /// TL function `messages.getWebPage`, id 0x8D9692A3.
-final class messages_getWebPage
+final class messages_getWebPage : TlFunction
 {
     enum uint tlId = 0x8D9692A3;
 
@@ -1042,7 +1046,7 @@ final class messages_getWebPage
 }
 
 /// TL function `messages.toggleDialogPin`, id 0xA731E257.
-final class messages_toggleDialogPin
+final class messages_toggleDialogPin : TlFunction
 {
     enum uint tlId = 0xA731E257;
 
@@ -1054,7 +1058,7 @@ final class messages_toggleDialogPin
 }
 
 /// TL function `messages.reorderPinnedDialogs`, id 0x3B1ADF37.
-final class messages_reorderPinnedDialogs
+final class messages_reorderPinnedDialogs : TlFunction
 {
     enum uint tlId = 0x3B1ADF37;
 
@@ -1067,7 +1071,7 @@ final class messages_reorderPinnedDialogs
 }
 
 /// TL function `messages.getPinnedDialogs`, id 0xD6B94DF2.
-final class messages_getPinnedDialogs
+final class messages_getPinnedDialogs : TlFunction
 {
     enum uint tlId = 0xD6B94DF2;
 
@@ -1077,7 +1081,7 @@ final class messages_getPinnedDialogs
 }
 
 /// TL function `messages.setBotShippingResults`, id 0xE5F672FA.
-final class messages_setBotShippingResults
+final class messages_setBotShippingResults : TlFunction
 {
     enum uint tlId = 0xE5F672FA;
 
@@ -1090,7 +1094,7 @@ final class messages_setBotShippingResults
 }
 
 /// TL function `messages.setBotPrecheckoutResults`, id 0x09C2DD95.
-final class messages_setBotPrecheckoutResults
+final class messages_setBotPrecheckoutResults : TlFunction
 {
     enum uint tlId = 0x09C2DD95;
 
@@ -1103,7 +1107,7 @@ final class messages_setBotPrecheckoutResults
 }
 
 /// TL function `messages.uploadMedia`, id 0x14967978.
-final class messages_uploadMedia
+final class messages_uploadMedia : TlFunction
 {
     enum uint tlId = 0x14967978;
 
@@ -1116,7 +1120,7 @@ final class messages_uploadMedia
 }
 
 /// TL function `messages.sendScreenshotNotification`, id 0xA1405817.
-final class messages_sendScreenshotNotification
+final class messages_sendScreenshotNotification : TlFunction
 {
     enum uint tlId = 0xA1405817;
 
@@ -1128,7 +1132,7 @@ final class messages_sendScreenshotNotification
 }
 
 /// TL function `messages.getFavedStickers`, id 0x04F1AAA9.
-final class messages_getFavedStickers
+final class messages_getFavedStickers : TlFunction
 {
     enum uint tlId = 0x04F1AAA9;
 
@@ -1138,7 +1142,7 @@ final class messages_getFavedStickers
 }
 
 /// TL function `messages.faveSticker`, id 0xB9FFC55B.
-final class messages_faveSticker
+final class messages_faveSticker : TlFunction
 {
     enum uint tlId = 0xB9FFC55B;
 
@@ -1149,7 +1153,7 @@ final class messages_faveSticker
 }
 
 /// TL function `messages.getUnreadMentions`, id 0xF107E790.
-final class messages_getUnreadMentions
+final class messages_getUnreadMentions : TlFunction
 {
     enum uint tlId = 0xF107E790;
 
@@ -1166,7 +1170,7 @@ final class messages_getUnreadMentions
 }
 
 /// TL function `messages.readMentions`, id 0x36E5BF4D.
-final class messages_readMentions
+final class messages_readMentions : TlFunction
 {
     enum uint tlId = 0x36E5BF4D;
 
@@ -1178,7 +1182,7 @@ final class messages_readMentions
 }
 
 /// TL function `messages.getRecentLocations`, id 0x702A40E0.
-final class messages_getRecentLocations
+final class messages_getRecentLocations : TlFunction
 {
     enum uint tlId = 0x702A40E0;
 
@@ -1190,7 +1194,7 @@ final class messages_getRecentLocations
 }
 
 /// TL function `messages.sendMultiMedia`, id 0x1BF89D74.
-final class messages_sendMultiMedia
+final class messages_sendMultiMedia : TlFunction
 {
     enum uint tlId = 0x1BF89D74;
 
@@ -1215,7 +1219,7 @@ final class messages_sendMultiMedia
 }
 
 /// TL function `messages.uploadEncryptedFile`, id 0x5057C497.
-final class messages_uploadEncryptedFile
+final class messages_uploadEncryptedFile : TlFunction
 {
     enum uint tlId = 0x5057C497;
 
@@ -1226,7 +1230,7 @@ final class messages_uploadEncryptedFile
 }
 
 /// TL function `messages.searchStickerSets`, id 0x35705B8A.
-final class messages_searchStickerSets
+final class messages_searchStickerSets : TlFunction
 {
     enum uint tlId = 0x35705B8A;
 
@@ -1239,7 +1243,7 @@ final class messages_searchStickerSets
 }
 
 /// TL function `messages.getSplitRanges`, id 0x1CFF7E08.
-final class messages_getSplitRanges
+final class messages_getSplitRanges : TlFunction
 {
     enum uint tlId = 0x1CFF7E08;
 
@@ -1247,7 +1251,7 @@ final class messages_getSplitRanges
 }
 
 /// TL function `messages.markDialogUnread`, id 0x8C5006F8.
-final class messages_markDialogUnread
+final class messages_markDialogUnread : TlFunction
 {
     enum uint tlId = 0x8C5006F8;
 
@@ -1260,7 +1264,7 @@ final class messages_markDialogUnread
 }
 
 /// TL function `messages.getDialogUnreadMarks`, id 0x21202222.
-final class messages_getDialogUnreadMarks
+final class messages_getDialogUnreadMarks : TlFunction
 {
     enum uint tlId = 0x21202222;
 
@@ -1271,7 +1275,7 @@ final class messages_getDialogUnreadMarks
 }
 
 /// TL function `messages.clearAllDrafts`, id 0x7E58EE9C.
-final class messages_clearAllDrafts
+final class messages_clearAllDrafts : TlFunction
 {
     enum uint tlId = 0x7E58EE9C;
 
@@ -1279,7 +1283,7 @@ final class messages_clearAllDrafts
 }
 
 /// TL function `messages.updatePinnedMessage`, id 0xD2AAF7EC.
-final class messages_updatePinnedMessage
+final class messages_updatePinnedMessage : TlFunction
 {
     enum uint tlId = 0xD2AAF7EC;
 
@@ -1294,7 +1298,7 @@ final class messages_updatePinnedMessage
 }
 
 /// TL function `messages.sendVote`, id 0x10EA6184.
-final class messages_sendVote
+final class messages_sendVote : TlFunction
 {
     enum uint tlId = 0x10EA6184;
 
@@ -1306,7 +1310,7 @@ final class messages_sendVote
 }
 
 /// TL function `messages.getPollResults`, id 0xEDA3E33B.
-final class messages_getPollResults
+final class messages_getPollResults : TlFunction
 {
     enum uint tlId = 0xEDA3E33B;
 
@@ -1318,7 +1322,7 @@ final class messages_getPollResults
 }
 
 /// TL function `messages.getOnlines`, id 0x6E2BE050.
-final class messages_getOnlines
+final class messages_getOnlines : TlFunction
 {
     enum uint tlId = 0x6E2BE050;
 
@@ -1328,7 +1332,7 @@ final class messages_getOnlines
 }
 
 /// TL function `messages.editChatAbout`, id 0xDEF60797.
-final class messages_editChatAbout
+final class messages_editChatAbout : TlFunction
 {
     enum uint tlId = 0xDEF60797;
 
@@ -1339,7 +1343,7 @@ final class messages_editChatAbout
 }
 
 /// TL function `messages.editChatDefaultBannedRights`, id 0xA5866B41.
-final class messages_editChatDefaultBannedRights
+final class messages_editChatDefaultBannedRights : TlFunction
 {
     enum uint tlId = 0xA5866B41;
 
@@ -1350,7 +1354,7 @@ final class messages_editChatDefaultBannedRights
 }
 
 /// TL function `messages.getEmojiKeywords`, id 0x35A0E062.
-final class messages_getEmojiKeywords
+final class messages_getEmojiKeywords : TlFunction
 {
     enum uint tlId = 0x35A0E062;
 
@@ -1360,7 +1364,7 @@ final class messages_getEmojiKeywords
 }
 
 /// TL function `messages.getEmojiKeywordsDifference`, id 0x1508B6AF.
-final class messages_getEmojiKeywordsDifference
+final class messages_getEmojiKeywordsDifference : TlFunction
 {
     enum uint tlId = 0x1508B6AF;
 
@@ -1371,7 +1375,7 @@ final class messages_getEmojiKeywordsDifference
 }
 
 /// TL function `messages.getEmojiKeywordsLanguages`, id 0x4E9963B2.
-final class messages_getEmojiKeywordsLanguages
+final class messages_getEmojiKeywordsLanguages : TlFunction
 {
     enum uint tlId = 0x4E9963B2;
 
@@ -1381,7 +1385,7 @@ final class messages_getEmojiKeywordsLanguages
 }
 
 /// TL function `messages.getEmojiURL`, id 0xD5B10C26.
-final class messages_getEmojiURL
+final class messages_getEmojiURL : TlFunction
 {
     enum uint tlId = 0xD5B10C26;
 
@@ -1391,7 +1395,7 @@ final class messages_getEmojiURL
 }
 
 /// TL function `messages.getSearchCounters`, id 0x1BBCF300.
-final class messages_getSearchCounters
+final class messages_getSearchCounters : TlFunction
 {
     enum uint tlId = 0x1BBCF300;
 
@@ -1405,7 +1409,7 @@ final class messages_getSearchCounters
 }
 
 /// TL function `messages.requestUrlAuth`, id 0x894CC99C.
-final class messages_requestUrlAuth
+final class messages_requestUrlAuth : TlFunction
 {
     enum uint tlId = 0x894CC99C;
 
@@ -1420,7 +1424,7 @@ final class messages_requestUrlAuth
 }
 
 /// TL function `messages.acceptUrlAuth`, id 0x67A3F0DE.
-final class messages_acceptUrlAuth
+final class messages_acceptUrlAuth : TlFunction
 {
     enum uint tlId = 0x67A3F0DE;
 
@@ -1437,7 +1441,7 @@ final class messages_acceptUrlAuth
 }
 
 /// TL function `messages.hidePeerSettingsBar`, id 0x4FACB138.
-final class messages_hidePeerSettingsBar
+final class messages_hidePeerSettingsBar : TlFunction
 {
     enum uint tlId = 0x4FACB138;
 
@@ -1447,7 +1451,7 @@ final class messages_hidePeerSettingsBar
 }
 
 /// TL function `messages.getScheduledHistory`, id 0xF516760B.
-final class messages_getScheduledHistory
+final class messages_getScheduledHistory : TlFunction
 {
     enum uint tlId = 0xF516760B;
 
@@ -1458,7 +1462,7 @@ final class messages_getScheduledHistory
 }
 
 /// TL function `messages.getScheduledMessages`, id 0xBDBB0464.
-final class messages_getScheduledMessages
+final class messages_getScheduledMessages : TlFunction
 {
     enum uint tlId = 0xBDBB0464;
 
@@ -1469,7 +1473,7 @@ final class messages_getScheduledMessages
 }
 
 /// TL function `messages.sendScheduledMessages`, id 0xBD38850A.
-final class messages_sendScheduledMessages
+final class messages_sendScheduledMessages : TlFunction
 {
     enum uint tlId = 0xBD38850A;
 
@@ -1480,7 +1484,7 @@ final class messages_sendScheduledMessages
 }
 
 /// TL function `messages.deleteScheduledMessages`, id 0x59AE2B16.
-final class messages_deleteScheduledMessages
+final class messages_deleteScheduledMessages : TlFunction
 {
     enum uint tlId = 0x59AE2B16;
 
@@ -1491,7 +1495,7 @@ final class messages_deleteScheduledMessages
 }
 
 /// TL function `messages.getPollVotes`, id 0xB86E380E.
-final class messages_getPollVotes
+final class messages_getPollVotes : TlFunction
 {
     enum uint tlId = 0xB86E380E;
 
@@ -1506,7 +1510,7 @@ final class messages_getPollVotes
 }
 
 /// TL function `messages.toggleStickerSets`, id 0xB5052FEA.
-final class messages_toggleStickerSets
+final class messages_toggleStickerSets : TlFunction
 {
     enum uint tlId = 0xB5052FEA;
 
@@ -1520,7 +1524,7 @@ final class messages_toggleStickerSets
 }
 
 /// TL function `messages.getDialogFilters`, id 0xEFD48C89.
-final class messages_getDialogFilters
+final class messages_getDialogFilters : TlFunction
 {
     enum uint tlId = 0xEFD48C89;
 
@@ -1528,7 +1532,7 @@ final class messages_getDialogFilters
 }
 
 /// TL function `messages.getSuggestedDialogFilters`, id 0xA29CD42C.
-final class messages_getSuggestedDialogFilters
+final class messages_getSuggestedDialogFilters : TlFunction
 {
     enum uint tlId = 0xA29CD42C;
 
@@ -1536,7 +1540,7 @@ final class messages_getSuggestedDialogFilters
 }
 
 /// TL function `messages.updateDialogFilter`, id 0x1AD4A04A.
-final class messages_updateDialogFilter
+final class messages_updateDialogFilter : TlFunction
 {
     enum uint tlId = 0x1AD4A04A;
 
@@ -1548,7 +1552,7 @@ final class messages_updateDialogFilter
 }
 
 /// TL function `messages.updateDialogFiltersOrder`, id 0xC563C1E4.
-final class messages_updateDialogFiltersOrder
+final class messages_updateDialogFiltersOrder : TlFunction
 {
     enum uint tlId = 0xC563C1E4;
 
@@ -1558,7 +1562,7 @@ final class messages_updateDialogFiltersOrder
 }
 
 /// TL function `messages.getOldFeaturedStickers`, id 0x7ED094A1.
-final class messages_getOldFeaturedStickers
+final class messages_getOldFeaturedStickers : TlFunction
 {
     enum uint tlId = 0x7ED094A1;
 
@@ -1570,7 +1574,7 @@ final class messages_getOldFeaturedStickers
 }
 
 /// TL function `messages.getReplies`, id 0x22DDD30C.
-final class messages_getReplies
+final class messages_getReplies : TlFunction
 {
     enum uint tlId = 0x22DDD30C;
 
@@ -1588,7 +1592,7 @@ final class messages_getReplies
 }
 
 /// TL function `messages.getDiscussionMessage`, id 0x446972FD.
-final class messages_getDiscussionMessage
+final class messages_getDiscussionMessage : TlFunction
 {
     enum uint tlId = 0x446972FD;
 
@@ -1599,7 +1603,7 @@ final class messages_getDiscussionMessage
 }
 
 /// TL function `messages.readDiscussion`, id 0xF731A9F4.
-final class messages_readDiscussion
+final class messages_readDiscussion : TlFunction
 {
     enum uint tlId = 0xF731A9F4;
 
@@ -1611,7 +1615,7 @@ final class messages_readDiscussion
 }
 
 /// TL function `messages.unpinAllMessages`, id 0x062DD747.
-final class messages_unpinAllMessages
+final class messages_unpinAllMessages : TlFunction
 {
     enum uint tlId = 0x062DD747;
 
@@ -1624,7 +1628,7 @@ final class messages_unpinAllMessages
 }
 
 /// TL function `messages.deleteChat`, id 0x5BD0EE50.
-final class messages_deleteChat
+final class messages_deleteChat : TlFunction
 {
     enum uint tlId = 0x5BD0EE50;
 
@@ -1634,7 +1638,7 @@ final class messages_deleteChat
 }
 
 /// TL function `messages.deletePhoneCallHistory`, id 0xF9CBE409.
-final class messages_deletePhoneCallHistory
+final class messages_deletePhoneCallHistory : TlFunction
 {
     enum uint tlId = 0xF9CBE409;
 
@@ -1645,7 +1649,7 @@ final class messages_deletePhoneCallHistory
 }
 
 /// TL function `messages.checkHistoryImport`, id 0x43FE19F3.
-final class messages_checkHistoryImport
+final class messages_checkHistoryImport : TlFunction
 {
     enum uint tlId = 0x43FE19F3;
 
@@ -1655,7 +1659,7 @@ final class messages_checkHistoryImport
 }
 
 /// TL function `messages.initHistoryImport`, id 0x34090C3B.
-final class messages_initHistoryImport
+final class messages_initHistoryImport : TlFunction
 {
     enum uint tlId = 0x34090C3B;
 
@@ -1667,7 +1671,7 @@ final class messages_initHistoryImport
 }
 
 /// TL function `messages.uploadImportedMedia`, id 0x2A862092.
-final class messages_uploadImportedMedia
+final class messages_uploadImportedMedia : TlFunction
 {
     enum uint tlId = 0x2A862092;
 
@@ -1680,7 +1684,7 @@ final class messages_uploadImportedMedia
 }
 
 /// TL function `messages.startHistoryImport`, id 0xB43DF344.
-final class messages_startHistoryImport
+final class messages_startHistoryImport : TlFunction
 {
     enum uint tlId = 0xB43DF344;
 
@@ -1691,7 +1695,7 @@ final class messages_startHistoryImport
 }
 
 /// TL function `messages.getExportedChatInvites`, id 0xA2B5A3F6.
-final class messages_getExportedChatInvites
+final class messages_getExportedChatInvites : TlFunction
 {
     enum uint tlId = 0xA2B5A3F6;
 
@@ -1707,7 +1711,7 @@ final class messages_getExportedChatInvites
 }
 
 /// TL function `messages.getExportedChatInvite`, id 0x73746F5C.
-final class messages_getExportedChatInvite
+final class messages_getExportedChatInvite : TlFunction
 {
     enum uint tlId = 0x73746F5C;
 
@@ -1718,7 +1722,7 @@ final class messages_getExportedChatInvite
 }
 
 /// TL function `messages.editExportedChatInvite`, id 0xBDCA2F75.
-final class messages_editExportedChatInvite
+final class messages_editExportedChatInvite : TlFunction
 {
     enum uint tlId = 0xBDCA2F75;
 
@@ -1735,7 +1739,7 @@ final class messages_editExportedChatInvite
 }
 
 /// TL function `messages.deleteRevokedExportedChatInvites`, id 0x56987BD5.
-final class messages_deleteRevokedExportedChatInvites
+final class messages_deleteRevokedExportedChatInvites : TlFunction
 {
     enum uint tlId = 0x56987BD5;
 
@@ -1746,7 +1750,7 @@ final class messages_deleteRevokedExportedChatInvites
 }
 
 /// TL function `messages.deleteExportedChatInvite`, id 0xD464A42B.
-final class messages_deleteExportedChatInvite
+final class messages_deleteExportedChatInvite : TlFunction
 {
     enum uint tlId = 0xD464A42B;
 
@@ -1757,7 +1761,7 @@ final class messages_deleteExportedChatInvite
 }
 
 /// TL function `messages.getAdminsWithInvites`, id 0x3920E6EF.
-final class messages_getAdminsWithInvites
+final class messages_getAdminsWithInvites : TlFunction
 {
     enum uint tlId = 0x3920E6EF;
 
@@ -1767,7 +1771,7 @@ final class messages_getAdminsWithInvites
 }
 
 /// TL function `messages.getChatInviteImporters`, id 0xDF04DD4E.
-final class messages_getChatInviteImporters
+final class messages_getChatInviteImporters : TlFunction
 {
     enum uint tlId = 0xDF04DD4E;
 
@@ -1785,7 +1789,7 @@ final class messages_getChatInviteImporters
 }
 
 /// TL function `messages.setHistoryTTL`, id 0xB80E5FE4.
-final class messages_setHistoryTTL
+final class messages_setHistoryTTL : TlFunction
 {
     enum uint tlId = 0xB80E5FE4;
 
@@ -1796,7 +1800,7 @@ final class messages_setHistoryTTL
 }
 
 /// TL function `messages.checkHistoryImportPeer`, id 0x5DC60F03.
-final class messages_checkHistoryImportPeer
+final class messages_checkHistoryImportPeer : TlFunction
 {
     enum uint tlId = 0x5DC60F03;
 
@@ -1806,7 +1810,7 @@ final class messages_checkHistoryImportPeer
 }
 
 /// TL function `messages.setChatTheme`, id 0x081202C9.
-final class messages_setChatTheme
+final class messages_setChatTheme : TlFunction
 {
     enum uint tlId = 0x081202C9;
 
@@ -1817,7 +1821,7 @@ final class messages_setChatTheme
 }
 
 /// TL function `messages.getMessageReadParticipants`, id 0x31C1C44F.
-final class messages_getMessageReadParticipants
+final class messages_getMessageReadParticipants : TlFunction
 {
     enum uint tlId = 0x31C1C44F;
 
@@ -1828,7 +1832,7 @@ final class messages_getMessageReadParticipants
 }
 
 /// TL function `messages.getSearchResultsCalendar`, id 0x6AA3F6BD.
-final class messages_getSearchResultsCalendar
+final class messages_getSearchResultsCalendar : TlFunction
 {
     enum uint tlId = 0x6AA3F6BD;
 
@@ -1843,7 +1847,7 @@ final class messages_getSearchResultsCalendar
 }
 
 /// TL function `messages.getSearchResultsPositions`, id 0x9C7F2F10.
-final class messages_getSearchResultsPositions
+final class messages_getSearchResultsPositions : TlFunction
 {
     enum uint tlId = 0x9C7F2F10;
 
@@ -1858,7 +1862,7 @@ final class messages_getSearchResultsPositions
 }
 
 /// TL function `messages.hideChatJoinRequest`, id 0x7FE7E815.
-final class messages_hideChatJoinRequest
+final class messages_hideChatJoinRequest : TlFunction
 {
     enum uint tlId = 0x7FE7E815;
 
@@ -1871,7 +1875,7 @@ final class messages_hideChatJoinRequest
 }
 
 /// TL function `messages.hideAllChatJoinRequests`, id 0xE085F4EA.
-final class messages_hideAllChatJoinRequests
+final class messages_hideAllChatJoinRequests : TlFunction
 {
     enum uint tlId = 0xE085F4EA;
 
@@ -1884,7 +1888,7 @@ final class messages_hideAllChatJoinRequests
 }
 
 /// TL function `messages.toggleNoForwards`, id 0xB2081A35.
-final class messages_toggleNoForwards
+final class messages_toggleNoForwards : TlFunction
 {
     enum uint tlId = 0xB2081A35;
 
@@ -1897,7 +1901,7 @@ final class messages_toggleNoForwards
 }
 
 /// TL function `messages.saveDefaultSendAs`, id 0xCCFDDF96.
-final class messages_saveDefaultSendAs
+final class messages_saveDefaultSendAs : TlFunction
 {
     enum uint tlId = 0xCCFDDF96;
 
@@ -1908,7 +1912,7 @@ final class messages_saveDefaultSendAs
 }
 
 /// TL function `messages.sendReaction`, id 0xD30D78D4.
-final class messages_sendReaction
+final class messages_sendReaction : TlFunction
 {
     enum uint tlId = 0xD30D78D4;
 
@@ -1923,7 +1927,7 @@ final class messages_sendReaction
 }
 
 /// TL function `messages.getMessagesReactions`, id 0x8BBA90E6.
-final class messages_getMessagesReactions
+final class messages_getMessagesReactions : TlFunction
 {
     enum uint tlId = 0x8BBA90E6;
 
@@ -1934,7 +1938,7 @@ final class messages_getMessagesReactions
 }
 
 /// TL function `messages.getMessageReactionsList`, id 0x461B3F48.
-final class messages_getMessageReactionsList
+final class messages_getMessageReactionsList : TlFunction
 {
     enum uint tlId = 0x461B3F48;
 
@@ -1949,7 +1953,7 @@ final class messages_getMessageReactionsList
 }
 
 /// TL function `messages.setChatAvailableReactions`, id 0x864B2581.
-final class messages_setChatAvailableReactions
+final class messages_setChatAvailableReactions : TlFunction
 {
     enum uint tlId = 0x864B2581;
 
@@ -1963,7 +1967,7 @@ final class messages_setChatAvailableReactions
 }
 
 /// TL function `messages.getAvailableReactions`, id 0x18DEA0AC.
-final class messages_getAvailableReactions
+final class messages_getAvailableReactions : TlFunction
 {
     enum uint tlId = 0x18DEA0AC;
 
@@ -1973,7 +1977,7 @@ final class messages_getAvailableReactions
 }
 
 /// TL function `messages.setDefaultReaction`, id 0x4F47A016.
-final class messages_setDefaultReaction
+final class messages_setDefaultReaction : TlFunction
 {
     enum uint tlId = 0x4F47A016;
 
@@ -1983,7 +1987,7 @@ final class messages_setDefaultReaction
 }
 
 /// TL function `messages.translateText`, id 0xA5EEC345.
-final class messages_translateText
+final class messages_translateText : TlFunction
 {
     enum uint tlId = 0xA5EEC345;
 
@@ -1998,7 +2002,7 @@ final class messages_translateText
 }
 
 /// TL function `messages.getUnreadReactions`, id 0xBD7F90AC.
-final class messages_getUnreadReactions
+final class messages_getUnreadReactions : TlFunction
 {
     enum uint tlId = 0xBD7F90AC;
 
@@ -2016,7 +2020,7 @@ final class messages_getUnreadReactions
 }
 
 /// TL function `messages.readReactions`, id 0x9EC44F93.
-final class messages_readReactions
+final class messages_readReactions : TlFunction
 {
     enum uint tlId = 0x9EC44F93;
 
@@ -2029,7 +2033,7 @@ final class messages_readReactions
 }
 
 /// TL function `messages.searchSentMedia`, id 0x107E31A0.
-final class messages_searchSentMedia
+final class messages_searchSentMedia : TlFunction
 {
     enum uint tlId = 0x107E31A0;
 
@@ -2041,7 +2045,7 @@ final class messages_searchSentMedia
 }
 
 /// TL function `messages.getAttachMenuBots`, id 0x16FCC2CB.
-final class messages_getAttachMenuBots
+final class messages_getAttachMenuBots : TlFunction
 {
     enum uint tlId = 0x16FCC2CB;
 
@@ -2051,7 +2055,7 @@ final class messages_getAttachMenuBots
 }
 
 /// TL function `messages.getAttachMenuBot`, id 0x77216192.
-final class messages_getAttachMenuBot
+final class messages_getAttachMenuBot : TlFunction
 {
     enum uint tlId = 0x77216192;
 
@@ -2061,7 +2065,7 @@ final class messages_getAttachMenuBot
 }
 
 /// TL function `messages.toggleBotInAttachMenu`, id 0x69F59D69.
-final class messages_toggleBotInAttachMenu
+final class messages_toggleBotInAttachMenu : TlFunction
 {
     enum uint tlId = 0x69F59D69;
 
@@ -2074,7 +2078,7 @@ final class messages_toggleBotInAttachMenu
 }
 
 /// TL function `messages.requestWebView`, id 0x269DC2C1.
-final class messages_requestWebView
+final class messages_requestWebView : TlFunction
 {
     enum uint tlId = 0x269DC2C1;
 
@@ -2096,7 +2100,7 @@ final class messages_requestWebView
 }
 
 /// TL function `messages.prolongWebView`, id 0xB0D81A83.
-final class messages_prolongWebView
+final class messages_prolongWebView : TlFunction
 {
     enum uint tlId = 0xB0D81A83;
 
@@ -2112,7 +2116,7 @@ final class messages_prolongWebView
 }
 
 /// TL function `messages.requestSimpleWebView`, id 0x413A3E73.
-final class messages_requestSimpleWebView
+final class messages_requestSimpleWebView : TlFunction
 {
     enum uint tlId = 0x413A3E73;
 
@@ -2131,7 +2135,7 @@ final class messages_requestSimpleWebView
 }
 
 /// TL function `messages.sendWebViewResultMessage`, id 0x0A4314F5.
-final class messages_sendWebViewResultMessage
+final class messages_sendWebViewResultMessage : TlFunction
 {
     enum uint tlId = 0x0A4314F5;
 
@@ -2142,7 +2146,7 @@ final class messages_sendWebViewResultMessage
 }
 
 /// TL function `messages.sendWebViewData`, id 0xDC0242C8.
-final class messages_sendWebViewData
+final class messages_sendWebViewData : TlFunction
 {
     enum uint tlId = 0xDC0242C8;
 
@@ -2155,7 +2159,7 @@ final class messages_sendWebViewData
 }
 
 /// TL function `messages.transcribeAudio`, id 0x269E9A49.
-final class messages_transcribeAudio
+final class messages_transcribeAudio : TlFunction
 {
     enum uint tlId = 0x269E9A49;
 
@@ -2166,7 +2170,7 @@ final class messages_transcribeAudio
 }
 
 /// TL function `messages.rateTranscribedAudio`, id 0x7F1D072F.
-final class messages_rateTranscribedAudio
+final class messages_rateTranscribedAudio : TlFunction
 {
     enum uint tlId = 0x7F1D072F;
 
@@ -2179,7 +2183,7 @@ final class messages_rateTranscribedAudio
 }
 
 /// TL function `messages.getCustomEmojiDocuments`, id 0xD9AB0F54.
-final class messages_getCustomEmojiDocuments
+final class messages_getCustomEmojiDocuments : TlFunction
 {
     enum uint tlId = 0xD9AB0F54;
 
@@ -2189,7 +2193,7 @@ final class messages_getCustomEmojiDocuments
 }
 
 /// TL function `messages.getEmojiStickers`, id 0xFBFCA18F.
-final class messages_getEmojiStickers
+final class messages_getEmojiStickers : TlFunction
 {
     enum uint tlId = 0xFBFCA18F;
 
@@ -2199,7 +2203,7 @@ final class messages_getEmojiStickers
 }
 
 /// TL function `messages.getFeaturedEmojiStickers`, id 0x0ECF6736.
-final class messages_getFeaturedEmojiStickers
+final class messages_getFeaturedEmojiStickers : TlFunction
 {
     enum uint tlId = 0x0ECF6736;
 
@@ -2209,7 +2213,7 @@ final class messages_getFeaturedEmojiStickers
 }
 
 /// TL function `messages.reportReaction`, id 0x3F64C076.
-final class messages_reportReaction
+final class messages_reportReaction : TlFunction
 {
     enum uint tlId = 0x3F64C076;
 
@@ -2221,7 +2225,7 @@ final class messages_reportReaction
 }
 
 /// TL function `messages.getTopReactions`, id 0xBB8125BA.
-final class messages_getTopReactions
+final class messages_getTopReactions : TlFunction
 {
     enum uint tlId = 0xBB8125BA;
 
@@ -2232,7 +2236,7 @@ final class messages_getTopReactions
 }
 
 /// TL function `messages.getRecentReactions`, id 0x39461DB2.
-final class messages_getRecentReactions
+final class messages_getRecentReactions : TlFunction
 {
     enum uint tlId = 0x39461DB2;
 
@@ -2243,7 +2247,7 @@ final class messages_getRecentReactions
 }
 
 /// TL function `messages.clearRecentReactions`, id 0x9DFEEFB4.
-final class messages_clearRecentReactions
+final class messages_clearRecentReactions : TlFunction
 {
     enum uint tlId = 0x9DFEEFB4;
 
@@ -2251,7 +2255,7 @@ final class messages_clearRecentReactions
 }
 
 /// TL function `messages.getExtendedMedia`, id 0x84F80814.
-final class messages_getExtendedMedia
+final class messages_getExtendedMedia : TlFunction
 {
     enum uint tlId = 0x84F80814;
 
@@ -2262,7 +2266,7 @@ final class messages_getExtendedMedia
 }
 
 /// TL function `messages.setDefaultHistoryTTL`, id 0x9EB51445.
-final class messages_setDefaultHistoryTTL
+final class messages_setDefaultHistoryTTL : TlFunction
 {
     enum uint tlId = 0x9EB51445;
 
@@ -2272,7 +2276,7 @@ final class messages_setDefaultHistoryTTL
 }
 
 /// TL function `messages.getDefaultHistoryTTL`, id 0x658B7188.
-final class messages_getDefaultHistoryTTL
+final class messages_getDefaultHistoryTTL : TlFunction
 {
     enum uint tlId = 0x658B7188;
 
@@ -2280,7 +2284,7 @@ final class messages_getDefaultHistoryTTL
 }
 
 /// TL function `messages.sendBotRequestedPeer`, id 0x6C5CF2A7.
-final class messages_sendBotRequestedPeer
+final class messages_sendBotRequestedPeer : TlFunction
 {
     enum uint tlId = 0x6C5CF2A7;
 
@@ -2295,7 +2299,7 @@ final class messages_sendBotRequestedPeer
 }
 
 /// TL function `messages.getEmojiGroups`, id 0x7488CE5B.
-final class messages_getEmojiGroups
+final class messages_getEmojiGroups : TlFunction
 {
     enum uint tlId = 0x7488CE5B;
 
@@ -2305,7 +2309,7 @@ final class messages_getEmojiGroups
 }
 
 /// TL function `messages.getEmojiStatusGroups`, id 0x2ECD56CD.
-final class messages_getEmojiStatusGroups
+final class messages_getEmojiStatusGroups : TlFunction
 {
     enum uint tlId = 0x2ECD56CD;
 
@@ -2315,7 +2319,7 @@ final class messages_getEmojiStatusGroups
 }
 
 /// TL function `messages.getEmojiProfilePhotoGroups`, id 0x21A548F3.
-final class messages_getEmojiProfilePhotoGroups
+final class messages_getEmojiProfilePhotoGroups : TlFunction
 {
     enum uint tlId = 0x21A548F3;
 
@@ -2325,7 +2329,7 @@ final class messages_getEmojiProfilePhotoGroups
 }
 
 /// TL function `messages.searchCustomEmoji`, id 0x2C11C0D7.
-final class messages_searchCustomEmoji
+final class messages_searchCustomEmoji : TlFunction
 {
     enum uint tlId = 0x2C11C0D7;
 
@@ -2336,7 +2340,7 @@ final class messages_searchCustomEmoji
 }
 
 /// TL function `messages.togglePeerTranslations`, id 0xE47CB579.
-final class messages_togglePeerTranslations
+final class messages_togglePeerTranslations : TlFunction
 {
     enum uint tlId = 0xE47CB579;
 
@@ -2348,7 +2352,7 @@ final class messages_togglePeerTranslations
 }
 
 /// TL function `messages.getBotApp`, id 0x34FDC5C3.
-final class messages_getBotApp
+final class messages_getBotApp : TlFunction
 {
     enum uint tlId = 0x34FDC5C3;
 
@@ -2359,7 +2363,7 @@ final class messages_getBotApp
 }
 
 /// TL function `messages.requestAppWebView`, id 0x53618BCE.
-final class messages_requestAppWebView
+final class messages_requestAppWebView : TlFunction
 {
     enum uint tlId = 0x53618BCE;
 
@@ -2377,7 +2381,7 @@ final class messages_requestAppWebView
 }
 
 /// TL function `messages.setChatWallPaper`, id 0x8FFACAE1.
-final class messages_setChatWallPaper
+final class messages_setChatWallPaper : TlFunction
 {
     enum uint tlId = 0x8FFACAE1;
 
@@ -2393,7 +2397,7 @@ final class messages_setChatWallPaper
 }
 
 /// TL function `messages.searchEmojiStickerSets`, id 0x92B4494C.
-final class messages_searchEmojiStickerSets
+final class messages_searchEmojiStickerSets : TlFunction
 {
     enum uint tlId = 0x92B4494C;
 
@@ -2406,7 +2410,7 @@ final class messages_searchEmojiStickerSets
 }
 
 /// TL function `messages.getSavedDialogs`, id 0x1E91FC99.
-final class messages_getSavedDialogs
+final class messages_getSavedDialogs : TlFunction
 {
     enum uint tlId = 0x1E91FC99;
 
@@ -2423,7 +2427,7 @@ final class messages_getSavedDialogs
 }
 
 /// TL function `messages.getSavedHistory`, id 0x998AB009.
-final class messages_getSavedHistory
+final class messages_getSavedHistory : TlFunction
 {
     enum uint tlId = 0x998AB009;
 
@@ -2442,7 +2446,7 @@ final class messages_getSavedHistory
 }
 
 /// TL function `messages.deleteSavedHistory`, id 0x4DC5085F.
-final class messages_deleteSavedHistory
+final class messages_deleteSavedHistory : TlFunction
 {
     enum uint tlId = 0x4DC5085F;
 
@@ -2457,7 +2461,7 @@ final class messages_deleteSavedHistory
 }
 
 /// TL function `messages.getPinnedSavedDialogs`, id 0xD63D94E0.
-final class messages_getPinnedSavedDialogs
+final class messages_getPinnedSavedDialogs : TlFunction
 {
     enum uint tlId = 0xD63D94E0;
 
@@ -2465,7 +2469,7 @@ final class messages_getPinnedSavedDialogs
 }
 
 /// TL function `messages.toggleSavedDialogPin`, id 0xAC81BBDE.
-final class messages_toggleSavedDialogPin
+final class messages_toggleSavedDialogPin : TlFunction
 {
     enum uint tlId = 0xAC81BBDE;
 
@@ -2477,7 +2481,7 @@ final class messages_toggleSavedDialogPin
 }
 
 /// TL function `messages.reorderPinnedSavedDialogs`, id 0x8B716587.
-final class messages_reorderPinnedSavedDialogs
+final class messages_reorderPinnedSavedDialogs : TlFunction
 {
     enum uint tlId = 0x8B716587;
 
@@ -2489,7 +2493,7 @@ final class messages_reorderPinnedSavedDialogs
 }
 
 /// TL function `messages.getSavedReactionTags`, id 0x3637E05B.
-final class messages_getSavedReactionTags
+final class messages_getSavedReactionTags : TlFunction
 {
     enum uint tlId = 0x3637E05B;
 
@@ -2501,7 +2505,7 @@ final class messages_getSavedReactionTags
 }
 
 /// TL function `messages.updateSavedReactionTag`, id 0x60297DEC.
-final class messages_updateSavedReactionTag
+final class messages_updateSavedReactionTag : TlFunction
 {
     enum uint tlId = 0x60297DEC;
 
@@ -2513,7 +2517,7 @@ final class messages_updateSavedReactionTag
 }
 
 /// TL function `messages.getDefaultTagReactions`, id 0xBDF93428.
-final class messages_getDefaultTagReactions
+final class messages_getDefaultTagReactions : TlFunction
 {
     enum uint tlId = 0xBDF93428;
 
@@ -2523,7 +2527,7 @@ final class messages_getDefaultTagReactions
 }
 
 /// TL function `messages.getOutboxReadDate`, id 0x8C4BFE5D.
-final class messages_getOutboxReadDate
+final class messages_getOutboxReadDate : TlFunction
 {
     enum uint tlId = 0x8C4BFE5D;
 
@@ -2534,7 +2538,7 @@ final class messages_getOutboxReadDate
 }
 
 /// TL function `messages.getQuickReplies`, id 0xD483F2A8.
-final class messages_getQuickReplies
+final class messages_getQuickReplies : TlFunction
 {
     enum uint tlId = 0xD483F2A8;
 
@@ -2544,7 +2548,7 @@ final class messages_getQuickReplies
 }
 
 /// TL function `messages.reorderQuickReplies`, id 0x60331907.
-final class messages_reorderQuickReplies
+final class messages_reorderQuickReplies : TlFunction
 {
     enum uint tlId = 0x60331907;
 
@@ -2554,7 +2558,7 @@ final class messages_reorderQuickReplies
 }
 
 /// TL function `messages.checkQuickReplyShortcut`, id 0xF1D0FBD3.
-final class messages_checkQuickReplyShortcut
+final class messages_checkQuickReplyShortcut : TlFunction
 {
     enum uint tlId = 0xF1D0FBD3;
 
@@ -2564,7 +2568,7 @@ final class messages_checkQuickReplyShortcut
 }
 
 /// TL function `messages.editQuickReplyShortcut`, id 0x5C003CEF.
-final class messages_editQuickReplyShortcut
+final class messages_editQuickReplyShortcut : TlFunction
 {
     enum uint tlId = 0x5C003CEF;
 
@@ -2575,7 +2579,7 @@ final class messages_editQuickReplyShortcut
 }
 
 /// TL function `messages.deleteQuickReplyShortcut`, id 0x3CC04740.
-final class messages_deleteQuickReplyShortcut
+final class messages_deleteQuickReplyShortcut : TlFunction
 {
     enum uint tlId = 0x3CC04740;
 
@@ -2585,7 +2589,7 @@ final class messages_deleteQuickReplyShortcut
 }
 
 /// TL function `messages.getQuickReplyMessages`, id 0x94A495C3.
-final class messages_getQuickReplyMessages
+final class messages_getQuickReplyMessages : TlFunction
 {
     enum uint tlId = 0x94A495C3;
 
@@ -2598,7 +2602,7 @@ final class messages_getQuickReplyMessages
 }
 
 /// TL function `messages.sendQuickReplyMessages`, id 0x6C750DE1.
-final class messages_sendQuickReplyMessages
+final class messages_sendQuickReplyMessages : TlFunction
 {
     enum uint tlId = 0x6C750DE1;
 
@@ -2611,7 +2615,7 @@ final class messages_sendQuickReplyMessages
 }
 
 /// TL function `messages.deleteQuickReplyMessages`, id 0xE105E910.
-final class messages_deleteQuickReplyMessages
+final class messages_deleteQuickReplyMessages : TlFunction
 {
     enum uint tlId = 0xE105E910;
 
@@ -2622,7 +2626,7 @@ final class messages_deleteQuickReplyMessages
 }
 
 /// TL function `messages.toggleDialogFilterTags`, id 0xFD2DDA49.
-final class messages_toggleDialogFilterTags
+final class messages_toggleDialogFilterTags : TlFunction
 {
     enum uint tlId = 0xFD2DDA49;
 
@@ -2632,7 +2636,7 @@ final class messages_toggleDialogFilterTags
 }
 
 /// TL function `messages.getMyStickers`, id 0xD0B5E1FC.
-final class messages_getMyStickers
+final class messages_getMyStickers : TlFunction
 {
     enum uint tlId = 0xD0B5E1FC;
 
@@ -2643,7 +2647,7 @@ final class messages_getMyStickers
 }
 
 /// TL function `messages.getEmojiStickerGroups`, id 0x1DD840F5.
-final class messages_getEmojiStickerGroups
+final class messages_getEmojiStickerGroups : TlFunction
 {
     enum uint tlId = 0x1DD840F5;
 
@@ -2653,7 +2657,7 @@ final class messages_getEmojiStickerGroups
 }
 
 /// TL function `messages.getAvailableEffects`, id 0xDEA20A39.
-final class messages_getAvailableEffects
+final class messages_getAvailableEffects : TlFunction
 {
     enum uint tlId = 0xDEA20A39;
 
@@ -2663,7 +2667,7 @@ final class messages_getAvailableEffects
 }
 
 /// TL function `messages.editFactCheck`, id 0x0589EE75.
-final class messages_editFactCheck
+final class messages_editFactCheck : TlFunction
 {
     enum uint tlId = 0x0589EE75;
 
@@ -2675,7 +2679,7 @@ final class messages_editFactCheck
 }
 
 /// TL function `messages.deleteFactCheck`, id 0xD1DA940C.
-final class messages_deleteFactCheck
+final class messages_deleteFactCheck : TlFunction
 {
     enum uint tlId = 0xD1DA940C;
 
@@ -2686,7 +2690,7 @@ final class messages_deleteFactCheck
 }
 
 /// TL function `messages.getFactCheck`, id 0xB9CDC5EE.
-final class messages_getFactCheck
+final class messages_getFactCheck : TlFunction
 {
     enum uint tlId = 0xB9CDC5EE;
 
@@ -2697,7 +2701,7 @@ final class messages_getFactCheck
 }
 
 /// TL function `messages.requestMainWebView`, id 0xC9E01E7B.
-final class messages_requestMainWebView
+final class messages_requestMainWebView : TlFunction
 {
     enum uint tlId = 0xC9E01E7B;
 
@@ -2714,7 +2718,7 @@ final class messages_requestMainWebView
 }
 
 /// TL function `messages.sendPaidReaction`, id 0x58BBCB50.
-final class messages_sendPaidReaction
+final class messages_sendPaidReaction : TlFunction
 {
     enum uint tlId = 0x58BBCB50;
 
@@ -2729,7 +2733,7 @@ final class messages_sendPaidReaction
 }
 
 /// TL function `messages.togglePaidReactionPrivacy`, id 0x435885B5.
-final class messages_togglePaidReactionPrivacy
+final class messages_togglePaidReactionPrivacy : TlFunction
 {
     enum uint tlId = 0x435885B5;
 
@@ -2741,7 +2745,7 @@ final class messages_togglePaidReactionPrivacy
 }
 
 /// TL function `messages.getPaidReactionPrivacy`, id 0x472455AA.
-final class messages_getPaidReactionPrivacy
+final class messages_getPaidReactionPrivacy : TlFunction
 {
     enum uint tlId = 0x472455AA;
 
@@ -2749,7 +2753,7 @@ final class messages_getPaidReactionPrivacy
 }
 
 /// TL function `messages.viewSponsoredMessage`, id 0x269E3643.
-final class messages_viewSponsoredMessage
+final class messages_viewSponsoredMessage : TlFunction
 {
     enum uint tlId = 0x269E3643;
 
@@ -2759,7 +2763,7 @@ final class messages_viewSponsoredMessage
 }
 
 /// TL function `messages.clickSponsoredMessage`, id 0x8235057E.
-final class messages_clickSponsoredMessage
+final class messages_clickSponsoredMessage : TlFunction
 {
     enum uint tlId = 0x8235057E;
 
@@ -2772,7 +2776,7 @@ final class messages_clickSponsoredMessage
 }
 
 /// TL function `messages.reportSponsoredMessage`, id 0x12CBF0C4.
-final class messages_reportSponsoredMessage
+final class messages_reportSponsoredMessage : TlFunction
 {
     enum uint tlId = 0x12CBF0C4;
 
@@ -2783,7 +2787,7 @@ final class messages_reportSponsoredMessage
 }
 
 /// TL function `messages.getSponsoredMessages`, id 0x3D6CE850.
-final class messages_getSponsoredMessages
+final class messages_getSponsoredMessages : TlFunction
 {
     enum uint tlId = 0x3D6CE850;
 
@@ -2795,7 +2799,7 @@ final class messages_getSponsoredMessages
 }
 
 /// TL function `messages.savePreparedInlineMessage`, id 0xF21F7F2F.
-final class messages_savePreparedInlineMessage
+final class messages_savePreparedInlineMessage : TlFunction
 {
     enum uint tlId = 0xF21F7F2F;
 
@@ -2808,7 +2812,7 @@ final class messages_savePreparedInlineMessage
 }
 
 /// TL function `messages.getPreparedInlineMessage`, id 0x857EBDB8.
-final class messages_getPreparedInlineMessage
+final class messages_getPreparedInlineMessage : TlFunction
 {
     enum uint tlId = 0x857EBDB8;
 
@@ -2819,7 +2823,7 @@ final class messages_getPreparedInlineMessage
 }
 
 /// TL function `messages.searchStickers`, id 0x29B1C66A.
-final class messages_searchStickers
+final class messages_searchStickers : TlFunction
 {
     enum uint tlId = 0x29B1C66A;
 
@@ -2836,7 +2840,7 @@ final class messages_searchStickers
 }
 
 /// TL function `messages.reportMessagesDelivery`, id 0x5A6D7395.
-final class messages_reportMessagesDelivery
+final class messages_reportMessagesDelivery : TlFunction
 {
     enum uint tlId = 0x5A6D7395;
 
@@ -2849,7 +2853,7 @@ final class messages_reportMessagesDelivery
 }
 
 /// TL function `messages.getSavedDialogsByID`, id 0x6F6F9C96.
-final class messages_getSavedDialogsByID
+final class messages_getSavedDialogsByID : TlFunction
 {
     enum uint tlId = 0x6F6F9C96;
 
@@ -2861,7 +2865,7 @@ final class messages_getSavedDialogsByID
 }
 
 /// TL function `messages.readSavedHistory`, id 0xBA4A3B5B.
-final class messages_readSavedHistory
+final class messages_readSavedHistory : TlFunction
 {
     enum uint tlId = 0xBA4A3B5B;
 
@@ -2873,7 +2877,7 @@ final class messages_readSavedHistory
 }
 
 /// TL function `messages.toggleTodoCompleted`, id 0xD3E03124.
-final class messages_toggleTodoCompleted
+final class messages_toggleTodoCompleted : TlFunction
 {
     enum uint tlId = 0xD3E03124;
 
@@ -2886,7 +2890,7 @@ final class messages_toggleTodoCompleted
 }
 
 /// TL function `messages.appendTodoList`, id 0x21A61057.
-final class messages_appendTodoList
+final class messages_appendTodoList : TlFunction
 {
     enum uint tlId = 0x21A61057;
 
@@ -2898,7 +2902,7 @@ final class messages_appendTodoList
 }
 
 /// TL function `messages.toggleSuggestedPostApproval`, id 0x8107455C.
-final class messages_toggleSuggestedPostApproval
+final class messages_toggleSuggestedPostApproval : TlFunction
 {
     enum uint tlId = 0x8107455C;
 
@@ -2913,7 +2917,7 @@ final class messages_toggleSuggestedPostApproval
 }
 
 /// TL function `messages.getForumTopics`, id 0x3BA47BFF.
-final class messages_getForumTopics
+final class messages_getForumTopics : TlFunction
 {
     enum uint tlId = 0x3BA47BFF;
 
@@ -2929,7 +2933,7 @@ final class messages_getForumTopics
 }
 
 /// TL function `messages.getForumTopicsByID`, id 0xAF0A4A08.
-final class messages_getForumTopicsByID
+final class messages_getForumTopicsByID : TlFunction
 {
     enum uint tlId = 0xAF0A4A08;
 
@@ -2940,7 +2944,7 @@ final class messages_getForumTopicsByID
 }
 
 /// TL function `messages.editForumTopic`, id 0xCECC1134.
-final class messages_editForumTopic
+final class messages_editForumTopic : TlFunction
 {
     enum uint tlId = 0xCECC1134;
 
@@ -2956,7 +2960,7 @@ final class messages_editForumTopic
 }
 
 /// TL function `messages.updatePinnedForumTopic`, id 0x175DF251.
-final class messages_updatePinnedForumTopic
+final class messages_updatePinnedForumTopic : TlFunction
 {
     enum uint tlId = 0x175DF251;
 
@@ -2968,7 +2972,7 @@ final class messages_updatePinnedForumTopic
 }
 
 /// TL function `messages.reorderPinnedForumTopics`, id 0x0E7841F0.
-final class messages_reorderPinnedForumTopics
+final class messages_reorderPinnedForumTopics : TlFunction
 {
     enum uint tlId = 0x0E7841F0;
 
@@ -2981,7 +2985,7 @@ final class messages_reorderPinnedForumTopics
 }
 
 /// TL function `messages.createForumTopic`, id 0x2F98C3D5.
-final class messages_createForumTopic
+final class messages_createForumTopic : TlFunction
 {
     enum uint tlId = 0x2F98C3D5;
 
@@ -2998,7 +3002,7 @@ final class messages_createForumTopic
 }
 
 /// TL function `messages.deleteTopicHistory`, id 0xD2816F10.
-final class messages_deleteTopicHistory
+final class messages_deleteTopicHistory : TlFunction
 {
     enum uint tlId = 0xD2816F10;
 
@@ -3009,7 +3013,7 @@ final class messages_deleteTopicHistory
 }
 
 /// TL function `messages.getEmojiGameInfo`, id 0xFB7E8CA7.
-final class messages_getEmojiGameInfo
+final class messages_getEmojiGameInfo : TlFunction
 {
     enum uint tlId = 0xFB7E8CA7;
 
@@ -3017,7 +3021,7 @@ final class messages_getEmojiGameInfo
 }
 
 /// TL function `messages.summarizeText`, id 0xABBBD346.
-final class messages_summarizeText
+final class messages_summarizeText : TlFunction
 {
     enum uint tlId = 0xABBBD346;
 
@@ -3031,7 +3035,7 @@ final class messages_summarizeText
 }
 
 /// TL function `messages.editChatCreator`, id 0xF743B857.
-final class messages_editChatCreator
+final class messages_editChatCreator : TlFunction
 {
     enum uint tlId = 0xF743B857;
 
@@ -3043,7 +3047,7 @@ final class messages_editChatCreator
 }
 
 /// TL function `messages.getFutureChatCreatorAfterLeave`, id 0x3B7D0EA6.
-final class messages_getFutureChatCreatorAfterLeave
+final class messages_getFutureChatCreatorAfterLeave : TlFunction
 {
     enum uint tlId = 0x3B7D0EA6;
 
@@ -3053,7 +3057,7 @@ final class messages_getFutureChatCreatorAfterLeave
 }
 
 /// TL function `messages.editChatParticipantRank`, id 0xA00F32B0.
-final class messages_editChatParticipantRank
+final class messages_editChatParticipantRank : TlFunction
 {
     enum uint tlId = 0xA00F32B0;
 
@@ -3065,7 +3069,7 @@ final class messages_editChatParticipantRank
 }
 
 /// TL function `messages.declineUrlAuth`, id 0x35436BBC.
-final class messages_declineUrlAuth
+final class messages_declineUrlAuth : TlFunction
 {
     enum uint tlId = 0x35436BBC;
 
@@ -3075,7 +3079,7 @@ final class messages_declineUrlAuth
 }
 
 /// TL function `messages.checkUrlAuthMatchCode`, id 0xC9A47B0B.
-final class messages_checkUrlAuthMatchCode
+final class messages_checkUrlAuthMatchCode : TlFunction
 {
     enum uint tlId = 0xC9A47B0B;
 
@@ -3086,7 +3090,7 @@ final class messages_checkUrlAuthMatchCode
 }
 
 /// TL function `messages.composeMessageWithAI`, id 0xDAECC589.
-final class messages_composeMessageWithAI
+final class messages_composeMessageWithAI : TlFunction
 {
     enum uint tlId = 0xDAECC589;
 
@@ -3101,7 +3105,7 @@ final class messages_composeMessageWithAI
 }
 
 /// TL function `messages.reportReadMetrics`, id 0x4067C5E6.
-final class messages_reportReadMetrics
+final class messages_reportReadMetrics : TlFunction
 {
     enum uint tlId = 0x4067C5E6;
 
@@ -3112,7 +3116,7 @@ final class messages_reportReadMetrics
 }
 
 /// TL function `messages.reportMusicListen`, id 0xDDBCD819.
-final class messages_reportMusicListen
+final class messages_reportMusicListen : TlFunction
 {
     enum uint tlId = 0xDDBCD819;
 
@@ -3123,7 +3127,7 @@ final class messages_reportMusicListen
 }
 
 /// TL function `messages.addPollAnswer`, id 0x19BC4B6D.
-final class messages_addPollAnswer
+final class messages_addPollAnswer : TlFunction
 {
     enum uint tlId = 0x19BC4B6D;
 
@@ -3135,7 +3139,7 @@ final class messages_addPollAnswer
 }
 
 /// TL function `messages.deletePollAnswer`, id 0xAC8505A5.
-final class messages_deletePollAnswer
+final class messages_deletePollAnswer : TlFunction
 {
     enum uint tlId = 0xAC8505A5;
 
@@ -3147,7 +3151,7 @@ final class messages_deletePollAnswer
 }
 
 /// TL function `messages.getUnreadPollVotes`, id 0x43286CF2.
-final class messages_getUnreadPollVotes
+final class messages_getUnreadPollVotes : TlFunction
 {
     enum uint tlId = 0x43286CF2;
 
@@ -3164,7 +3168,7 @@ final class messages_getUnreadPollVotes
 }
 
 /// TL function `messages.readPollVotes`, id 0x1720B4D8.
-final class messages_readPollVotes
+final class messages_readPollVotes : TlFunction
 {
     enum uint tlId = 0x1720B4D8;
 
@@ -3176,7 +3180,7 @@ final class messages_readPollVotes
 }
 
 /// TL function `messages.setBotGuestChatResult`, id 0xB8F106E3.
-final class messages_setBotGuestChatResult
+final class messages_setBotGuestChatResult : TlFunction
 {
     enum uint tlId = 0xB8F106E3;
 
@@ -3187,7 +3191,7 @@ final class messages_setBotGuestChatResult
 }
 
 /// TL function `messages.deleteParticipantReactions`, id 0xA0B80CF8.
-final class messages_deleteParticipantReactions
+final class messages_deleteParticipantReactions : TlFunction
 {
     enum uint tlId = 0xA0B80CF8;
 
@@ -3198,7 +3202,7 @@ final class messages_deleteParticipantReactions
 }
 
 /// TL function `messages.deleteParticipantReaction`, id 0xE3B7F82C.
-final class messages_deleteParticipantReaction
+final class messages_deleteParticipantReaction : TlFunction
 {
     enum uint tlId = 0xE3B7F82C;
 
@@ -3210,7 +3214,7 @@ final class messages_deleteParticipantReaction
 }
 
 /// TL function `messages.getPersonalChannelHistory`, id 0x55FB0996.
-final class messages_getPersonalChannelHistory
+final class messages_getPersonalChannelHistory : TlFunction
 {
     enum uint tlId = 0x55FB0996;
 
@@ -3224,7 +3228,7 @@ final class messages_getPersonalChannelHistory
 }
 
 /// TL function `messages.getRichMessage`, id 0x501569CF.
-final class messages_getRichMessage
+final class messages_getRichMessage : TlFunction
 {
     enum uint tlId = 0x501569CF;
 
@@ -3235,7 +3239,7 @@ final class messages_getRichMessage
 }
 
 /// TL function `messages.translateRichMessage`, id 0x1A542004.
-final class messages_translateRichMessage
+final class messages_translateRichMessage : TlFunction
 {
     enum uint tlId = 0x1A542004;
 
@@ -3250,7 +3254,7 @@ final class messages_translateRichMessage
 }
 
 /// TL function `messages.composeRichMessageWithAI`, id 0x8D7AE6AF.
-final class messages_composeRichMessageWithAI
+final class messages_composeRichMessageWithAI : TlFunction
 {
     enum uint tlId = 0x8D7AE6AF;
 
@@ -3265,7 +3269,7 @@ final class messages_composeRichMessageWithAI
 }
 
 /// TL function `messages.requestChatJoinWebView`, id 0xBA9EE679.
-final class messages_requestChatJoinWebView
+final class messages_requestChatJoinWebView : TlFunction
 {
     enum uint tlId = 0xBA9EE679;
 

@@ -2,8 +2,12 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.functions.common_functions;
 
+import tg_client_api.functions.tl_function;
+import tg_client_api.types.common_types;
+import tg_client_api.types.vector;
+
 /// TL function `invokeWithBusinessConnectionPrefix`, id 0xDD289F8E.
-final class invokeWithBusinessConnectionPrefix
+final class invokeWithBusinessConnectionPrefix : TlFunction
 {
     enum uint tlId = 0xDD289F8E;
 
@@ -13,7 +17,7 @@ final class invokeWithBusinessConnectionPrefix
 }
 
 /// TL function `invokeWithGooglePlayIntegrityPrefix`, id 0x1DF92984.
-final class invokeWithGooglePlayIntegrityPrefix
+final class invokeWithGooglePlayIntegrityPrefix : TlFunction
 {
     enum uint tlId = 0x1DF92984;
 
@@ -24,7 +28,7 @@ final class invokeWithGooglePlayIntegrityPrefix
 }
 
 /// TL function `invokeWithApnsSecretPrefix`, id 0x0DAE54F8.
-final class invokeWithApnsSecretPrefix
+final class invokeWithApnsSecretPrefix : TlFunction
 {
     enum uint tlId = 0x0DAE54F8;
 
@@ -35,7 +39,7 @@ final class invokeWithApnsSecretPrefix
 }
 
 /// TL function `invokeWithReCaptchaPrefix`, id 0xADBB0F94.
-final class invokeWithReCaptchaPrefix
+final class invokeWithReCaptchaPrefix : TlFunction
 {
     enum uint tlId = 0xADBB0F94;
 
@@ -45,7 +49,7 @@ final class invokeWithReCaptchaPrefix
 }
 
 /// TL function `invokeAfterMsg`, id 0xCB9F372D.
-final class invokeAfterMsg
+final class invokeAfterMsg : TlFunction
 {
     enum uint tlId = 0xCB9F372D;
 
@@ -56,7 +60,7 @@ final class invokeAfterMsg
 }
 
 /// TL function `invokeAfterMsgs`, id 0x3DC4B4F0.
-final class invokeAfterMsgs
+final class invokeAfterMsgs : TlFunction
 {
     enum uint tlId = 0x3DC4B4F0;
 
@@ -67,7 +71,7 @@ final class invokeAfterMsgs
 }
 
 /// TL function `initConnection`, id 0xC1CD5EA9.
-final class initConnection
+final class initConnection : TlFunction
 {
     enum uint tlId = 0xC1CD5EA9;
 
@@ -87,7 +91,7 @@ final class initConnection
 }
 
 /// TL function `invokeWithLayer`, id 0xDA9B0D0D.
-final class invokeWithLayer
+final class invokeWithLayer : TlFunction
 {
     enum uint tlId = 0xDA9B0D0D;
 
@@ -98,7 +102,7 @@ final class invokeWithLayer
 }
 
 /// TL function `invokeWithoutUpdates`, id 0xBF9459B7.
-final class invokeWithoutUpdates
+final class invokeWithoutUpdates : TlFunction
 {
     enum uint tlId = 0xBF9459B7;
 
@@ -108,7 +112,7 @@ final class invokeWithoutUpdates
 }
 
 /// TL function `invokeWithMessagesRange`, id 0x365275F2.
-final class invokeWithMessagesRange
+final class invokeWithMessagesRange : TlFunction
 {
     enum uint tlId = 0x365275F2;
 
@@ -119,7 +123,7 @@ final class invokeWithMessagesRange
 }
 
 /// TL function `invokeWithTakeout`, id 0xACA9FD2E.
-final class invokeWithTakeout
+final class invokeWithTakeout : TlFunction
 {
     enum uint tlId = 0xACA9FD2E;
 
@@ -130,7 +134,7 @@ final class invokeWithTakeout
 }
 
 /// TL function `invokeWithBusinessConnection`, id 0xDD289F8E.
-final class invokeWithBusinessConnection
+final class invokeWithBusinessConnection : TlFunction
 {
     enum uint tlId = 0xDD289F8E;
 
@@ -141,7 +145,7 @@ final class invokeWithBusinessConnection
 }
 
 /// TL function `invokeWithGooglePlayIntegrity`, id 0x1DF92984.
-final class invokeWithGooglePlayIntegrity
+final class invokeWithGooglePlayIntegrity : TlFunction
 {
     enum uint tlId = 0x1DF92984;
 
@@ -153,7 +157,7 @@ final class invokeWithGooglePlayIntegrity
 }
 
 /// TL function `invokeWithApnsSecret`, id 0x0DAE54F8.
-final class invokeWithApnsSecret
+final class invokeWithApnsSecret : TlFunction
 {
     enum uint tlId = 0x0DAE54F8;
 
@@ -165,7 +169,7 @@ final class invokeWithApnsSecret
 }
 
 /// TL function `invokeWithReCaptcha`, id 0xADBB0F94.
-final class invokeWithReCaptcha
+final class invokeWithReCaptcha : TlFunction
 {
     enum uint tlId = 0xADBB0F94;
 
@@ -176,7 +180,7 @@ final class invokeWithReCaptcha
 }
 
 /// TL function `resPQ`, id 0x05162463.
-final class resPQ
+final class resPQ : TlFunction
 {
     enum uint tlId = 0x05162463;
 
@@ -189,7 +193,7 @@ final class resPQ
 }
 
 /// TL function `p_q_inner_data_dc`, id 0xA9F55F95.
-final class p_q_inner_data_dc
+final class p_q_inner_data_dc : TlFunction
 {
     enum uint tlId = 0xA9F55F95;
 
@@ -205,7 +209,7 @@ final class p_q_inner_data_dc
 }
 
 /// TL function `p_q_inner_data_temp_dc`, id 0x56FDDF88.
-final class p_q_inner_data_temp_dc
+final class p_q_inner_data_temp_dc : TlFunction
 {
     enum uint tlId = 0x56FDDF88;
 
@@ -222,7 +226,7 @@ final class p_q_inner_data_temp_dc
 }
 
 /// TL function `server_DH_params_ok`, id 0xD0E8075C.
-final class server_DH_params_ok
+final class server_DH_params_ok : TlFunction
 {
     enum uint tlId = 0xD0E8075C;
 
@@ -234,7 +238,7 @@ final class server_DH_params_ok
 }
 
 /// TL function `server_DH_inner_data`, id 0xB5890DBA.
-final class server_DH_inner_data
+final class server_DH_inner_data : TlFunction
 {
     enum uint tlId = 0xB5890DBA;
 
@@ -249,7 +253,7 @@ final class server_DH_inner_data
 }
 
 /// TL function `client_DH_inner_data`, id 0x6643B654.
-final class client_DH_inner_data
+final class client_DH_inner_data : TlFunction
 {
     enum uint tlId = 0x6643B654;
 
@@ -262,7 +266,7 @@ final class client_DH_inner_data
 }
 
 /// TL function `dh_gen_ok`, id 0x3BCBF734.
-final class dh_gen_ok
+final class dh_gen_ok : TlFunction
 {
     enum uint tlId = 0x3BCBF734;
 
@@ -274,7 +278,7 @@ final class dh_gen_ok
 }
 
 /// TL function `dh_gen_retry`, id 0x46DC1FB9.
-final class dh_gen_retry
+final class dh_gen_retry : TlFunction
 {
     enum uint tlId = 0x46DC1FB9;
 
@@ -286,7 +290,7 @@ final class dh_gen_retry
 }
 
 /// TL function `dh_gen_fail`, id 0xA69DAE02.
-final class dh_gen_fail
+final class dh_gen_fail : TlFunction
 {
     enum uint tlId = 0xA69DAE02;
 
@@ -298,7 +302,7 @@ final class dh_gen_fail
 }
 
 /// TL function `bind_auth_key_inner`, id 0x75A3F765.
-final class bind_auth_key_inner
+final class bind_auth_key_inner : TlFunction
 {
     enum uint tlId = 0x75A3F765;
 
@@ -312,7 +316,7 @@ final class bind_auth_key_inner
 }
 
 /// TL function `rpc_error`, id 0x2144CA19.
-final class rpc_error
+final class rpc_error : TlFunction
 {
     enum uint tlId = 0x2144CA19;
 
@@ -323,7 +327,7 @@ final class rpc_error
 }
 
 /// TL function `rpc_answer_unknown`, id 0x5E2AD36E.
-final class rpc_answer_unknown
+final class rpc_answer_unknown : TlFunction
 {
     enum uint tlId = 0x5E2AD36E;
 
@@ -331,7 +335,7 @@ final class rpc_answer_unknown
 }
 
 /// TL function `rpc_answer_dropped_running`, id 0xCD78E586.
-final class rpc_answer_dropped_running
+final class rpc_answer_dropped_running : TlFunction
 {
     enum uint tlId = 0xCD78E586;
 
@@ -339,7 +343,7 @@ final class rpc_answer_dropped_running
 }
 
 /// TL function `rpc_answer_dropped`, id 0xA43AD8B7.
-final class rpc_answer_dropped
+final class rpc_answer_dropped : TlFunction
 {
     enum uint tlId = 0xA43AD8B7;
 
@@ -351,7 +355,7 @@ final class rpc_answer_dropped
 }
 
 /// TL function `future_salt`, id 0x0949D9DC.
-final class future_salt
+final class future_salt : TlFunction
 {
     enum uint tlId = 0x0949D9DC;
 
@@ -363,7 +367,7 @@ final class future_salt
 }
 
 /// TL function `future_salts`, id 0xAE500895.
-final class future_salts
+final class future_salts : TlFunction
 {
     enum uint tlId = 0xAE500895;
 
@@ -375,7 +379,7 @@ final class future_salts
 }
 
 /// TL function `pong`, id 0x347773C5.
-final class pong
+final class pong : TlFunction
 {
     enum uint tlId = 0x347773C5;
 
@@ -386,7 +390,7 @@ final class pong
 }
 
 /// TL function `new_session_created`, id 0x9EC20908.
-final class new_session_created
+final class new_session_created : TlFunction
 {
     enum uint tlId = 0x9EC20908;
 
@@ -398,7 +402,7 @@ final class new_session_created
 }
 
 /// TL function `gzip_packed`, id 0x3072CFA1.
-final class gzip_packed
+final class gzip_packed : TlFunction
 {
     enum uint tlId = 0x3072CFA1;
 
@@ -408,7 +412,7 @@ final class gzip_packed
 }
 
 /// TL function `msgs_ack`, id 0x62D6B459.
-final class msgs_ack
+final class msgs_ack : TlFunction
 {
     enum uint tlId = 0x62D6B459;
 
@@ -418,7 +422,7 @@ final class msgs_ack
 }
 
 /// TL function `bad_msg_notification`, id 0xA7EFF811.
-final class bad_msg_notification
+final class bad_msg_notification : TlFunction
 {
     enum uint tlId = 0xA7EFF811;
 
@@ -430,7 +434,7 @@ final class bad_msg_notification
 }
 
 /// TL function `bad_server_salt`, id 0xEDAB447B.
-final class bad_server_salt
+final class bad_server_salt : TlFunction
 {
     enum uint tlId = 0xEDAB447B;
 
@@ -443,7 +447,7 @@ final class bad_server_salt
 }
 
 /// TL function `msg_resend_req`, id 0x7D861A08.
-final class msg_resend_req
+final class msg_resend_req : TlFunction
 {
     enum uint tlId = 0x7D861A08;
 
@@ -453,7 +457,7 @@ final class msg_resend_req
 }
 
 /// TL function `msgs_state_req`, id 0xDA69FB52.
-final class msgs_state_req
+final class msgs_state_req : TlFunction
 {
     enum uint tlId = 0xDA69FB52;
 
@@ -463,7 +467,7 @@ final class msgs_state_req
 }
 
 /// TL function `msgs_state_info`, id 0x04DEB57D.
-final class msgs_state_info
+final class msgs_state_info : TlFunction
 {
     enum uint tlId = 0x04DEB57D;
 
@@ -474,7 +478,7 @@ final class msgs_state_info
 }
 
 /// TL function `msgs_all_info`, id 0x8CC0D131.
-final class msgs_all_info
+final class msgs_all_info : TlFunction
 {
     enum uint tlId = 0x8CC0D131;
 
@@ -485,7 +489,7 @@ final class msgs_all_info
 }
 
 /// TL function `msg_detailed_info`, id 0x276D3EC6.
-final class msg_detailed_info
+final class msg_detailed_info : TlFunction
 {
     enum uint tlId = 0x276D3EC6;
 
@@ -498,7 +502,7 @@ final class msg_detailed_info
 }
 
 /// TL function `msg_new_detailed_info`, id 0x809DB6DF.
-final class msg_new_detailed_info
+final class msg_new_detailed_info : TlFunction
 {
     enum uint tlId = 0x809DB6DF;
 
@@ -510,7 +514,7 @@ final class msg_new_detailed_info
 }
 
 /// TL function `destroy_auth_key_ok`, id 0xF660E1D4.
-final class destroy_auth_key_ok
+final class destroy_auth_key_ok : TlFunction
 {
     enum uint tlId = 0xF660E1D4;
 
@@ -518,7 +522,7 @@ final class destroy_auth_key_ok
 }
 
 /// TL function `destroy_auth_key_none`, id 0x0A9F2259.
-final class destroy_auth_key_none
+final class destroy_auth_key_none : TlFunction
 {
     enum uint tlId = 0x0A9F2259;
 
@@ -526,7 +530,7 @@ final class destroy_auth_key_none
 }
 
 /// TL function `destroy_auth_key_fail`, id 0xEA109B13.
-final class destroy_auth_key_fail
+final class destroy_auth_key_fail : TlFunction
 {
     enum uint tlId = 0xEA109B13;
 
@@ -534,7 +538,7 @@ final class destroy_auth_key_fail
 }
 
 /// TL function `req_pq_multi`, id 0xBE7E8EF1.
-final class req_pq_multi
+final class req_pq_multi : TlFunction
 {
     enum uint tlId = 0xBE7E8EF1;
 
@@ -544,7 +548,7 @@ final class req_pq_multi
 }
 
 /// TL function `req_DH_params`, id 0xD712E4BE.
-final class req_DH_params
+final class req_DH_params : TlFunction
 {
     enum uint tlId = 0xD712E4BE;
 
@@ -559,7 +563,7 @@ final class req_DH_params
 }
 
 /// TL function `set_client_DH_params`, id 0xF5045F1F.
-final class set_client_DH_params
+final class set_client_DH_params : TlFunction
 {
     enum uint tlId = 0xF5045F1F;
 
@@ -571,7 +575,7 @@ final class set_client_DH_params
 }
 
 /// TL function `rpc_drop_answer`, id 0x58E4A740.
-final class rpc_drop_answer
+final class rpc_drop_answer : TlFunction
 {
     enum uint tlId = 0x58E4A740;
 
@@ -581,7 +585,7 @@ final class rpc_drop_answer
 }
 
 /// TL function `get_future_salts`, id 0xB921BD04.
-final class get_future_salts
+final class get_future_salts : TlFunction
 {
     enum uint tlId = 0xB921BD04;
 
@@ -591,7 +595,7 @@ final class get_future_salts
 }
 
 /// TL function `ping_delay_disconnect`, id 0xF3427B8C.
-final class ping_delay_disconnect
+final class ping_delay_disconnect : TlFunction
 {
     enum uint tlId = 0xF3427B8C;
 
@@ -602,7 +606,7 @@ final class ping_delay_disconnect
 }
 
 /// TL function `http_wait`, id 0x9299359F.
-final class http_wait
+final class http_wait : TlFunction
 {
     enum uint tlId = 0x9299359F;
 
@@ -614,7 +618,7 @@ final class http_wait
 }
 
 /// TL function `destroy_auth_key`, id 0xD1435160.
-final class destroy_auth_key
+final class destroy_auth_key : TlFunction
 {
     enum uint tlId = 0xD1435160;
 

@@ -2,8 +2,12 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.functions.stickers_functions;
 
+import tg_client_api.functions.tl_function;
+import tg_client_api.types.common_types;
+import tg_client_api.types.vector;
+
 /// TL function `stickers.createStickerSet`, id 0x9021AB67.
-final class stickers_createStickerSet
+final class stickers_createStickerSet : TlFunction
 {
     enum uint tlId = 0x9021AB67;
 
@@ -22,7 +26,7 @@ final class stickers_createStickerSet
 }
 
 /// TL function `stickers.removeStickerFromSet`, id 0xF7760F51.
-final class stickers_removeStickerFromSet
+final class stickers_removeStickerFromSet : TlFunction
 {
     enum uint tlId = 0xF7760F51;
 
@@ -32,7 +36,7 @@ final class stickers_removeStickerFromSet
 }
 
 /// TL function `stickers.changeStickerPosition`, id 0xFFB6D4CA.
-final class stickers_changeStickerPosition
+final class stickers_changeStickerPosition : TlFunction
 {
     enum uint tlId = 0xFFB6D4CA;
 
@@ -43,7 +47,7 @@ final class stickers_changeStickerPosition
 }
 
 /// TL function `stickers.addStickerToSet`, id 0x8653FEBE.
-final class stickers_addStickerToSet
+final class stickers_addStickerToSet : TlFunction
 {
     enum uint tlId = 0x8653FEBE;
 
@@ -54,7 +58,7 @@ final class stickers_addStickerToSet
 }
 
 /// TL function `stickers.setStickerSetThumb`, id 0xA76A5392.
-final class stickers_setStickerSetThumb
+final class stickers_setStickerSetThumb : TlFunction
 {
     enum uint tlId = 0xA76A5392;
 
@@ -67,7 +71,7 @@ final class stickers_setStickerSetThumb
 }
 
 /// TL function `stickers.checkShortName`, id 0x284B3639.
-final class stickers_checkShortName
+final class stickers_checkShortName : TlFunction
 {
     enum uint tlId = 0x284B3639;
 
@@ -77,7 +81,7 @@ final class stickers_checkShortName
 }
 
 /// TL function `stickers.suggestShortName`, id 0x4DAFC503.
-final class stickers_suggestShortName
+final class stickers_suggestShortName : TlFunction
 {
     enum uint tlId = 0x4DAFC503;
 
@@ -87,7 +91,7 @@ final class stickers_suggestShortName
 }
 
 /// TL function `stickers.changeSticker`, id 0xF5537EBC.
-final class stickers_changeSticker
+final class stickers_changeSticker : TlFunction
 {
     enum uint tlId = 0xF5537EBC;
 
@@ -101,7 +105,7 @@ final class stickers_changeSticker
 }
 
 /// TL function `stickers.renameStickerSet`, id 0x124B1C00.
-final class stickers_renameStickerSet
+final class stickers_renameStickerSet : TlFunction
 {
     enum uint tlId = 0x124B1C00;
 
@@ -112,7 +116,7 @@ final class stickers_renameStickerSet
 }
 
 /// TL function `stickers.deleteStickerSet`, id 0x87704394.
-final class stickers_deleteStickerSet
+final class stickers_deleteStickerSet : TlFunction
 {
     enum uint tlId = 0x87704394;
 
@@ -122,7 +126,7 @@ final class stickers_deleteStickerSet
 }
 
 /// TL function `stickers.replaceSticker`, id 0x4696459A.
-final class stickers_replaceSticker
+final class stickers_replaceSticker : TlFunction
 {
     enum uint tlId = 0x4696459A;
 

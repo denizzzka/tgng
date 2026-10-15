@@ -2,8 +2,12 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.functions.stories_functions;
 
+import tg_client_api.functions.tl_function;
+import tg_client_api.types.common_types;
+import tg_client_api.types.vector;
+
 /// TL function `stories.canSendStory`, id 0x30EB63F0.
-final class stories_canSendStory
+final class stories_canSendStory : TlFunction
 {
     enum uint tlId = 0x30EB63F0;
 
@@ -13,7 +17,7 @@ final class stories_canSendStory
 }
 
 /// TL function `stories.sendStory`, id 0x8F9E6898.
-final class stories_sendStory
+final class stories_sendStory : TlFunction
 {
     enum uint tlId = 0x8F9E6898;
 
@@ -38,7 +42,7 @@ final class stories_sendStory
 }
 
 /// TL function `stories.editStory`, id 0x2C63A72B.
-final class stories_editStory
+final class stories_editStory : TlFunction
 {
     enum uint tlId = 0x2C63A72B;
 
@@ -56,7 +60,7 @@ final class stories_editStory
 }
 
 /// TL function `stories.deleteStories`, id 0xAE59DB5F.
-final class stories_deleteStories
+final class stories_deleteStories : TlFunction
 {
     enum uint tlId = 0xAE59DB5F;
 
@@ -67,7 +71,7 @@ final class stories_deleteStories
 }
 
 /// TL function `stories.togglePinned`, id 0x9A75A1EF.
-final class stories_togglePinned
+final class stories_togglePinned : TlFunction
 {
     enum uint tlId = 0x9A75A1EF;
 
@@ -79,7 +83,7 @@ final class stories_togglePinned
 }
 
 /// TL function `stories.getAllStories`, id 0xEEB0D625.
-final class stories_getAllStories
+final class stories_getAllStories : TlFunction
 {
     enum uint tlId = 0xEEB0D625;
 
@@ -92,7 +96,7 @@ final class stories_getAllStories
 }
 
 /// TL function `stories.getPinnedStories`, id 0x5821A5DC.
-final class stories_getPinnedStories
+final class stories_getPinnedStories : TlFunction
 {
     enum uint tlId = 0x5821A5DC;
 
@@ -104,7 +108,7 @@ final class stories_getPinnedStories
 }
 
 /// TL function `stories.getStoriesArchive`, id 0xB4352016.
-final class stories_getStoriesArchive
+final class stories_getStoriesArchive : TlFunction
 {
     enum uint tlId = 0xB4352016;
 
@@ -116,7 +120,7 @@ final class stories_getStoriesArchive
 }
 
 /// TL function `stories.getStoriesByID`, id 0x5774CA74.
-final class stories_getStoriesByID
+final class stories_getStoriesByID : TlFunction
 {
     enum uint tlId = 0x5774CA74;
 
@@ -127,7 +131,7 @@ final class stories_getStoriesByID
 }
 
 /// TL function `stories.toggleAllStoriesHidden`, id 0x7C2557C4.
-final class stories_toggleAllStoriesHidden
+final class stories_toggleAllStoriesHidden : TlFunction
 {
     enum uint tlId = 0x7C2557C4;
 
@@ -137,7 +141,7 @@ final class stories_toggleAllStoriesHidden
 }
 
 /// TL function `stories.readStories`, id 0xA556DAC8.
-final class stories_readStories
+final class stories_readStories : TlFunction
 {
     enum uint tlId = 0xA556DAC8;
 
@@ -148,7 +152,7 @@ final class stories_readStories
 }
 
 /// TL function `stories.incrementStoryViews`, id 0xB2028AFB.
-final class stories_incrementStoryViews
+final class stories_incrementStoryViews : TlFunction
 {
     enum uint tlId = 0xB2028AFB;
 
@@ -159,7 +163,7 @@ final class stories_incrementStoryViews
 }
 
 /// TL function `stories.getStoryViewsList`, id 0x7ED23C57.
-final class stories_getStoryViewsList
+final class stories_getStoryViewsList : TlFunction
 {
     enum uint tlId = 0x7ED23C57;
 
@@ -177,7 +181,7 @@ final class stories_getStoryViewsList
 }
 
 /// TL function `stories.getStoriesViews`, id 0x28E16CC8.
-final class stories_getStoriesViews
+final class stories_getStoriesViews : TlFunction
 {
     enum uint tlId = 0x28E16CC8;
 
@@ -188,7 +192,7 @@ final class stories_getStoriesViews
 }
 
 /// TL function `stories.exportStoryLink`, id 0x7B8DEF20.
-final class stories_exportStoryLink
+final class stories_exportStoryLink : TlFunction
 {
     enum uint tlId = 0x7B8DEF20;
 
@@ -199,7 +203,7 @@ final class stories_exportStoryLink
 }
 
 /// TL function `stories.report`, id 0x19D8EB45.
-final class stories_report
+final class stories_report : TlFunction
 {
     enum uint tlId = 0x19D8EB45;
 
@@ -212,7 +216,7 @@ final class stories_report
 }
 
 /// TL function `stories.activateStealthMode`, id 0x57BBD166.
-final class stories_activateStealthMode
+final class stories_activateStealthMode : TlFunction
 {
     enum uint tlId = 0x57BBD166;
 
@@ -224,7 +228,7 @@ final class stories_activateStealthMode
 }
 
 /// TL function `stories.sendReaction`, id 0x7FD736B2.
-final class stories_sendReaction
+final class stories_sendReaction : TlFunction
 {
     enum uint tlId = 0x7FD736B2;
 
@@ -238,7 +242,7 @@ final class stories_sendReaction
 }
 
 /// TL function `stories.getPeerStories`, id 0x2C4ADA50.
-final class stories_getPeerStories
+final class stories_getPeerStories : TlFunction
 {
     enum uint tlId = 0x2C4ADA50;
 
@@ -248,7 +252,7 @@ final class stories_getPeerStories
 }
 
 /// TL function `stories.getAllReadPeerStories`, id 0x9B5AE7F9.
-final class stories_getAllReadPeerStories
+final class stories_getAllReadPeerStories : TlFunction
 {
     enum uint tlId = 0x9B5AE7F9;
 
@@ -256,7 +260,7 @@ final class stories_getAllReadPeerStories
 }
 
 /// TL function `stories.getPeerMaxIDs`, id 0x78499170.
-final class stories_getPeerMaxIDs
+final class stories_getPeerMaxIDs : TlFunction
 {
     enum uint tlId = 0x78499170;
 
@@ -266,7 +270,7 @@ final class stories_getPeerMaxIDs
 }
 
 /// TL function `stories.getChatsToSend`, id 0xA56A8B60.
-final class stories_getChatsToSend
+final class stories_getChatsToSend : TlFunction
 {
     enum uint tlId = 0xA56A8B60;
 
@@ -274,7 +278,7 @@ final class stories_getChatsToSend
 }
 
 /// TL function `stories.togglePeerStoriesHidden`, id 0xBD0415C4.
-final class stories_togglePeerStoriesHidden
+final class stories_togglePeerStoriesHidden : TlFunction
 {
     enum uint tlId = 0xBD0415C4;
 
@@ -285,7 +289,7 @@ final class stories_togglePeerStoriesHidden
 }
 
 /// TL function `stories.getStoryReactionsList`, id 0xB9B2881F.
-final class stories_getStoryReactionsList
+final class stories_getStoryReactionsList : TlFunction
 {
     enum uint tlId = 0xB9B2881F;
 
@@ -301,7 +305,7 @@ final class stories_getStoryReactionsList
 }
 
 /// TL function `stories.togglePinnedToTop`, id 0x0B297E9B.
-final class stories_togglePinnedToTop
+final class stories_togglePinnedToTop : TlFunction
 {
     enum uint tlId = 0x0B297E9B;
 
@@ -312,7 +316,7 @@ final class stories_togglePinnedToTop
 }
 
 /// TL function `stories.searchPosts`, id 0xD1810907.
-final class stories_searchPosts
+final class stories_searchPosts : TlFunction
 {
     enum uint tlId = 0xD1810907;
 
@@ -327,7 +331,7 @@ final class stories_searchPosts
 }
 
 /// TL function `stories.createAlbum`, id 0xA36396E5.
-final class stories_createAlbum
+final class stories_createAlbum : TlFunction
 {
     enum uint tlId = 0xA36396E5;
 
@@ -339,7 +343,7 @@ final class stories_createAlbum
 }
 
 /// TL function `stories.updateAlbum`, id 0x5E5259B6.
-final class stories_updateAlbum
+final class stories_updateAlbum : TlFunction
 {
     enum uint tlId = 0x5E5259B6;
 
@@ -355,7 +359,7 @@ final class stories_updateAlbum
 }
 
 /// TL function `stories.reorderAlbums`, id 0x8535FBD9.
-final class stories_reorderAlbums
+final class stories_reorderAlbums : TlFunction
 {
     enum uint tlId = 0x8535FBD9;
 
@@ -366,7 +370,7 @@ final class stories_reorderAlbums
 }
 
 /// TL function `stories.deleteAlbum`, id 0x8D3456D0.
-final class stories_deleteAlbum
+final class stories_deleteAlbum : TlFunction
 {
     enum uint tlId = 0x8D3456D0;
 
@@ -377,7 +381,7 @@ final class stories_deleteAlbum
 }
 
 /// TL function `stories.getAlbums`, id 0x25B3EAC7.
-final class stories_getAlbums
+final class stories_getAlbums : TlFunction
 {
     enum uint tlId = 0x25B3EAC7;
 
@@ -388,7 +392,7 @@ final class stories_getAlbums
 }
 
 /// TL function `stories.getAlbumStories`, id 0xAC806D61.
-final class stories_getAlbumStories
+final class stories_getAlbumStories : TlFunction
 {
     enum uint tlId = 0xAC806D61;
 
@@ -401,7 +405,7 @@ final class stories_getAlbumStories
 }
 
 /// TL function `stories.startLive`, id 0xD069CCDE.
-final class stories_startLive
+final class stories_startLive : TlFunction
 {
     enum uint tlId = 0xD069CCDE;
 

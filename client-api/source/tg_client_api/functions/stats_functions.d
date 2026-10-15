@@ -2,8 +2,11 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.functions.stats_functions;
 
+import tg_client_api.functions.tl_function;
+import tg_client_api.types.common_types;
+
 /// TL function `stats.getBroadcastStats`, id 0xAB42441A.
-final class stats_getBroadcastStats
+final class stats_getBroadcastStats : TlFunction
 {
     enum uint tlId = 0xAB42441A;
 
@@ -15,7 +18,7 @@ final class stats_getBroadcastStats
 }
 
 /// TL function `stats.loadAsyncGraph`, id 0x621D5FA0.
-final class stats_loadAsyncGraph
+final class stats_loadAsyncGraph : TlFunction
 {
     enum uint tlId = 0x621D5FA0;
 
@@ -27,7 +30,7 @@ final class stats_loadAsyncGraph
 }
 
 /// TL function `stats.getMegagroupStats`, id 0xDCDF8607.
-final class stats_getMegagroupStats
+final class stats_getMegagroupStats : TlFunction
 {
     enum uint tlId = 0xDCDF8607;
 
@@ -39,7 +42,7 @@ final class stats_getMegagroupStats
 }
 
 /// TL function `stats.getMessagePublicForwards`, id 0x5F150144.
-final class stats_getMessagePublicForwards
+final class stats_getMessagePublicForwards : TlFunction
 {
     enum uint tlId = 0x5F150144;
 
@@ -52,7 +55,7 @@ final class stats_getMessagePublicForwards
 }
 
 /// TL function `stats.getMessageStats`, id 0xB6E0A3F5.
-final class stats_getMessageStats
+final class stats_getMessageStats : TlFunction
 {
     enum uint tlId = 0xB6E0A3F5;
 
@@ -65,7 +68,7 @@ final class stats_getMessageStats
 }
 
 /// TL function `stats.getStoryStats`, id 0x374FEF40.
-final class stats_getStoryStats
+final class stats_getStoryStats : TlFunction
 {
     enum uint tlId = 0x374FEF40;
 
@@ -78,7 +81,7 @@ final class stats_getStoryStats
 }
 
 /// TL function `stats.getStoryPublicForwards`, id 0xA6437EF6.
-final class stats_getStoryPublicForwards
+final class stats_getStoryPublicForwards : TlFunction
 {
     enum uint tlId = 0xA6437EF6;
 
@@ -91,7 +94,7 @@ final class stats_getStoryPublicForwards
 }
 
 /// TL function `stats.getPollStats`, id 0xC27DFA68.
-final class stats_getPollStats
+final class stats_getPollStats : TlFunction
 {
     enum uint tlId = 0xC27DFA68;
 

@@ -2,8 +2,12 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.functions.bots_functions;
 
+import tg_client_api.functions.tl_function;
+import tg_client_api.types.common_types;
+import tg_client_api.types.vector;
+
 /// TL function `bots.sendCustomRequest`, id 0xAA2769ED.
-final class bots_sendCustomRequest
+final class bots_sendCustomRequest : TlFunction
 {
     enum uint tlId = 0xAA2769ED;
 
@@ -14,7 +18,7 @@ final class bots_sendCustomRequest
 }
 
 /// TL function `bots.answerWebhookJSONQuery`, id 0xE6213F4D.
-final class bots_answerWebhookJSONQuery
+final class bots_answerWebhookJSONQuery : TlFunction
 {
     enum uint tlId = 0xE6213F4D;
 
@@ -25,7 +29,7 @@ final class bots_answerWebhookJSONQuery
 }
 
 /// TL function `bots.setBotCommands`, id 0x0517165A.
-final class bots_setBotCommands
+final class bots_setBotCommands : TlFunction
 {
     enum uint tlId = 0x0517165A;
 
@@ -37,7 +41,7 @@ final class bots_setBotCommands
 }
 
 /// TL function `bots.resetBotCommands`, id 0x3D8DE0F9.
-final class bots_resetBotCommands
+final class bots_resetBotCommands : TlFunction
 {
     enum uint tlId = 0x3D8DE0F9;
 
@@ -48,7 +52,7 @@ final class bots_resetBotCommands
 }
 
 /// TL function `bots.getBotCommands`, id 0xE34C0DD6.
-final class bots_getBotCommands
+final class bots_getBotCommands : TlFunction
 {
     enum uint tlId = 0xE34C0DD6;
 
@@ -59,7 +63,7 @@ final class bots_getBotCommands
 }
 
 /// TL function `bots.setBotMenuButton`, id 0x4504D54F.
-final class bots_setBotMenuButton
+final class bots_setBotMenuButton : TlFunction
 {
     enum uint tlId = 0x4504D54F;
 
@@ -70,7 +74,7 @@ final class bots_setBotMenuButton
 }
 
 /// TL function `bots.getBotMenuButton`, id 0x9C60EB28.
-final class bots_getBotMenuButton
+final class bots_getBotMenuButton : TlFunction
 {
     enum uint tlId = 0x9C60EB28;
 
@@ -80,7 +84,7 @@ final class bots_getBotMenuButton
 }
 
 /// TL function `bots.setBotBroadcastDefaultAdminRights`, id 0x788464E1.
-final class bots_setBotBroadcastDefaultAdminRights
+final class bots_setBotBroadcastDefaultAdminRights : TlFunction
 {
     enum uint tlId = 0x788464E1;
 
@@ -90,7 +94,7 @@ final class bots_setBotBroadcastDefaultAdminRights
 }
 
 /// TL function `bots.setBotGroupDefaultAdminRights`, id 0x925EC9EA.
-final class bots_setBotGroupDefaultAdminRights
+final class bots_setBotGroupDefaultAdminRights : TlFunction
 {
     enum uint tlId = 0x925EC9EA;
 
@@ -100,7 +104,7 @@ final class bots_setBotGroupDefaultAdminRights
 }
 
 /// TL function `bots.setBotInfo`, id 0x10CF3123.
-final class bots_setBotInfo
+final class bots_setBotInfo : TlFunction
 {
     enum uint tlId = 0x10CF3123;
 
@@ -115,7 +119,7 @@ final class bots_setBotInfo
 }
 
 /// TL function `bots.getBotInfo`, id 0xDCD914FD.
-final class bots_getBotInfo
+final class bots_getBotInfo : TlFunction
 {
     enum uint tlId = 0xDCD914FD;
 
@@ -127,7 +131,7 @@ final class bots_getBotInfo
 }
 
 /// TL function `bots.reorderUsernames`, id 0x9709B1C2.
-final class bots_reorderUsernames
+final class bots_reorderUsernames : TlFunction
 {
     enum uint tlId = 0x9709B1C2;
 
@@ -138,7 +142,7 @@ final class bots_reorderUsernames
 }
 
 /// TL function `bots.toggleUsername`, id 0x053CA973.
-final class bots_toggleUsername
+final class bots_toggleUsername : TlFunction
 {
     enum uint tlId = 0x053CA973;
 
@@ -150,7 +154,7 @@ final class bots_toggleUsername
 }
 
 /// TL function `bots.canSendMessage`, id 0x1359F4E6.
-final class bots_canSendMessage
+final class bots_canSendMessage : TlFunction
 {
     enum uint tlId = 0x1359F4E6;
 
@@ -160,7 +164,7 @@ final class bots_canSendMessage
 }
 
 /// TL function `bots.allowSendMessage`, id 0xF132E3EF.
-final class bots_allowSendMessage
+final class bots_allowSendMessage : TlFunction
 {
     enum uint tlId = 0xF132E3EF;
 
@@ -170,7 +174,7 @@ final class bots_allowSendMessage
 }
 
 /// TL function `bots.invokeWebViewCustomMethod`, id 0x087FC5E7.
-final class bots_invokeWebViewCustomMethod
+final class bots_invokeWebViewCustomMethod : TlFunction
 {
     enum uint tlId = 0x087FC5E7;
 
@@ -182,7 +186,7 @@ final class bots_invokeWebViewCustomMethod
 }
 
 /// TL function `bots.getPopularAppBots`, id 0xC2510192.
-final class bots_getPopularAppBots
+final class bots_getPopularAppBots : TlFunction
 {
     enum uint tlId = 0xC2510192;
 
@@ -193,7 +197,7 @@ final class bots_getPopularAppBots
 }
 
 /// TL function `bots.addPreviewMedia`, id 0x17AEB75A.
-final class bots_addPreviewMedia
+final class bots_addPreviewMedia : TlFunction
 {
     enum uint tlId = 0x17AEB75A;
 
@@ -205,7 +209,7 @@ final class bots_addPreviewMedia
 }
 
 /// TL function `bots.editPreviewMedia`, id 0x8525606F.
-final class bots_editPreviewMedia
+final class bots_editPreviewMedia : TlFunction
 {
     enum uint tlId = 0x8525606F;
 
@@ -218,7 +222,7 @@ final class bots_editPreviewMedia
 }
 
 /// TL function `bots.deletePreviewMedia`, id 0x2D0135B3.
-final class bots_deletePreviewMedia
+final class bots_deletePreviewMedia : TlFunction
 {
     enum uint tlId = 0x2D0135B3;
 
@@ -230,7 +234,7 @@ final class bots_deletePreviewMedia
 }
 
 /// TL function `bots.reorderPreviewMedias`, id 0xB627F3AA.
-final class bots_reorderPreviewMedias
+final class bots_reorderPreviewMedias : TlFunction
 {
     enum uint tlId = 0xB627F3AA;
 
@@ -242,7 +246,7 @@ final class bots_reorderPreviewMedias
 }
 
 /// TL function `bots.getPreviewInfo`, id 0x423AB3AD.
-final class bots_getPreviewInfo
+final class bots_getPreviewInfo : TlFunction
 {
     enum uint tlId = 0x423AB3AD;
 
@@ -253,7 +257,7 @@ final class bots_getPreviewInfo
 }
 
 /// TL function `bots.getPreviewMedias`, id 0xA2A5594D.
-final class bots_getPreviewMedias
+final class bots_getPreviewMedias : TlFunction
 {
     enum uint tlId = 0xA2A5594D;
 
@@ -263,7 +267,7 @@ final class bots_getPreviewMedias
 }
 
 /// TL function `bots.updateUserEmojiStatus`, id 0xED9F30C5.
-final class bots_updateUserEmojiStatus
+final class bots_updateUserEmojiStatus : TlFunction
 {
     enum uint tlId = 0xED9F30C5;
 
@@ -274,7 +278,7 @@ final class bots_updateUserEmojiStatus
 }
 
 /// TL function `bots.toggleUserEmojiStatusPermission`, id 0x06DE6392.
-final class bots_toggleUserEmojiStatusPermission
+final class bots_toggleUserEmojiStatusPermission : TlFunction
 {
     enum uint tlId = 0x06DE6392;
 
@@ -285,7 +289,7 @@ final class bots_toggleUserEmojiStatusPermission
 }
 
 /// TL function `bots.checkDownloadFileParams`, id 0x50077589.
-final class bots_checkDownloadFileParams
+final class bots_checkDownloadFileParams : TlFunction
 {
     enum uint tlId = 0x50077589;
 
@@ -297,7 +301,7 @@ final class bots_checkDownloadFileParams
 }
 
 /// TL function `bots.getAdminedBots`, id 0xB0711D83.
-final class bots_getAdminedBots
+final class bots_getAdminedBots : TlFunction
 {
     enum uint tlId = 0xB0711D83;
 
@@ -305,7 +309,7 @@ final class bots_getAdminedBots
 }
 
 /// TL function `bots.updateStarRefProgram`, id 0x778B5AB3.
-final class bots_updateStarRefProgram
+final class bots_updateStarRefProgram : TlFunction
 {
     enum uint tlId = 0x778B5AB3;
 
@@ -318,7 +322,7 @@ final class bots_updateStarRefProgram
 }
 
 /// TL function `bots.setCustomVerification`, id 0xF4946757.
-final class bots_setCustomVerification
+final class bots_setCustomVerification : TlFunction
 {
     enum uint tlId = 0xF4946757;
 
@@ -332,7 +336,7 @@ final class bots_setCustomVerification
 }
 
 /// TL function `bots.getBotRecommendations`, id 0xA1B70815.
-final class bots_getBotRecommendations
+final class bots_getBotRecommendations : TlFunction
 {
     enum uint tlId = 0xA1B70815;
 
@@ -342,7 +346,7 @@ final class bots_getBotRecommendations
 }
 
 /// TL function `bots.checkUsername`, id 0xE3AC4C61.
-final class bots_checkUsername
+final class bots_checkUsername : TlFunction
 {
     enum uint tlId = 0xE3AC4C61;
 
@@ -354,7 +358,7 @@ final class bots_checkUsername
 }
 
 /// TL function `bots.createBot`, id 0xE5B17F2B.
-final class bots_createBot
+final class bots_createBot : TlFunction
 {
     enum uint tlId = 0xE5B17F2B;
 
@@ -368,7 +372,7 @@ final class bots_createBot
 }
 
 /// TL function `bots.exportBotToken`, id 0xBD0D99EB.
-final class bots_exportBotToken
+final class bots_exportBotToken : TlFunction
 {
     enum uint tlId = 0xBD0D99EB;
 
@@ -379,7 +383,7 @@ final class bots_exportBotToken
 }
 
 /// TL function `bots.requestWebViewButton`, id 0x31A2A35E.
-final class bots_requestWebViewButton
+final class bots_requestWebViewButton : TlFunction
 {
     enum uint tlId = 0x31A2A35E;
 
@@ -390,7 +394,7 @@ final class bots_requestWebViewButton
 }
 
 /// TL function `bots.getRequestedWebViewButton`, id 0xBF25B7F3.
-final class bots_getRequestedWebViewButton
+final class bots_getRequestedWebViewButton : TlFunction
 {
     enum uint tlId = 0xBF25B7F3;
 
@@ -401,7 +405,7 @@ final class bots_getRequestedWebViewButton
 }
 
 /// TL function `bots.getAccessSettings`, id 0x213853A3.
-final class bots_getAccessSettings
+final class bots_getAccessSettings : TlFunction
 {
     enum uint tlId = 0x213853A3;
 
@@ -411,7 +415,7 @@ final class bots_getAccessSettings
 }
 
 /// TL function `bots.editAccessSettings`, id 0x31813CD8.
-final class bots_editAccessSettings
+final class bots_editAccessSettings : TlFunction
 {
     enum uint tlId = 0x31813CD8;
 
@@ -424,7 +428,7 @@ final class bots_editAccessSettings
 }
 
 /// TL function `bots.setJoinChatResults`, id 0xE71A4810.
-final class bots_setJoinChatResults
+final class bots_setJoinChatResults : TlFunction
 {
     enum uint tlId = 0xE71A4810;
 
@@ -435,7 +439,7 @@ final class bots_setJoinChatResults
 }
 
 /// TL function `bots.addUsername`, id 0x3501C08A.
-final class bots_addUsername
+final class bots_addUsername : TlFunction
 {
     enum uint tlId = 0x3501C08A;
 
@@ -446,7 +450,7 @@ final class bots_addUsername
 }
 
 /// TL function `bots.removeUsername`, id 0xC704147D.
-final class bots_removeUsername
+final class bots_removeUsername : TlFunction
 {
     enum uint tlId = 0xC704147D;
 

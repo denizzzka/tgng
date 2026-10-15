@@ -2,6 +2,9 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.types.updates_types;
 
+import tg_client_api.types.common_types;
+import tg_client_api.types.vector;
+
 /// TL sum type `updates.State`.
 abstract class updates_State
 {

@@ -10,7 +10,7 @@ module tlgen.emitter;
 import std.algorithm : canFind, filter, map, sort, uniq;
 import std.array : appender, array, join;
 import std.conv : to;
-import std.string : format, replace, startsWith;
+import std.string : format, indexOf, replace, startsWith;
 
 import tlgen.model : TlArg, TlCombinator, TlScheme;
 import tlgen.naming : dIdent;
@@ -52,6 +52,17 @@ EmittedFile[] emit(TlScheme scheme, EmitOptions options)
         files ~= emitNamespace(ns, functions, symbols, options, true);
     }
 
+    if (functions.length > 0) {
+        modulePaths ~= "functions/tl_function";
+        files ~= EmittedFile("functions/tl_function.d",
+            emitFunctionBase(options));
+    }
+
+    if (usesVector(scheme.combinators)) {
+        modulePaths ~= "types/vector";
+        files ~= EmittedFile("types/vector.d", emitVectorModule(options));
+    }
+
     files ~= EmittedFile("package.d", emitPackage(options, modulePaths));
     return files;
 }
@@ -84,8 +95,23 @@ private SymbolTable buildSymbols(const TlScheme scheme, string packageName)
         // A constructor is a class named after the full TL name, declared in
         // the types module of its own namespace.
         symbols.addConstructor(dIdent(c.name), c.namespace_(), packageName);
+
+        // Its result type is the abstract sum type declared in the types
+        // module of the result's own namespace (e.g. `InputPeer` lives in
+        // common_types, `account.TmpPassword` in account_types).
+        if (c.result.length == 0 || isVector(c.result) || isPrimitive(c.result))
+            continue;
+        symbols.addConstructor(dIdent(c.result), resultNamespace(c.result), packageName);
     }
     return symbols;
+}
+
+/// Namespace of a fully qualified TL result type, e.g. `account.TmpPassword`
+/// -> `account`; a bare `InputPeer` has none.
+private string resultNamespace(string tlType)
+{
+    auto dot = tlType.indexOf('.');
+    return dot < 0 ? "" : tlType[0 .. dot];
 }
 
 private string[] namespaces(const TlCombinator[] combinators)
@@ -130,9 +156,23 @@ private EmittedFile emitNamespace(string ns, const TlCombinator[] combinators,
     buffer ~= format("module %s;\n", selfModule);
 
     auto imports = moduleImports(selected, symbols, selfModule);
+    if (isFunctions) {
+        auto baseModule = options.packageName ~ ".functions.tl_function";
+        if (!imports.canFind(baseModule))
+            imports ~= baseModule;
+    }
+    foreach (c; selected) {
+        foreach (arg; c.args) {
+            if (isVector(arg.baseType())) {
+                auto vectorModule = options.packageName ~ ".types.vector";
+                if (!imports.canFind(vectorModule))
+                    imports ~= vectorModule;
+            }
+        }
+    }
     if (imports.length > 0) {
         buffer ~= "\n";
-        foreach (imported; imports)
+        foreach (imported; imports.sort())
             buffer ~= format("import %s;\n", imported);
     }
     buffer ~= "\n";
@@ -193,7 +233,7 @@ private string emitSumTypes(const TlCombinator[] combinators)
 {
     string[] results;
     foreach (c; combinators) {
-        if (c.result.length == 0 || c.result.startsWith("Vector") || isPrimitive(c.result))
+        if (c.result.length == 0 || !isSumType(c.result))
             continue;
         if (!results.canFind(c.result))
             results ~= c.result;
@@ -217,12 +257,33 @@ private string emitSumTypes(const TlCombinator[] combinators)
     return buffer.data;
 }
 
+/// Emits the shared base class of every generated TL function.
+private string emitFunctionBase(EmitOptions options)
+{
+    auto buffer = appender!string;
+    buffer ~= "/// Generated from the TL scheme. Do not edit.\n";
+    buffer ~= format("/// %s\n", options.sourceNote);
+    buffer ~= format("module %s.functions.tl_function;\n\n", options.packageName);
+    buffer ~= "/// Common base of every generated TL function.\n";
+    buffer ~= "abstract class TlFunction\n{\n";
+    buffer ~= "    /// The id of the concrete function.\n";
+    buffer ~= "    abstract uint tlIdValue() const nothrow;\n";
+    buffer ~= "}\n\n";
+    buffer ~= "/// Placeholder for a generic `!X` query argument in the `invoke*`\n";
+    buffer ~= "/// combinators. Callers substitute the real request type themselves.\n";
+    buffer ~= "abstract class TlObject\n{\n";
+    buffer ~= "    /// The id of the concrete constructor.\n";
+    buffer ~= "    abstract uint tlIdValue() const nothrow;\n";
+    buffer ~= "}\n";
+    return buffer.data;
+}
+
 /// Emits one concrete class for a constructor or a method.
 private string emitCombinator(TlCombinator c)
 {
     auto buffer = appender!string;
     auto name = dIdent(c.name);
-    auto base = c.isFunction ? "" : baseClass(c.result);
+    auto base = c.isFunction ? "TlFunction" : baseClass(c.result);
 
     buffer ~= format("/// TL %s `%s`, id 0x%08X.\n", c.isFunction ? "function" : "constructor",
         c.name, c.id);
@@ -255,7 +316,7 @@ private enum genericQueryType = "TlObject";
 
 private string baseClass(string result)
 {
-    if (result.length == 0 || isVector(result) || isPrimitive(result))
+    if (!isSumType(result))
         return "";
     return dIdent(result);
 }
@@ -312,6 +373,42 @@ private bool isPrimitive(string tlType)
         default:
             return false;
     }
+}
+
+/// True when a TL result type is a sum type: a boxed type that names an
+/// abstract base class with concrete constructor subclasses. `Bool` is the
+/// exception to the primitive mapping — it is stored as `bool` in fields but
+/// still declared as a base class for `boolFalse` and `boolTrue`.
+private bool isSumType(string tlType)
+{
+    return tlType == "Bool"
+        || (tlType.length > 0 && !isPrimitive(tlType)
+            && !isVector(tlType) && tlType[0] != '!');
+}
+
+/// True when any field or result in the scheme uses a TL vector.
+private bool usesVector(const TlCombinator[] combinators)
+{
+    foreach (c; combinators) {
+        foreach (arg; c.args)
+            if (isVector(arg.baseType()))
+                return true;
+        if (isVector(c.result))
+            return true;
+    }
+    return false;
+}
+
+/// Emits the `Vector` alias the generated types use for repeated fields.
+private string emitVectorModule(EmitOptions options)
+{
+    auto buffer = appender!string;
+    buffer ~= "/// Generated from the TL scheme. Do not edit.\n";
+    buffer ~= format("/// %s\n", options.sourceNote);
+    buffer ~= format("module %s.types.vector;\n\n", options.packageName);
+    buffer ~= "/// A TL vector: an ordered list of `T`.\n";
+    buffer ~= "alias Vector(T) = T[];\n";
+    return buffer.data;
 }
 
 private string emitPackage(EmitOptions options, string[] modulePaths)

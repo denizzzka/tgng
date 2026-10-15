@@ -2,8 +2,12 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.functions.contacts_functions;
 
+import tg_client_api.functions.tl_function;
+import tg_client_api.types.common_types;
+import tg_client_api.types.vector;
+
 /// TL function `contacts.getContactIDs`, id 0x7ADC669D.
-final class contacts_getContactIDs
+final class contacts_getContactIDs : TlFunction
 {
     enum uint tlId = 0x7ADC669D;
 
@@ -13,7 +17,7 @@ final class contacts_getContactIDs
 }
 
 /// TL function `contacts.getStatuses`, id 0xC4A353EE.
-final class contacts_getStatuses
+final class contacts_getStatuses : TlFunction
 {
     enum uint tlId = 0xC4A353EE;
 
@@ -21,7 +25,7 @@ final class contacts_getStatuses
 }
 
 /// TL function `contacts.getContacts`, id 0x5DD69E12.
-final class contacts_getContacts
+final class contacts_getContacts : TlFunction
 {
     enum uint tlId = 0x5DD69E12;
 
@@ -31,7 +35,7 @@ final class contacts_getContacts
 }
 
 /// TL function `contacts.importContacts`, id 0x2C800BE5.
-final class contacts_importContacts
+final class contacts_importContacts : TlFunction
 {
     enum uint tlId = 0x2C800BE5;
 
@@ -41,7 +45,7 @@ final class contacts_importContacts
 }
 
 /// TL function `contacts.deleteContacts`, id 0x096A0E00.
-final class contacts_deleteContacts
+final class contacts_deleteContacts : TlFunction
 {
     enum uint tlId = 0x096A0E00;
 
@@ -51,7 +55,7 @@ final class contacts_deleteContacts
 }
 
 /// TL function `contacts.deleteByPhones`, id 0x1013FD9E.
-final class contacts_deleteByPhones
+final class contacts_deleteByPhones : TlFunction
 {
     enum uint tlId = 0x1013FD9E;
 
@@ -61,7 +65,7 @@ final class contacts_deleteByPhones
 }
 
 /// TL function `contacts.block`, id 0x2E2E8734.
-final class contacts_block
+final class contacts_block : TlFunction
 {
     enum uint tlId = 0x2E2E8734;
 
@@ -73,7 +77,7 @@ final class contacts_block
 }
 
 /// TL function `contacts.unblock`, id 0xB550D328.
-final class contacts_unblock
+final class contacts_unblock : TlFunction
 {
     enum uint tlId = 0xB550D328;
 
@@ -85,7 +89,7 @@ final class contacts_unblock
 }
 
 /// TL function `contacts.getBlocked`, id 0x9A868F80.
-final class contacts_getBlocked
+final class contacts_getBlocked : TlFunction
 {
     enum uint tlId = 0x9A868F80;
 
@@ -98,7 +102,7 @@ final class contacts_getBlocked
 }
 
 /// TL function `contacts.search`, id 0x05F58D0F.
-final class contacts_search
+final class contacts_search : TlFunction
 {
     enum uint tlId = 0x05F58D0F;
 
@@ -112,7 +116,7 @@ final class contacts_search
 }
 
 /// TL function `contacts.resolveUsername`, id 0x725AFBBC.
-final class contacts_resolveUsername
+final class contacts_resolveUsername : TlFunction
 {
     enum uint tlId = 0x725AFBBC;
 
@@ -124,7 +128,7 @@ final class contacts_resolveUsername
 }
 
 /// TL function `contacts.getTopPeers`, id 0x973478B6.
-final class contacts_getTopPeers
+final class contacts_getTopPeers : TlFunction
 {
     enum uint tlId = 0x973478B6;
 
@@ -147,7 +151,7 @@ final class contacts_getTopPeers
 }
 
 /// TL function `contacts.resetTopPeerRating`, id 0x1AE373AC.
-final class contacts_resetTopPeerRating
+final class contacts_resetTopPeerRating : TlFunction
 {
     enum uint tlId = 0x1AE373AC;
 
@@ -158,7 +162,7 @@ final class contacts_resetTopPeerRating
 }
 
 /// TL function `contacts.resetSaved`, id 0x879537F1.
-final class contacts_resetSaved
+final class contacts_resetSaved : TlFunction
 {
     enum uint tlId = 0x879537F1;
 
@@ -166,7 +170,7 @@ final class contacts_resetSaved
 }
 
 /// TL function `contacts.getSaved`, id 0x82F1E39F.
-final class contacts_getSaved
+final class contacts_getSaved : TlFunction
 {
     enum uint tlId = 0x82F1E39F;
 
@@ -174,7 +178,7 @@ final class contacts_getSaved
 }
 
 /// TL function `contacts.toggleTopPeers`, id 0x8514BDDA.
-final class contacts_toggleTopPeers
+final class contacts_toggleTopPeers : TlFunction
 {
     enum uint tlId = 0x8514BDDA;
 
@@ -184,7 +188,7 @@ final class contacts_toggleTopPeers
 }
 
 /// TL function `contacts.addContact`, id 0xD9BA2E54.
-final class contacts_addContact
+final class contacts_addContact : TlFunction
 {
     enum uint tlId = 0xD9BA2E54;
 
@@ -200,7 +204,7 @@ final class contacts_addContact
 }
 
 /// TL function `contacts.acceptContact`, id 0xF831A20F.
-final class contacts_acceptContact
+final class contacts_acceptContact : TlFunction
 {
     enum uint tlId = 0xF831A20F;
 
@@ -210,7 +214,7 @@ final class contacts_acceptContact
 }
 
 /// TL function `contacts.getLocated`, id 0xD348BC44.
-final class contacts_getLocated
+final class contacts_getLocated : TlFunction
 {
     enum uint tlId = 0xD348BC44;
 
@@ -223,7 +227,7 @@ final class contacts_getLocated
 }
 
 /// TL function `contacts.blockFromReplies`, id 0x29A8962C.
-final class contacts_blockFromReplies
+final class contacts_blockFromReplies : TlFunction
 {
     enum uint tlId = 0x29A8962C;
 
@@ -237,7 +241,7 @@ final class contacts_blockFromReplies
 }
 
 /// TL function `contacts.resolvePhone`, id 0x8AF94344.
-final class contacts_resolvePhone
+final class contacts_resolvePhone : TlFunction
 {
     enum uint tlId = 0x8AF94344;
 
@@ -247,7 +251,7 @@ final class contacts_resolvePhone
 }
 
 /// TL function `contacts.exportContactToken`, id 0xF8654027.
-final class contacts_exportContactToken
+final class contacts_exportContactToken : TlFunction
 {
     enum uint tlId = 0xF8654027;
 
@@ -255,7 +259,7 @@ final class contacts_exportContactToken
 }
 
 /// TL function `contacts.importContactToken`, id 0x13005788.
-final class contacts_importContactToken
+final class contacts_importContactToken : TlFunction
 {
     enum uint tlId = 0x13005788;
 
@@ -265,7 +269,7 @@ final class contacts_importContactToken
 }
 
 /// TL function `contacts.editCloseFriends`, id 0xBA6705F0.
-final class contacts_editCloseFriends
+final class contacts_editCloseFriends : TlFunction
 {
     enum uint tlId = 0xBA6705F0;
 
@@ -275,7 +279,7 @@ final class contacts_editCloseFriends
 }
 
 /// TL function `contacts.setBlocked`, id 0x94C65C76.
-final class contacts_setBlocked
+final class contacts_setBlocked : TlFunction
 {
     enum uint tlId = 0x94C65C76;
 
@@ -288,7 +292,7 @@ final class contacts_setBlocked
 }
 
 /// TL function `contacts.getBirthdays`, id 0xDAEDA864.
-final class contacts_getBirthdays
+final class contacts_getBirthdays : TlFunction
 {
     enum uint tlId = 0xDAEDA864;
 
@@ -296,7 +300,7 @@ final class contacts_getBirthdays
 }
 
 /// TL function `contacts.getSponsoredPeers`, id 0xB6C8C393.
-final class contacts_getSponsoredPeers
+final class contacts_getSponsoredPeers : TlFunction
 {
     enum uint tlId = 0xB6C8C393;
 
@@ -306,7 +310,7 @@ final class contacts_getSponsoredPeers
 }
 
 /// TL function `contacts.updateContactNote`, id 0x139F63FB.
-final class contacts_updateContactNote
+final class contacts_updateContactNote : TlFunction
 {
     enum uint tlId = 0x139F63FB;
 

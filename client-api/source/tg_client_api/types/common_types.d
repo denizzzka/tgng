@@ -2,12 +2,26 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.types.common_types;
 
+import tg_client_api.types.auth_types;
+import tg_client_api.types.messages_types;
+import tg_client_api.types.vector;
+import tg_client_api.types.wallet_types;
+
 /// TL sum type `True`.
 abstract class True
 {
     /// The id of the concrete constructor.
     abstract uint tlIdValue() const nothrow;
     // constructor: true_
+}
+
+/// TL sum type `Bool`.
+abstract class Bool
+{
+    /// The id of the concrete constructor.
+    abstract uint tlIdValue() const nothrow;
+    // constructor: boolFalse
+    // constructor: boolTrue
 }
 
 /// TL sum type `Error`.
@@ -4243,7 +4257,7 @@ final class true_ : True
 }
 
 /// TL constructor `boolFalse`, id 0xBC799737.
-final class boolFalse
+final class boolFalse : Bool
 {
     enum uint tlId = 0xBC799737;
 
@@ -4251,7 +4265,7 @@ final class boolFalse
 }
 
 /// TL constructor `boolTrue`, id 0x997275B5.
-final class boolTrue
+final class boolTrue : Bool
 {
     enum uint tlId = 0x997275B5;
 

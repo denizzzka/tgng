@@ -2,8 +2,13 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.functions.auth_functions;
 
+import tg_client_api.functions.tl_function;
+import tg_client_api.types.account_types;
+import tg_client_api.types.common_types;
+import tg_client_api.types.vector;
+
 /// TL function `auth.sendCode`, id 0xA677244F.
-final class auth_sendCode
+final class auth_sendCode : TlFunction
 {
     enum uint tlId = 0xA677244F;
 
@@ -16,7 +21,7 @@ final class auth_sendCode
 }
 
 /// TL function `auth.signUp`, id 0xAAC7B717.
-final class auth_signUp
+final class auth_signUp : TlFunction
 {
     enum uint tlId = 0xAAC7B717;
 
@@ -31,7 +36,7 @@ final class auth_signUp
 }
 
 /// TL function `auth.signIn`, id 0x8D52A951.
-final class auth_signIn
+final class auth_signIn : TlFunction
 {
     enum uint tlId = 0x8D52A951;
 
@@ -45,7 +50,7 @@ final class auth_signIn
 }
 
 /// TL function `auth.logOut`, id 0x3E72BA19.
-final class auth_logOut
+final class auth_logOut : TlFunction
 {
     enum uint tlId = 0x3E72BA19;
 
@@ -53,7 +58,7 @@ final class auth_logOut
 }
 
 /// TL function `auth.resetAuthorizations`, id 0x9FAB0D1A.
-final class auth_resetAuthorizations
+final class auth_resetAuthorizations : TlFunction
 {
     enum uint tlId = 0x9FAB0D1A;
 
@@ -61,7 +66,7 @@ final class auth_resetAuthorizations
 }
 
 /// TL function `auth.exportAuthorization`, id 0xE5BFFFCD.
-final class auth_exportAuthorization
+final class auth_exportAuthorization : TlFunction
 {
     enum uint tlId = 0xE5BFFFCD;
 
@@ -71,7 +76,7 @@ final class auth_exportAuthorization
 }
 
 /// TL function `auth.importAuthorization`, id 0xA57A7DAD.
-final class auth_importAuthorization
+final class auth_importAuthorization : TlFunction
 {
     enum uint tlId = 0xA57A7DAD;
 
@@ -82,7 +87,7 @@ final class auth_importAuthorization
 }
 
 /// TL function `auth.bindTempAuthKey`, id 0xCDD42A05.
-final class auth_bindTempAuthKey
+final class auth_bindTempAuthKey : TlFunction
 {
     enum uint tlId = 0xCDD42A05;
 
@@ -95,7 +100,7 @@ final class auth_bindTempAuthKey
 }
 
 /// TL function `auth.importBotAuthorization`, id 0x67A3FF2C.
-final class auth_importBotAuthorization
+final class auth_importBotAuthorization : TlFunction
 {
     enum uint tlId = 0x67A3FF2C;
 
@@ -108,7 +113,7 @@ final class auth_importBotAuthorization
 }
 
 /// TL function `auth.checkPassword`, id 0xD18B4D16.
-final class auth_checkPassword
+final class auth_checkPassword : TlFunction
 {
     enum uint tlId = 0xD18B4D16;
 
@@ -118,7 +123,7 @@ final class auth_checkPassword
 }
 
 /// TL function `auth.requestPasswordRecovery`, id 0xD897BC66.
-final class auth_requestPasswordRecovery
+final class auth_requestPasswordRecovery : TlFunction
 {
     enum uint tlId = 0xD897BC66;
 
@@ -126,7 +131,7 @@ final class auth_requestPasswordRecovery
 }
 
 /// TL function `auth.recoverPassword`, id 0x37096C70.
-final class auth_recoverPassword
+final class auth_recoverPassword : TlFunction
 {
     enum uint tlId = 0x37096C70;
 
@@ -138,7 +143,7 @@ final class auth_recoverPassword
 }
 
 /// TL function `auth.resendCode`, id 0xCAE47523.
-final class auth_resendCode
+final class auth_resendCode : TlFunction
 {
     enum uint tlId = 0xCAE47523;
 
@@ -151,7 +156,7 @@ final class auth_resendCode
 }
 
 /// TL function `auth.cancelCode`, id 0x1F040578.
-final class auth_cancelCode
+final class auth_cancelCode : TlFunction
 {
     enum uint tlId = 0x1F040578;
 
@@ -162,7 +167,7 @@ final class auth_cancelCode
 }
 
 /// TL function `auth.dropTempAuthKeys`, id 0x8E48A188.
-final class auth_dropTempAuthKeys
+final class auth_dropTempAuthKeys : TlFunction
 {
     enum uint tlId = 0x8E48A188;
 
@@ -172,7 +177,7 @@ final class auth_dropTempAuthKeys
 }
 
 /// TL function `auth.exportLoginToken`, id 0xB7E085FE.
-final class auth_exportLoginToken
+final class auth_exportLoginToken : TlFunction
 {
     enum uint tlId = 0xB7E085FE;
 
@@ -184,7 +189,7 @@ final class auth_exportLoginToken
 }
 
 /// TL function `auth.importLoginToken`, id 0x95AC5CE4.
-final class auth_importLoginToken
+final class auth_importLoginToken : TlFunction
 {
     enum uint tlId = 0x95AC5CE4;
 
@@ -194,7 +199,7 @@ final class auth_importLoginToken
 }
 
 /// TL function `auth.acceptLoginToken`, id 0xE894AD4D.
-final class auth_acceptLoginToken
+final class auth_acceptLoginToken : TlFunction
 {
     enum uint tlId = 0xE894AD4D;
 
@@ -204,7 +209,7 @@ final class auth_acceptLoginToken
 }
 
 /// TL function `auth.checkRecoveryPassword`, id 0x0D36BF79.
-final class auth_checkRecoveryPassword
+final class auth_checkRecoveryPassword : TlFunction
 {
     enum uint tlId = 0x0D36BF79;
 
@@ -214,7 +219,7 @@ final class auth_checkRecoveryPassword
 }
 
 /// TL function `auth.importWebTokenAuthorization`, id 0x2DB873A9.
-final class auth_importWebTokenAuthorization
+final class auth_importWebTokenAuthorization : TlFunction
 {
     enum uint tlId = 0x2DB873A9;
 
@@ -226,7 +231,7 @@ final class auth_importWebTokenAuthorization
 }
 
 /// TL function `auth.requestFirebaseSms`, id 0x8E39261E.
-final class auth_requestFirebaseSms
+final class auth_requestFirebaseSms : TlFunction
 {
     enum uint tlId = 0x8E39261E;
 
@@ -241,7 +246,7 @@ final class auth_requestFirebaseSms
 }
 
 /// TL function `auth.resetLoginEmail`, id 0x7E960193.
-final class auth_resetLoginEmail
+final class auth_resetLoginEmail : TlFunction
 {
     enum uint tlId = 0x7E960193;
 
@@ -252,7 +257,7 @@ final class auth_resetLoginEmail
 }
 
 /// TL function `auth.reportMissingCode`, id 0xCB9DEFF6.
-final class auth_reportMissingCode
+final class auth_reportMissingCode : TlFunction
 {
     enum uint tlId = 0xCB9DEFF6;
 
@@ -264,7 +269,7 @@ final class auth_reportMissingCode
 }
 
 /// TL function `auth.checkPaidAuth`, id 0x56E59F9C.
-final class auth_checkPaidAuth
+final class auth_checkPaidAuth : TlFunction
 {
     enum uint tlId = 0x56E59F9C;
 
@@ -276,7 +281,7 @@ final class auth_checkPaidAuth
 }
 
 /// TL function `auth.initPasskeyLogin`, id 0x518AD0B7.
-final class auth_initPasskeyLogin
+final class auth_initPasskeyLogin : TlFunction
 {
     enum uint tlId = 0x518AD0B7;
 
@@ -287,7 +292,7 @@ final class auth_initPasskeyLogin
 }
 
 /// TL function `auth.finishPasskeyLogin`, id 0x9857AD07.
-final class auth_finishPasskeyLogin
+final class auth_finishPasskeyLogin : TlFunction
 {
     enum uint tlId = 0x9857AD07;
 
@@ -300,7 +305,7 @@ final class auth_finishPasskeyLogin
 }
 
 /// TL function `auth.cancelWebTokenAuthorization`, id 0x490DADA1.
-final class auth_cancelWebTokenAuthorization
+final class auth_cancelWebTokenAuthorization : TlFunction
 {
     enum uint tlId = 0x490DADA1;
 
@@ -310,7 +315,7 @@ final class auth_cancelWebTokenAuthorization
 }
 
 /// TL function `auth.initFirebasePnvLogin`, id 0x644F15C0.
-final class auth_initFirebasePnvLogin
+final class auth_initFirebasePnvLogin : TlFunction
 {
     enum uint tlId = 0x644F15C0;
 
@@ -323,7 +328,7 @@ final class auth_initFirebasePnvLogin
 }
 
 /// TL function `auth.finishFirebasePnvLogin`, id 0x2C85094C.
-final class auth_finishFirebasePnvLogin
+final class auth_finishFirebasePnvLogin : TlFunction
 {
     enum uint tlId = 0x2C85094C;
 
@@ -333,7 +338,7 @@ final class auth_finishFirebasePnvLogin
 }
 
 /// TL function `auth.firebasePnvSignUp`, id 0x783F6B56.
-final class auth_firebasePnvSignUp
+final class auth_firebasePnvSignUp : TlFunction
 {
     enum uint tlId = 0x783F6B56;
 

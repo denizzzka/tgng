@@ -2,8 +2,12 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.functions.help_functions;
 
+import tg_client_api.functions.tl_function;
+import tg_client_api.types.common_types;
+import tg_client_api.types.vector;
+
 /// TL function `help.getConfig`, id 0xC4F9186B.
-final class help_getConfig
+final class help_getConfig : TlFunction
 {
     enum uint tlId = 0xC4F9186B;
 
@@ -11,7 +15,7 @@ final class help_getConfig
 }
 
 /// TL function `help.getNearestDc`, id 0x1FB33026.
-final class help_getNearestDc
+final class help_getNearestDc : TlFunction
 {
     enum uint tlId = 0x1FB33026;
 
@@ -19,7 +23,7 @@ final class help_getNearestDc
 }
 
 /// TL function `help.getAppUpdate`, id 0x522D5A7D.
-final class help_getAppUpdate
+final class help_getAppUpdate : TlFunction
 {
     enum uint tlId = 0x522D5A7D;
 
@@ -29,7 +33,7 @@ final class help_getAppUpdate
 }
 
 /// TL function `help.getInviteText`, id 0x4D392343.
-final class help_getInviteText
+final class help_getInviteText : TlFunction
 {
     enum uint tlId = 0x4D392343;
 
@@ -37,7 +41,7 @@ final class help_getInviteText
 }
 
 /// TL function `help.getSupport`, id 0x9CDF08CD.
-final class help_getSupport
+final class help_getSupport : TlFunction
 {
     enum uint tlId = 0x9CDF08CD;
 
@@ -45,7 +49,7 @@ final class help_getSupport
 }
 
 /// TL function `help.setBotUpdatesStatus`, id 0xEC22CFCD.
-final class help_setBotUpdatesStatus
+final class help_setBotUpdatesStatus : TlFunction
 {
     enum uint tlId = 0xEC22CFCD;
 
@@ -56,7 +60,7 @@ final class help_setBotUpdatesStatus
 }
 
 /// TL function `help.getCdnConfig`, id 0x52029342.
-final class help_getCdnConfig
+final class help_getCdnConfig : TlFunction
 {
     enum uint tlId = 0x52029342;
 
@@ -64,7 +68,7 @@ final class help_getCdnConfig
 }
 
 /// TL function `help.getRecentMeUrls`, id 0x3DC0F114.
-final class help_getRecentMeUrls
+final class help_getRecentMeUrls : TlFunction
 {
     enum uint tlId = 0x3DC0F114;
 
@@ -74,7 +78,7 @@ final class help_getRecentMeUrls
 }
 
 /// TL function `help.getTermsOfServiceUpdate`, id 0x2CA51FD1.
-final class help_getTermsOfServiceUpdate
+final class help_getTermsOfServiceUpdate : TlFunction
 {
     enum uint tlId = 0x2CA51FD1;
 
@@ -82,7 +86,7 @@ final class help_getTermsOfServiceUpdate
 }
 
 /// TL function `help.acceptTermsOfService`, id 0xEE72F79A.
-final class help_acceptTermsOfService
+final class help_acceptTermsOfService : TlFunction
 {
     enum uint tlId = 0xEE72F79A;
 
@@ -92,7 +96,7 @@ final class help_acceptTermsOfService
 }
 
 /// TL function `help.getDeepLinkInfo`, id 0x3FEDC75F.
-final class help_getDeepLinkInfo
+final class help_getDeepLinkInfo : TlFunction
 {
     enum uint tlId = 0x3FEDC75F;
 
@@ -102,7 +106,7 @@ final class help_getDeepLinkInfo
 }
 
 /// TL function `help.getAppConfig`, id 0x61E3F854.
-final class help_getAppConfig
+final class help_getAppConfig : TlFunction
 {
     enum uint tlId = 0x61E3F854;
 
@@ -112,7 +116,7 @@ final class help_getAppConfig
 }
 
 /// TL function `help.saveAppLog`, id 0x6F02F748.
-final class help_saveAppLog
+final class help_saveAppLog : TlFunction
 {
     enum uint tlId = 0x6F02F748;
 
@@ -122,7 +126,7 @@ final class help_saveAppLog
 }
 
 /// TL function `help.getPassportConfig`, id 0xC661AD08.
-final class help_getPassportConfig
+final class help_getPassportConfig : TlFunction
 {
     enum uint tlId = 0xC661AD08;
 
@@ -132,7 +136,7 @@ final class help_getPassportConfig
 }
 
 /// TL function `help.getSupportName`, id 0xD360E72C.
-final class help_getSupportName
+final class help_getSupportName : TlFunction
 {
     enum uint tlId = 0xD360E72C;
 
@@ -140,7 +144,7 @@ final class help_getSupportName
 }
 
 /// TL function `help.getUserInfo`, id 0x038A08D3.
-final class help_getUserInfo
+final class help_getUserInfo : TlFunction
 {
     enum uint tlId = 0x038A08D3;
 
@@ -150,7 +154,7 @@ final class help_getUserInfo
 }
 
 /// TL function `help.editUserInfo`, id 0x66B91B70.
-final class help_editUserInfo
+final class help_editUserInfo : TlFunction
 {
     enum uint tlId = 0x66B91B70;
 
@@ -162,7 +166,7 @@ final class help_editUserInfo
 }
 
 /// TL function `help.getPromoData`, id 0xC0977421.
-final class help_getPromoData
+final class help_getPromoData : TlFunction
 {
     enum uint tlId = 0xC0977421;
 
@@ -170,7 +174,7 @@ final class help_getPromoData
 }
 
 /// TL function `help.hidePromoData`, id 0x1E251C95.
-final class help_hidePromoData
+final class help_hidePromoData : TlFunction
 {
     enum uint tlId = 0x1E251C95;
 
@@ -180,7 +184,7 @@ final class help_hidePromoData
 }
 
 /// TL function `help.dismissSuggestion`, id 0xF50DBAA1.
-final class help_dismissSuggestion
+final class help_dismissSuggestion : TlFunction
 {
     enum uint tlId = 0xF50DBAA1;
 
@@ -191,7 +195,7 @@ final class help_dismissSuggestion
 }
 
 /// TL function `help.getCountriesList`, id 0x735787A8.
-final class help_getCountriesList
+final class help_getCountriesList : TlFunction
 {
     enum uint tlId = 0x735787A8;
 
@@ -202,7 +206,7 @@ final class help_getCountriesList
 }
 
 /// TL function `help.getPremiumPromo`, id 0xB81B93D4.
-final class help_getPremiumPromo
+final class help_getPremiumPromo : TlFunction
 {
     enum uint tlId = 0xB81B93D4;
 
@@ -210,7 +214,7 @@ final class help_getPremiumPromo
 }
 
 /// TL function `help.getPeerColors`, id 0xDA80F42F.
-final class help_getPeerColors
+final class help_getPeerColors : TlFunction
 {
     enum uint tlId = 0xDA80F42F;
 
@@ -220,7 +224,7 @@ final class help_getPeerColors
 }
 
 /// TL function `help.getPeerProfileColors`, id 0xABCFA9FD.
-final class help_getPeerProfileColors
+final class help_getPeerProfileColors : TlFunction
 {
     enum uint tlId = 0xABCFA9FD;
 
@@ -230,7 +234,7 @@ final class help_getPeerProfileColors
 }
 
 /// TL function `help.getTimezonesList`, id 0x49B30240.
-final class help_getTimezonesList
+final class help_getTimezonesList : TlFunction
 {
     enum uint tlId = 0x49B30240;
 

@@ -2,8 +2,12 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.functions.payments_functions;
 
+import tg_client_api.functions.tl_function;
+import tg_client_api.types.common_types;
+import tg_client_api.types.vector;
+
 /// TL function `payments.getPaymentForm`, id 0x37148DBB.
-final class payments_getPaymentForm
+final class payments_getPaymentForm : TlFunction
 {
     enum uint tlId = 0x37148DBB;
 
@@ -15,7 +19,7 @@ final class payments_getPaymentForm
 }
 
 /// TL function `payments.getPaymentReceipt`, id 0x2478D1CC.
-final class payments_getPaymentReceipt
+final class payments_getPaymentReceipt : TlFunction
 {
     enum uint tlId = 0x2478D1CC;
 
@@ -26,7 +30,7 @@ final class payments_getPaymentReceipt
 }
 
 /// TL function `payments.validateRequestedInfo`, id 0xB6C8F12B.
-final class payments_validateRequestedInfo
+final class payments_validateRequestedInfo : TlFunction
 {
     enum uint tlId = 0xB6C8F12B;
 
@@ -39,7 +43,7 @@ final class payments_validateRequestedInfo
 }
 
 /// TL function `payments.sendPaymentForm`, id 0x2D03522F.
-final class payments_sendPaymentForm
+final class payments_sendPaymentForm : TlFunction
 {
     enum uint tlId = 0x2D03522F;
 
@@ -55,7 +59,7 @@ final class payments_sendPaymentForm
 }
 
 /// TL function `payments.getSavedInfo`, id 0x227D824B.
-final class payments_getSavedInfo
+final class payments_getSavedInfo : TlFunction
 {
     enum uint tlId = 0x227D824B;
 
@@ -63,7 +67,7 @@ final class payments_getSavedInfo
 }
 
 /// TL function `payments.clearSavedInfo`, id 0xD83D70C1.
-final class payments_clearSavedInfo
+final class payments_clearSavedInfo : TlFunction
 {
     enum uint tlId = 0xD83D70C1;
 
@@ -75,7 +79,7 @@ final class payments_clearSavedInfo
 }
 
 /// TL function `payments.getBankCardData`, id 0x2E79D779.
-final class payments_getBankCardData
+final class payments_getBankCardData : TlFunction
 {
     enum uint tlId = 0x2E79D779;
 
@@ -85,7 +89,7 @@ final class payments_getBankCardData
 }
 
 /// TL function `payments.exportInvoice`, id 0x0F91B065.
-final class payments_exportInvoice
+final class payments_exportInvoice : TlFunction
 {
     enum uint tlId = 0x0F91B065;
 
@@ -95,7 +99,7 @@ final class payments_exportInvoice
 }
 
 /// TL function `payments.assignAppStoreTransaction`, id 0x80ED747D.
-final class payments_assignAppStoreTransaction
+final class payments_assignAppStoreTransaction : TlFunction
 {
     enum uint tlId = 0x80ED747D;
 
@@ -106,7 +110,7 @@ final class payments_assignAppStoreTransaction
 }
 
 /// TL function `payments.assignPlayMarketTransaction`, id 0xDFFD50D3.
-final class payments_assignPlayMarketTransaction
+final class payments_assignPlayMarketTransaction : TlFunction
 {
     enum uint tlId = 0xDFFD50D3;
 
@@ -117,7 +121,7 @@ final class payments_assignPlayMarketTransaction
 }
 
 /// TL function `payments.getPremiumGiftCodeOptions`, id 0x2757BA54.
-final class payments_getPremiumGiftCodeOptions
+final class payments_getPremiumGiftCodeOptions : TlFunction
 {
     enum uint tlId = 0x2757BA54;
 
@@ -128,7 +132,7 @@ final class payments_getPremiumGiftCodeOptions
 }
 
 /// TL function `payments.checkGiftCode`, id 0x8E51B4C1.
-final class payments_checkGiftCode
+final class payments_checkGiftCode : TlFunction
 {
     enum uint tlId = 0x8E51B4C1;
 
@@ -138,7 +142,7 @@ final class payments_checkGiftCode
 }
 
 /// TL function `payments.applyGiftCode`, id 0xF6E26854.
-final class payments_applyGiftCode
+final class payments_applyGiftCode : TlFunction
 {
     enum uint tlId = 0xF6E26854;
 
@@ -148,7 +152,7 @@ final class payments_applyGiftCode
 }
 
 /// TL function `payments.getGiveawayInfo`, id 0xF4239425.
-final class payments_getGiveawayInfo
+final class payments_getGiveawayInfo : TlFunction
 {
     enum uint tlId = 0xF4239425;
 
@@ -159,7 +163,7 @@ final class payments_getGiveawayInfo
 }
 
 /// TL function `payments.launchPrepaidGiveaway`, id 0x5FF58F20.
-final class payments_launchPrepaidGiveaway
+final class payments_launchPrepaidGiveaway : TlFunction
 {
     enum uint tlId = 0x5FF58F20;
 
@@ -171,7 +175,7 @@ final class payments_launchPrepaidGiveaway
 }
 
 /// TL function `payments.getStarsTopupOptions`, id 0xC00EC7D3.
-final class payments_getStarsTopupOptions
+final class payments_getStarsTopupOptions : TlFunction
 {
     enum uint tlId = 0xC00EC7D3;
 
@@ -179,7 +183,7 @@ final class payments_getStarsTopupOptions
 }
 
 /// TL function `payments.getStarsStatus`, id 0x4EA9B3BF.
-final class payments_getStarsStatus
+final class payments_getStarsStatus : TlFunction
 {
     enum uint tlId = 0x4EA9B3BF;
 
@@ -191,7 +195,7 @@ final class payments_getStarsStatus
 }
 
 /// TL function `payments.getStarsTransactions`, id 0x69DA4557.
-final class payments_getStarsTransactions
+final class payments_getStarsTransactions : TlFunction
 {
     enum uint tlId = 0x69DA4557;
 
@@ -209,7 +213,7 @@ final class payments_getStarsTransactions
 }
 
 /// TL function `payments.sendStarsForm`, id 0x7998C914.
-final class payments_sendStarsForm
+final class payments_sendStarsForm : TlFunction
 {
     enum uint tlId = 0x7998C914;
 
@@ -220,7 +224,7 @@ final class payments_sendStarsForm
 }
 
 /// TL function `payments.refundStarsCharge`, id 0x25AE8F4A.
-final class payments_refundStarsCharge
+final class payments_refundStarsCharge : TlFunction
 {
     enum uint tlId = 0x25AE8F4A;
 
@@ -231,7 +235,7 @@ final class payments_refundStarsCharge
 }
 
 /// TL function `payments.getStarsRevenueStats`, id 0xD91FFAD6.
-final class payments_getStarsRevenueStats
+final class payments_getStarsRevenueStats : TlFunction
 {
     enum uint tlId = 0xD91FFAD6;
 
@@ -244,7 +248,7 @@ final class payments_getStarsRevenueStats
 }
 
 /// TL function `payments.getStarsRevenueWithdrawalUrl`, id 0x2433DC92.
-final class payments_getStarsRevenueWithdrawalUrl
+final class payments_getStarsRevenueWithdrawalUrl : TlFunction
 {
     enum uint tlId = 0x2433DC92;
 
@@ -258,7 +262,7 @@ final class payments_getStarsRevenueWithdrawalUrl
 }
 
 /// TL function `payments.getStarsRevenueAdsAccountUrl`, id 0xD1D7EFC5.
-final class payments_getStarsRevenueAdsAccountUrl
+final class payments_getStarsRevenueAdsAccountUrl : TlFunction
 {
     enum uint tlId = 0xD1D7EFC5;
 
@@ -268,7 +272,7 @@ final class payments_getStarsRevenueAdsAccountUrl
 }
 
 /// TL function `payments.getStarsTransactionsByID`, id 0x2DCA16B8.
-final class payments_getStarsTransactionsByID
+final class payments_getStarsTransactionsByID : TlFunction
 {
     enum uint tlId = 0x2DCA16B8;
 
@@ -281,7 +285,7 @@ final class payments_getStarsTransactionsByID
 }
 
 /// TL function `payments.getStarsGiftOptions`, id 0xD3C96BC8.
-final class payments_getStarsGiftOptions
+final class payments_getStarsGiftOptions : TlFunction
 {
     enum uint tlId = 0xD3C96BC8;
 
@@ -292,7 +296,7 @@ final class payments_getStarsGiftOptions
 }
 
 /// TL function `payments.getStarsSubscriptions`, id 0x032512C5.
-final class payments_getStarsSubscriptions
+final class payments_getStarsSubscriptions : TlFunction
 {
     enum uint tlId = 0x032512C5;
 
@@ -305,7 +309,7 @@ final class payments_getStarsSubscriptions
 }
 
 /// TL function `payments.changeStarsSubscription`, id 0xC7770878.
-final class payments_changeStarsSubscription
+final class payments_changeStarsSubscription : TlFunction
 {
     enum uint tlId = 0xC7770878;
 
@@ -318,7 +322,7 @@ final class payments_changeStarsSubscription
 }
 
 /// TL function `payments.fulfillStarsSubscription`, id 0xCC5BEBB3.
-final class payments_fulfillStarsSubscription
+final class payments_fulfillStarsSubscription : TlFunction
 {
     enum uint tlId = 0xCC5BEBB3;
 
@@ -329,7 +333,7 @@ final class payments_fulfillStarsSubscription
 }
 
 /// TL function `payments.getStarsGiveawayOptions`, id 0xBD1EFD3E.
-final class payments_getStarsGiveawayOptions
+final class payments_getStarsGiveawayOptions : TlFunction
 {
     enum uint tlId = 0xBD1EFD3E;
 
@@ -337,7 +341,7 @@ final class payments_getStarsGiveawayOptions
 }
 
 /// TL function `payments.getStarGifts`, id 0xC4563590.
-final class payments_getStarGifts
+final class payments_getStarGifts : TlFunction
 {
     enum uint tlId = 0xC4563590;
 
@@ -347,7 +351,7 @@ final class payments_getStarGifts
 }
 
 /// TL function `payments.saveStarGift`, id 0x2A2A697C.
-final class payments_saveStarGift
+final class payments_saveStarGift : TlFunction
 {
     enum uint tlId = 0x2A2A697C;
 
@@ -359,7 +363,7 @@ final class payments_saveStarGift
 }
 
 /// TL function `payments.convertStarGift`, id 0x74BF076B.
-final class payments_convertStarGift
+final class payments_convertStarGift : TlFunction
 {
     enum uint tlId = 0x74BF076B;
 
@@ -369,7 +373,7 @@ final class payments_convertStarGift
 }
 
 /// TL function `payments.botCancelStarsSubscription`, id 0x6DFA0622.
-final class payments_botCancelStarsSubscription
+final class payments_botCancelStarsSubscription : TlFunction
 {
     enum uint tlId = 0x6DFA0622;
 
@@ -382,7 +386,7 @@ final class payments_botCancelStarsSubscription
 }
 
 /// TL function `payments.getConnectedStarRefBots`, id 0x5869A553.
-final class payments_getConnectedStarRefBots
+final class payments_getConnectedStarRefBots : TlFunction
 {
     enum uint tlId = 0x5869A553;
 
@@ -396,7 +400,7 @@ final class payments_getConnectedStarRefBots
 }
 
 /// TL function `payments.getConnectedStarRefBot`, id 0xB7D998F0.
-final class payments_getConnectedStarRefBot
+final class payments_getConnectedStarRefBot : TlFunction
 {
     enum uint tlId = 0xB7D998F0;
 
@@ -407,7 +411,7 @@ final class payments_getConnectedStarRefBot
 }
 
 /// TL function `payments.getSuggestedStarRefBots`, id 0x0D6B48F7.
-final class payments_getSuggestedStarRefBots
+final class payments_getSuggestedStarRefBots : TlFunction
 {
     enum uint tlId = 0x0D6B48F7;
 
@@ -422,7 +426,7 @@ final class payments_getSuggestedStarRefBots
 }
 
 /// TL function `payments.connectStarRefBot`, id 0x7ED5348A.
-final class payments_connectStarRefBot
+final class payments_connectStarRefBot : TlFunction
 {
     enum uint tlId = 0x7ED5348A;
 
@@ -433,7 +437,7 @@ final class payments_connectStarRefBot
 }
 
 /// TL function `payments.editConnectedStarRefBot`, id 0xE4FCA4A3.
-final class payments_editConnectedStarRefBot
+final class payments_editConnectedStarRefBot : TlFunction
 {
     enum uint tlId = 0xE4FCA4A3;
 
@@ -446,7 +450,7 @@ final class payments_editConnectedStarRefBot
 }
 
 /// TL function `payments.getStarGiftUpgradePreview`, id 0x9C9ABCB1.
-final class payments_getStarGiftUpgradePreview
+final class payments_getStarGiftUpgradePreview : TlFunction
 {
     enum uint tlId = 0x9C9ABCB1;
 
@@ -456,7 +460,7 @@ final class payments_getStarGiftUpgradePreview
 }
 
 /// TL function `payments.upgradeStarGift`, id 0xAED6E4F5.
-final class payments_upgradeStarGift
+final class payments_upgradeStarGift : TlFunction
 {
     enum uint tlId = 0xAED6E4F5;
 
@@ -468,7 +472,7 @@ final class payments_upgradeStarGift
 }
 
 /// TL function `payments.transferStarGift`, id 0x7F18176A.
-final class payments_transferStarGift
+final class payments_transferStarGift : TlFunction
 {
     enum uint tlId = 0x7F18176A;
 
@@ -479,7 +483,7 @@ final class payments_transferStarGift
 }
 
 /// TL function `payments.getUniqueStarGift`, id 0xA1974D72.
-final class payments_getUniqueStarGift
+final class payments_getUniqueStarGift : TlFunction
 {
     enum uint tlId = 0xA1974D72;
 
@@ -489,7 +493,7 @@ final class payments_getUniqueStarGift
 }
 
 /// TL function `payments.getSavedStarGifts`, id 0xA319E569.
-final class payments_getSavedStarGifts
+final class payments_getSavedStarGifts : TlFunction
 {
     enum uint tlId = 0xA319E569;
 
@@ -512,7 +516,7 @@ final class payments_getSavedStarGifts
 }
 
 /// TL function `payments.getSavedStarGift`, id 0xB455A106.
-final class payments_getSavedStarGift
+final class payments_getSavedStarGift : TlFunction
 {
     enum uint tlId = 0xB455A106;
 
@@ -522,7 +526,7 @@ final class payments_getSavedStarGift
 }
 
 /// TL function `payments.getStarGiftWithdrawalUrl`, id 0xD06E93A8.
-final class payments_getStarGiftWithdrawalUrl
+final class payments_getStarGiftWithdrawalUrl : TlFunction
 {
     enum uint tlId = 0xD06E93A8;
 
@@ -533,7 +537,7 @@ final class payments_getStarGiftWithdrawalUrl
 }
 
 /// TL function `payments.toggleChatStarGiftNotifications`, id 0x60EAEFA1.
-final class payments_toggleChatStarGiftNotifications
+final class payments_toggleChatStarGiftNotifications : TlFunction
 {
     enum uint tlId = 0x60EAEFA1;
 
@@ -545,7 +549,7 @@ final class payments_toggleChatStarGiftNotifications
 }
 
 /// TL function `payments.toggleStarGiftsPinnedToTop`, id 0x1513E7B0.
-final class payments_toggleStarGiftsPinnedToTop
+final class payments_toggleStarGiftsPinnedToTop : TlFunction
 {
     enum uint tlId = 0x1513E7B0;
 
@@ -556,7 +560,7 @@ final class payments_toggleStarGiftsPinnedToTop
 }
 
 /// TL function `payments.canPurchaseStore`, id 0x4FDC5EA7.
-final class payments_canPurchaseStore
+final class payments_canPurchaseStore : TlFunction
 {
     enum uint tlId = 0x4FDC5EA7;
 
@@ -566,7 +570,7 @@ final class payments_canPurchaseStore
 }
 
 /// TL function `payments.getResaleStarGifts`, id 0x7A5FA236.
-final class payments_getResaleStarGifts
+final class payments_getResaleStarGifts : TlFunction
 {
     enum uint tlId = 0x7A5FA236;
 
@@ -585,7 +589,7 @@ final class payments_getResaleStarGifts
 }
 
 /// TL function `payments.updateStarGiftPrice`, id 0xEDBE6CCB.
-final class payments_updateStarGiftPrice
+final class payments_updateStarGiftPrice : TlFunction
 {
     enum uint tlId = 0xEDBE6CCB;
 
@@ -596,7 +600,7 @@ final class payments_updateStarGiftPrice
 }
 
 /// TL function `payments.createStarGiftCollection`, id 0x1F4A0E87.
-final class payments_createStarGiftCollection
+final class payments_createStarGiftCollection : TlFunction
 {
     enum uint tlId = 0x1F4A0E87;
 
@@ -608,7 +612,7 @@ final class payments_createStarGiftCollection
 }
 
 /// TL function `payments.updateStarGiftCollection`, id 0x4FDDBEE7.
-final class payments_updateStarGiftCollection
+final class payments_updateStarGiftCollection : TlFunction
 {
     enum uint tlId = 0x4FDDBEE7;
 
@@ -624,7 +628,7 @@ final class payments_updateStarGiftCollection
 }
 
 /// TL function `payments.reorderStarGiftCollections`, id 0xC32AF4CC.
-final class payments_reorderStarGiftCollections
+final class payments_reorderStarGiftCollections : TlFunction
 {
     enum uint tlId = 0xC32AF4CC;
 
@@ -635,7 +639,7 @@ final class payments_reorderStarGiftCollections
 }
 
 /// TL function `payments.deleteStarGiftCollection`, id 0xAD5648E8.
-final class payments_deleteStarGiftCollection
+final class payments_deleteStarGiftCollection : TlFunction
 {
     enum uint tlId = 0xAD5648E8;
 
@@ -646,7 +650,7 @@ final class payments_deleteStarGiftCollection
 }
 
 /// TL function `payments.getStarGiftCollections`, id 0x981B91DD.
-final class payments_getStarGiftCollections
+final class payments_getStarGiftCollections : TlFunction
 {
     enum uint tlId = 0x981B91DD;
 
@@ -657,7 +661,7 @@ final class payments_getStarGiftCollections
 }
 
 /// TL function `payments.getUniqueStarGiftValueInfo`, id 0x4365AF6B.
-final class payments_getUniqueStarGiftValueInfo
+final class payments_getUniqueStarGiftValueInfo : TlFunction
 {
     enum uint tlId = 0x4365AF6B;
 
@@ -667,7 +671,7 @@ final class payments_getUniqueStarGiftValueInfo
 }
 
 /// TL function `payments.checkCanSendGift`, id 0xC0C4EDC9.
-final class payments_checkCanSendGift
+final class payments_checkCanSendGift : TlFunction
 {
     enum uint tlId = 0xC0C4EDC9;
 
@@ -677,7 +681,7 @@ final class payments_checkCanSendGift
 }
 
 /// TL function `payments.getStarGiftAuctionState`, id 0x5C9FF4D6.
-final class payments_getStarGiftAuctionState
+final class payments_getStarGiftAuctionState : TlFunction
 {
     enum uint tlId = 0x5C9FF4D6;
 
@@ -688,7 +692,7 @@ final class payments_getStarGiftAuctionState
 }
 
 /// TL function `payments.getStarGiftAuctionAcquiredGifts`, id 0x6BA2CBEC.
-final class payments_getStarGiftAuctionAcquiredGifts
+final class payments_getStarGiftAuctionAcquiredGifts : TlFunction
 {
     enum uint tlId = 0x6BA2CBEC;
 
@@ -698,7 +702,7 @@ final class payments_getStarGiftAuctionAcquiredGifts
 }
 
 /// TL function `payments.getStarGiftActiveAuctions`, id 0xA5D0514D.
-final class payments_getStarGiftActiveAuctions
+final class payments_getStarGiftActiveAuctions : TlFunction
 {
     enum uint tlId = 0xA5D0514D;
 
@@ -708,7 +712,7 @@ final class payments_getStarGiftActiveAuctions
 }
 
 /// TL function `payments.resolveStarGiftOffer`, id 0xE9CE781C.
-final class payments_resolveStarGiftOffer
+final class payments_resolveStarGiftOffer : TlFunction
 {
     enum uint tlId = 0xE9CE781C;
 
@@ -720,7 +724,7 @@ final class payments_resolveStarGiftOffer
 }
 
 /// TL function `payments.sendStarGiftOffer`, id 0x8FB86B41.
-final class payments_sendStarGiftOffer
+final class payments_sendStarGiftOffer : TlFunction
 {
     enum uint tlId = 0x8FB86B41;
 
@@ -736,7 +740,7 @@ final class payments_sendStarGiftOffer
 }
 
 /// TL function `payments.getStarGiftUpgradeAttributes`, id 0x6D038B58.
-final class payments_getStarGiftUpgradeAttributes
+final class payments_getStarGiftUpgradeAttributes : TlFunction
 {
     enum uint tlId = 0x6D038B58;
 
@@ -746,7 +750,7 @@ final class payments_getStarGiftUpgradeAttributes
 }
 
 /// TL function `payments.getCraftStarGifts`, id 0xFD05DD00.
-final class payments_getCraftStarGifts
+final class payments_getCraftStarGifts : TlFunction
 {
     enum uint tlId = 0xFD05DD00;
 
@@ -758,7 +762,7 @@ final class payments_getCraftStarGifts
 }
 
 /// TL function `payments.craftStarGift`, id 0xB0F9684F.
-final class payments_craftStarGift
+final class payments_craftStarGift : TlFunction
 {
     enum uint tlId = 0xB0F9684F;
 
@@ -768,7 +772,7 @@ final class payments_craftStarGift
 }
 
 /// TL function `payments.getCurrencyRates`, id 0xD35983E8.
-final class payments_getCurrencyRates
+final class payments_getCurrencyRates : TlFunction
 {
     enum uint tlId = 0xD35983E8;
 
@@ -776,7 +780,7 @@ final class payments_getCurrencyRates
 }
 
 /// TL function `payments.getOnrampProviders`, id 0x3F3E00DC.
-final class payments_getOnrampProviders
+final class payments_getOnrampProviders : TlFunction
 {
     enum uint tlId = 0x3F3E00DC;
 
@@ -787,7 +791,7 @@ final class payments_getOnrampProviders
 }
 
 /// TL function `payments.getOnrampBaseCurrencies`, id 0x1C8BEDF3.
-final class payments_getOnrampBaseCurrencies
+final class payments_getOnrampBaseCurrencies : TlFunction
 {
     enum uint tlId = 0x1C8BEDF3;
 
@@ -798,7 +802,7 @@ final class payments_getOnrampBaseCurrencies
 }
 
 /// TL function `payments.getOnrampAvailability`, id 0x2EC29951.
-final class payments_getOnrampAvailability
+final class payments_getOnrampAvailability : TlFunction
 {
     enum uint tlId = 0x2EC29951;
 
@@ -811,7 +815,7 @@ final class payments_getOnrampAvailability
 }
 
 /// TL function `payments.getOnrampLimits`, id 0x80E851FD.
-final class payments_getOnrampLimits
+final class payments_getOnrampLimits : TlFunction
 {
     enum uint tlId = 0x80E851FD;
 
@@ -825,7 +829,7 @@ final class payments_getOnrampLimits
 }
 
 /// TL function `payments.getOnrampQuote`, id 0xE06645FA.
-final class payments_getOnrampQuote
+final class payments_getOnrampQuote : TlFunction
 {
     enum uint tlId = 0xE06645FA;
 
@@ -841,7 +845,7 @@ final class payments_getOnrampQuote
 }
 
 /// TL function `payments.createOnrampSession`, id 0xA2197CF6.
-final class payments_createOnrampSession
+final class payments_createOnrampSession : TlFunction
 {
     enum uint tlId = 0xA2197CF6;
 

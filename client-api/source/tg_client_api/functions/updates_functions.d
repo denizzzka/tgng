@@ -2,8 +2,11 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.functions.updates_functions;
 
+import tg_client_api.functions.tl_function;
+import tg_client_api.types.common_types;
+
 /// TL function `updates.getState`, id 0xEDD4882A.
-final class updates_getState
+final class updates_getState : TlFunction
 {
     enum uint tlId = 0xEDD4882A;
 
@@ -11,7 +14,7 @@ final class updates_getState
 }
 
 /// TL function `updates.getDifference`, id 0x19C2F763.
-final class updates_getDifference
+final class updates_getDifference : TlFunction
 {
     enum uint tlId = 0x19C2F763;
 
@@ -27,7 +30,7 @@ final class updates_getDifference
 }
 
 /// TL function `updates.getChannelDifference`, id 0x03173D78.
-final class updates_getChannelDifference
+final class updates_getChannelDifference : TlFunction
 {
     enum uint tlId = 0x03173D78;
 

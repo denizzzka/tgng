@@ -2,8 +2,11 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.functions.upload_functions;
 
+import tg_client_api.functions.tl_function;
+import tg_client_api.types.common_types;
+
 /// TL function `upload.saveFilePart`, id 0xB304A621.
-final class upload_saveFilePart
+final class upload_saveFilePart : TlFunction
 {
     enum uint tlId = 0xB304A621;
 
@@ -15,7 +18,7 @@ final class upload_saveFilePart
 }
 
 /// TL function `upload.getFile`, id 0xBE5335BE.
-final class upload_getFile
+final class upload_getFile : TlFunction
 {
     enum uint tlId = 0xBE5335BE;
 
@@ -30,7 +33,7 @@ final class upload_getFile
 }
 
 /// TL function `upload.saveBigFilePart`, id 0xDE7B673D.
-final class upload_saveBigFilePart
+final class upload_saveBigFilePart : TlFunction
 {
     enum uint tlId = 0xDE7B673D;
 
@@ -43,7 +46,7 @@ final class upload_saveBigFilePart
 }
 
 /// TL function `upload.getWebFile`, id 0x24E6818D.
-final class upload_getWebFile
+final class upload_getWebFile : TlFunction
 {
     enum uint tlId = 0x24E6818D;
 
@@ -55,7 +58,7 @@ final class upload_getWebFile
 }
 
 /// TL function `upload.getCdnFile`, id 0x395F69DA.
-final class upload_getCdnFile
+final class upload_getCdnFile : TlFunction
 {
     enum uint tlId = 0x395F69DA;
 
@@ -67,7 +70,7 @@ final class upload_getCdnFile
 }
 
 /// TL function `upload.reuploadCdnFile`, id 0x9B2754A8.
-final class upload_reuploadCdnFile
+final class upload_reuploadCdnFile : TlFunction
 {
     enum uint tlId = 0x9B2754A8;
 
@@ -78,7 +81,7 @@ final class upload_reuploadCdnFile
 }
 
 /// TL function `upload.getCdnFileHashes`, id 0x91DC3F31.
-final class upload_getCdnFileHashes
+final class upload_getCdnFileHashes : TlFunction
 {
     enum uint tlId = 0x91DC3F31;
 
@@ -89,7 +92,7 @@ final class upload_getCdnFileHashes
 }
 
 /// TL function `upload.getFileHashes`, id 0x9156982A.
-final class upload_getFileHashes
+final class upload_getFileHashes : TlFunction
 {
     enum uint tlId = 0x9156982A;
 

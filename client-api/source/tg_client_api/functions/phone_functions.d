@@ -2,8 +2,12 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.functions.phone_functions;
 
+import tg_client_api.functions.tl_function;
+import tg_client_api.types.common_types;
+import tg_client_api.types.vector;
+
 /// TL function `phone.getCallConfig`, id 0x55451FA9.
-final class phone_getCallConfig
+final class phone_getCallConfig : TlFunction
 {
     enum uint tlId = 0x55451FA9;
 
@@ -11,7 +15,7 @@ final class phone_getCallConfig
 }
 
 /// TL function `phone.requestCall`, id 0x42FF96ED.
-final class phone_requestCall
+final class phone_requestCall : TlFunction
 {
     enum uint tlId = 0x42FF96ED;
 
@@ -26,7 +30,7 @@ final class phone_requestCall
 }
 
 /// TL function `phone.acceptCall`, id 0x3BD2B4A0.
-final class phone_acceptCall
+final class phone_acceptCall : TlFunction
 {
     enum uint tlId = 0x3BD2B4A0;
 
@@ -38,7 +42,7 @@ final class phone_acceptCall
 }
 
 /// TL function `phone.confirmCall`, id 0x2EFE1722.
-final class phone_confirmCall
+final class phone_confirmCall : TlFunction
 {
     enum uint tlId = 0x2EFE1722;
 
@@ -51,7 +55,7 @@ final class phone_confirmCall
 }
 
 /// TL function `phone.receivedCall`, id 0x17D54F61.
-final class phone_receivedCall
+final class phone_receivedCall : TlFunction
 {
     enum uint tlId = 0x17D54F61;
 
@@ -61,7 +65,7 @@ final class phone_receivedCall
 }
 
 /// TL function `phone.discardCall`, id 0xB2CBC1C0.
-final class phone_discardCall
+final class phone_discardCall : TlFunction
 {
     enum uint tlId = 0xB2CBC1C0;
 
@@ -76,7 +80,7 @@ final class phone_discardCall
 }
 
 /// TL function `phone.setCallRating`, id 0x59EAD627.
-final class phone_setCallRating
+final class phone_setCallRating : TlFunction
 {
     enum uint tlId = 0x59EAD627;
 
@@ -90,7 +94,7 @@ final class phone_setCallRating
 }
 
 /// TL function `phone.saveCallDebug`, id 0x277ADD7E.
-final class phone_saveCallDebug
+final class phone_saveCallDebug : TlFunction
 {
     enum uint tlId = 0x277ADD7E;
 
@@ -101,7 +105,7 @@ final class phone_saveCallDebug
 }
 
 /// TL function `phone.sendSignalingData`, id 0xFF7A9383.
-final class phone_sendSignalingData
+final class phone_sendSignalingData : TlFunction
 {
     enum uint tlId = 0xFF7A9383;
 
@@ -112,7 +116,7 @@ final class phone_sendSignalingData
 }
 
 /// TL function `phone.createGroupCall`, id 0x48CDC6D8.
-final class phone_createGroupCall
+final class phone_createGroupCall : TlFunction
 {
     enum uint tlId = 0x48CDC6D8;
 
@@ -127,7 +131,7 @@ final class phone_createGroupCall
 }
 
 /// TL function `phone.joinGroupCall`, id 0x8FB53057.
-final class phone_joinGroupCall
+final class phone_joinGroupCall : TlFunction
 {
     enum uint tlId = 0x8FB53057;
 
@@ -145,7 +149,7 @@ final class phone_joinGroupCall
 }
 
 /// TL function `phone.leaveGroupCall`, id 0x500377F9.
-final class phone_leaveGroupCall
+final class phone_leaveGroupCall : TlFunction
 {
     enum uint tlId = 0x500377F9;
 
@@ -156,7 +160,7 @@ final class phone_leaveGroupCall
 }
 
 /// TL function `phone.inviteToGroupCall`, id 0x7B393160.
-final class phone_inviteToGroupCall
+final class phone_inviteToGroupCall : TlFunction
 {
     enum uint tlId = 0x7B393160;
 
@@ -167,7 +171,7 @@ final class phone_inviteToGroupCall
 }
 
 /// TL function `phone.discardGroupCall`, id 0x7A777135.
-final class phone_discardGroupCall
+final class phone_discardGroupCall : TlFunction
 {
     enum uint tlId = 0x7A777135;
 
@@ -177,7 +181,7 @@ final class phone_discardGroupCall
 }
 
 /// TL function `phone.toggleGroupCallSettings`, id 0x974392F2.
-final class phone_toggleGroupCallSettings
+final class phone_toggleGroupCallSettings : TlFunction
 {
     enum uint tlId = 0x974392F2;
 
@@ -192,7 +196,7 @@ final class phone_toggleGroupCallSettings
 }
 
 /// TL function `phone.getGroupCall`, id 0x041845DB.
-final class phone_getGroupCall
+final class phone_getGroupCall : TlFunction
 {
     enum uint tlId = 0x041845DB;
 
@@ -203,7 +207,7 @@ final class phone_getGroupCall
 }
 
 /// TL function `phone.getGroupParticipants`, id 0xC558D8AB.
-final class phone_getGroupParticipants
+final class phone_getGroupParticipants : TlFunction
 {
     enum uint tlId = 0xC558D8AB;
 
@@ -217,7 +221,7 @@ final class phone_getGroupParticipants
 }
 
 /// TL function `phone.checkGroupCall`, id 0xB59CF977.
-final class phone_checkGroupCall
+final class phone_checkGroupCall : TlFunction
 {
     enum uint tlId = 0xB59CF977;
 
@@ -228,7 +232,7 @@ final class phone_checkGroupCall
 }
 
 /// TL function `phone.toggleGroupCallRecord`, id 0xF128C708.
-final class phone_toggleGroupCallRecord
+final class phone_toggleGroupCallRecord : TlFunction
 {
     enum uint tlId = 0xF128C708;
 
@@ -243,7 +247,7 @@ final class phone_toggleGroupCallRecord
 }
 
 /// TL function `phone.editGroupCallParticipant`, id 0xA5273ABF.
-final class phone_editGroupCallParticipant
+final class phone_editGroupCallParticipant : TlFunction
 {
     enum uint tlId = 0xA5273ABF;
 
@@ -261,7 +265,7 @@ final class phone_editGroupCallParticipant
 }
 
 /// TL function `phone.editGroupCallTitle`, id 0x1CA6AC0A.
-final class phone_editGroupCallTitle
+final class phone_editGroupCallTitle : TlFunction
 {
     enum uint tlId = 0x1CA6AC0A;
 
@@ -272,7 +276,7 @@ final class phone_editGroupCallTitle
 }
 
 /// TL function `phone.getGroupCallJoinAs`, id 0xEF7C213A.
-final class phone_getGroupCallJoinAs
+final class phone_getGroupCallJoinAs : TlFunction
 {
     enum uint tlId = 0xEF7C213A;
 
@@ -282,7 +286,7 @@ final class phone_getGroupCallJoinAs
 }
 
 /// TL function `phone.exportGroupCallInvite`, id 0xE6AA647F.
-final class phone_exportGroupCallInvite
+final class phone_exportGroupCallInvite : TlFunction
 {
     enum uint tlId = 0xE6AA647F;
 
@@ -294,7 +298,7 @@ final class phone_exportGroupCallInvite
 }
 
 /// TL function `phone.toggleGroupCallStartSubscription`, id 0x219C34E6.
-final class phone_toggleGroupCallStartSubscription
+final class phone_toggleGroupCallStartSubscription : TlFunction
 {
     enum uint tlId = 0x219C34E6;
 
@@ -305,7 +309,7 @@ final class phone_toggleGroupCallStartSubscription
 }
 
 /// TL function `phone.startScheduledGroupCall`, id 0x5680E342.
-final class phone_startScheduledGroupCall
+final class phone_startScheduledGroupCall : TlFunction
 {
     enum uint tlId = 0x5680E342;
 
@@ -315,7 +319,7 @@ final class phone_startScheduledGroupCall
 }
 
 /// TL function `phone.saveDefaultGroupCallJoinAs`, id 0x575E1F8C.
-final class phone_saveDefaultGroupCallJoinAs
+final class phone_saveDefaultGroupCallJoinAs : TlFunction
 {
     enum uint tlId = 0x575E1F8C;
 
@@ -326,7 +330,7 @@ final class phone_saveDefaultGroupCallJoinAs
 }
 
 /// TL function `phone.joinGroupCallPresentation`, id 0xCBEA6BC4.
-final class phone_joinGroupCallPresentation
+final class phone_joinGroupCallPresentation : TlFunction
 {
     enum uint tlId = 0xCBEA6BC4;
 
@@ -337,7 +341,7 @@ final class phone_joinGroupCallPresentation
 }
 
 /// TL function `phone.leaveGroupCallPresentation`, id 0x1C50D144.
-final class phone_leaveGroupCallPresentation
+final class phone_leaveGroupCallPresentation : TlFunction
 {
     enum uint tlId = 0x1C50D144;
 
@@ -347,7 +351,7 @@ final class phone_leaveGroupCallPresentation
 }
 
 /// TL function `phone.getGroupCallStreamChannels`, id 0x1AB21940.
-final class phone_getGroupCallStreamChannels
+final class phone_getGroupCallStreamChannels : TlFunction
 {
     enum uint tlId = 0x1AB21940;
 
@@ -357,7 +361,7 @@ final class phone_getGroupCallStreamChannels
 }
 
 /// TL function `phone.getGroupCallStreamRtmpUrl`, id 0x5AF4C73A.
-final class phone_getGroupCallStreamRtmpUrl
+final class phone_getGroupCallStreamRtmpUrl : TlFunction
 {
     enum uint tlId = 0x5AF4C73A;
 
@@ -370,7 +374,7 @@ final class phone_getGroupCallStreamRtmpUrl
 }
 
 /// TL function `phone.saveCallLog`, id 0x41248786.
-final class phone_saveCallLog
+final class phone_saveCallLog : TlFunction
 {
     enum uint tlId = 0x41248786;
 
@@ -381,7 +385,7 @@ final class phone_saveCallLog
 }
 
 /// TL function `phone.createConferenceCall`, id 0x7D0444BB.
-final class phone_createConferenceCall
+final class phone_createConferenceCall : TlFunction
 {
     enum uint tlId = 0x7D0444BB;
 
@@ -398,7 +402,7 @@ final class phone_createConferenceCall
 }
 
 /// TL function `phone.deleteConferenceCallParticipants`, id 0x8CA60525.
-final class phone_deleteConferenceCallParticipants
+final class phone_deleteConferenceCallParticipants : TlFunction
 {
     enum uint tlId = 0x8CA60525;
 
@@ -413,7 +417,7 @@ final class phone_deleteConferenceCallParticipants
 }
 
 /// TL function `phone.sendConferenceCallBroadcast`, id 0xC6701900.
-final class phone_sendConferenceCallBroadcast
+final class phone_sendConferenceCallBroadcast : TlFunction
 {
     enum uint tlId = 0xC6701900;
 
@@ -424,7 +428,7 @@ final class phone_sendConferenceCallBroadcast
 }
 
 /// TL function `phone.inviteConferenceCallParticipant`, id 0xBCF22685.
-final class phone_inviteConferenceCallParticipant
+final class phone_inviteConferenceCallParticipant : TlFunction
 {
     enum uint tlId = 0xBCF22685;
 
@@ -437,7 +441,7 @@ final class phone_inviteConferenceCallParticipant
 }
 
 /// TL function `phone.declineConferenceCallInvite`, id 0x3C479971.
-final class phone_declineConferenceCallInvite
+final class phone_declineConferenceCallInvite : TlFunction
 {
     enum uint tlId = 0x3C479971;
 
@@ -447,7 +451,7 @@ final class phone_declineConferenceCallInvite
 }
 
 /// TL function `phone.getGroupCallChainBlocks`, id 0xEE9F88A6.
-final class phone_getGroupCallChainBlocks
+final class phone_getGroupCallChainBlocks : TlFunction
 {
     enum uint tlId = 0xEE9F88A6;
 
@@ -460,7 +464,7 @@ final class phone_getGroupCallChainBlocks
 }
 
 /// TL function `phone.sendGroupCallMessage`, id 0xB1D11410.
-final class phone_sendGroupCallMessage
+final class phone_sendGroupCallMessage : TlFunction
 {
     enum uint tlId = 0xB1D11410;
 
@@ -475,7 +479,7 @@ final class phone_sendGroupCallMessage
 }
 
 /// TL function `phone.sendGroupCallEncryptedMessage`, id 0xE5AFA56D.
-final class phone_sendGroupCallEncryptedMessage
+final class phone_sendGroupCallEncryptedMessage : TlFunction
 {
     enum uint tlId = 0xE5AFA56D;
 
@@ -486,7 +490,7 @@ final class phone_sendGroupCallEncryptedMessage
 }
 
 /// TL function `phone.deleteGroupCallMessages`, id 0xF64F54F7.
-final class phone_deleteGroupCallMessages
+final class phone_deleteGroupCallMessages : TlFunction
 {
     enum uint tlId = 0xF64F54F7;
 
@@ -499,7 +503,7 @@ final class phone_deleteGroupCallMessages
 }
 
 /// TL function `phone.deleteGroupCallParticipantMessages`, id 0x1DBFECA0.
-final class phone_deleteGroupCallParticipantMessages
+final class phone_deleteGroupCallParticipantMessages : TlFunction
 {
     enum uint tlId = 0x1DBFECA0;
 
@@ -512,7 +516,7 @@ final class phone_deleteGroupCallParticipantMessages
 }
 
 /// TL function `phone.getGroupCallStars`, id 0x6F636302.
-final class phone_getGroupCallStars
+final class phone_getGroupCallStars : TlFunction
 {
     enum uint tlId = 0x6F636302;
 
@@ -522,7 +526,7 @@ final class phone_getGroupCallStars
 }
 
 /// TL function `phone.saveDefaultSendAs`, id 0x4167ADD1.
-final class phone_saveDefaultSendAs
+final class phone_saveDefaultSendAs : TlFunction
 {
     enum uint tlId = 0x4167ADD1;
 

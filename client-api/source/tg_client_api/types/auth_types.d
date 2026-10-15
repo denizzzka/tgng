@@ -2,6 +2,9 @@
 /// Input: telegram_api.tl, mtproto_api.tl
 module tg_client_api.types.auth_types;
 
+import tg_client_api.types.common_types;
+import tg_client_api.types.help_types;
+
 /// TL sum type `auth.SentCode`.
 abstract class auth_SentCode
 {
