@@ -76,7 +76,10 @@ long serverMessageTime() @trusted
 	return (Clock.currTime().toUnixTime * 1_000_000_000L) & 0xffffffff_00000000L;
 }
 
-/// A single MTProto message as it travels inside the transport.
+/// A decoded MTProto message as it arrives from the encrypted transport.
+///
+/// The fixed header (salt, session id, msg_id, seq_no, length) is stripped
+/// by `EncryptedStream`, so an instance carries only the body.
 struct MtpMessage
 {
 	/// `auth_key_id`: zero in plaintext mode, the key identifier otherwise.
