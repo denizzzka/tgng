@@ -17,3 +17,5 @@ docs/
 *.obj
 *.lst
 dub.selections.json
+/libtgng.a
+*.a
