@@ -5,7 +5,7 @@
  *     dub run :tlgen
  *
  * The command reads the schemes from `client-api/scheme` and writes the
- * generated D modules into `client-api/source/client_api/gen`, overwriting
+ * generated D modules into `client-api/source/tg_client_api`, overwriting
  * them in place.
  */
 module app;
@@ -21,8 +21,8 @@ import tlgen.model : TlScheme, parseScheme;
 
 /// Default paths, relative to the repository root.
 private enum defaultSchemeDir = "client-api/scheme";
-private enum defaultOutputDir = "client-api/source/client_api/gen";
-private enum packageName = "client_api.gen";
+private enum defaultOutputDir = "client-api/source/tg_client_api";
+private enum packageName = "tg_client_api";
 
 void main(string[] args)
 {

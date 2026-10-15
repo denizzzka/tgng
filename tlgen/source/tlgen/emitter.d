@@ -19,7 +19,7 @@ import tlgen.naming : dIdent;
 struct EmitOptions
 {
     string outputDir;   /// root of the generated tree
-    string packageName; /// D package the modules live in, e.g. `client_api.gen`
+    string packageName; /// D package the modules live in, e.g. `tg_client_api`
     string sourceNote;  /// header note with the input scheme paths
 }
 
@@ -60,7 +60,7 @@ EmittedFile[] emit(TlScheme scheme, EmitOptions options)
 /// declares it, so a module can import exactly the siblings it mentions.
 private struct SymbolTable
 {
-    /// fully qualified module name, e.g. `client_api.gen.types.common_types`.
+    /// fully qualified module name, e.g. `tg_client_api.types.common_types`.
     string[string] modules;
 
     void addConstructor(string className, string ns, string packageName)

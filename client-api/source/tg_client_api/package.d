@@ -1,0 +1,64 @@
+/**
+ * Generated D bindings for the Telegram API.
+ *
+ * This module is the public entry point of the `tg_client_api` sub-package. The actual
+ * Telegram types and methods are generated from the official API description
+ * (TL scheme / Bot API documentation) and re-exported here.
+ */
+module tg_client_api;
+
+public import tg_client_api.functions.account_functions;
+public import tg_client_api.functions.aicompose_functions;
+public import tg_client_api.functions.auth_functions;
+public import tg_client_api.functions.bots_functions;
+public import tg_client_api.functions.channels_functions;
+public import tg_client_api.functions.chatlists_functions;
+public import tg_client_api.functions.common_functions;
+public import tg_client_api.functions.communities_functions;
+public import tg_client_api.functions.contacts_functions;
+public import tg_client_api.functions.ephemeral_functions;
+public import tg_client_api.functions.folders_functions;
+public import tg_client_api.functions.fragment_functions;
+public import tg_client_api.functions.help_functions;
+public import tg_client_api.functions.langpack_functions;
+public import tg_client_api.functions.messages_functions;
+public import tg_client_api.functions.payments_functions;
+public import tg_client_api.functions.phone_functions;
+public import tg_client_api.functions.photos_functions;
+public import tg_client_api.functions.premium_functions;
+public import tg_client_api.functions.smsjobs_functions;
+public import tg_client_api.functions.stats_functions;
+public import tg_client_api.functions.stickers_functions;
+public import tg_client_api.functions.stories_functions;
+public import tg_client_api.functions.toncenter_functions;
+public import tg_client_api.functions.updates_functions;
+public import tg_client_api.functions.upload_functions;
+public import tg_client_api.functions.users_functions;
+public import tg_client_api.functions.wallet_functions;
+public import tg_client_api.types.account_types;
+public import tg_client_api.types.aicompose_types;
+public import tg_client_api.types.auth_types;
+public import tg_client_api.types.bots_types;
+public import tg_client_api.types.channels_types;
+public import tg_client_api.types.chatlists_types;
+public import tg_client_api.types.common_types;
+public import tg_client_api.types.communities_types;
+public import tg_client_api.types.contacts_types;
+public import tg_client_api.types.ephemeral_types;
+public import tg_client_api.types.fragment_types;
+public import tg_client_api.types.help_types;
+public import tg_client_api.types.messages_types;
+public import tg_client_api.types.payments_types;
+public import tg_client_api.types.phone_types;
+public import tg_client_api.types.photos_types;
+public import tg_client_api.types.premium_types;
+public import tg_client_api.types.smsjobs_types;
+public import tg_client_api.types.stats_types;
+public import tg_client_api.types.stickers_types;
+public import tg_client_api.types.storage_types;
+public import tg_client_api.types.stories_types;
+public import tg_client_api.types.toncenter_types;
+public import tg_client_api.types.updates_types;
+public import tg_client_api.types.upload_types;
+public import tg_client_api.types.users_types;
+public import tg_client_api.types.wallet_types;
