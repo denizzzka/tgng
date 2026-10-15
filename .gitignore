@@ -22,3 +22,4 @@ dub.selections.json
 /mtproto/tests/transport_tests
 /mtproto/mtproto-test-library
 /mtproto/tgng-mtproto-test-library
+/mtproto/tests/transport_tests-test-application
