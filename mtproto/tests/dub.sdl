@@ -1,8 +1,0 @@
-name "transport_tests"
-description "MTProto transport connection test"
-authors "Denis Feklushkin"
-license "proprietary"
-targetType "executable"
-targetName "transport_tests"
-mainSourceFile "transport.d"
-dependency "mtproto" path=".."

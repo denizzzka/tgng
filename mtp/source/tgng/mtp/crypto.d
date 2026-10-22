@@ -3,7 +3,7 @@
 ///
 /// Thin wrappers over Deimos OpenSSL bindings that turn C error codes into
 /// exceptions and manage C resources with `scope(exit)`.
-module tgng.mtproto.crypto;
+module tgng.mtp.crypto;
 
 import deimos.openssl.aes: AES_DECRYPT, AES_ENCRYPT, AES_KEY, AES_ige_encrypt,
 	AES_set_decrypt_key, AES_set_encrypt_key;
@@ -14,7 +14,8 @@ import deimos.openssl.evp: EVP_CIPHER_CTX, EVP_CIPHER_CTX_free, EVP_CIPHER_CTX_n
 import deimos.openssl.hmac: HMAC_CTX_free, HMAC_CTX_new, HMAC_Final,
 	HMAC_Init_ex, HMAC_Update;
 import deimos.openssl.rand: RAND_bytes;
-import deimos.openssl.sha: SHA256_CTX, SHA256_Final, SHA256_Init, SHA256_Update;
+import deimos.openssl.sha: SHA_CTX, SHA1_Final, SHA1_Init, SHA1_Update, SHA256_CTX,
+	SHA256_Final, SHA256_Init, SHA256_Update;
 
 import std.conv: hexString, to;
 import std.exception: enforce;
@@ -153,6 +154,102 @@ ubyte[] randomBytes(size_t size) @safe
 	auto buf = new ubyte[size];
 	randomBytes(buf);
 	return buf;
+}
+
+/// AES key and IV derived from an auth key and a message key.
+struct AesKeyIv
+{
+	ubyte[32] key;
+	ubyte[32] iv;
+}
+
+/// Derives the AES-256 key and IV for one MTProto 2.0 message.
+///
+/// Reference: `KDF2` in TDLib's `td/mtproto/KDF.cpp`.
+AesKeyIv deriveAesKeyIv(const(ubyte)[] msgKey, const(ubyte)[] authKey, bool clientToServer) @safe
+{
+	enforce!CryptoException(msgKey.length == 16, "msg_key must be 16 bytes");
+	enforce!CryptoException(authKey.length == 256, "auth_key must be 256 bytes");
+
+	immutable size_t x = clientToServer ? 0 : 8;
+
+	ubyte[52] buf = void;
+	buf[0 .. 16] = msgKey[];
+	buf[16 .. 52] = authKey[x .. x + 36];
+	auto sha256a = sha256(buf[]);
+
+	buf[0 .. 36] = authKey[40 + x .. 76 + x];
+	buf[36 .. 52] = msgKey[];
+	auto sha256b = sha256(buf[]);
+
+	AesKeyIv result;
+	result.key[0 .. 8] = sha256a[0 .. 8];
+	result.key[8 .. 24] = sha256b[8 .. 24];
+	result.key[24 .. 32] = sha256a[24 .. 32];
+
+	result.iv[0 .. 8] = sha256b[0 .. 8];
+	result.iv[8 .. 24] = sha256a[8 .. 24];
+	result.iv[24 .. 32] = sha256b[24 .. 32];
+
+	return result;
+}
+
+/// Returns the SHA-1 digest of `data`.
+///
+/// MTProto's key derivation and handshake nonce checks use SHA-1, not SHA-256.
+ubyte[20] sha1(const(ubyte)[] data) @trusted
+{
+	SHA_CTX ctx = void;
+	check(SHA1_Init(&ctx), "SHA1_Init");
+	if (data.length != 0)
+		check(SHA1_Update(&ctx, &data[0], data.length), "SHA1_Update");
+
+	ubyte[20] digest = void;
+	check(SHA1_Final(&digest[0], &ctx), "SHA1_Final");
+	return digest;
+}
+
+@safe unittest // AES key/IV KDF matches the TDLib layout
+{
+	import std.array: array, replicate;
+	import std.algorithm: map;
+	import std.format: format;
+	import std.range: iota;
+
+	static ubyte[] unhex(string hex)
+	{
+		ubyte[] result;
+		result.length = hex.length / 2;
+		foreach (i; 0 .. result.length)
+		{
+			immutable char c = hex[i * 2];
+			immutable char d = hex[i * 2 + 1];
+			result[i] = cast(ubyte) ((c <= '9' ? c - '0' : c - 'a' + 10) * 16 + (d <= '9' ? d - '0' : d - 'a' + 10));
+		}
+		return result;
+	}
+
+	auto authKey = iota(256).map!(i => cast(ubyte) i).array;
+	auto msgKey = iota(16).map!(i => cast(ubyte) i).array;
+
+	// Cross-checked against TDLib's KDF2 (td/mtproto/KDF.cpp).
+	auto toClient = deriveAesKeyIv(msgKey, authKey, false);
+	enforce(toClient.key[] == unhex("217725799b245806458174a1fcfbc883906807b15033fdd0ea2b4d69cf9c364e"), "server->client aes_key");
+	enforce(toClient.iv[] == unhex("669a6538917a4fa56ca32360a431c9160be4ad887140980dab91ce7bdc47ffbc"), "server->client aes_iv");
+
+	auto toServer = deriveAesKeyIv(msgKey, authKey, true);
+	enforce(toServer.key[] == unhex("704ed09c8b41668ae8f99d244738f71dbddc44469b6bbd4aa8573dd042bd059e"), "client->server aes_key");
+	enforce(toServer.iv[] == unhex("4d266000a550edabbf4c7ce40fd0043cc92230184cd317a5cc9c2482fd3b9318"), "client->server aes_iv");
+}
+
+@safe unittest // SHA-1 known vectors
+{
+	enforce(sha1(null) == cast(ubyte[20]) hexString!"da39a3ee5e6b4b0d3255bfef95601890afd80709",
+		"SHA-1 of the empty string");
+	enforce(sha1(cast(const(ubyte)[]) "abc") == cast(ubyte[20]) hexString!"a9993e364706816aba3e25717850c26c9cd0d89d",
+		"SHA-1 of \"abc\"");
+	enforce(sha1(cast(const(ubyte)[]) "abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq") ==
+		cast(ubyte[20]) hexString!"84983e441c3bd26ebaae4aa1f95129e5e54670f1", "SHA-1 of the long FIPS vector");
 }
 
 /// Raises `base` to the power `exp` modulo `mod` (big-endian byte strings).

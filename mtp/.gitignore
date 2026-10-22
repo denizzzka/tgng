@@ -1,0 +1,7 @@
+mtp-test-library
+tgng-mtp-test-library
+libmtp.a
+*.a
+*.o
+dub.selections.json
+mtp_probe

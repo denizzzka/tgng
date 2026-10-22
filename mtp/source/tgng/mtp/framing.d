@@ -1,13 +1,14 @@
-/// MTProto framing over a stream: abridged and intermediate.
+/// MTProto framing over a stream: abridged, intermediate and full.
 ///
 /// The wrapper implements `ConnectionStream`, so it fits into the chain
-/// TCP -> SOCKS5 -> obfuscated2 -> encryption -> framing unchanged above.
-module tgng.mtproto.framing;
+/// TCP -> SOCKS5 -> obfuscated2 -> framing unchanged.
+module tgng.mtp.framing;
 
 import vibe.core.stream: ConnectionStream, IOMode, blocking;
 
 import core.time: Duration;
 import std.bitmanip: littleEndianToNative, nativeToLittleEndian;
+import std.conv: to;
 import std.exception: enforce;
 
 @safe:
@@ -21,6 +22,19 @@ enum FramingKind
 	intermediate,
 	/// Length is 4 bytes little-endian, includes the prefix and seqno.
 	full,
+}
+
+/// Raised when the server sends a transport-level error such as -404.
+class TransportError: Exception
+{
+	/// The error code as sent, for example -404.
+	int code;
+
+	this(int code, string file = __FILE__, size_t line = __LINE__) @safe pure nothrow
+	{
+		this.code = code;
+		super("transport error " ~ code.to!string, file, line);
+	}
 }
 
 /// Stream wrapper that adds MTProto framing.
@@ -120,41 +134,88 @@ final class FramedStream: ConnectionStream
 	private bool _readFrame() @blocking
 	{
 		if (_inner.empty) return false;
-		auto len = _decodeLength();
-		if (len == 0) return false;
-		_pending = new ubyte[len];
+
+		auto head = _readHead();
+		if (head.isQuickAck)
+		{
+			_pending = head.quickAck.dup;
+			_pendingOffset = 0;
+			return true;
+		}
+		if (head.payloadLength == 0) return false;
+
+		auto buf = new ubyte[head.payloadLength];
+		size_t got;
+		while (got < buf.length)
+		{
+			auto n = _inner.read(buf[got .. $], IOMode.all);
+			if (n == 0) return false;
+			got += n;
+		}
+
+		// A four-byte payload is a transport error: -404 and friends.
+		if (_kind == FramingKind.intermediate && buf.length == 4)
+		{
+			immutable code = cast(int) (cast(uint) buf[0] | cast(uint) buf[1] << 8
+				| cast(uint) buf[2] << 16 | cast(uint) buf[3] << 24);
+			if (code < 0)
+				throw new TransportError(code);
+		}
+
+		_pending = buf;
 		_pendingOffset = 0;
-		_inner.read(_pending);
 		return true;
 	}
 
-	/// Reads the length prefix and returns the payload length.
-	private size_t _decodeLength() @blocking @trusted
+	/// A length prefix, or an intermediate quick-ack token that is a packet itself.
+	private struct FrameHead
 	{
+		size_t payloadLength;
+		ubyte[4] quickAck;
+		bool isQuickAck;
+	}
+
+	private FrameHead _readHead() @blocking @trusted
+	{
+		FrameHead head;
 		final switch (_kind) {
 			case FramingKind.abridged:
 				ubyte[1] first;
 				_inner.read(first[]);
-				if (first[0] < 0x7f) return cast(size_t)first[0] * 4;
+				if (first[0] < 0x7f)
+				{
+					head.payloadLength = cast(size_t) first[0] * 4;
+					return head;
+				}
 				// Escape: 3 bytes of length in words, little-endian.
 				ubyte[4] ext;
 				_inner.read(ext[0 .. 3]);
 				ext[3] = 0;
-				return littleEndianToNative!uint(ext) * 4;
+				head.payloadLength = littleEndianToNative!uint(ext) * 4;
+				return head;
 			case FramingKind.intermediate:
+				ubyte[4] raw;
+				_inner.read(raw[]);
+				auto v = littleEndianToNative!uint(raw);
+				// Quick ack tokens have the high bit set and are not lengths.
+				if (v & 0x8000_0000)
+				{
+					head.isQuickAck = true;
+					head.quickAck = raw;
+					return head;
+				}
+				head.payloadLength = v;
+				return head;
 			case FramingKind.full:
 				ubyte[4] raw;
 				_inner.read(raw[]);
 				auto v = littleEndianToNative!uint(raw);
-				// The length includes the prefix itself (and seqno for full).
-				auto overhead = (_kind == FramingKind.full) ? 8 : 4;
-				enforce(v >= overhead, "Malformed MTProto frame length.");
-				if (_kind == FramingKind.full) {
-					// Skip seqno: it is not part of the payload.
-					ubyte[4] seq;
-					_inner.read(seq[]);
-				}
-				return v - overhead;
+				// The length includes the prefix itself and seqno.
+				enforce(v >= 8, "Malformed MTProto frame length.");
+				ubyte[4] seq;
+				_inner.read(seq[]);
+				head.payloadLength = v - 8;
+				return head;
 		}
 	}
 
@@ -170,7 +231,7 @@ final class FramedStream: ConnectionStream
 				return [cast(ubyte)0x7f, cast(ubyte)(words & 0xff),
 					cast(ubyte)((words >> 8) & 0xff), cast(ubyte)((words >> 16) & 0xff)];
 			case FramingKind.intermediate:
-				return nativeToLittleEndian(cast(uint)(len + 4))[0 .. 4].dup;
+				return nativeToLittleEndian(cast(uint) len)[0 .. 4].dup;
 			case FramingKind.full:
 				return nativeToLittleEndian(cast(uint)(len + 8))[0 .. 4].dup;
 		}
@@ -227,7 +288,7 @@ FramedStream frameIntermediate(ConnectionStream inner)
 		auto wire = sink.output;
 		enforce(wire.length == payload.length + 4, "intermediate prefix is four bytes");
 		auto declared = littleEndianToNative!uint(wire[0 .. 4]);
-		enforce(declared == payload.length + 4, "intermediate length includes the prefix");
+		enforce(declared == payload.length, "intermediate length is the payload length");
 
 		auto source = new BufferStream(wire);
 		ubyte[] got = new ubyte[payload.length];
@@ -308,7 +369,7 @@ FramedStream frameIntermediate(ConnectionStream inner)
 /// In-memory `ConnectionStream` used by the framing tests.
 /// Reads from `input`, writes are appended to `output`; `chunk` limits
 /// how many bytes a single read may return, emulating a split packet.
-private final class BufferStream: ConnectionStream
+final class BufferStream: ConnectionStream
 {
 	private ubyte[] _input;
 	private size_t _offset;

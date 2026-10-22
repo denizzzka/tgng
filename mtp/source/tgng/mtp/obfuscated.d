@@ -1,15 +1,16 @@
 /// MTProto obfuscated2 transport wrapper.
 ///
-/// Wraps a `ConnectionStream` so that all traffic is disguised as random
-/// noise: a 64-byte header is derived from random bytes, and the payload
-/// is XORed with the AES-256-CTR keystreams derived from that header.
-module tgng.mtproto.obfuscated_stream;
+/// Wraps a `ConnectionStream` so that all traffic looks like random noise:
+/// a 64-byte header seeds two AES-256-CTR keystreams, and every byte after
+/// the header is XORed with them.
+module tgng.mtp.obfuscated;
 
 import vibe.core.stream: ConnectionStream, IOMode, blocking;
 
-import tgng.mtproto.crypto: AesCtr;
+import tgng.mtp.crypto: AesCtr, randomBytes;
 
 import core.time: Duration;
+import std.bitmanip: nativeToLittleEndian;
 import std.exception: enforce;
 
 @safe:
@@ -46,31 +47,37 @@ final class ObfuscatedStream: ConnectionStream
 	}
 
 	/// Wraps `inner` and performs the obfuscated2 handshake.
-	this(ConnectionStream inner, ObfuscatedTransport transport = ObfuscatedTransport.abridged)
+	this(ConnectionStream inner, ObfuscatedTransport transport = ObfuscatedTransport.abridged, short dcId = 0)
 	{
 		ubyte[HeaderSize] header;
-		_makeHeader(header, transport);
+		_makeHeader(header, transport, dcId);
 
-		_configure(inner, header);
-
-		// The header travels in the clear: the peer reconstructs the read
-		// keystream from it by reversing it.
-		_inner.write(header, IOMode.all);
+		auto wire = _configure(inner, header);
+		_inner.write(wire, IOMode.all);
 		_inner.flush();
 	}
 
-	private void _configure(ConnectionStream inner, const ref ubyte[HeaderSize] localHeader)
+	/// Sets up both keystreams and returns the wire header: plain bytes 0..56,
+	/// encrypted bytes 56..64 (the transport marker is hidden this way).
+	private ubyte[] _configure(ConnectionStream inner, const ref ubyte[HeaderSize] localHeader)
 	{
 		_inner = inner;
 		_pending = null;
 		_pendingOffset = 0;
 
-		_enc.init(localHeader[KeyOffset .. KeyOffset + KeySize].idup,
-			localHeader[IvOffset .. IvOffset + IvSize].idup);
+		auto encKey = localHeader[KeyOffset .. KeyOffset + KeySize].idup;
+		auto encIv = localHeader[IvOffset .. IvOffset + IvSize].idup;
+		_enc.init(encKey, encIv);
 
-		// Each direction consumes the header's 64 bytes of keystream.
-		ubyte[HeaderSize] scratch;
-		_enc.apply(scratch[]);
+		// The peer decrypts with the reversed header, so we do the same.
+		auto rev = _reverseHeader(localHeader);
+		_dec.init(rev[KeyOffset .. KeyOffset + KeySize].idup,
+			rev[IvOffset .. IvOffset + IvSize].idup);
+
+		auto wire = localHeader[].dup;
+		_enc.apply(wire);
+		wire[0 .. TransportOffset] = localHeader[0 .. TransportOffset];
+		return wire;
 	}
 
 	@property bool connected() const { return _inner.connected; }
@@ -140,10 +147,8 @@ final class ObfuscatedStream: ConnectionStream
 	void flush() @blocking { _inner.flush(); }
 	void finalize() @blocking { _inner.finalize(); }
 
-	private static void _makeHeader(ref ubyte[HeaderSize] header, ObfuscatedTransport transport) @trusted
+	private static void _makeHeader(ref ubyte[HeaderSize] header, ObfuscatedTransport transport, short dcId = 0) @trusted
 	{
-		import tgng.mtproto.crypto: randomBytes;
-
 		do {
 			randomBytes(header[]);
 		} while (header[0] == 0xef
@@ -151,7 +156,8 @@ final class ObfuscatedStream: ConnectionStream
 
 		final switch (transport) {
 			case ObfuscatedTransport.abridged:
-				header[TransportOffset] = 0xef;
+				// The spec pads short identifiers to four bytes: 0xef => 0xefefefef.
+				header[TransportOffset .. TransportOffset + 4] = 0xef;
 				break;
 			case ObfuscatedTransport.intermediate:
 				header[TransportOffset] = 0xee;
@@ -164,6 +170,9 @@ final class ObfuscatedStream: ConnectionStream
 					header[TransportOffset + i] = 0xee;
 				break;
 		}
+
+		if (dcId != 0)
+			header[TransportOffset + 4 .. TransportOffset + 6] = nativeToLittleEndian(dcId)[];
 	}
 
 	private static ubyte[HeaderSize] _reverseHeader(const ref ubyte[HeaderSize] header)
@@ -185,7 +194,8 @@ final class ObfuscatedStream: ConnectionStream
 		enforce(header[0] != 0xef, "the first byte must not collide with the abridged marker");
 		final switch (transport) {
 			case ObfuscatedTransport.abridged:
-				enforce(header[TransportOffset] == 0xef, "abridged marker");
+				enforce(header[TransportOffset .. TransportOffset + 4] == [0xef, 0xef, 0xef, 0xef],
+					"abridged marker");
 				break;
 			case ObfuscatedTransport.intermediate:
 				enforce(header[TransportOffset .. TransportOffset + 4] == [0xee, 0xee, 0xee, 0xee],
@@ -219,7 +229,6 @@ final class ObfuscatedStream: ConnectionStream
 	foreach (i; 0 .. HeaderSize)
 		enforce(reversed[i] == cast(ubyte) (HeaderSize - 1 - i), "reversed byte order");
 }
-
 
 @safe unittest // write rejects IOMode.once, matching the whole-message contract
 {

@@ -1,0 +1,19 @@
+name "mtp"
+description "MTProto client implementation for tgng"
+authors "Denis Feklushkin"
+license "proprietary"
+targetType "library"
+dependency "vibe-core" version=">=2.8.1 <3.0.0-0"
+dependency "vibe-stream" path="/home/denizzz/.local/share/opencode/worktree/506a1b092795662e222d5072c26f056abfea5aa5/add_socks5_support"
+dependency "socks" path="/home/denizzz/.local/share/opencode/worktree/506a1b092795662e222d5072c26f056abfea5aa5/add_socks5_support/socks"
+dependency "openssl" version=">=3.4.0 <4.0.0-0"
+
+sourcePaths "source"
+
+subPackage {
+	name "probe"
+	targetType "executable"
+	dependency "mtp" path="."
+	sourcePaths "probe"
+	mainSourceFile "probe/probe.d"
+}
