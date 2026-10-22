@@ -4,7 +4,7 @@
  * Usage:
  *     dub run :tlgen
  *
- * The command reads the schemes from `client-api/scheme` and writes the
+ * The command reads the schemes from `tlgen/scheme` and writes the
  * generated D modules into `client-api/source/tg_client_api`, overwriting
  * them in place.
  */
@@ -20,7 +20,7 @@ import tlgen.emitter: EmittedFile, EmitOptions, emit;
 import tlgen.model: TlScheme, parseScheme;
 
 /// Default paths, relative to the repository root.
-private enum defaultSchemeDir = "client-api/scheme";
+private enum defaultSchemeDir = "tlgen/scheme";
 private enum defaultOutputDir = "client-api/source/tg_client_api";
 private enum packageName = "tg_client_api";
 
