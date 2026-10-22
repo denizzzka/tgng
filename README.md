@@ -1,5 +1,7 @@
 # tgng
 
+> **Work in progress.** The project is not finished yet; packages and APIs may change.
+
 Telegram API for D: MTProto client, generated client API types and TL tooling.
 
 ## Packages
