@@ -57,3 +57,44 @@ interface BotApi
 	Chat getChat(long chatId);
 	void sendMessage(ref SendMessageMethod method);
 }
+
+/// One incoming update.
+struct Update
+{
+	enum Kind
+	{
+		message,
+		editedMessage,
+		callbackQuery,
+		other,
+	}
+
+	long updateId;
+	Kind kind;
+	long chatId;
+	string text;
+	string callbackQueryId;
+}
+
+/// Persists the next update offset across restarts.
+interface UpdateOffsetStore
+{
+	long load();
+	void save(long offset);
+}
+
+/// Keeps the offset only for the current process.
+final class MemoryUpdateOffsetStore: UpdateOffsetStore
+{
+	private long _offset;
+
+	long load()
+	{
+		return _offset;
+	}
+
+	void save(long offset)
+	{
+		_offset = offset;
+	}
+}
