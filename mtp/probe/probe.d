@@ -59,7 +59,7 @@ void main()
 
 		auto transport = new LoggingTransport(new HandshakeTransport(framed), log);
 		auto key = RsaPublicKey.fromPem(testPem);
-		auto result = performHandshake(transport, key, 1);
+		auto result = performHandshake(transport, key, 10001);
 		say("authKeyId=" ~ result.authKeyId.to!string);
 		say("timeOffset=" ~ result.timeOffset.to!string);
 

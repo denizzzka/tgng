@@ -5,3 +5,5 @@ libmtp.a
 *.o
 dub.selections.json
 mtp_probe
+.env
+mtp_integration

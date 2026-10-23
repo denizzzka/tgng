@@ -17,3 +17,11 @@ subPackage {
 	sourcePaths "probe"
 	mainSourceFile "probe/probe.d"
 }
+
+subPackage {
+	name "integration"
+	targetType "executable"
+	dependency "mtp" path="."
+	sourcePaths "integration"
+	mainSourceFile "integration/integration.d"
+}

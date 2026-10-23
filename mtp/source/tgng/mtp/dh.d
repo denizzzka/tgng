@@ -141,7 +141,7 @@ DhResult performHandshake(DhTransport transport, RsaPublicKey serverKey, int dcI
 	attempt.newNonce = newNonce;
 
 	// Test DCs live in a separate id space.
-	int dc = dcId >= 10000 ? dcId : dcId + 10000;
+	int dc = dcId;
 	auto inner = encodePQInnerDataDc(resPq.pq, toBigEndian(pq.p), toBigEndian(pq.q),
 		nonce, resPq.serverNonce, newNonce, dc);
 	auto encrypted = serverKey.encrypt(inner);
