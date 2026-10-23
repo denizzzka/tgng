@@ -71,7 +71,3 @@ The bot example is also a live test. Put `TG_BOT_TOKEN`, `TG_CHAT_ID` and
 
 Without that file the live test is skipped. Set `TG_TEST_SEND=1` to also send
 a message.
-
-## License
-
-Proprietary.
