@@ -4,6 +4,8 @@
 
 Telegram API for D: MTProto client, generated client API types and TL tooling.
 
+Made with the help of an LLM, with love and attention to detail.
+
 ## Packages
 
 - `tgng` (root) - common library layer.
