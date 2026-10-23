@@ -9,6 +9,7 @@ Telegram API for D: MTProto client, generated client API types and TL tooling.
 - `tgng` (root) - common library layer.
 - `client-api` (`tgng:client-api`) - types and functions from `telegram_api.tl` and `mtproto_api.tl`.
 - `tlgen` (`tgng:tlgen`) - TL scheme to D code generator.
+- `mcp` (`tgng:mcp`) - MCP server over stdio; works as a regular user account, not a bot.
 - `bot-api` (`tgng:bot-api`) - HTTP Bot API client (minimal: `sendMessage`, `getMe`, `getChat`).
 - `mtp` (`tgng:mtp`) - MTProto: framing, obfuscated2, SOCKS5, DH handshake, encrypted session, schema walker.
 
