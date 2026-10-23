@@ -1,9 +1,5 @@
-/// Telegram Bot API entry point.
+/// Bot API types and the backend-agnostic client interface.
 module tgng.botapi;
-
-import tgng.http: HttpClient;
-
-import std.json: JSONType, JSONValue, parseJSON;
 
 enum BaseApiUrl = "https://api.telegram.org/bot";
 
@@ -19,76 +15,45 @@ class TelegramBotApiException: Exception
 	}
 }
 
-/// Holds the token and the HTTP client used by Bot API methods.
-class BotApi
+/// Text formatting mode.
+enum ParseMode: string
 {
-	private string _apiUrl;
-	private HttpClient _http;
-
-	this(string token, string baseUrl = BaseApiUrl, HttpClient httpClient = null) @safe
-	{
-		_apiUrl = baseUrl ~ token;
-		_http = httpClient;
-	}
-
-	/// Sends a JSON body to a method and returns the response body.
-	string postJson(string methodPath, string bodyJson)
-	{
-		return _http.sendPostRequestJson(_apiUrl ~ methodPath, bodyJson);
-	}
-
-	/// Calls a GET method and returns the response body.
-	string getJson(string methodPath)
-	{
-		return _http.sendGetRequest(_apiUrl ~ methodPath);
-	}
+	Markdown = "Markdown",
+	MarkdownV2 = "MarkdownV2",
+	HTML = "HTML",
+	None = "",
 }
 
-/// Parses a Bot API answer and throws `TelegramBotApiException` on failure.
-JSONValue checkedResult(string method, string answer)
+/// `sendMessage` arguments.
+struct SendMessageMethod
 {
-	auto json = parseJSON(answer);
-	auto ok = json["ok"];
-	if (ok.type == JSONType.true_)
-		return json["result"];
-
-	auto code = json["error_code"];
-	auto description = json["description"];
-	throw new TelegramBotApiException(
-		code.type == JSONType.integer ? cast(int) code.get!long : 0,
-		description.type == JSONType.string ? description.get!string : method ~ ": " ~ answer);
+	long chat_id;
+	string text;
+	ParseMode parse_mode = ParseMode.None;
 }
 
-/// Returns a field or null; `JSONValue.opIndex` throws on a missing key.
-private JSONValue field(JSONValue json, string name)
+/// The bot account.
+struct User
 {
-	if (json.type != JSONType.object)
-		return JSONValue();
-
-	foreach (key, ref value; json.object)
-		if (key == name)
-			return value;
-
-	return JSONValue();
+	long id;
+	bool is_bot;
+	string first_name;
+	string username;
 }
 
-/// Reads a string field, or an empty string when absent.
-string stringField(JSONValue json, string name)
+/// The chat fields the client exposes.
+struct Chat
 {
-	auto value = json.field(name);
-	return value.type == JSONType.string ? value.get!string : "";
+	long id;
+	string type;
+	string title;
+	string username;
 }
 
-/// Reads an integer field, or zero when absent.
-long intField(JSONValue json, string name)
+/// What a bot client can do regardless of the wire protocol.
+interface BotApi
 {
-	auto value = json.field(name);
-	return value.type == JSONType.integer || value.type == JSONType.uinteger
-		? value.get!long : 0;
-}
-
-/// Reads a boolean field, or false when absent.
-bool boolField(JSONValue json, string name)
-{
-	return json.field(name).type == JSONType.true_;
+	User getMe();
+	Chat getChat(long chatId);
+	void sendMessage(ref SendMessageMethod method);
 }
