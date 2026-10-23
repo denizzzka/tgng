@@ -75,3 +75,16 @@ SOCKS5 живёт в ветке `add_socks5_squash` (коммит `9be6e2d`) р�
 - [ ] Связывание с сущностями по имени (`messages.sendMessage`, `message`), при неоднозначности - по `id`.
 - [ ] Обновление - флагом `tlgen --update-docs`, идемпотентно; сборка работает на закоммиченных файлах.
 - [ ] Тексты принадлежат Telegram: указать источник и проверить условия использования.
+
+## Этап 5. Подпакет MCP для Telegram
+
+Отдельный подпакет `tgng:mcp` - MCP-сервер (JSON-RPC 2.0) поверх `tgng:bot-api`, чтобы LLM-клиенты могли работать с Telegram через стандартные MCP tools.
+
+- [ ] Каркас подпакета `mcp`: `subPackage "mcp"`, точка входа, конфигурация из env (`TG_BOT_TOKEN`, выбор backend `web`/`mtp`, прокси).
+- [ ] Транспорт MCP: stdio (построчный JSON-RPC 2.0), аккуратный разбор входа и ответы `result`/`error` с id.
+- [ ] Базовые методы протокола: `initialize`, `notifications/initialized`, `tools/list`, `tools/call`, `ping`.
+- [ ] Инструменты первого этапа: `get_me`, `get_chat`, `send_message`; при необходимости расширить `tgng:bot-api` методами `edit_message`, `delete_messages`, `get_updates`.
+- [ ] Схемы инструментов: JSON Schema для аргументов, понятные описания для LLM; одинаковые имена независимо от backend.
+- [ ] Ошибки: `TelegramBotApiException` (код/описание) и `FLOOD_WAIT_x` в MCP `error` с человекочитаемым текстом; без утечки токена.
+- [ ] Тесты: round-trip JSON-RPC, `tools/list`, `tools/call` на фейковом `BotApi`; проверка неизвестного метода и битых аргументов.
+- [ ] Живой прогон MCP-клиентом через stdio на тестовом боте; отдельный пример подключения (конфиг клиента).
