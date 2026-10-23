@@ -36,6 +36,12 @@ class BotApi
 	{
 		return _http.sendPostRequestJson(_apiUrl ~ methodPath, bodyJson);
 	}
+
+	/// Calls a GET method and returns the response body.
+	string getJson(string methodPath)
+	{
+		return _http.sendGetRequest(_apiUrl ~ methodPath);
+	}
 }
 
 /// Parses a Bot API answer and throws `TelegramBotApiException` on failure.
@@ -51,4 +57,38 @@ JSONValue checkedResult(string method, string answer)
 	throw new TelegramBotApiException(
 		code.type == JSONType.integer ? cast(int) code.get!long : 0,
 		description.type == JSONType.string ? description.get!string : method ~ ": " ~ answer);
+}
+
+/// Returns a field or null; `JSONValue.opIndex` throws on a missing key.
+private JSONValue field(JSONValue json, string name)
+{
+	if (json.type != JSONType.object)
+		return JSONValue();
+
+	foreach (key, ref value; json.object)
+		if (key == name)
+			return value;
+
+	return JSONValue();
+}
+
+/// Reads a string field, or an empty string when absent.
+string stringField(JSONValue json, string name)
+{
+	auto value = json.field(name);
+	return value.type == JSONType.string ? value.get!string : "";
+}
+
+/// Reads an integer field, or zero when absent.
+long intField(JSONValue json, string name)
+{
+	auto value = json.field(name);
+	return value.type == JSONType.integer || value.type == JSONType.uinteger
+		? value.get!long : 0;
+}
+
+/// Reads a boolean field, or false when absent.
+bool boolField(JSONValue json, string name)
+{
+	return json.field(name).type == JSONType.true_;
 }
