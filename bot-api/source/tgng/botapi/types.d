@@ -1,5 +1,5 @@
 /// Bot API types and the backend-agnostic client interface.
-module tgng.botapi;
+module tgng.botapi.types;
 
 enum BaseApiUrl = "https://api.telegram.org/bot";
 

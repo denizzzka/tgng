@@ -1,9 +1,9 @@
 /// Bot API over the HTTP JSON protocol.
-module tgng.web;
+module tgng.botapi.web;
 
-import tgng.botapi: BaseApiUrl, BotApi, Chat, ParseMode, SendMessageMethod,
+import tgng.botapi.types: BaseApiUrl, BotApi, Chat, ParseMode, SendMessageMethod,
 	TelegramBotApiException, User;
-import tgng.http: HttpClient;
+import tgng.botapi.http: HttpClient;
 
 import std.conv: to;
 import std.json: JSONType, JSONValue, parseJSON;

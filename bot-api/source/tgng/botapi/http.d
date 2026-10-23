@@ -1,5 +1,5 @@
 /// HTTP transport the Bot API talks through.
-module tgng.http;
+module tgng.botapi.http;
 
 /// Minimal client interface; applications provide the implementation.
 interface HttpClient
