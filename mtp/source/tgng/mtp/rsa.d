@@ -6,8 +6,10 @@ module tgng.mtp.rsa;
 
 import tgng.mtp.crypto: CryptoException, aesIgeEncrypt, modPow, randomBytes, sha1, sha256;
 
+import std.algorithm.iteration: filter;
 import std.algorithm.mutation: reverse;
-import std.array: appender;
+import std.array: appender, array;
+import std.ascii: isWhite;
 import std.base64: Base64;
 import std.conv: hexString;
 import std.exception: enforce;
@@ -31,7 +33,9 @@ struct RsaPublicKey
 		auto footer = pem.indexOf(endMarker);
 		enforce!CryptoException(header >= 0 && footer > header, "RSA public key PEM markers not found");
 
-		auto body = pem[header + beginMarker.length .. footer].strip;
+		// Telegram ships keys wrapped at 64 columns; Base64.decode rejects whitespace.
+		auto body = pem[header + beginMarker.length .. footer]
+			.filter!(c => !isWhite(c)).array;
 		auto der = Base64.decode(body);
 
 		auto seq = DerReader(der).readSequence();
@@ -213,6 +217,31 @@ immutable string testPem = "-----BEGIN RSA PUBLIC KEY-----\nMIIBCgKCAQEAyMEdY1aR
 	enforce(key.e.length == 3 && key.e[0] == 0x01 && key.e[1] == 0x00 && key.e[2] == 0x01,
 		"test key exponent is 65537");
 	enforce(key.fingerprint() == 0xb25898df208d2603UL, "test key fingerprint mismatch");
+}
+
+@safe unittest // a PEM body wrapped at 64 columns parses to the same key
+{
+	auto key = RsaPublicKey.fromPem(testPem);
+	auto k = key.n; // keep the reference for the fingerprint below
+
+	immutable begin = "-----BEGIN RSA PUBLIC KEY-----";
+	immutable end = "-----END RSA PUBLIC KEY-----";
+	auto body = testPem[testPem.indexOf(begin) + begin.length .. testPem.indexOf(end)].strip;
+
+	string wrapped = begin ~ "\n";
+	foreach (i, c; body)
+	{
+		wrapped ~= c;
+		if ((i + 1) % 64 == 0)
+			wrapped ~= "\n";
+	}
+	if (wrapped[$ - 1] != '\n')
+		wrapped ~= "\n";
+	wrapped ~= end;
+
+	auto parsed = RsaPublicKey.fromPem(wrapped);
+	enforce(parsed.n == k, "wrapped PEM modulus");
+	enforce(parsed.e == key.e, "wrapped PEM exponent");
 }
 
 @safe unittest // raw RSA output always fills the 256-byte modulus
