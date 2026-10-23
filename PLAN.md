@@ -80,13 +80,13 @@ SOCKS5 живёт в ветке `add_socks5_squash` (коммит `9be6e2d`) р�
 
 Отдельный подпакет `tgng:mcp` - MCP-сервер (JSON-RPC 2.0) поверх `tgng:bot-api`, чтобы LLM-клиенты могли работать с Telegram через стандартные MCP tools.
 
-- [ ] Каркас подпакета `mcp`: `subPackage "mcp"`, точка входа, конфигурация из env (`TG_BOT_TOKEN`, выбор backend `web`/`mtp`, прокси).
-- [ ] Транспорт MCP: stdio (построчный JSON-RPC 2.0), аккуратный разбор входа и ответы `result`/`error` с id.
-- [ ] Базовые методы протокола: `initialize`, `notifications/initialized`, `tools/list`, `tools/call`, `ping`.
+- [x] Каркас подпакета `mcp`: `subPackage "mcp"`, точка входа, конфигурация из env (`TG_BOT_TOKEN`, выбор backend `web`/`mtp`, прокси).
+- [x] Транспорт MCP: stdio (построчный JSON-RPC 2.0), аккуратный разбор входа и ответы `result`/`error` с id.
+- [x] Базовые методы протокола: `initialize`, `notifications/initialized`, `tools/list`, `tools/call`, `ping`.
 - [ ] Инструменты первого этапа: `get_me`, `get_chat`, `send_message`; при необходимости расширить `tgng:bot-api` методами `edit_message`, `delete_messages`, `get_updates`.
-- [ ] Схемы инструментов: JSON Schema для аргументов, понятные описания для LLM; одинаковые имена независимо от backend.
+- [x] Схемы инструментов: JSON Schema для аргументов, понятные описания для LLM; одинаковые имена независимо от backend.
 - [ ] Ошибки: `TelegramBotApiException` (код/описание) и `FLOOD_WAIT_x` в MCP `error` с человекочитаемым текстом; без утечки токена.
-- [ ] Тесты: round-trip JSON-RPC, `tools/list`, `tools/call` на фейковом `BotApi`; проверка неизвестного метода и битых аргументов.
+- [x] Тесты: `initialize`/`tools/list`/`tools/call` на фейковом backend, неизвестный метод, битые аргументы, строковый id, версия протокола по умолчанию (1 модуль, все проходят)
 - [ ] Живой прогон MCP-клиентом через stdio на тестовом боте; отдельный пример подключения (конфиг клиента).
 
 ## Этап 6. Сериализуемое состояние сессии

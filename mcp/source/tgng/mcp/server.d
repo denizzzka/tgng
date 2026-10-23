@@ -272,3 +272,106 @@ unittest // tool calls go through the backend and report its errors
 		new NotLoggedInBackend);
 	enforce(response["result"]["isError"].get!bool, "backend error is reported");
 }
+
+private class FakeBackend: Backend
+{
+	Json getMe()
+	{
+		Json user = Json.emptyObject;
+		user["id"] = 42;
+		user["username"] = "tester";
+		return user;
+	}
+
+	Json listChats(int limit)
+	{
+		Json result = Json.emptyObject;
+		result["limit"] = limit;
+		return result;
+	}
+
+	Json getHistory(string peer, int limit)
+	{
+		Json result = Json.emptyObject;
+		result["peer"] = peer;
+		result["limit"] = limit;
+		return result;
+	}
+
+	Json sendMessage(string peer, string text)
+	{
+		Json result = Json.emptyObject;
+		result["peer"] = peer;
+		result["text"] = text;
+		return result;
+	}
+}
+
+unittest // successful tool calls reach the backend and return its data
+{
+	import vibe.data.json: parseJsonString;
+
+	auto backend = new FakeBackend;
+
+	auto me = handleRequest(parseJsonString(
+		`{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"get_me"}}`), backend);
+	enforce(me["result"].type == Json.Type.object, "tool result");
+	enforce(me["result"]["isError"].type == Json.Type.undefined, "no error");
+	auto userJson = parseJsonString(me["result"]["content"][0]["text"].get!string);
+	enforce(userJson["username"].get!string == "tester", "username");
+
+	auto chats = handleRequest(parseJsonString(
+		`{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"list_chats"}}`), backend);
+	auto chatJson = parseJsonString(chats["result"]["content"][0]["text"].get!string);
+	enforce(chatJson["limit"].get!long == 20, "default limit");
+
+	auto explicitLimit = handleRequest(parseJsonString(
+		`{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"list_chats","arguments":{"limit":5}}}`),
+		backend);
+	auto explicitJson = parseJsonString(explicitLimit["result"]["content"][0]["text"].get!string);
+	enforce(explicitJson["limit"].get!long == 5, "explicit limit");
+}
+
+unittest // broken tool arguments become tool errors, not crashes
+{
+	import vibe.data.json: parseJsonString;
+
+	auto backend = new FakeBackend;
+
+	auto missing = handleRequest(parseJsonString(
+		`{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"send_message","arguments":{"peer":"x"}}}`),
+		backend);
+	enforce(missing["result"]["isError"].get!bool, "missing text is an error");
+
+	auto wrongType = handleRequest(parseJsonString(
+		`{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"get_history","arguments":{"peer":"x","limit":"many"}}}`),
+		backend);
+	enforce(wrongType["result"]["isError"].get!bool, "wrong limit type is an error");
+
+	auto unknown = handleRequest(parseJsonString(
+		`{"jsonrpc":"2.0","id":6,"method":"tools/call","params":{"name":"nope"}}`), backend);
+	enforce(unknown["result"]["isError"].get!bool, "unknown tool is an error");
+}
+
+unittest // malformed requests and ids
+{
+	import vibe.data.json: parseJsonString;
+
+	auto backend = new FakeBackend;
+
+	auto noMethod = handleRequest(parseJsonString(`{"jsonrpc":"2.0","id":7}`), backend);
+	enforce(noMethod["error"]["code"].get!long == -32600, "invalid request");
+
+	auto notObject = handleRequest(parseJsonString(`"hello"`), backend);
+	enforce(notObject["error"]["code"].get!long == -32600, "non-object request");
+
+	auto stringId = handleRequest(parseJsonString(
+		`{"jsonrpc":"2.0","id":"abc","method":"ping"}`), backend);
+	enforce(stringId["id"].get!string == "abc", "string id is preserved");
+	enforce(stringId["result"].type == Json.Type.object, "ping result");
+
+	auto defaultVersion = handleRequest(parseJsonString(
+		`{"jsonrpc":"2.0","id":8,"method":"initialize","params":{}}`), backend);
+	enforce(defaultVersion["result"]["protocolVersion"].get!string == defaultProtocolVersion,
+		"default protocol version");
+}
